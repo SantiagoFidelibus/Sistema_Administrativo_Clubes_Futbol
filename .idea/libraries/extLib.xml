@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="extLib">
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/extLib" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+    <jarDirectory url="file://$PROJECT_DIR$/extLib" recursive="false" />
+  </library>
+</component>

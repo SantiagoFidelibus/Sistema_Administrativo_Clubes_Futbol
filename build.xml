@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="datos.Login" default="default" basedir=".">
+    <description>Builds, tests, and runs the project datos.Login.</description>
+    <import file="nbproject/build-impl.xml"/>
+
+    <property name="src" location="src"/>
+    <property name="build" location="build"/>
+    <property name="dist"  location="dist"/>
+
+    <path id="master-classpath">
+        <fileset dir="lib">
+            <include name="jackson-databind-2.13.0.jar"/>
+            <include name="jackson-core-2.13.0.jar"/>
+            <include name="jackson-annotations-2.13.0.jar"/>
+            <include name="jackson-datatype-jsr310-2.17.1-javadoc.jar"/> <!-- Asegúrate de que el nombre del archivo coincida con el que descargaste -->
+        </fileset>
+    </path>
+
+    <target name="compile">
+        <mkdir dir="${build}"/>
+        <javac srcdir="${src}" destdir="${build}" classpathref="master-classpath"/>
+    </target>
+
+    <target name="dist" depends="compile">
+        <mkdir dir="${dist}/lib"/>
+        <jar jarfile="${dist}/lib/MyProject-${DSTAMP}.jar" basedir="${build}"/>
+    </target>
+
+    <target name="clean">
+        <delete dir="${build}"/>
+        <delete dir="${dist}"/>
+    </target>
+</project>

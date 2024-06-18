@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="javax.faces-api-2.0">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/extLib/javax.faces-api-2.0.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

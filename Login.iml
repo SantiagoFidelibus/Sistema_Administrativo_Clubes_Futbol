@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="JAVA_MODULE" version="4">
+  <component name="NewModuleRootManager" inherit-compiler-output="true">
+    <exclude-output />
+    <content url="file://$MODULE_DIR$">
+      <sourceFolder url="file://$MODULE_DIR$/src" isTestSource="false" />
+    </content>
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="module-library" exported="">
+      <library>
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/dist/lib/AbsoluteLayout.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="library" exported="" name="java-json" level="project" />
+    <orderEntry type="library" exported="" name="jackson-datatype-jsr310-2.17.1" level="project" />
+    <orderEntry type="library" exported="" name="AbsoluteLayout1" level="project" />
+    <orderEntry type="library" exported="" name="RSDragDropFiles" level="project" />
+    <orderEntry type="library" exported="" name="Java EE 6-Java EE 6 (2)" level="project" />
+    <orderEntry type="library" name="lib" level="project" />
+  </component>
+</module>

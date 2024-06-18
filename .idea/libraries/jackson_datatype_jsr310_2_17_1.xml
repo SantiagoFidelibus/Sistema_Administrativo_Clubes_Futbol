@@ -1,0 +1,17 @@
+<component name="libraryTable">
+  <library name="jackson-datatype-jsr310-2.17.1">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/Desktop/Proyecto Final Java/LibreriasUsadas/jackson-datatype-jsr310-2.17.1.jar!/" />
+      <root url="jar://$USER_HOME$/Desktop/Proyecto Final Java/LibreriasUsadas/jackson-core-2.13.0.jar!/" />
+      <root url="jar://$USER_HOME$/Desktop/Proyecto Final Java/LibreriasUsadas/jackson-annotations-2.13.0.jar!/" />
+      <root url="jar://$USER_HOME$/Desktop/Proyecto Final Java/LibreriasUsadas/jackson-databind-2.13.0.jar!/" />
+      <root url="file://$USER_HOME$/Desktop" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="file://$USER_HOME$/Desktop/App-Club-Deportivo-master/App-Club-Deportivo-master/src" />
+      <root url="file://$USER_HOME$/Desktop/Proyecto Final Java/ClasesSocios (BackEnd del Proyecto)/src" />
+      <root url="file://$USER_HOME$/Desktop/Proyecto Final Java/Proyecto Libreria (Video Youtube)/src/main/java" />
+    </SOURCES>
+  </library>
+</component>
