@@ -71,6 +71,7 @@ public class Menu extends JFrame {
         pagosSociosTxt = new javax.swing.JLabel();
         sueldosEmpleadosBtn = new javax.swing.JPanel();
         sueldosEmpleadosTxt = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
         header = new javax.swing.JPanel();
         administracionTxt = new javax.swing.JLabel();
         dateText = new javax.swing.JLabel();
@@ -318,6 +319,17 @@ public class Menu extends JFrame {
         sueldosEmpleadosBtn.add(sueldosEmpleadosTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(11, 0, 240, 40));
 
         dashboard.add(sueldosEmpleadosBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 520, 250, 40));
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("Cerrar Sesion");
+        jLabel1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel1MouseClicked(evt);
+            }
+        });
+        dashboard.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 680, -1, -1));
 
         background.add(dashboard, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 270, 720));
 
@@ -1531,6 +1543,14 @@ public HashMap<Integer, Socio> obtenerListaDeSocios() {
         actualizarTablaEmpleados();
     }//GEN-LAST:event_ventana3FocusGained
 
+    private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
+        com.login.Login login = new com.login.Login();
+        login.setVisible(true);
+        login.pack();
+        login.setLocationRelativeTo(null);
+        this.dispose();
+    }//GEN-LAST:event_jLabel1MouseClicked
+
 
 
     public Object[] empleadoToRow(Empleado empleado) {
@@ -1615,6 +1635,7 @@ public HashMap<Integer, Socio> obtenerListaDeSocios() {
     private javax.swing.JLabel fotoSocio1;
     private javax.swing.JLabel fotoSueldosEmpleados;
     private javax.swing.JPanel header;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTable jTable2;
