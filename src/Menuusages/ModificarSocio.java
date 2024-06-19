@@ -1307,10 +1307,9 @@ public class ModificarSocio extends javax.swing.JFrame {
         JFileChooser jf = new JFileChooser();
         jf.setMultiSelectionEnabled(false);
         if (jf.showOpenDialog(this) == JFileChooser.APPROVE_OPTION) {
-            RSDragDropFiles.setCopiar(jf.getSelectedFile().toString(), "src/com/imagesPerso/"+legajo.getText()+".png");
+            RSDragDropFiles.setCopiar(jf.getSelectedFile().toString(), "src/com/imagesPersonas/"+legajoTxt.getText()+".png");
             fotoUsuario.setIcon(new ImageIcon(jf.getSelectedFile().toString()));
             fotoUsuario.setCursor(new java.awt.Cursor(Cursor.DEFAULT_CURSOR));
-            ;
         }
     }//GEN-LAST:event_cargarImgTxtMouseClicked
 

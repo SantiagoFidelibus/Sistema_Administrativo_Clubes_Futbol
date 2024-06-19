@@ -137,20 +137,16 @@ public class Socio extends Persona{
         int intereses = calcularPagoConInteres();
         System.out.println("Intereses: " + intereses);
 
-
         this.cuota += intereses;
         System.out.println("Cuota total con intereses: " + this.cuota);
 
         this.cuota -= importe;
         System.out.println("Cuota restante después de pagar: " + this.cuota);
 
-
         if (this.cuota <= 0) {
             actualizarVencimientoPago(fechaActual, true);
         } else {
-            if (fechaVencimientoPago.equals(fechaActual)) {
-                actualizarVencimientoPago(fechaActual, false);
-            }
+            actualizarVencimientoPago(fechaActual, false);
         }
 
         return this.cuota;
@@ -159,8 +155,11 @@ public class Socio extends Persona{
     public void actualizarVencimientoPago(LocalDate today,boolean cuotaPagada) {
         if (cuotaPagada) {
             this.fechaRegistroPago = today;
-            this.cuota = calcularPago();
-            this.fechaVencimientoPago = today.plusMonths(1);
+            this.cuota = calcularPago(); // Reinicia la cuota para el próximo periodo
+
+            // Actualiza la fecha de vencimiento del pago
+            this.fechaVencimientoPago = this.fechaVencimientoPago.plusMonths(1);
+
             this.aptoCuota = true;
         } else {
             this.aptoCuota = false;
@@ -173,19 +172,26 @@ public class Socio extends Persona{
         switch (this.getCategoria()) {
             case CEBOLLITAS:
                 this.cuota= 1000;
+                break;
             case INFANTIL:
                 this.cuota= 1500;
+                break;
             case CADETES:
                 this.cuota= 2000;
+                break;
             case JUVENIL:
                 this.cuota= 2500;
+                break;
             case MAYORES:
                 this.cuota= 3000;
+                break;
             case PRIMERA:
                 this.cuota= 3500;
+                break;
             default:
                 return 0;
         }
+        return this.cuota;
     }
 
     @Override

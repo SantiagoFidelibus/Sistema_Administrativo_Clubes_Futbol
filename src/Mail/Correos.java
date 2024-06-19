@@ -49,7 +49,7 @@ public class Correos {
                 + "Regulariza tu situación de pago y sé parte de la victoria.</p>" // Texto
                 + "<img src=\"cid:image\">" // Imagen
                 + "</body></html>";
-        String imagePath = "src/emailPics/DEUDA.png"; // Ubicación y nombre de la imagen
+        String imagePath = "src/com/emailPics/DEUDA.png"; // Ubicación y nombre de la imagen
         EnvioCorreo envio = new EnvioCorreo(email, subject, content, imagePath);
         envio.createEmail();
         envio.sendEmail();
