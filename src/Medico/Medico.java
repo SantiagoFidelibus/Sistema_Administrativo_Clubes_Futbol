@@ -26,10 +26,11 @@ public class Medico extends javax.swing.JFrame {
 
     int xMouse, yMouse;
     public Medico() {
+        
         initComponents();
-        buscarLabel.requestFocusInWindow();
         setDate();
         actualizarTabla();
+        volverMenuBtn.requestFocusInWindow();
         TablaSoc.getTableHeader().setReorderingAllowed(false);
 
 
@@ -66,10 +67,12 @@ private void setDate(){
         TablaSoc = new javax.swing.JTable();
         buscarBtn = new javax.swing.JPanel();
         buscarTxt = new javax.swing.JLabel();
-        backMenuBtn = new javax.swing.JButton();
+        volverMenuBtn = new javax.swing.JPanel();
+        volverMenuTxt = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setLocationByPlatform(true);
+        setMinimumSize(new java.awt.Dimension(1280, 720));
         setName("MedicosBack"); // NOI18N
         setUndecorated(true);
         setPreferredSize(new java.awt.Dimension(1280, 720));
@@ -286,66 +289,64 @@ private void setDate(){
             buscarBtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 110, Short.MAX_VALUE)
             .addGroup(buscarBtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(buscarBtnLayout.createSequentialGroup()
-                    .addGap(27, 27, 27)
-                    .addComponent(buscarTxt, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGap(27, 27, 27)))
+                .addComponent(buscarTxt, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         buscarBtnLayout.setVerticalGroup(
             buscarBtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 43, Short.MAX_VALUE)
+            .addGap(0, 40, Short.MAX_VALUE)
             .addGroup(buscarBtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(buscarBtnLayout.createSequentialGroup()
-                    .addContainerGap()
-                    .addComponent(buscarTxt, javax.swing.GroupLayout.DEFAULT_SIZE, 31, Short.MAX_VALUE)
-                    .addContainerGap()))
+                .addComponent(buscarTxt, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE))
         );
 
-        getContentPane().add(buscarBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(804, 224, -1, -1));
+        getContentPane().add(buscarBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(804, 224, -1, 40));
 
-        backMenuBtn.setText("Volver al menu");
-        backMenuBtn.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
-        backMenuBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+        volverMenuBtn.setBackground(new java.awt.Color(50, 115, 153));
+        volverMenuBtn.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                backMenuBtnMouseClicked(evt);
+                volverMenuBtnMouseClicked(evt);
             }
         });
-        backMenuBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                backMenuBtnActionPerformed(evt);
+
+        volverMenuTxt.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
+        volverMenuTxt.setForeground(new java.awt.Color(255, 255, 255));
+        volverMenuTxt.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        volverMenuTxt.setLabelFor(buscarBtn);
+        volverMenuTxt.setText("Volver al Menu");
+        volverMenuTxt.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        volverMenuTxt.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                volverMenuTxtMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                volverMenuTxtMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                volverMenuTxtMouseExited(evt);
             }
         });
-        getContentPane().add(backMenuBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(1090, 650, 170, 50));
+
+        javax.swing.GroupLayout volverMenuBtnLayout = new javax.swing.GroupLayout(volverMenuBtn);
+        volverMenuBtn.setLayout(volverMenuBtnLayout);
+        volverMenuBtnLayout.setHorizontalGroup(
+            volverMenuBtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 170, Short.MAX_VALUE)
+            .addGroup(volverMenuBtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(volverMenuTxt, javax.swing.GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE))
+        );
+        volverMenuBtnLayout.setVerticalGroup(
+            volverMenuBtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 50, Short.MAX_VALUE)
+            .addGroup(volverMenuBtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(volverMenuTxt, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE))
+        );
+
+        getContentPane().add(volverMenuBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(1080, 640, 170, 50));
+
+        getAccessibleContext().setAccessibleDescription("");
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void buscarLabelFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_buscarLabelFocusLost
-        if (buscarLabel.getText().isEmpty()) {
-            buscarLabel.setText(" Ingrese el legajo del socio a buscar.");
-            buscarLabel.setForeground(Color.GRAY);
-        }
-    }//GEN-LAST:event_buscarLabelFocusLost
-
-    private void buscarLabelMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buscarLabelMousePressed
-        if(buscarLabel.getText().equals(" Ingrese el legajo del socio a buscar.")){
-            buscarLabel.setText("");
-            buscarLabel.setForeground(Color.black);
-        }
-    }//GEN-LAST:event_buscarLabelMousePressed
-
-    private void buscarLabelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarLabelActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_buscarLabelActionPerformed
-
-    private void buscarTxtMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buscarTxtMouseEntered
-        buscarBtn.setBackground(new Color(80,139,166));
-    }//GEN-LAST:event_buscarTxtMouseEntered
-
-    private void buscarTxtMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buscarTxtMouseExited
-        buscarBtn.setBackground(new Color(59,132,173));
-    }//GEN-LAST:event_buscarTxtMouseExited
 
     private void buscarBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buscarBtnMouseClicked
         try {
@@ -367,29 +368,55 @@ private void setDate(){
         }
     }//GEN-LAST:event_buscarBtnMouseClicked
 
-    private void TablaSocMouseClicked(java.awt.event.MouseEvent evt) throws Exception {//GEN-FIRST:event_TablaSocMouseClicked
-       if(evt.getClickCount()==2){
-              int filaSeleccionada = TablaSoc.getSelectedRow();
-        if (filaSeleccionada != -1) {
+    private void buscarTxtMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buscarTxtMouseExited
+        buscarBtn.setBackground(new Color(59,132,173));
+    }//GEN-LAST:event_buscarTxtMouseExited
 
-            int legajo = (int) TablaSoc.getValueAt(filaSeleccionada, 0);
-            Socio socio=new Socio();
-            ContenedoraSocio contenedoraSocio = new ContenedoraSocio();
-            contenedoraSocio.cargarSociosDeJson("Socios.json");
-            socio=contenedoraSocio.buscar(legajo);
-
-            DetalleSocio detalleSocio = new DetalleSocio(socio);
-            detalleSocio.setVisible(true);
-            detalleSocio.pack();
-            detalleSocio.setLocationRelativeTo(null);
-            this.dispose();
-        }
-       }
-    }//GEN-LAST:event_TablaSocMouseClicked
+    private void buscarTxtMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buscarTxtMouseEntered
+        buscarBtn.setBackground(new Color(80,139,166));
+    }//GEN-LAST:event_buscarTxtMouseEntered
 
     private void buscarTxtMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buscarTxtMouseClicked
-       this.buscarBtnMouseClicked(evt);
+        this.buscarBtnMouseClicked(evt);
     }//GEN-LAST:event_buscarTxtMouseClicked
+
+    private void TablaSocMouseClicked(java.awt.event.MouseEvent evt) throws Exception {//GEN-FIRST:event_TablaSocMouseClicked
+        if(evt.getClickCount()==2){
+            int filaSeleccionada = TablaSoc.getSelectedRow();
+            if (filaSeleccionada != -1) {
+
+                int legajo = (int) TablaSoc.getValueAt(filaSeleccionada, 0);
+                Socio socio = new Socio();
+                ContenedoraSocio contenedoraSocio = new ContenedoraSocio();
+                contenedoraSocio.cargarSociosDeJson("Socios.json");
+                socio = contenedoraSocio.buscar(legajo);
+
+                DetalleSocio detalleSocio = new DetalleSocio(socio);
+                detalleSocio.setVisible(true);
+                detalleSocio.pack();
+                detalleSocio.setLocationRelativeTo(null);
+                this.dispose();
+            }
+        }
+    }//GEN-LAST:event_TablaSocMouseClicked
+
+    private void buscarLabelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarLabelActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_buscarLabelActionPerformed
+
+    private void buscarLabelMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buscarLabelMousePressed
+        if(buscarLabel.getText().equals(" Ingrese el legajo del socio a buscar.")){
+            buscarLabel.setText("");
+            buscarLabel.setForeground(Color.black);
+        }
+    }//GEN-LAST:event_buscarLabelMousePressed
+
+    private void buscarLabelFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_buscarLabelFocusLost
+        if (buscarLabel.getText().isEmpty()) {
+            buscarLabel.setText(" Ingrese el legajo del socio a buscar.");
+            buscarLabel.setForeground(Color.GRAY);
+        }
+    }//GEN-LAST:event_buscarLabelFocusLost
 
     private void exitMenuMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_exitMenuMousePressed
         xMouse = evt.getX();
@@ -402,35 +429,43 @@ private void setDate(){
         this.setLocation(x - xMouse, y - yMouse);
     }//GEN-LAST:event_exitMenuMouseDragged
 
-    private void exitTxtMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_exitTxtMouseClicked
-        System.exit(0);
-    }//GEN-LAST:event_exitTxtMouseClicked
-
-    private void exitTxtMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_exitTxtMouseEntered
-        exitBtn.setBackground(Color.red);
-        exitTxt.setForeground(Color.white);
-    }//GEN-LAST:event_exitTxtMouseEntered
+    private void exitTxtMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_exitTxtMousePressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_exitTxtMousePressed
 
     private void exitTxtMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_exitTxtMouseExited
         exitBtn.setBackground(Color.white);
         exitTxt.setForeground(Color.black);
     }//GEN-LAST:event_exitTxtMouseExited
 
-    private void exitTxtMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_exitTxtMousePressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_exitTxtMousePressed
+    private void exitTxtMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_exitTxtMouseEntered
+        exitBtn.setBackground(Color.red);
+        exitTxt.setForeground(Color.white);
+    }//GEN-LAST:event_exitTxtMouseEntered
 
-    private void backMenuBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backMenuBtnMouseClicked
+    private void exitTxtMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_exitTxtMouseClicked
+        System.exit(0);
+    }//GEN-LAST:event_exitTxtMouseClicked
+
+    private void volverMenuTxtMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_volverMenuTxtMouseClicked
         Login login = new Login();
         login.setVisible(true);
         login.pack();
         login.setLocationRelativeTo(null);
         this.dispose();
-    }//GEN-LAST:event_backMenuBtnMouseClicked
+    }//GEN-LAST:event_volverMenuTxtMouseClicked
 
-    private void backMenuBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backMenuBtnActionPerformed
+    private void volverMenuTxtMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_volverMenuTxtMouseEntered
+        volverMenuBtn.setBackground(new Color(80,139,166));
+    }//GEN-LAST:event_volverMenuTxtMouseEntered
+
+    private void volverMenuTxtMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_volverMenuTxtMouseExited
+        volverMenuBtn.setBackground(new Color(59,132,173));
+    }//GEN-LAST:event_volverMenuTxtMouseExited
+
+    private void volverMenuBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_volverMenuBtnMouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_backMenuBtnActionPerformed
+    }//GEN-LAST:event_volverMenuBtnMouseClicked
 
 
 
@@ -495,7 +530,6 @@ private void setDate(){
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable TablaSoc;
     private javax.swing.JLabel administracionTxt;
-    private javax.swing.JButton backMenuBtn;
     private javax.swing.JPanel buscarBtn;
     private javax.swing.JTextField buscarLabel;
     private javax.swing.JLabel buscarTxt;
@@ -509,5 +543,7 @@ private void setDate(){
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel tituloSocios;
+    private javax.swing.JPanel volverMenuBtn;
+    private javax.swing.JLabel volverMenuTxt;
     // End of variables declaration//GEN-END:variables
 }

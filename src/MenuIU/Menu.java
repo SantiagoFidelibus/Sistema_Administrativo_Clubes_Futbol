@@ -5,32 +5,25 @@
 package MenuIU;
 
 import Containers.ContenedoraEmpleado;
-import Medico.DetalleSocio;
+import Mail.Correos;
 import Menuusages.ModificarSocio;
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.ObjectMapper;
+import Menuusages.PagoExitoso;
 import Model.*;
 import Model.Categoria;
 
 import Login.Login;
 import java.awt.*;
 import java.awt.event.*;
-import java.io.File;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.HashMap;
+import java.util.*;
 import java.util.List;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableRowSorter;
 
 import Menuusages.InfoSocio;
 import Containers.ContenedoraSocio;
-import org.netbeans.lib.awtextra.AbsoluteConstraints;
-import org.netbeans.lib.awtextra.AbsoluteLayout;
 
 public class Menu extends JFrame {
 
@@ -44,7 +37,7 @@ public class Menu extends JFrame {
         textoSueldosEmpleados.setText("<html><span style='color: gray; font-family: Corbel; font-size: 16pt;'>Gestiona el pago de sueldos a los empleados.</span></html>");
         jTable2.getTableHeader().setReorderingAllowed(false);
         jTable3.getTableHeader().setReorderingAllowed(false);
-
+        tablaDeudas.getTableHeader().setReorderingAllowed(false);
         
     }
 
@@ -1193,6 +1186,18 @@ public class Menu extends JFrame {
         pagarTxt.setForeground(new java.awt.Color(255, 255, 255));
         pagarTxt.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         pagarTxt.setText("PAGAR");
+        pagarTxt.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        pagarTxt.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                pagarTxtMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                pagarTxtMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                pagarTxtMouseExited(evt);
+            }
+        });
 
         javax.swing.GroupLayout pagarBtnLayout = new javax.swing.GroupLayout(pagarBtn);
         pagarBtn.setLayout(pagarBtnLayout);
@@ -1225,6 +1230,7 @@ public class Menu extends JFrame {
         card2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         card2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        tablaDeudas.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         tablaDeudas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -1233,9 +1239,32 @@ public class Menu extends JFrame {
                 {null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Legajo", "Nombre", "Apellido", "Fecha de Vencimiento"
             }
-        ));
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.Object.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        tablaDeudas.setName(""); // NOI18N
+        tablaDeudas.setShowGrid(true);
+        tablaDeudas.setShowHorizontalLines(true);
+        tablaDeudas.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                tablaDeudasFocusGained(evt);
+            }
+        });
         jScrollPane1.setViewportView(tablaDeudas);
 
         card2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 370, 220));
@@ -1247,6 +1276,11 @@ public class Menu extends JFrame {
 
         enviarDeudaBtn.setBackground(new java.awt.Color(255, 255, 255));
         enviarDeudaBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        enviarDeudaBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                enviarDeudaBtnMouseClicked(evt);
+            }
+        });
 
         enviarDeudaTxt.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         enviarDeudaTxt.setForeground(new java.awt.Color(255, 51, 51));
@@ -1677,22 +1711,22 @@ public class Menu extends JFrame {
 
     public Object[] socioToRow(Socio socio) {
     DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-    return new Object[] {
-        socio.getLegajo(),
-        socio.getNombre(),
-        socio.getApellido(),
-        socio.getEmail(),
-        socio.getDni(),
-        socio.getFechaDeNacimiento(),
-        socio.getTelefono(),
-        socio.getDomicilio(),
-        socio.getSexo(),
-        socio.getObraSocial(),
-        socio.isAptoMedico(),
-        socio.getCategoria(),
-        socio.getFechaVencimientoPago().format(formatter)
-    };
-}
+        return new Object[] {
+            socio.getLegajo(),
+            socio.getNombre(),
+            socio.getApellido(),
+            socio.getEmail(),
+            socio.getDni(),
+            socio.getFechaDeNacimiento(),
+            socio.getTelefono(),
+            socio.getDomicilio(),
+            socio.getSexo(),
+            socio.getObraSocial(),
+            socio.isAptoMedico(),
+            socio.getCategoria(),
+            socio.getFechaVencimientoPago().format(formatter)
+        };
+    }
 
 public HashMap<Integer, Socio> obtenerListaDeSocios() {
     ContenedoraSocio contenedoraSocio = new ContenedoraSocio();
@@ -1726,7 +1760,58 @@ public HashMap<Integer, Socio> obtenerListaDeSocios() {
     llenarTablaConSocios(socios);
 }
 
+    //Añadir deudores a la tabla
+    public void addDeudoresToTable(Socio socio){
+    DefaultTableModel model = (DefaultTableModel) tablaDeudas.getModel();
+    model.addRow(new Object[]{socio.getLegajo(), socio.getNombre(), socio.getApellido(), socio.getFechaVencimientoPago()});
+    }
+    
+    //Metodo para agregar los deudores ordenados a la tabla
+    public Object[] deudToRow(Socio socio){
+    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+    return new Object[]{socio.getLegajo(), socio.getNombre(), socio.getApellido(), socio.getFechaVencimientoPago().format(formatter)};
+    }
+    
+    //Obtener Lista de Socios que todavia no pagaron la cuota
+    public HashMap<Integer, Socio> obtenerListaDeudores(){
+        ContenedoraSocio contenedoraSocio = new ContenedoraSocio();
+        HashMap<Integer, Socio> deudores = new HashMap<>();
+        try {
+            contenedoraSocio.cargarSociosDeJson("Socios.json");
+            HashMap<Integer, Socio> socios = contenedoraSocio.listar();
+            LocalDate hoy = LocalDate.now();
 
+            for (Map.Entry<Integer, Socio> entry : socios.entrySet()) {
+                Socio socio = entry.getValue();
+                // Si la fecha de vencimiento de pago es anterior a hoy, el socio es deudor
+                if (socio.getFechaVencimientoPago().isBefore(hoy)) {
+                    deudores.put(entry.getKey(), socio);
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return deudores;
+    }
+
+    //Llenar la table de Socios Deudores
+    public void llenarTablaDeudores(HashMap<Integer, Socio> listaDeDeudores){
+        DefaultTableModel model = (DefaultTableModel) tablaDeudas.getModel();
+        model.setRowCount(0);
+
+        List<Socio> deudoresOrdenados = new ArrayList<>(listaDeDeudores.values());
+        deudoresOrdenados.sort(Comparator.comparingInt(Socio::getLegajo));
+
+        for(Socio socio : deudoresOrdenados){
+            model.addRow(deudToRow(socio));
+        }
+    }
+    
+    //Actualizar la tabla
+    public void actualizarTablaDeudores(){
+        HashMap<Integer, Socio> deudores = obtenerListaDeudores();
+        llenarTablaDeudores(deudores);
+    }
 
     private void buscarLabel1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_buscarLabel1FocusLost
         // TODO add your handling code here:
@@ -1884,9 +1969,91 @@ public HashMap<Integer, Socio> obtenerListaDeSocios() {
     }//GEN-LAST:event_mostrarDeudoresTxtMouseExited
 
     private void mostrarDeudoresTxtMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mostrarDeudoresTxtMouseClicked
+        HashMap<Integer, Socio> mapa = obtenerListaDeudores();
+
+                // Llenar la tabla con los datos de los socios
+                llenarTablaDeudores(mapa);
+
+                // Actualizar la tabla
+                actualizarTablaDeudores();        
+        //Llenar la tabla que esta en el card2 con los datos de los socios que todavia no hayan pagado la cuota (deudores)
+        //Enviar mail a TODOS los socios que esten en esta tabla
         CardLayout cardLayout = (CardLayout) panelDatos.getLayout();
         cardLayout.show(panelDatos, "card2");
     }//GEN-LAST:event_mostrarDeudoresTxtMouseClicked
+
+    private void pagarTxtMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pagarTxtMouseEntered
+        pagarBtn.setBackground(new Color(80,139,166));
+    }//GEN-LAST:event_pagarTxtMouseEntered
+
+    private void pagarTxtMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pagarTxtMouseExited
+        pagarBtn.setBackground(new Color(59,132,173));
+    }//GEN-LAST:event_pagarTxtMouseExited
+
+    private void pagarTxtMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pagarTxtMouseClicked
+        try {
+            ContenedoraSocio contenedoraSocio = new ContenedoraSocio();
+            contenedoraSocio.cargarSociosDeJson("Socios.json");
+            String legajoStr = buscarLegajo.getText().trim();
+            int legajo = Integer.parseInt(legajoStr);
+            Socio socio = contenedoraSocio.buscar(legajo);
+            socio.calcularPago();
+            int valorTotal = socio.pagarCuota(0);
+            socio.registrarPago();
+            Correos mail = new Correos();
+            new Thread(() -> {
+                try {
+                    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+                    String fechaRegistroPagoComoCadena = socio.getFechaRegistroPago().format(formatter);
+                    mail.CorreoPagoSocio(socio.getEmail(), socio.getNombre(), fechaRegistroPagoComoCadena, valorTotal);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    // Manejo de errores durante el envío del correo
+                }
+            }).start();
+
+            contenedoraSocio.guardarSociosEnJson("Socios.json");
+
+            PagoExitoso pagoExitoso = new PagoExitoso();
+            pagoExitoso.setVisible(true);
+            pagoExitoso.pack();
+            pagoExitoso.setLocationRelativeTo(null);
+            this.dispose();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }//GEN-LAST:event_pagarTxtMouseClicked
+
+    private void tablaDeudasFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tablaDeudasFocusGained
+        
+    }//GEN-LAST:event_tablaDeudasFocusGained
+
+    private void enviarDeudaBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_enviarDeudaBtnMouseClicked
+        ContenedoraSocio contenedoraSocio = new ContenedoraSocio();
+        try {
+            contenedoraSocio.cargarSociosDeJson("Socios.json");
+            HashMap<Integer, Socio> socios = contenedoraSocio.listar();
+            for(Socio socio : socios.values()){
+                if(socio.getFechaVencimientoPago().isBefore(LocalDate.now())){
+                    Correos mail = new Correos();
+                    new Thread(() -> {
+                        try {
+                            mail.CorreoDeuda(socio.getEmail());
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                            // Manejo de errores durante el envío del correo
+                        }
+                    }).start();
+                }
+            }
+            JOptionPane.showMessageDialog(this, "Se han enviado correctamente los mails de deuda.\n", "CONFIRMACION", JOptionPane.INFORMATION_MESSAGE);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_enviarDeudaBtnMouseClicked
 
 
 
