@@ -27,6 +27,7 @@ public class Medico extends javax.swing.JFrame {
     int xMouse, yMouse;
     public Medico() {
         initComponents();
+        buscarLabel.requestFocusInWindow();
         setDate();
         actualizarTabla();
         TablaSoc.getTableHeader().setReorderingAllowed(false);
@@ -71,7 +72,9 @@ private void setDate(){
         setLocationByPlatform(true);
         setName("MedicosBack"); // NOI18N
         setUndecorated(true);
+        setPreferredSize(new java.awt.Dimension(1280, 720));
         setResizable(false);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(50, 115, 153));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -80,25 +83,25 @@ private void setDate(){
         administracionTxt.setForeground(new java.awt.Color(255, 255, 255));
         administracionTxt.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         administracionTxt.setText("Oficina medica");
-        jPanel1.add(administracionTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 58, -1, 32));
+        jPanel1.add(administracionTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, -1, 32));
 
         dateText1.setFont(new java.awt.Font("Roboto", 1, 30)); // NOI18N
         dateText1.setForeground(new java.awt.Color(255, 255, 255));
         dateText1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         dateText1.setText("{dayname} {day} de {month} de {year} ");
-        jPanel1.add(dateText1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 100, -1, -1));
+        jPanel1.add(dateText1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, -1, -1));
 
         dateText.setFont(new java.awt.Font("Roboto", 1, 30)); // NOI18N
         dateText.setForeground(new java.awt.Color(255, 255, 255));
         dateText.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         dateText.setText("Medico Deportivo");
-        jPanel1.add(dateText, new org.netbeans.lib.awtextra.AbsoluteConstraints(935, 100, -1, -1));
+        jPanel1.add(dateText, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 100, -1, -1));
 
         dateText2.setFont(new java.awt.Font("Roboto", 1, 30)); // NOI18N
         dateText2.setForeground(new java.awt.Color(255, 255, 255));
         dateText2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         dateText2.setText("Dr. Ivan Salvetti");
-        jPanel1.add(dateText2, new org.netbeans.lib.awtextra.AbsoluteConstraints(935, 58, -1, -1));
+        jPanel1.add(dateText2, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 60, -1, -1));
 
         exitMenu.setBackground(new java.awt.Color(255, 255, 255));
         exitMenu.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
@@ -156,16 +159,19 @@ private void setDate(){
                     .addGap(0, 0, Short.MAX_VALUE)))
         );
 
-        exitMenu.add(exitBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(1290, 0, -1, -1));
+        exitMenu.add(exitBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(1240, 0, -1, -1));
 
-        jPanel1.add(exitMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1330, -1));
+        jPanel1.add(exitMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, -1));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/images/logoMedicina.png"))); // NOI18N
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1200, 40, 130, 120));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1130, 40, 130, 120));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, -1));
 
         tituloSocios.setFont(new java.awt.Font("Corbel", 1, 28)); // NOI18N
         tituloSocios.setForeground(new java.awt.Color(153, 153, 153));
         tituloSocios.setText("Socios");
+        getContentPane().add(tituloSocios, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 184, -1, -1));
 
         buscarLabel.setFont(new java.awt.Font("Roboto Light", 0, 14)); // NOI18N
         buscarLabel.setForeground(new java.awt.Color(153, 153, 153));
@@ -186,6 +192,7 @@ private void setDate(){
                 buscarLabelActionPerformed(evt);
             }
         });
+        getContentPane().add(buscarLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 224, 780, 39));
 
         TablaSoc.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         TablaSoc.setModel(new javax.swing.table.DefaultTableModel(
@@ -246,6 +253,8 @@ private void setDate(){
         });
         jScrollPane2.setViewportView(TablaSoc);
 
+        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 285, 1270, 310));
+
         buscarBtn.setBackground(new java.awt.Color(50, 115, 153));
         buscarBtn.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -292,6 +301,8 @@ private void setDate(){
                     .addContainerGap()))
         );
 
+        getContentPane().add(buscarBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(804, 224, -1, -1));
+
         backMenuBtn.setText("Volver al menu");
         backMenuBtn.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
         backMenuBtn.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -304,47 +315,10 @@ private void setDate(){
                 backMenuBtnActionPerformed(evt);
             }
         });
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(buscarLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 780, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(buscarBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(tituloSocios)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 1305, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(backMenuBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(24, 24, 24)
-                .addComponent(tituloSocios)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(buscarLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(buscarBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 468, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(backMenuBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(15, Short.MAX_VALUE))
-        );
+        getContentPane().add(backMenuBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(1090, 650, 170, 50));
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void buscarLabelFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_buscarLabelFocusLost

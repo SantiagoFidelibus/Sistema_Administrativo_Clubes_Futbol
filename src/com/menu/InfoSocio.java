@@ -144,6 +144,7 @@ public class InfoSocio extends JFrame {
         registerBtn = new javax.swing.JPanel();
         registerTxt = new javax.swing.JLabel();
         recharg = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setLocationByPlatform(true);
@@ -591,6 +592,15 @@ public class InfoSocio extends JFrame {
             }
         });
         ventana1.add(recharg, new org.netbeans.lib.awtextra.AbsoluteConstraints(1180, 390, 20, 30));
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel1.setText("Volver al Menu");
+        jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel1MouseClicked(evt);
+            }
+        });
+        ventana1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 670, -1, -1));
 
         panelVentanas.addTab("tab1", ventana1);
 
@@ -1324,6 +1334,14 @@ public class InfoSocio extends JFrame {
 
     }//GEN-LAST:event_rechargMouseClicked
 
+    private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
+        com.menu.Menu menu = new Menu();
+        menu.setVisible(true);
+        menu.pack();
+        menu.setLocationRelativeTo(null);
+        this.dispose();
+    }//GEN-LAST:event_jLabel1MouseClicked
+
 
     // Método para verificar si el correo electrónico es válido
     public static boolean isValidEmail(String email) {
@@ -1393,6 +1411,7 @@ public class InfoSocio extends JFrame {
     private javax.swing.JTextField fechaNacTxt;
     private javax.swing.JLabel fotoUsuario;
     private javax.swing.JPanel header;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel legajo;
     private javax.swing.JSeparator legajoSep;
     private javax.swing.JTextField legajoTxt;
