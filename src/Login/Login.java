@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package Login;
+import IUEmpleado.IngresoSocios;
 import Medico.Medico;
 import java.awt.Color;
 import MenuIU.Menu;
@@ -343,6 +344,12 @@ public class Login extends javax.swing.JFrame {
             medico.setLocationRelativeTo(null);
             this.dispose();
             
+        }else if((userTxt.getText().equals("Empleado")) && (password.equals("Empleado"))){
+            IngresoSocios ingreso = new IngresoSocios();
+            ingreso.setVisible(true);
+            ingreso.pack();
+            ingreso.setLocationRelativeTo(null);
+            this.dispose();
         }else{
             javax.swing.JOptionPane.showMessageDialog(this, "El usuario o la contraseña es incorrecta, vuelva a intentarlo.", "Error de contraseña", javax.swing.JOptionPane.ERROR_MESSAGE);
         }

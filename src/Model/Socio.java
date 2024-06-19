@@ -15,6 +15,7 @@ public class Socio extends Persona{
     private boolean aptoCuota;
     private Categoria categoria;
     private int cuota;
+    private String codigoQR;
 
     public Socio() {
         this.telefono = 0;
@@ -120,6 +121,13 @@ public class Socio extends Persona{
         this.categoria = categoria;
     }
 
+    public String getCodigoQR() {
+        return codigoQR;
+    }
+
+    public void setCodigoQR(String codigoQR) {
+        this.codigoQR = codigoQR;
+    }
 
     public int calcularPagoConInteres() {
         LocalDate fechaActual = LocalDate.now();

@@ -9,6 +9,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.*;
 import java.util.List;
+import java.util.concurrent.CompletableFuture;
 import javax.imageio.ImageIO;
 import com.github.sarxos.webcam.*;
 import com.google.zxing.*;
@@ -18,8 +19,6 @@ import com.google.zxing.DecodeHintType;
 import com.google.zxing.MultiFormatReader;
 import com.google.zxing.NotFoundException;
 import com.google.zxing.Result;
-
-import static java.awt.SystemColor.window;
 
 
 public class WebcamClass extends JFrame {
@@ -67,11 +66,11 @@ public class WebcamClass extends JFrame {
 
         // Botón para cambiar la visualización de la cámara
         ImageIcon icon = new ImageIcon("src/com/images/voltHoriz.png");
-        JButton toggleButton = new JButton(icon);
-        toggleButton.setPreferredSize(new Dimension(64, 64));
-        toggleButton.setBackground(new Color(50, 115, 153)); // Color RGB 50, 115, 153
-        toggleButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR)); // Cursor de mano
-        toggleButton.addActionListener(new ActionListener() {
+        JButton voltButton = new JButton(icon);
+        voltButton.setPreferredSize(new Dimension(64, 64));
+        voltButton.setBackground(new Color(50, 115, 153)); // Color RGB 50, 115, 153
+        voltButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR)); // Cursor de mano
+        voltButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (panel != null) {
@@ -79,19 +78,10 @@ public class WebcamClass extends JFrame {
                 }
             }
         });
-        controlPanel.add(toggleButton);
+        controlPanel.add(voltButton);
 
-        // Botón para iniciar escaneo
-        // Botón para iniciar escaneo
-        JButton scanButton = new JButton("Iniciar Escaneo");
-        configurarBoton(scanButton);
-        scanButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                iniciarEscaneo();
-            }
-        });
-        controlPanel.add(scanButton);
+
+
 
         mainPanel.add(controlPanel, BorderLayout.NORTH);
 
@@ -107,7 +97,7 @@ public class WebcamClass extends JFrame {
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
         try {
-            File iconFile = new File("src/com/images/voltHoriz.png"); // Ruta de tu imagen
+            File iconFile = new File("src/com/images/iconWebcam.png"); // Ruta de tu imagen
             BufferedImage iconImage = ImageIO.read(iconFile);
             setIconImage(iconImage);
         } catch (IOException e) {
@@ -241,33 +231,5 @@ public class WebcamClass extends JFrame {
         }
     }
 
-    private void iniciarEscaneo() {
-        // Método para iniciar el escaneo cuando se presiona un botón, por ejemplo
-        // Hints para el decodificador de códigos de barras y QR
-        Map<DecodeHintType, Object> hints = new HashMap<>();
-        hints.put(DecodeHintType.POSSIBLE_FORMATS, Arrays.asList(BarcodeFormat.CODE_128, BarcodeFormat.ITF));
 
-        new Thread(new Runnable() {
-            public void run() {
-                boolean isScanned = false;
-
-                while (!isScanned) {
-                    BufferedImage image = webcam.getImage();
-                    if (image != null) {
-                        LuminanceSource source = new BufferedImageLuminanceSource(image);
-                        BinaryBitmap bitmap = new BinaryBitmap(new HybridBinarizer(source));
-
-                        try {
-                            Result result = new MultiFormatReader().decode(bitmap, hints);
-                            String decodedText = result.getText();
-                            JOptionPane.showMessageDialog(WebcamClass.this, "Código decodificado: " + decodedText, "Escaneo exitoso", JOptionPane.INFORMATION_MESSAGE);
-                            isScanned = true; // Se encontró un código, detener el escaneo
-                        } catch (NotFoundException ex) {
-                            // No se encontró un código, continuar escaneando
-                        }
-                    }
-                }
-            }
-        }).start();
-    }
 }

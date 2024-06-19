@@ -2,6 +2,7 @@ package Containers;
 
 import Interfaces.ABMGeneric;
 import Model.Socio;
+import Webcam.CodeBar.Codebar;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.util.HashMap;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -73,6 +74,12 @@ public class ContenedoraSocio implements ABMGeneric<Socio, Integer> {
         mapper.registerModule(new JavaTimeModule());
         socios = mapper.readValue(new File(archivo), new TypeReference<HashMap<Integer, Socio>>() {
         });
+    }
+
+    public void verificarQr() {
+        for (Socio socio :  socios.values()) {
+            Codebar.generarQR(socio);
+        }
     }
 
 }
