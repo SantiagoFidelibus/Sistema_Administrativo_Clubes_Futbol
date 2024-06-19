@@ -140,6 +140,7 @@ public class InfoSocio extends JFrame {
         cargarImgTxt = new javax.swing.JLabel();
         registerBtn = new javax.swing.JPanel();
         registerTxt = new javax.swing.JLabel();
+        volverMenuBtn = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setLocationByPlatform(true);
@@ -573,6 +574,17 @@ public class InfoSocio extends JFrame {
         );
 
         ventana1.add(registerBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 560, 240, 50));
+
+        volverMenuBtn.setBackground(new java.awt.Color(187, 187, 187));
+        volverMenuBtn.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        volverMenuBtn.setText("Volver al Menu");
+        volverMenuBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        volverMenuBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                volverMenuBtnMouseClicked(evt);
+            }
+        });
+        ventana1.add(volverMenuBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 670, -1, -1));
 
         panelVentanas.addTab("tab1", ventana1);
 
@@ -1272,6 +1284,14 @@ public class InfoSocio extends JFrame {
         registerBtn.setBackground(new Color(59,132,173));
     }//GEN-LAST:event_registerTxtMouseExited
 
+    private void volverMenuBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_volverMenuBtnMouseClicked
+        com.menu.Menu menu = new Menu();
+        menu.setVisible(true);
+        menu.pack();
+        menu.setLocationRelativeTo(null);
+        this.dispose();
+    }//GEN-LAST:event_volverMenuBtnMouseClicked
+
     // Método para verificar si el correo electrónico es válido
     public static boolean isValidEmail(String email) {
         // Expresión regular para validar el correo electrónico
@@ -1360,5 +1380,6 @@ public class InfoSocio extends JFrame {
     private javax.swing.JTextField telefonoTxt;
     private javax.swing.JLabel titulo;
     private javax.swing.JPanel ventana1;
+    private javax.swing.JLabel volverMenuBtn;
     // End of variables declaration//GEN-END:variables
 }
