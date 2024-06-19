@@ -35,7 +35,7 @@ public class Socio extends Persona{
         this.obraSocial = obraSocial;
         this.aptoCuota = aptoCuota;
         this.categoria = categoria;
-        this.cuota = calcularPago();
+        this.cuota = 0;
 
     }
 
@@ -48,7 +48,15 @@ public class Socio extends Persona{
         this.obraSocial = obraSocial;
         this.aptoCuota = aptoCuota;
         this.categoria = categoria;
-        this.cuota = calcularPago();
+        this.cuota = 0;
+    }
+
+    public int getCuota() {
+        return cuota;
+    }
+
+    public void setCuota(int cuota) {
+        this.cuota = cuota;
     }
 
     public int getTelefono() {
@@ -115,28 +123,34 @@ public class Socio extends Persona{
 
     public int calcularPagoConInteres() {
         LocalDate fechaActual = LocalDate.now();
-        long diasTranscurridos = ChronoUnit.DAYS.between(this.fechaVencimientoPago, fechaActual);
-        int interesDiario = 50;
-
-        // Si el pago está vencido, se añaden los intereses
-        if (diasTranscurridos > 0) {
-            int intereses = (int) (diasTranscurridos * interesDiario);
-            return this.cuota + intereses;
+        if (fechaActual.isAfter(this.fechaVencimientoPago) || fechaActual.isEqual(this.fechaVencimientoPago)) {
+            long diasTranscurridos = ChronoUnit.DAYS.between(this.fechaVencimientoPago, fechaActual);
+            int interesDiario = 50;
+            int dias = (int) diasTranscurridos;
+            return dias * interesDiario;
         }
-
-        return this.cuota;
+        return 0;
     }
 
     public int pagarCuota(int importe) {
         LocalDate fechaActual = LocalDate.now();
-        int cuotaConInteres = calcularPagoConInteres();
+        int intereses = calcularPagoConInteres();
+        System.out.println("Intereses: " + intereses);
 
-        this.cuota = cuotaConInteres - importe;
+
+        this.cuota += intereses;
+        System.out.println("Cuota total con intereses: " + this.cuota);
+
+        this.cuota -= importe;
+        System.out.println("Cuota restante después de pagar: " + this.cuota);
+
 
         if (this.cuota <= 0) {
             actualizarVencimientoPago(fechaActual, true);
         } else {
-            actualizarVencimientoPago(fechaActual, false);
+            if (fechaVencimientoPago.equals(fechaActual)) {
+                actualizarVencimientoPago(fechaActual, false);
+            }
         }
 
         return this.cuota;
@@ -158,17 +172,17 @@ public class Socio extends Persona{
     public int calcularPago() {
         switch (this.getCategoria()) {
             case CEBOLLITAS:
-                return 1000;
+                this.cuota= 1000;
             case INFANTIL:
-                return 1500;
+                this.cuota= 1500;
             case CADETES:
-                return 2000;
+                this.cuota= 2000;
             case JUVENIL:
-                return 2500;
+                this.cuota= 2500;
             case MAYORES:
-                return 3000;
+                this.cuota= 3000;
             case PRIMERA:
-                return 3500;
+                this.cuota= 3500;
             default:
                 return 0;
         }

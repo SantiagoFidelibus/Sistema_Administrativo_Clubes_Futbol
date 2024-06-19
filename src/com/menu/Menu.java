@@ -1831,10 +1831,12 @@ public HashMap<Integer, Socio> obtenerListaDeSocios() {
             } else {
                 int legajo = Integer.parseInt(legajoStr);
                 Socio socio = contenedoraSocio.buscar(legajo);
+                socio.calcularPago();
+
                 // EN EL CASO QUE SE ENCUENTRE Y SEA VALIDO
                 nomTxt.setText("Nombre y Apellido: " + socio.getNombre() + " " + socio.getApellido());
                 docTxt.setText("Documento: " + socio.getDni());
-                totalPagarTxt.setText("Total a pagar: $" + socio.calcularPagoConInteres());
+                totalPagarTxt.setText("Total a pagar: $" + socio.pagarCuota(0));
                 vencTxt.setText("Fecha de vencimiento: " + socio.getFechaVencimientoPago().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")));
                 cardLayout.show(panelDatos, "card1");
             }

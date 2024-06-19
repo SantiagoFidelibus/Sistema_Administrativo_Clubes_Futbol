@@ -128,11 +128,11 @@ public class WebcamClass extends JFrame {
     private void configurarBoton(JButton button) {
 
 
-            button.setPreferredSize(new Dimension(200, 64));
-            button.setBackground(new Color(32, 73, 99)); // Fondo azul (RGB 32, 73, 99)
-            button.setForeground(Color.BLACK); // Texto blanco
-            button.setFont(new Font("Roboto", Font.PLAIN, 12));
-            button.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        button.setPreferredSize(new Dimension(200, 64));
+        button.setBackground(new Color(32, 73, 99)); // Fondo azul (RGB 32, 73, 99)
+        button.setForeground(Color.BLACK); // Texto blanco
+        button.setFont(new Font("Roboto", Font.PLAIN, 12));
+        button.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 
 
     }
