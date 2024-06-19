@@ -1,5 +1,6 @@
 package datos;
 
+import java.time.temporal.ChronoUnit;
 import java.util.Objects;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -112,33 +113,45 @@ public class Socio extends Persona{
     }
 
 
-    public int calcularPagoConInteres(int importe) {
+    public int calcularPagoConInteres() {
         LocalDate fechaActual = LocalDate.now();
-        long diasTranscurridos = this.fechaVencimientoPago.until(fechaActual).getDays();
+        long diasTranscurridos = ChronoUnit.DAYS.between(this.fechaVencimientoPago, fechaActual);
         int interesDiario = 50;
-        this.cuota += (int) (diasTranscurridos * interesDiario);
-        this.cuota -= importe;
-        if(cuota<=0){
-            actualizarVencimientoPago(fechaActual,true);
-        }else{
-            actualizarVencimientoPago(fechaActual,false);
+
+        // Si el pago está vencido, se añaden los intereses
+        if (diasTranscurridos > 0) {
+            int intereses = (int) (diasTranscurridos * interesDiario);
+            return this.cuota + intereses;
         }
-        return cuota;
+
+        return this.cuota;
     }
 
-    public void actualizarVencimientoPago(LocalDate today,boolean ToF) {
-        LocalDate fechaElegida = today;
-        if (ToF){
-            this.fechaRegistroPago = fechaElegida;
+    public int pagarCuota(int importe) {
+        LocalDate fechaActual = LocalDate.now();
+        int cuotaConInteres = calcularPagoConInteres();
+
+        this.cuota = cuotaConInteres - importe;
+
+        if (this.cuota <= 0) {
+            actualizarVencimientoPago(fechaActual, true);
+        } else {
+            actualizarVencimientoPago(fechaActual, false);
+        }
+
+        return this.cuota;
+    }
+
+    public void actualizarVencimientoPago(LocalDate today,boolean cuotaPagada) {
+        if (cuotaPagada) {
+            this.fechaRegistroPago = today;
             this.cuota = calcularPago();
-        this.fechaVencimientoPago= today.plusMonths(1);
-        this.aptoCuota = true;
-        }else{
+            this.fechaVencimientoPago = today.plusMonths(1);
+            this.aptoCuota = true;
+        } else {
             this.aptoCuota = false;
         }
     }
-
-
 
 
     @Override

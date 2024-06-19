@@ -38,7 +38,7 @@ public class Menu extends JFrame {
         textoEmpleado.setText("<html><span style='color: gray; font-family: Corbel; font-size: 16pt;'>Administra el registro, modificación y eliminación de empleados.</span></html>");
         textoPagosSocios.setText("<html><span style='color: gray; font-family: Corbel; font-size: 16pt;'>Procesa los pagos de los socios del club.</span></html>");
         textoSueldosEmpleados.setText("<html><span style='color: gray; font-family: Corbel; font-size: 16pt;'>Gestiona el pago de sueldos a los empleados.</span></html>");
-
+       
 
         
     }
@@ -71,6 +71,7 @@ public class Menu extends JFrame {
         pagosSociosTxt = new javax.swing.JLabel();
         sueldosEmpleadosBtn = new javax.swing.JPanel();
         sueldosEmpleadosTxt = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
         header = new javax.swing.JPanel();
         administracionTxt = new javax.swing.JLabel();
         dateText = new javax.swing.JLabel();
@@ -128,6 +129,32 @@ public class Menu extends JFrame {
         jScrollPane3 = new javax.swing.JScrollPane();
         jTable3 = new javax.swing.JTable();
         ventana4 = new javax.swing.JPanel();
+        tituloPagoSocios = new javax.swing.JLabel();
+        legajoTitulo = new javax.swing.JLabel();
+        buscarLegajo = new javax.swing.JTextField();
+        buscarBtn2 = new javax.swing.JPanel();
+        buscarTxt2 = new javax.swing.JLabel();
+        mostrarListadoTitulo = new javax.swing.JLabel();
+        mostrarDeudoresBtn = new javax.swing.JPanel();
+        mostrarDeudoresTxt = new javax.swing.JLabel();
+        panelDatos = new javax.swing.JPanel();
+        cardPrincipal = new javax.swing.JPanel();
+        card1 = new javax.swing.JPanel();
+        tituloDatosSocio = new javax.swing.JLabel();
+        panelDatosSocio = new javax.swing.JPanel();
+        nomTxt = new javax.swing.JLabel();
+        docTxt = new javax.swing.JLabel();
+        totalPagarTxt = new javax.swing.JLabel();
+        vencTxt = new javax.swing.JLabel();
+        pagarBtn = new javax.swing.JPanel();
+        pagarTxt = new javax.swing.JLabel();
+        card2 = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tablaDeudas = new javax.swing.JTable();
+        tituloDeudores = new javax.swing.JLabel();
+        enviarDeudaBtn = new javax.swing.JPanel();
+        enviarDeudaTxt = new javax.swing.JLabel();
+        enviarDeudaSep = new javax.swing.JSeparator();
         ventana5 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -318,6 +345,17 @@ public class Menu extends JFrame {
         sueldosEmpleadosBtn.add(sueldosEmpleadosTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(11, 0, 240, 40));
 
         dashboard.add(sueldosEmpleadosBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 520, 250, 40));
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("Cerrar Sesion");
+        jLabel1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel1MouseClicked(evt);
+            }
+        });
+        dashboard.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 680, -1, -1));
 
         background.add(dashboard, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 270, 720));
 
@@ -784,10 +822,12 @@ public class Menu extends JFrame {
                 ventana3FocusGained(evt);
             }
         });
+        ventana3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         tituloSocios1.setFont(new java.awt.Font("Corbel", 1, 28)); // NOI18N
         tituloSocios1.setForeground(new java.awt.Color(153, 153, 153));
         tituloSocios1.setText("Empleado");
+        ventana3.add(tituloSocios1, new org.netbeans.lib.awtextra.AbsoluteConstraints(36, 204, -1, -1));
 
         buscarLabel1.setFont(new java.awt.Font("Roboto Light", 0, 14)); // NOI18N
         buscarLabel1.setForeground(new java.awt.Color(153, 153, 153));
@@ -808,6 +848,7 @@ public class Menu extends JFrame {
                 buscarLabel1ActionPerformed(evt);
             }
         });
+        ventana3.add(buscarLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(36, 244, 780, 40));
 
         buscarBtn1.setBackground(new java.awt.Color(50, 115, 153));
 
@@ -839,6 +880,8 @@ public class Menu extends JFrame {
             .addComponent(buscarTxt1, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
         );
 
+        ventana3.add(buscarBtn1, new org.netbeans.lib.awtextra.AbsoluteConstraints(856, 244, -1, -1));
+
         modificarBtn1.setBackground(new java.awt.Color(50, 115, 153));
 
         modificarTxt1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -868,6 +911,8 @@ public class Menu extends JFrame {
             modificarBtn1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(modificarTxt1, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
         );
+
+        ventana3.add(modificarBtn1, new org.netbeans.lib.awtextra.AbsoluteConstraints(576, 624, -1, -1));
 
         eliminarBtn1.setBackground(new java.awt.Color(50, 115, 153));
         eliminarBtn1.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -904,6 +949,8 @@ public class Menu extends JFrame {
             .addComponent(eliminarTxt1, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
         );
 
+        ventana3.add(eliminarBtn1, new org.netbeans.lib.awtextra.AbsoluteConstraints(716, 624, -1, -1));
+
         agregarBtn1.setBackground(new java.awt.Color(50, 115, 153));
         agregarBtn1.setForeground(new java.awt.Color(255, 255, 255));
 
@@ -934,6 +981,8 @@ public class Menu extends JFrame {
             agregarBtn1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(agregarTxt1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
         );
+
+        ventana3.add(agregarBtn1, new org.netbeans.lib.awtextra.AbsoluteConstraints(856, 624, -1, -1));
 
         jTable3.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jTable3.setModel(new javax.swing.table.DefaultTableModel(
@@ -974,61 +1023,263 @@ public class Menu extends JFrame {
         jTable3.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jScrollPane3.setViewportView(jTable3);
 
-        javax.swing.GroupLayout ventana3Layout = new javax.swing.GroupLayout(ventana3);
-        ventana3.setLayout(ventana3Layout);
-        ventana3Layout.setHorizontalGroup(
-            ventana3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(ventana3Layout.createSequentialGroup()
-                .addGap(36, 36, 36)
-                .addGroup(ventana3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(tituloSocios1)
-                    .addGroup(ventana3Layout.createSequentialGroup()
-                        .addComponent(buscarLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 780, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(40, 40, 40)
-                        .addComponent(buscarBtn1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 930, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(ventana3Layout.createSequentialGroup()
-                        .addGap(540, 540, 540)
-                        .addComponent(modificarBtn1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(30, 30, 30)
-                        .addComponent(eliminarBtn1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(30, 30, 30)
-                        .addComponent(agregarBtn1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(44, Short.MAX_VALUE))
-        );
-        ventana3Layout.setVerticalGroup(
-            ventana3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ventana3Layout.createSequentialGroup()
-                .addContainerGap(204, Short.MAX_VALUE)
-                .addComponent(tituloSocios1)
-                .addGap(6, 6, 6)
-                .addGroup(ventana3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(buscarLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(buscarBtn1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(30, 30, 30)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(30, 30, 30)
-                .addGroup(ventana3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(modificarBtn1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(eliminarBtn1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(agregarBtn1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(21, 21, 21))
-        );
+        ventana3.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(36, 314, 930, 280));
 
         panelVentanas.addTab("tab3", ventana3);
 
         ventana4.setBackground(new java.awt.Color(255, 255, 255));
+        ventana4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        javax.swing.GroupLayout ventana4Layout = new javax.swing.GroupLayout(ventana4);
-        ventana4.setLayout(ventana4Layout);
-        ventana4Layout.setHorizontalGroup(
-            ventana4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1010, Short.MAX_VALUE)
+        tituloPagoSocios.setFont(new java.awt.Font("Corbel", 1, 28)); // NOI18N
+        tituloPagoSocios.setForeground(new java.awt.Color(153, 153, 153));
+        tituloPagoSocios.setText("Pago de Cuotas Sociales");
+        ventana4.add(tituloPagoSocios, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 200, -1, -1));
+
+        legajoTitulo.setFont(new java.awt.Font("Roboto Light", 1, 15)); // NOI18N
+        legajoTitulo.setForeground(new java.awt.Color(0, 0, 0));
+        legajoTitulo.setText("BUSCAR SOCIO");
+        legajoTitulo.setToolTipText("");
+        ventana4.add(legajoTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 260, 120, 20));
+
+        buscarLegajo.setFont(new java.awt.Font("Roboto Light", 0, 14)); // NOI18N
+        buscarLegajo.setForeground(new java.awt.Color(153, 153, 153));
+        buscarLegajo.setText(" Ingrese el legajo del socio a buscar.");
+        buscarLegajo.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        buscarLegajo.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                buscarLegajoFocusLost(evt);
+            }
+        });
+        buscarLegajo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                buscarLegajoMousePressed(evt);
+            }
+        });
+        buscarLegajo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buscarLegajoActionPerformed(evt);
+            }
+        });
+        ventana4.add(buscarLegajo, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 290, 290, 40));
+
+        buscarBtn2.setBackground(new java.awt.Color(50, 115, 153));
+
+        buscarTxt2.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
+        buscarTxt2.setForeground(new java.awt.Color(255, 255, 255));
+        buscarTxt2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        buscarTxt2.setText("Buscar");
+        buscarTxt2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        buscarTxt2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                buscarTxt2MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                buscarTxt2MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                buscarTxt2MouseExited(evt);
+            }
+        });
+
+        javax.swing.GroupLayout buscarBtn2Layout = new javax.swing.GroupLayout(buscarBtn2);
+        buscarBtn2.setLayout(buscarBtn2Layout);
+        buscarBtn2Layout.setHorizontalGroup(
+            buscarBtn2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(buscarTxt2, javax.swing.GroupLayout.DEFAULT_SIZE, 110, Short.MAX_VALUE)
         );
-        ventana4Layout.setVerticalGroup(
-            ventana4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 685, Short.MAX_VALUE)
+        buscarBtn2Layout.setVerticalGroup(
+            buscarBtn2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(buscarTxt2, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
         );
+
+        ventana4.add(buscarBtn2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 350, 110, 40));
+
+        mostrarListadoTitulo.setFont(new java.awt.Font("Roboto Light", 1, 15)); // NOI18N
+        mostrarListadoTitulo.setForeground(new java.awt.Color(0, 0, 0));
+        mostrarListadoTitulo.setText("MOSTRAR LISTADO DE DEUDORES");
+        mostrarListadoTitulo.setToolTipText("");
+        ventana4.add(mostrarListadoTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 470, 290, 20));
+
+        mostrarDeudoresBtn.setBackground(new java.awt.Color(50, 115, 153));
+
+        mostrarDeudoresTxt.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
+        mostrarDeudoresTxt.setForeground(new java.awt.Color(255, 255, 255));
+        mostrarDeudoresTxt.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        mostrarDeudoresTxt.setText("Mostrar");
+        mostrarDeudoresTxt.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        mostrarDeudoresTxt.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                mostrarDeudoresTxtMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                mostrarDeudoresTxtMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                mostrarDeudoresTxtMouseExited(evt);
+            }
+        });
+
+        javax.swing.GroupLayout mostrarDeudoresBtnLayout = new javax.swing.GroupLayout(mostrarDeudoresBtn);
+        mostrarDeudoresBtn.setLayout(mostrarDeudoresBtnLayout);
+        mostrarDeudoresBtnLayout.setHorizontalGroup(
+            mostrarDeudoresBtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(mostrarDeudoresTxt, javax.swing.GroupLayout.DEFAULT_SIZE, 110, Short.MAX_VALUE)
+        );
+        mostrarDeudoresBtnLayout.setVerticalGroup(
+            mostrarDeudoresBtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(mostrarDeudoresTxt, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
+        );
+
+        ventana4.add(mostrarDeudoresBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 510, 110, 40));
+
+        panelDatos.setBackground(new java.awt.Color(255, 255, 255));
+        panelDatos.setLayout(new java.awt.CardLayout());
+
+        cardPrincipal.setBackground(new java.awt.Color(255, 255, 255));
+
+        javax.swing.GroupLayout cardPrincipalLayout = new javax.swing.GroupLayout(cardPrincipal);
+        cardPrincipal.setLayout(cardPrincipalLayout);
+        cardPrincipalLayout.setHorizontalGroup(
+            cardPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 390, Short.MAX_VALUE)
+        );
+        cardPrincipalLayout.setVerticalGroup(
+            cardPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 430, Short.MAX_VALUE)
+        );
+
+        panelDatos.add(cardPrincipal, "cardPrincipal");
+
+        card1.setBackground(new java.awt.Color(255, 255, 255));
+        card1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        card1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        tituloDatosSocio.setFont(new java.awt.Font("Corbel", 1, 28)); // NOI18N
+        tituloDatosSocio.setForeground(new java.awt.Color(153, 153, 153));
+        tituloDatosSocio.setText("Datos del Socio");
+        card1.add(tituloDatosSocio, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 40, -1, -1));
+
+        panelDatosSocio.setBackground(new java.awt.Color(255, 255, 255));
+        panelDatosSocio.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        nomTxt.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        nomTxt.setForeground(new java.awt.Color(0, 0, 0));
+        nomTxt.setText("Nombre y Apellido: ");
+        panelDatosSocio.add(nomTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 310, 40));
+
+        docTxt.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        docTxt.setForeground(new java.awt.Color(0, 0, 0));
+        docTxt.setText("Documento:");
+        panelDatosSocio.add(docTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 310, 40));
+
+        totalPagarTxt.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        totalPagarTxt.setForeground(new java.awt.Color(0, 0, 0));
+        totalPagarTxt.setText("Total a pagar: ");
+        panelDatosSocio.add(totalPagarTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 310, 40));
+
+        vencTxt.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        vencTxt.setForeground(new java.awt.Color(0, 0, 0));
+        vencTxt.setText("Fecha de vencimiento: ");
+        panelDatosSocio.add(vencTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, 310, 40));
+
+        pagarBtn.setBackground(new java.awt.Color(50, 115, 153));
+
+        pagarTxt.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
+        pagarTxt.setForeground(new java.awt.Color(255, 255, 255));
+        pagarTxt.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        pagarTxt.setText("PAGAR");
+
+        javax.swing.GroupLayout pagarBtnLayout = new javax.swing.GroupLayout(pagarBtn);
+        pagarBtn.setLayout(pagarBtnLayout);
+        pagarBtnLayout.setHorizontalGroup(
+            pagarBtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 210, Short.MAX_VALUE)
+            .addGroup(pagarBtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(pagarBtnLayout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(pagarTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
+        );
+        pagarBtnLayout.setVerticalGroup(
+            pagarBtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 50, Short.MAX_VALUE)
+            .addGroup(pagarBtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(pagarBtnLayout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(pagarTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
+        );
+
+        panelDatosSocio.add(pagarBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 220, 210, 50));
+
+        card1.add(panelDatosSocio, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 350, 320));
+
+        panelDatos.add(card1, "card1");
+
+        card2.setBackground(new java.awt.Color(255, 255, 255));
+        card2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        card2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        tablaDeudas.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane1.setViewportView(tablaDeudas);
+
+        card2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 370, 220));
+
+        tituloDeudores.setFont(new java.awt.Font("Corbel", 1, 28)); // NOI18N
+        tituloDeudores.setForeground(new java.awt.Color(153, 153, 153));
+        tituloDeudores.setText("Listado de Deudores");
+        card2.add(tituloDeudores, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, -1));
+
+        enviarDeudaBtn.setBackground(new java.awt.Color(255, 255, 255));
+        enviarDeudaBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+
+        enviarDeudaTxt.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        enviarDeudaTxt.setForeground(new java.awt.Color(255, 51, 51));
+        enviarDeudaTxt.setText("Enviar Informe de deuda por Email");
+
+        enviarDeudaSep.setBackground(new java.awt.Color(255, 0, 0));
+        enviarDeudaSep.setForeground(new java.awt.Color(255, 51, 51));
+
+        javax.swing.GroupLayout enviarDeudaBtnLayout = new javax.swing.GroupLayout(enviarDeudaBtn);
+        enviarDeudaBtn.setLayout(enviarDeudaBtnLayout);
+        enviarDeudaBtnLayout.setHorizontalGroup(
+            enviarDeudaBtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 310, Short.MAX_VALUE)
+            .addGroup(enviarDeudaBtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(enviarDeudaBtnLayout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addGroup(enviarDeudaBtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(enviarDeudaTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(enviarDeudaSep, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGap(0, 0, Short.MAX_VALUE)))
+        );
+        enviarDeudaBtnLayout.setVerticalGroup(
+            enviarDeudaBtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 70, Short.MAX_VALUE)
+            .addGroup(enviarDeudaBtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(enviarDeudaBtnLayout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(enviarDeudaTxt)
+                    .addGap(5, 5, 5)
+                    .addComponent(enviarDeudaSep, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
+        );
+
+        card2.add(enviarDeudaBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 310, 310, 70));
+
+        panelDatos.add(card2, "card2");
+
+        ventana4.add(panelDatos, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 210, 390, 430));
 
         panelVentanas.addTab("tab4", ventana4);
 
@@ -1156,10 +1407,14 @@ public class Menu extends JFrame {
 
     private void pagosSociosTxtMouseClicked(MouseEvent evt) {//GEN-FIRST:event_pagosSociosTxtMouseClicked
         panelVentanas.setSelectedIndex(3);
+        background.requestFocusInWindow();
+        CardLayout cardLayout = (CardLayout) panelDatos.getLayout();
+        cardLayout.show(panelDatos, "cardPrincipal");
     }//GEN-LAST:event_pagosSociosTxtMouseClicked
 
     private void sueldosEmpleadosTxtMouseClicked(MouseEvent evt) {//GEN-FIRST:event_sueldosEmpleadosTxtMouseClicked
         panelVentanas.setSelectedIndex(4);
+        background.requestFocusInWindow();
     }//GEN-LAST:event_sueldosEmpleadosTxtMouseClicked
 
     private void txtSociosMouseClicked(MouseEvent evt) {//GEN-FIRST:event_txtSociosMouseClicked
@@ -1181,6 +1436,9 @@ public class Menu extends JFrame {
 
     private void txtPagosSocioMouseClicked(MouseEvent evt) {//GEN-FIRST:event_txtPagosSocioMouseClicked
         panelVentanas.setSelectedIndex(3);
+        background.requestFocusInWindow();
+        CardLayout cardLayout = (CardLayout) panelDatos.getLayout();
+        cardLayout.show(panelDatos, "cardPrincipal");
     }//GEN-LAST:event_txtPagosSocioMouseClicked
 
     private void txtSueldosEmpleadosMouseClicked(MouseEvent evt) {//GEN-FIRST:event_txtSueldosEmpleadosMouseClicked
@@ -1310,7 +1568,7 @@ public class Menu extends JFrame {
             model.setRowCount(0);
             String legajoStr = buscarLabel.getText().trim();
 
-            if (legajoStr.isEmpty() || legajoStr.equals("Ingrese el legajo del socio a buscar.")) {
+            if (legajoStr.isEmpty() || legajoStr.equals(" Ingrese el legajo del socio a buscar.")) {
                 contenedoraSocio.listar().values().forEach(this::addSocioToTable);
             } else {
                 int legajo = Integer.parseInt(legajoStr);
@@ -1531,6 +1789,83 @@ public HashMap<Integer, Socio> obtenerListaDeSocios() {
         actualizarTablaEmpleados();
     }//GEN-LAST:event_ventana3FocusGained
 
+    private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
+        com.login.Login login = new com.login.Login();
+        login.setVisible(true);
+        login.pack();
+        login.setLocationRelativeTo(null);
+        this.dispose();
+    }//GEN-LAST:event_jLabel1MouseClicked
+
+    private void buscarLegajoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_buscarLegajoFocusLost
+         if (buscarLegajo.getText().isEmpty()) {
+                buscarLegajo.setText(" Ingrese el legajo del socio a buscar.");
+                buscarLegajo.setForeground(Color.GRAY);
+            }
+    }//GEN-LAST:event_buscarLegajoFocusLost
+
+    private void buscarLegajoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buscarLegajoMousePressed
+        if(buscarLegajo.getText().equals(" Ingrese el legajo del socio a buscar.")){
+            buscarLegajo.setText("");
+            buscarLegajo.setForeground(Color.black);
+        }
+    }//GEN-LAST:event_buscarLegajoMousePressed
+
+    private void buscarLegajoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarLegajoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_buscarLegajoActionPerformed
+
+    private void buscarTxt2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buscarTxt2MouseClicked
+        CardLayout cardLayout = (CardLayout) panelDatos.getLayout();
+        try {
+
+            ContenedoraSocio contenedoraSocio = new ContenedoraSocio();
+            contenedoraSocio.cargarSociosDeJson("Socios.json");
+           
+            String legajoStr = buscarLegajo.getText().trim();
+
+            if (legajoStr.isEmpty() || legajoStr.equals("Ingrese el legajo del socio a buscar.")) {
+                /// EN EL CASO QUE NO SE ENCUENTRE
+                JOptionPane.showMessageDialog(this, "Debe ingresar un legajo valido para buscar.\n", "AVISO", JOptionPane.ERROR_MESSAGE);
+                cardLayout.show(panelDatos, "cardPrincipal");
+            } else {
+                int legajo = Integer.parseInt(legajoStr);
+                Socio socio = contenedoraSocio.buscar(legajo);
+                // EN EL CASO QUE SE ENCUENTRE Y SEA VALIDO
+                nomTxt.setText("Nombre y Apellido: " + socio.getNombre() + " " + socio.getApellido());
+                docTxt.setText("Documento: " + socio.getDni());
+                totalPagarTxt.setText("Total a pagar: $" + socio.calcularPagoConInteres());
+                vencTxt.setText("Fecha de vencimiento: " + socio.getFechaVencimientoPago().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")));
+                cardLayout.show(panelDatos, "card1");
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            JOptionPane.showMessageDialog(this, "No se ha encontrado un socio con el legajo ingresado.\n", "AVISO", JOptionPane.ERROR_MESSAGE);
+            cardLayout.show(panelDatos, "cardPrincipal");
+        }
+    }//GEN-LAST:event_buscarTxt2MouseClicked
+
+    private void buscarTxt2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buscarTxt2MouseEntered
+        buscarBtn.setBackground(new Color(80,139,166));
+    }//GEN-LAST:event_buscarTxt2MouseEntered
+
+    private void buscarTxt2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buscarTxt2MouseExited
+        buscarBtn.setBackground(new Color(59,132,173));
+    }//GEN-LAST:event_buscarTxt2MouseExited
+
+    private void mostrarDeudoresTxtMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mostrarDeudoresTxtMouseEntered
+         mostrarDeudoresBtn.setBackground(new Color(80,139,166));
+    }//GEN-LAST:event_mostrarDeudoresTxtMouseEntered
+
+    private void mostrarDeudoresTxtMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mostrarDeudoresTxtMouseExited
+        mostrarDeudoresBtn.setBackground(new Color(59,132,173));
+    }//GEN-LAST:event_mostrarDeudoresTxtMouseExited
+
+    private void mostrarDeudoresTxtMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mostrarDeudoresTxtMouseClicked
+        CardLayout cardLayout = (CardLayout) panelDatos.getLayout();
+        cardLayout.show(panelDatos, "card2");
+    }//GEN-LAST:event_mostrarDeudoresTxtMouseClicked
+
 
 
     public Object[] empleadoToRow(Empleado empleado) {
@@ -1591,18 +1926,28 @@ public HashMap<Integer, Socio> obtenerListaDeSocios() {
     private javax.swing.JPanel btnSueldosEmpleados;
     private javax.swing.JPanel buscarBtn;
     private javax.swing.JPanel buscarBtn1;
+    private javax.swing.JPanel buscarBtn2;
     private javax.swing.JTextField buscarLabel;
     private javax.swing.JTextField buscarLabel1;
+    private javax.swing.JTextField buscarLegajo;
     private javax.swing.JLabel buscarTxt;
     private javax.swing.JLabel buscarTxt1;
+    private javax.swing.JLabel buscarTxt2;
+    private javax.swing.JPanel card1;
+    private javax.swing.JPanel card2;
+    private javax.swing.JPanel cardPrincipal;
     private javax.swing.JPanel dashboard;
     private javax.swing.JLabel dateText;
+    private javax.swing.JLabel docTxt;
     private javax.swing.JPanel eliminarBtn;
     private javax.swing.JPanel eliminarBtn1;
     private javax.swing.JLabel eliminarTxt;
     private javax.swing.JLabel eliminarTxt1;
     private javax.swing.JPanel empleadosBtn;
     private javax.swing.JLabel empleadosTxt;
+    private javax.swing.JPanel enviarDeudaBtn;
+    private javax.swing.JSeparator enviarDeudaSep;
+    private javax.swing.JLabel enviarDeudaTxt;
     private javax.swing.JPanel exitBtn;
     private javax.swing.JPanel exitMenu;
     private javax.swing.JLabel exitTxt;
@@ -1615,10 +1960,13 @@ public HashMap<Integer, Socio> obtenerListaDeSocios() {
     private javax.swing.JLabel fotoSocio1;
     private javax.swing.JLabel fotoSueldosEmpleados;
     private javax.swing.JPanel header;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTable jTable2;
     private javax.swing.JTable jTable3;
+    private javax.swing.JLabel legajoTitulo;
     private javax.swing.JLabel logo;
     private javax.swing.JPanel menuBtn;
     private javax.swing.JLabel menuTxt;
@@ -1626,28 +1974,42 @@ public HashMap<Integer, Socio> obtenerListaDeSocios() {
     private javax.swing.JPanel modificarBtn1;
     private javax.swing.JLabel modificarTxt;
     private javax.swing.JLabel modificarTxt1;
+    private javax.swing.JPanel mostrarDeudoresBtn;
+    private javax.swing.JLabel mostrarDeudoresTxt;
+    private javax.swing.JLabel mostrarListadoTitulo;
+    private javax.swing.JLabel nomTxt;
+    private javax.swing.JPanel pagarBtn;
+    private javax.swing.JLabel pagarTxt;
     private javax.swing.JPanel pagosSociosBtn;
     private javax.swing.JLabel pagosSociosTxt;
+    private javax.swing.JPanel panelDatos;
+    private javax.swing.JPanel panelDatosSocio;
     private javax.swing.JTabbedPane panelVentanas;
     private javax.swing.JPanel sociosBtn;
     private javax.swing.JLabel sociosTxt;
     private javax.swing.JPanel sueldosEmpleadosBtn;
     private javax.swing.JLabel sueldosEmpleadosTxt;
+    private javax.swing.JTable tablaDeudas;
     private javax.swing.JLabel textoEmpleado;
     private javax.swing.JLabel textoPagosSocios;
     private javax.swing.JLabel textoSocio;
     private javax.swing.JLabel textoSueldosEmpleados;
+    private javax.swing.JLabel tituloDatosSocio;
+    private javax.swing.JLabel tituloDeudores;
     private javax.swing.JLabel tituloEmpleado;
     private javax.swing.JLabel tituloMenu;
+    private javax.swing.JLabel tituloPagoSocios;
     private javax.swing.JLabel tituloPagosSocios;
     private javax.swing.JLabel tituloSocio;
     private javax.swing.JLabel tituloSocios;
     private javax.swing.JLabel tituloSocios1;
     private javax.swing.JLabel tituloSueldosEmpleados;
+    private javax.swing.JLabel totalPagarTxt;
     private javax.swing.JLabel txtEmpleados;
     private javax.swing.JLabel txtPagosSocio;
     private javax.swing.JLabel txtSocios;
     private javax.swing.JLabel txtSueldosEmpleados;
+    private javax.swing.JLabel vencTxt;
     private javax.swing.JPanel ventana1;
     private javax.swing.JPanel ventana2;
     private javax.swing.JPanel ventana3;
