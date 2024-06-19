@@ -4,6 +4,8 @@
  */
 package com.menu;
 
+import Webcam.WebcamClass;
+import com.Medico.DetalleSocio;
 import com.login.RegistroExitoso;
 
 import java.awt.*;
@@ -13,6 +15,7 @@ import datos.Correos;
 import datos.Socio;
 
 import java.awt.event.*;
+import java.io.File;
 import java.io.IOException;
 import java.text.ParseException;
 import java.time.LocalDate;
@@ -140,6 +143,7 @@ public class InfoSocio extends JFrame {
         cargarImgTxt = new javax.swing.JLabel();
         registerBtn = new javax.swing.JPanel();
         registerTxt = new javax.swing.JLabel();
+        recharg = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setLocationByPlatform(true);
@@ -505,6 +509,11 @@ public class InfoSocio extends JFrame {
 
         fotoUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/images/FotoCarnet.png"))); // NOI18N
         fotoUsuario.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        fotoUsuario.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                fotoUsuarioMouseClicked(evt);
+            }
+        });
         ventana1.add(fotoUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(1000, 320, 160, 160));
 
         cargarImgBtn.setBackground(new java.awt.Color(255, 255, 255));
@@ -573,6 +582,15 @@ public class InfoSocio extends JFrame {
         );
 
         ventana1.add(registerBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 560, 240, 50));
+
+        recharg.setText("jLabel1");
+        recharg.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        recharg.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                rechargMouseClicked(evt);
+            }
+        });
+        ventana1.add(recharg, new org.netbeans.lib.awtextra.AbsoluteConstraints(1180, 390, -1, -1));
 
         panelVentanas.addTab("tab1", ventana1);
 
@@ -1259,8 +1277,10 @@ public class InfoSocio extends JFrame {
         JFileChooser jf = new JFileChooser();
         jf.setMultiSelectionEnabled(false);
         if (jf.showOpenDialog(this) == JFileChooser.APPROVE_OPTION) {
-           RSDragDropFiles.setCopiar(jf.getSelectedFile().toString(), "src/com.images/FotoCarnet.png");
+           RSDragDropFiles.setCopiar(jf.getSelectedFile().toString(), "src/com/imagesPerso/"+legajo.getText()+".png");
            fotoUsuario.setIcon(new ImageIcon(jf.getSelectedFile().toString()));
+           fotoUsuario.setCursor(new java.awt.Cursor(Cursor.DEFAULT_CURSOR));
+            ;
         }
     }//GEN-LAST:event_cargarImgTxtMouseClicked
 
@@ -1271,6 +1291,39 @@ public class InfoSocio extends JFrame {
     private void registerTxtMouseExited(MouseEvent evt) {//GEN-FIRST:event_registerTxtMouseExited
         registerBtn.setBackground(new Color(59,132,173));
     }//GEN-LAST:event_registerTxtMouseExited
+
+    private void fotoUsuarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_fotoUsuarioMouseClicked
+        WebcamClass webcamInstance = new WebcamClass(legajoTxt.getText());
+        // Ocultar la ventana actual (Infosocio)
+        setVisible(false);
+
+        // Crear una instancia de WebcamClass si aún no existe
+        if (webcamInstance == null) {
+            webcamInstance = new WebcamClass(legajoTxt.getText());
+        }
+
+        // Mostrar la GUI de la webcam
+        webcamInstance.createAndShowGUI();
+
+        // Agregar un WindowListener para manejar la visibilidad al cerrar la ventana de WebcamClass
+        webcamInstance.addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                // Mostrar la ventana Infosocio al cerrar la webcam
+                setVisible(true);
+            }
+        });
+
+    }//GEN-LAST:event_fotoUsuarioMouseClicked
+
+    private void rechargMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rechargMouseClicked
+        String filePath = "src/com/imagesPersonas/" + legajoTxt.getText() + ".png";
+        File file = new File(filePath);
+        ImageIcon icon = new ImageIcon(new ImageIcon(filePath).getImage().getScaledInstance(fotoUsuario.getWidth(), fotoUsuario.getHeight(), Image.SCALE_SMOOTH));
+        fotoUsuario.setIcon(icon);
+
+    }//GEN-LAST:event_rechargMouseClicked
+
 
     // Método para verificar si el correo electrónico es válido
     public static boolean isValidEmail(String email) {
@@ -1350,6 +1403,7 @@ public class InfoSocio extends JFrame {
     private javax.swing.JSeparator obraSocialSep;
     private javax.swing.JTextField obraSocialTxt;
     private javax.swing.JTabbedPane panelVentanas;
+    private javax.swing.JLabel recharg;
     private javax.swing.JPanel registerBtn;
     private javax.swing.JLabel registerTxt;
     private javax.swing.JLabel sexo;

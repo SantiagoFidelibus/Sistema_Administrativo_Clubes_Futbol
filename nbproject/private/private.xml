@@ -3,8 +3,14 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/LOGIN/TP%20FINAL/App-Club-Deportivo-master/src/com/menu/Menu.java</file>
-            <file>file:/D:/LOGIN/TP%20FINAL/App-Club-Deportivo-master/src/com/login/Login.java</file>
+            <file>file:/D:/LOGIN/TP%20FINAL/App_Club_Futbol_Gestion/src/com/Medico/DetalleSocio.java</file>
+            <file>file:/D:/LOGIN/TP%20FINAL/App_Club_Futbol_Gestion/src/com/menu/Menu.java</file>
+            <file>file:/D:/LOGIN/TP%20FINAL/App_Club_Futbol_Gestion/src/com/emailPics/APTO_MEDICO_RECHAZADO.png</file>
+            <file>file:/D:/LOGIN/TP%20FINAL/App_Club_Futbol_Gestion/src/com/emailPics/APTO_MEDICO_EXITOSO.png</file>
+            <file>file:/D:/LOGIN/TP%20FINAL/App_Club_Futbol_Gestion/src/com/menu/InfoSocio.java</file>
+            <file>file:/D:/LOGIN/TP%20FINAL/App_Club_Futbol_Gestion/src/com/emailPics/PAGO_SOCIO.png</file>
+            <file>file:/D:/LOGIN/TP%20FINAL/App_Club_Futbol_Gestion/src/Webcam/WebcamClass.java</file>
+            <file>file:/D:/LOGIN/TP%20FINAL/App_Club_Futbol_Gestion/src/com/Medico/Medico.java</file>
         </group>
     </open-files>
 </project-private>
