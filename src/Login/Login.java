@@ -4,6 +4,7 @@
  */
 package Login;
 import IUEmpleado.IngresoSocios;
+import IUEmpleado.IngresoSociosSinCam;
 import Medico.Medico;
 
 import java.awt.*;
@@ -126,10 +127,21 @@ public class Login extends JFrame {
                             Login.this.dispose();
 
                         } else if ((userTxt.getText().equals("Empleado")) && (password.equals("Recepcionista"))) {
-                            IngresoSocios ingreso = new IngresoSocios();
-                            ingreso.setVisible(true);
-                            ingreso.pack();
-                            ingreso.setLocationRelativeTo(null);
+
+                            int respuesta = JOptionPane.showConfirmDialog(Login.this, "¿Cuentas con cámara?", "AVISO", JOptionPane.YES_NO_OPTION);
+
+                            if (respuesta == JOptionPane.YES_OPTION) {
+                                IngresoSocios ingreso = new IngresoSocios();
+                                ingreso.setVisible(true);
+                                ingreso.pack();
+                                ingreso.setLocationRelativeTo(null);
+                            }else if (respuesta == JOptionPane.NO_OPTION) {
+                                IngresoSociosSinCam ingresos = new IngresoSociosSinCam();
+                                ingresos.setVisible(true);
+                                ingresos.pack();
+                                ingresos.setLocationRelativeTo(null);
+                            }
+
                             Login.this.dispose();
 
                         } else {
@@ -469,10 +481,19 @@ public class Login extends JFrame {
             this.dispose();
             
         }else if((userTxt.getText().equals("Empleado")) && (password.contains("Recepcionista"))){
-            IngresoSocios ingreso = new IngresoSocios();
-            ingreso.setVisible(true);
-            ingreso.pack();
-            ingreso.setLocationRelativeTo(null);
+            int respuesta = JOptionPane.showConfirmDialog(Login.this, "¿Cuentas con cámara?", "AVISO", JOptionPane.YES_NO_OPTION);
+            System.out.println(respuesta);
+            if (respuesta == JOptionPane.YES_OPTION) {
+                IngresoSocios ingreso = new IngresoSocios();
+                ingreso.setVisible(true);
+                ingreso.pack();
+                ingreso.setLocationRelativeTo(null);
+            }else if (respuesta == JOptionPane.NO_OPTION) {
+                IngresoSociosSinCam ingresos = new IngresoSociosSinCam();
+                ingresos.setVisible(true);
+                ingresos.pack();
+                ingresos.setLocationRelativeTo(null);
+            }
             this.dispose();
         }else{
             JOptionPane.showMessageDialog(this, "El usuario o la contraseña es incorrecta, vuelva a intentarlo.", "Error de contraseña", JOptionPane.ERROR_MESSAGE);
