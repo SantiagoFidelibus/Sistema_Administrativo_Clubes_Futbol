@@ -38,6 +38,8 @@ import org.netbeans.lib.awtextra.AbsoluteConstraints;
 import org.netbeans.lib.awtextra.AbsoluteLayout;
 import rsdragdropfiles.RSDragDropFiles;
 
+import static java.lang.Long.parseLong;
+
 /**
  *
  * @author santi
@@ -1205,6 +1207,7 @@ public class InfoSocio extends JFrame {
             JOptionPane.showMessageDialog(this, "El número de teléfono debe tener al menos 7 dígitos.", "Error de registro", JOptionPane.ERROR_MESSAGE);
         } else {
             try {
+                long numeroTelefono;
                 Socio nuevoSocio = new Socio(
                         nombreTxt.getText(),
                         apellidoTxt.getText(),
@@ -1212,7 +1215,7 @@ public class InfoSocio extends JFrame {
                         Integer.parseInt(legajoTxt.getText()), // Temporal placeholder para legajo, será asignado en `alta`
                         emailTxt.getText(),
                         fechaNacTxt.getText(),
-                        Integer.parseInt(telefono),
+                        (int) (numeroTelefono= parseLong(telefono)),
                         domicilioTxt.getText(),
                         sexoTxt.getText(),
                         false,
