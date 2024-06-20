@@ -45,8 +45,8 @@
     "legajo": 4,
     "email": "ana.martinez@example.com",
     "fechaDeNacimiento": "10/09/1992",
-    "fechaRegistroPago": [2024, 6, 18],
-    "fechaVencimientoPago": [2024, 7, 18],
+    "fechaRegistroPago": [2024, 5, 18],
+    "fechaVencimientoPago": [2024, 6, 18],
     "contraseña": "password012",
     "cargo": "UTILERO",
     "cobro": true
@@ -58,8 +58,8 @@
     "legajo": 5,
     "email": "luis.rodriguez@example.com",
     "fechaDeNacimiento": "05/03/1997",
-    "fechaRegistroPago": [2024, 6, 18],
-    "fechaVencimientoPago": [2024, 7, 18],
+    "fechaRegistroPago": [2024, 5, 18],
+    "fechaVencimientoPago": [2024, 6, 18],
     "contraseña": "password345",
     "cargo": "LIMPIEZA",
     "cobro": false

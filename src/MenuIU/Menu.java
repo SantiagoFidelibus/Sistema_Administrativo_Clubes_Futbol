@@ -38,6 +38,7 @@ public class Menu extends JFrame {
         jTable2.getTableHeader().setReorderingAllowed(false);
         jTable3.getTableHeader().setReorderingAllowed(false);
         tablaDeudas.getTableHeader().setReorderingAllowed(false);
+        tablaPagos.getTableHeader().setReorderingAllowed(false);
         
     }
 
@@ -154,6 +155,30 @@ public class Menu extends JFrame {
         enviarDeudaTxt = new javax.swing.JLabel();
         enviarDeudaSep = new javax.swing.JSeparator();
         ventana5 = new javax.swing.JPanel();
+        tituloPagoEmpleado = new javax.swing.JLabel();
+        legajoTitulo1 = new javax.swing.JLabel();
+        buscarLegajoEmpl = new javax.swing.JTextField();
+        mostrarListadoTitulo1 = new javax.swing.JLabel();
+        mostrarSueldEmplBtn = new javax.swing.JPanel();
+        mostrarSueldEmplTxt = new javax.swing.JLabel();
+        panelDatos1 = new javax.swing.JPanel();
+        cardPrincipal1 = new javax.swing.JPanel();
+        card3 = new javax.swing.JPanel();
+        tituloDatosSocio1 = new javax.swing.JLabel();
+        panelDatosSocio1 = new javax.swing.JPanel();
+        nomTxt1 = new javax.swing.JLabel();
+        docTxt1 = new javax.swing.JLabel();
+        cargoTxt = new javax.swing.JLabel();
+        totalPagarTxt1 = new javax.swing.JLabel();
+        vencTxt1 = new javax.swing.JLabel();
+        pagarBtn1 = new javax.swing.JPanel();
+        pagarTxt1 = new javax.swing.JLabel();
+        card4 = new javax.swing.JPanel();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        tablaPagos = new javax.swing.JTable();
+        tituloPagos = new javax.swing.JLabel();
+        buscarBtn5 = new javax.swing.JPanel();
+        buscarTxt5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setLocationByPlatform(true);
@@ -1259,7 +1284,6 @@ public class Menu extends JFrame {
         });
         tablaDeudas.setName(""); // NOI18N
         tablaDeudas.setShowGrid(true);
-        tablaDeudas.setShowHorizontalLines(true);
         tablaDeudas.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 tablaDeudasFocusGained(evt);
@@ -1323,17 +1347,262 @@ public class Menu extends JFrame {
         panelVentanas.addTab("tab4", ventana4);
 
         ventana5.setBackground(new java.awt.Color(255, 255, 255));
+        ventana5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        javax.swing.GroupLayout ventana5Layout = new javax.swing.GroupLayout(ventana5);
-        ventana5.setLayout(ventana5Layout);
-        ventana5Layout.setHorizontalGroup(
-            ventana5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1010, Short.MAX_VALUE)
+        tituloPagoEmpleado.setFont(new java.awt.Font("Corbel", 1, 28)); // NOI18N
+        tituloPagoEmpleado.setForeground(new java.awt.Color(153, 153, 153));
+        tituloPagoEmpleado.setText("Pago de Cuotas Sociales");
+        ventana5.add(tituloPagoEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 200, -1, -1));
+
+        legajoTitulo1.setFont(new java.awt.Font("Roboto Light", 1, 15)); // NOI18N
+        legajoTitulo1.setForeground(new java.awt.Color(0, 0, 0));
+        legajoTitulo1.setText("BUSCAR EMPLEADO");
+        legajoTitulo1.setToolTipText("");
+        ventana5.add(legajoTitulo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 260, 150, 20));
+
+        buscarLegajoEmpl.setFont(new java.awt.Font("Roboto Light", 0, 14)); // NOI18N
+        buscarLegajoEmpl.setForeground(new java.awt.Color(153, 153, 153));
+        buscarLegajoEmpl.setText(" Ingrese el legajo del empleado a buscar.");
+        buscarLegajoEmpl.setToolTipText("");
+        buscarLegajoEmpl.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        buscarLegajoEmpl.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                buscarLegajoEmplFocusLost(evt);
+            }
+        });
+        buscarLegajoEmpl.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                buscarLegajoEmplMousePressed(evt);
+            }
+        });
+        buscarLegajoEmpl.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buscarLegajoEmplActionPerformed(evt);
+            }
+        });
+        ventana5.add(buscarLegajoEmpl, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 290, 290, 40));
+
+        mostrarListadoTitulo1.setFont(new java.awt.Font("Roboto Light", 1, 15)); // NOI18N
+        mostrarListadoTitulo1.setForeground(new java.awt.Color(0, 0, 0));
+        mostrarListadoTitulo1.setText("MOSTRAR LISTADO DE SUELDOS A PAGAR");
+        mostrarListadoTitulo1.setToolTipText("");
+        ventana5.add(mostrarListadoTitulo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 470, 310, 20));
+
+        mostrarSueldEmplBtn.setBackground(new java.awt.Color(50, 115, 153));
+
+        mostrarSueldEmplTxt.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
+        mostrarSueldEmplTxt.setForeground(new java.awt.Color(255, 255, 255));
+        mostrarSueldEmplTxt.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        mostrarSueldEmplTxt.setText("Mostrar");
+        mostrarSueldEmplTxt.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        mostrarSueldEmplTxt.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                mostrarSueldEmplTxtMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                mostrarSueldEmplTxtMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                mostrarSueldEmplTxtMouseExited(evt);
+            }
+        });
+
+        javax.swing.GroupLayout mostrarSueldEmplBtnLayout = new javax.swing.GroupLayout(mostrarSueldEmplBtn);
+        mostrarSueldEmplBtn.setLayout(mostrarSueldEmplBtnLayout);
+        mostrarSueldEmplBtnLayout.setHorizontalGroup(
+            mostrarSueldEmplBtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(mostrarSueldEmplTxt, javax.swing.GroupLayout.DEFAULT_SIZE, 110, Short.MAX_VALUE)
         );
-        ventana5Layout.setVerticalGroup(
-            ventana5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 685, Short.MAX_VALUE)
+        mostrarSueldEmplBtnLayout.setVerticalGroup(
+            mostrarSueldEmplBtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(mostrarSueldEmplTxt, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
         );
+
+        ventana5.add(mostrarSueldEmplBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 510, 110, 40));
+
+        panelDatos1.setBackground(new java.awt.Color(255, 255, 255));
+        panelDatos1.setLayout(new java.awt.CardLayout());
+
+        cardPrincipal1.setBackground(new java.awt.Color(255, 255, 255));
+
+        javax.swing.GroupLayout cardPrincipal1Layout = new javax.swing.GroupLayout(cardPrincipal1);
+        cardPrincipal1.setLayout(cardPrincipal1Layout);
+        cardPrincipal1Layout.setHorizontalGroup(
+            cardPrincipal1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 390, Short.MAX_VALUE)
+        );
+        cardPrincipal1Layout.setVerticalGroup(
+            cardPrincipal1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 430, Short.MAX_VALUE)
+        );
+
+        panelDatos1.add(cardPrincipal1, "cardPrincipal1");
+
+        card3.setBackground(new java.awt.Color(255, 255, 255));
+        card3.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        card3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        tituloDatosSocio1.setFont(new java.awt.Font("Corbel", 1, 28)); // NOI18N
+        tituloDatosSocio1.setForeground(new java.awt.Color(153, 153, 153));
+        tituloDatosSocio1.setText("Datos del Empleado");
+        card3.add(tituloDatosSocio1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 40, -1, -1));
+
+        panelDatosSocio1.setBackground(new java.awt.Color(255, 255, 255));
+        panelDatosSocio1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        nomTxt1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        nomTxt1.setForeground(new java.awt.Color(0, 0, 0));
+        nomTxt1.setText("Nombre y Apellido: ");
+        panelDatosSocio1.add(nomTxt1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 310, 40));
+
+        docTxt1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        docTxt1.setForeground(new java.awt.Color(0, 0, 0));
+        docTxt1.setText("Documento:");
+        panelDatosSocio1.add(docTxt1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 310, 40));
+
+        cargoTxt.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        cargoTxt.setForeground(new java.awt.Color(0, 0, 0));
+        cargoTxt.setText("Cargo: ");
+        panelDatosSocio1.add(cargoTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 310, 40));
+
+        totalPagarTxt1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        totalPagarTxt1.setForeground(new java.awt.Color(0, 0, 0));
+        totalPagarTxt1.setText("Sueldo a pagar: ");
+        panelDatosSocio1.add(totalPagarTxt1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, 310, 40));
+
+        vencTxt1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        vencTxt1.setForeground(new java.awt.Color(0, 0, 0));
+        vencTxt1.setText("Fecha de vencimiento: ");
+        panelDatosSocio1.add(vencTxt1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, 310, 40));
+
+        pagarBtn1.setBackground(new java.awt.Color(50, 115, 153));
+
+        pagarTxt1.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
+        pagarTxt1.setForeground(new java.awt.Color(255, 255, 255));
+        pagarTxt1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        pagarTxt1.setText("PAGAR SUELDO");
+        pagarTxt1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        pagarTxt1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                pagarTxt1MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                pagarTxt1MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                pagarTxt1MouseExited(evt);
+            }
+        });
+
+        javax.swing.GroupLayout pagarBtn1Layout = new javax.swing.GroupLayout(pagarBtn1);
+        pagarBtn1.setLayout(pagarBtn1Layout);
+        pagarBtn1Layout.setHorizontalGroup(
+            pagarBtn1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 210, Short.MAX_VALUE)
+            .addGroup(pagarBtn1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(pagarBtn1Layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(pagarTxt1, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
+        );
+        pagarBtn1Layout.setVerticalGroup(
+            pagarBtn1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 50, Short.MAX_VALUE)
+            .addGroup(pagarBtn1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(pagarBtn1Layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(pagarTxt1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
+        );
+
+        panelDatosSocio1.add(pagarBtn1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 260, 210, 50));
+
+        card3.add(panelDatosSocio1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 350, 320));
+
+        panelDatos1.add(card3, "card3");
+
+        card4.setBackground(new java.awt.Color(255, 255, 255));
+        card4.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        card4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        tablaPagos.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        tablaPagos.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Legajo", "Nombre", "Apellido", "Fecha de Vencimiento"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.Object.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        tablaPagos.setName(""); // NOI18N
+        tablaPagos.setShowGrid(true);
+        tablaPagos.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                tablaPagosFocusGained(evt);
+            }
+        });
+        jScrollPane4.setViewportView(tablaPagos);
+
+        card4.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 370, 330));
+
+        tituloPagos.setFont(new java.awt.Font("Corbel", 1, 28)); // NOI18N
+        tituloPagos.setForeground(new java.awt.Color(153, 153, 153));
+        tituloPagos.setText("Listado de Empleados");
+        card4.add(tituloPagos, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, -1));
+
+        panelDatos1.add(card4, "card4");
+
+        ventana5.add(panelDatos1, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 210, 390, 430));
+
+        buscarBtn5.setBackground(new java.awt.Color(50, 115, 153));
+
+        buscarTxt5.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
+        buscarTxt5.setForeground(new java.awt.Color(255, 255, 255));
+        buscarTxt5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        buscarTxt5.setText("Buscar");
+        buscarTxt5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        buscarTxt5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                buscarTxt5MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                buscarTxt5MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                buscarTxt5MouseExited(evt);
+            }
+        });
+
+        javax.swing.GroupLayout buscarBtn5Layout = new javax.swing.GroupLayout(buscarBtn5);
+        buscarBtn5.setLayout(buscarBtn5Layout);
+        buscarBtn5Layout.setHorizontalGroup(
+            buscarBtn5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(buscarTxt5, javax.swing.GroupLayout.DEFAULT_SIZE, 110, Short.MAX_VALUE)
+        );
+        buscarBtn5Layout.setVerticalGroup(
+            buscarBtn5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(buscarTxt5, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
+        );
+
+        ventana5.add(buscarBtn5, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 350, 110, 40));
 
         panelVentanas.addTab("tab5", ventana5);
 
@@ -1454,6 +1723,8 @@ public class Menu extends JFrame {
     private void sueldosEmpleadosTxtMouseClicked(MouseEvent evt) {//GEN-FIRST:event_sueldosEmpleadosTxtMouseClicked
         panelVentanas.setSelectedIndex(4);
         background.requestFocusInWindow();
+        CardLayout cardLayout = (CardLayout) panelDatos1.getLayout();
+        cardLayout.show(panelDatos1, "cardPrincipal1");
     }//GEN-LAST:event_sueldosEmpleadosTxtMouseClicked
 
     private void txtSociosMouseClicked(MouseEvent evt) {//GEN-FIRST:event_txtSociosMouseClicked
@@ -1482,6 +1753,9 @@ public class Menu extends JFrame {
 
     private void txtSueldosEmpleadosMouseClicked(MouseEvent evt) {//GEN-FIRST:event_txtSueldosEmpleadosMouseClicked
         panelVentanas.setSelectedIndex(4);
+        background.requestFocusInWindow();
+        CardLayout cardLayout = (CardLayout) panelDatos1.getLayout();
+        cardLayout.show(panelDatos1, "cardPrincipal1");
     }//GEN-LAST:event_txtSueldosEmpleadosMouseClicked
 
     private void txtSociosMouseEntered(MouseEvent evt) {//GEN-FIRST:event_txtSociosMouseEntered
@@ -1813,6 +2087,58 @@ public HashMap<Integer, Socio> obtenerListaDeSocios() {
         llenarTablaDeudores(deudores);
     }
 
+     //Añadir empleados a los que no se les pago el sueldo a la tabla
+    public void addEmpleadosSinPagarToTable(Empleado empleado){
+        DefaultTableModel model = (DefaultTableModel) tablaPagos.getModel();
+        model.addRow(new Object[]{empleado.getLegajo(), empleado.getNombre(), empleado.getApellido(), empleado.getFechaVencimientoPago()});
+    }
+
+    //Metodo para agregar los empleados a los que se deben pagar el sueldo a la tabla
+    public Object[] empleadoAPagarToRow(Empleado empleado){
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        return new Object[]{empleado.getLegajo(), empleado.getNombre(), empleado.getApellido(), empleado.getFechaVencimientoPago().format(formatter)};
+    }
+
+    //Obtener lista de empleados a los que todavia no se les pago el sueldo
+    public HashMap<Integer, Empleado> obtenerListaDeEmpleadosAPagar(){
+        ContenedoraEmpleado contenedoraEmpleado = new ContenedoraEmpleado();
+        HashMap<Integer, Empleado> empleadosAPagar = new HashMap<>();
+        try{
+            contenedoraEmpleado.cargarEmpleadosDeJson("Empleados.json");
+            HashMap<Integer, Empleado> empleados = contenedoraEmpleado.listar();
+            LocalDate hoy = LocalDate.now();
+            for(Map.Entry<Integer, Empleado> entry : empleados.entrySet()){
+                Empleado empleado = entry.getValue();
+                if(empleado.getFechaVencimientoPago().isBefore(hoy)){
+                    empleadosAPagar.put(entry.getKey(), empleado);
+                }
+            }
+        }catch(IOException e){
+            e.printStackTrace();
+        }
+        return empleadosAPagar;
+    }
+
+    //Llenar la tabla de empleados a los que todavia no se les pago
+    public void llenarTablaEmpleadosAPagar(HashMap<Integer, Empleado> listaDeEmpleadosAPagar){
+        DefaultTableModel model = (DefaultTableModel) tablaPagos.getModel();
+        model.setRowCount(0);
+
+        List<Empleado> empleadosAPagarOrdenados = new ArrayList<>(listaDeEmpleadosAPagar.values());
+        empleadosAPagarOrdenados.sort(Comparator.comparingInt(Empleado::getLegajo));
+
+        for(Empleado empleado : empleadosAPagarOrdenados){
+            model.addRow(empleadoAPagarToRow(empleado));
+        }
+    }
+
+    //Actualizar la tabla
+    public void actualizarTablaEmpleadosAPagar(){
+        HashMap<Integer, Empleado> empleadosAPagar = obtenerListaDeEmpleadosAPagar();
+        llenarTablaEmpleadosAPagar(empleadosAPagar);
+    }
+
+    
     private void buscarLabel1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_buscarLabel1FocusLost
         // TODO add your handling code here:
     }//GEN-LAST:event_buscarLabel1FocusLost
@@ -2055,6 +2381,105 @@ public HashMap<Integer, Socio> obtenerListaDeSocios() {
         }
     }//GEN-LAST:event_enviarDeudaBtnMouseClicked
 
+    private void buscarLegajoEmplFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_buscarLegajoEmplFocusLost
+        if (buscarLegajoEmpl.getText().isEmpty()) {
+            buscarLegajoEmpl.setText(" Ingrese el legajo del empleado a buscar.");
+            buscarLegajoEmpl.setForeground(Color.GRAY);
+        }
+    }//GEN-LAST:event_buscarLegajoEmplFocusLost
+
+    private void buscarLegajoEmplMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buscarLegajoEmplMousePressed
+        if(buscarLegajoEmpl.getText().equals(" Ingrese el legajo del empleado a buscar.")){
+            buscarLegajoEmpl.setText("");
+            buscarLegajoEmpl.setForeground(Color.black);
+        }
+    }//GEN-LAST:event_buscarLegajoEmplMousePressed
+
+    private void buscarLegajoEmplActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarLegajoEmplActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_buscarLegajoEmplActionPerformed
+
+    private void mostrarSueldEmplTxtMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mostrarSueldEmplTxtMouseClicked
+        HashMap<Integer, Empleado> mapa = obtenerListaDeEmpleadosAPagar();
+
+        // Llenar la tabla con los datos de los socios
+        llenarTablaEmpleadosAPagar(mapa);
+
+        // Actualizar la tabla
+        actualizarTablaEmpleadosAPagar();
+        //Llenar la tabla que esta en el card2 con los datos de los socios que todavia no hayan pagado la cuota (deudores)
+        //Enviar mail a TODOS los socios que esten en esta tabla
+        CardLayout cardLayout = (CardLayout) panelDatos1.getLayout();
+        cardLayout.show(panelDatos1, "card4");
+    }//GEN-LAST:event_mostrarSueldEmplTxtMouseClicked
+
+    private void mostrarSueldEmplTxtMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mostrarSueldEmplTxtMouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_mostrarSueldEmplTxtMouseEntered
+
+    private void mostrarSueldEmplTxtMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mostrarSueldEmplTxtMouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_mostrarSueldEmplTxtMouseExited
+
+    private void pagarTxt1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pagarTxt1MouseClicked
+        // ENVIAR MAIL DE QUE SE PAGO
+        // SUMAR UN MES A LA FECHA DE COBRO
+        // ACTUALIZAR JSON DE EMPLEADOS
+    }//GEN-LAST:event_pagarTxt1MouseClicked
+
+    private void pagarTxt1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pagarTxt1MouseEntered
+        pagarBtn1.setBackground(new Color(80,139,166));
+    }//GEN-LAST:event_pagarTxt1MouseEntered
+
+    private void pagarTxt1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pagarTxt1MouseExited
+        pagarBtn1.setBackground(new Color(59,132,173));
+    }//GEN-LAST:event_pagarTxt1MouseExited
+
+    private void tablaPagosFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tablaPagosFocusGained
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tablaPagosFocusGained
+
+    private void buscarTxt5MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buscarTxt5MouseEntered
+        buscarBtn5.setBackground(new Color(80,139,166));
+    }//GEN-LAST:event_buscarTxt5MouseEntered
+
+    private void buscarTxt5MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buscarTxt5MouseExited
+        buscarBtn5.setBackground(new Color(59,132,173));
+    }//GEN-LAST:event_buscarTxt5MouseExited
+
+    private void buscarTxt5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buscarTxt5MouseClicked
+                CardLayout cardLayout = (CardLayout) panelDatos1.getLayout();
+        try {
+
+            ContenedoraEmpleado contenedoraEmpleado = new ContenedoraEmpleado();
+            contenedoraEmpleado.cargarEmpleadosDeJson("Empleados.json");
+           
+            String legajoStr = buscarLegajoEmpl.getText().trim();
+
+            if (legajoStr.isEmpty() || legajoStr.equals("Ingrese el legajo del empleado a buscar.")) {
+                /// EN EL CASO QUE NO SE ENCUENTRE
+                JOptionPane.showMessageDialog(this, "Debe ingresar un legajo valido para buscar.\n", "AVISO", JOptionPane.ERROR_MESSAGE);
+                cardLayout.show(panelDatos1, "cardPrincipal1");
+            } else {
+                int legajo = Integer.parseInt(legajoStr);
+                Empleado empleado = contenedoraEmpleado.buscar(legajo);
+                empleado.calcularPago();
+
+                // EN EL CASO QUE SE ENCUENTRE Y SEA VALIDO
+                nomTxt1.setText("Nombre y Apellido: " + empleado.getNombre() + " " + empleado.getApellido());
+                docTxt1.setText("Documento: " + empleado.getDni());
+                cargoTxt.setText("Cargo: " + empleado.getCargo());
+                totalPagarTxt1.setText("Total a pagar: $" + empleado.calcularPagoConInteres());
+                vencTxt1.setText("Fecha de vencimiento: " + empleado.getFechaVencimientoPago().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")));
+                cardLayout.show(panelDatos1, "card3");
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            JOptionPane.showMessageDialog(this, "No se ha encontrado un empleado con el legajo ingresado.\n", "AVISO", JOptionPane.ERROR_MESSAGE);
+            cardLayout.show(panelDatos1, "cardPrincipal1");
+        }    
+    }//GEN-LAST:event_buscarTxt5MouseClicked
+
 
 
     public Object[] empleadoToRow(Empleado empleado) {
@@ -2116,18 +2541,26 @@ public HashMap<Integer, Socio> obtenerListaDeSocios() {
     private javax.swing.JPanel buscarBtn;
     private javax.swing.JPanel buscarBtn1;
     private javax.swing.JPanel buscarBtn2;
+    private javax.swing.JPanel buscarBtn5;
     private javax.swing.JTextField buscarLabel;
     private javax.swing.JTextField buscarLabel1;
     private javax.swing.JTextField buscarLegajo;
+    private javax.swing.JTextField buscarLegajoEmpl;
     private javax.swing.JLabel buscarTxt;
     private javax.swing.JLabel buscarTxt1;
     private javax.swing.JLabel buscarTxt2;
+    private javax.swing.JLabel buscarTxt5;
     private javax.swing.JPanel card1;
     private javax.swing.JPanel card2;
+    private javax.swing.JPanel card3;
+    private javax.swing.JPanel card4;
     private javax.swing.JPanel cardPrincipal;
+    private javax.swing.JPanel cardPrincipal1;
+    private javax.swing.JLabel cargoTxt;
     private javax.swing.JPanel dashboard;
     private javax.swing.JLabel dateText;
     private javax.swing.JLabel docTxt;
+    private javax.swing.JLabel docTxt1;
     private javax.swing.JPanel eliminarBtn;
     private javax.swing.JPanel eliminarBtn1;
     private javax.swing.JLabel eliminarTxt;
@@ -2153,9 +2586,11 @@ public HashMap<Integer, Socio> obtenerListaDeSocios() {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JTable jTable2;
     private javax.swing.JTable jTable3;
     private javax.swing.JLabel legajoTitulo;
+    private javax.swing.JLabel legajoTitulo1;
     private javax.swing.JLabel logo;
     private javax.swing.JPanel menuBtn;
     private javax.swing.JLabel menuTxt;
@@ -2166,39 +2601,53 @@ public HashMap<Integer, Socio> obtenerListaDeSocios() {
     private javax.swing.JPanel mostrarDeudoresBtn;
     private javax.swing.JLabel mostrarDeudoresTxt;
     private javax.swing.JLabel mostrarListadoTitulo;
+    private javax.swing.JLabel mostrarListadoTitulo1;
+    private javax.swing.JPanel mostrarSueldEmplBtn;
+    private javax.swing.JLabel mostrarSueldEmplTxt;
     private javax.swing.JLabel nomTxt;
+    private javax.swing.JLabel nomTxt1;
     private javax.swing.JPanel pagarBtn;
+    private javax.swing.JPanel pagarBtn1;
     private javax.swing.JLabel pagarTxt;
+    private javax.swing.JLabel pagarTxt1;
     private javax.swing.JPanel pagosSociosBtn;
     private javax.swing.JLabel pagosSociosTxt;
     private javax.swing.JPanel panelDatos;
+    private javax.swing.JPanel panelDatos1;
     private javax.swing.JPanel panelDatosSocio;
+    private javax.swing.JPanel panelDatosSocio1;
     private javax.swing.JTabbedPane panelVentanas;
     private javax.swing.JPanel sociosBtn;
     private javax.swing.JLabel sociosTxt;
     private javax.swing.JPanel sueldosEmpleadosBtn;
     private javax.swing.JLabel sueldosEmpleadosTxt;
     private javax.swing.JTable tablaDeudas;
+    private javax.swing.JTable tablaPagos;
     private javax.swing.JLabel textoEmpleado;
     private javax.swing.JLabel textoPagosSocios;
     private javax.swing.JLabel textoSocio;
     private javax.swing.JLabel textoSueldosEmpleados;
     private javax.swing.JLabel tituloDatosSocio;
+    private javax.swing.JLabel tituloDatosSocio1;
     private javax.swing.JLabel tituloDeudores;
     private javax.swing.JLabel tituloEmpleado;
     private javax.swing.JLabel tituloMenu;
+    private javax.swing.JLabel tituloPagoEmpleado;
     private javax.swing.JLabel tituloPagoSocios;
+    private javax.swing.JLabel tituloPagos;
     private javax.swing.JLabel tituloPagosSocios;
     private javax.swing.JLabel tituloSocio;
     private javax.swing.JLabel tituloSocios;
     private javax.swing.JLabel tituloSocios1;
     private javax.swing.JLabel tituloSueldosEmpleados;
     private javax.swing.JLabel totalPagarTxt;
+    private javax.swing.JLabel totalPagarTxt1;
     private javax.swing.JLabel txtEmpleados;
     private javax.swing.JLabel txtPagosSocio;
     private javax.swing.JLabel txtSocios;
     private javax.swing.JLabel txtSueldosEmpleados;
     private javax.swing.JLabel vencTxt;
+    private javax.swing.JLabel vencTxt1;
     private javax.swing.JPanel ventana1;
     private javax.swing.JPanel ventana2;
     private javax.swing.JPanel ventana3;
