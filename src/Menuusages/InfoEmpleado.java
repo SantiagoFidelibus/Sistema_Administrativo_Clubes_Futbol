@@ -37,6 +37,8 @@ public class InfoEmpleado extends javax.swing.JFrame {
      */
     public InfoEmpleado(int legajo) {
         initComponents();
+        TimeUpdater timeUpdater = new TimeUpdater(timeText);
+        timeUpdater.start();
         legajoTxt.setText(String.valueOf(legajo));
         legajoTxt.setEditable(false);
         legajoTxt.setForeground(Color.black);
@@ -86,7 +88,7 @@ public class InfoEmpleado extends javax.swing.JFrame {
         header = new javax.swing.JPanel();
         administracionTxt = new javax.swing.JLabel();
         dateText = new javax.swing.JLabel();
-        panelVentanas = new javax.swing.JTabbedPane();
+        timeText = new javax.swing.JLabel();
         ventana1 = new javax.swing.JPanel();
         titulo = new javax.swing.JLabel();
         nombre = new javax.swing.JLabel();
@@ -141,35 +143,24 @@ public class InfoEmpleado extends javax.swing.JFrame {
         background1.add(exitMenu1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 580, -1));
 
         header.setBackground(new java.awt.Color(50, 115, 153));
+        header.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         administracionTxt.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
         administracionTxt.setForeground(new java.awt.Color(255, 255, 255));
         administracionTxt.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         administracionTxt.setText("EMPLEADOS");
+        header.add(administracionTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(38, 40, -1, 32));
 
         dateText.setFont(new java.awt.Font("Roboto", 1, 30)); // NOI18N
         dateText.setForeground(new java.awt.Color(255, 255, 255));
         dateText.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         dateText.setText("{dayname} {day} de {month} de {year} ");
+        header.add(dateText, new org.netbeans.lib.awtextra.AbsoluteConstraints(38, 90, -1, -1));
 
-        javax.swing.GroupLayout headerLayout = new javax.swing.GroupLayout(header);
-        header.setLayout(headerLayout);
-        headerLayout.setHorizontalGroup(
-            headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(headerLayout.createSequentialGroup()
-                .addGap(38, 38, 38)
-                .addGroup(headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(administracionTxt)
-                    .addComponent(dateText)))
-        );
-        headerLayout.setVerticalGroup(
-            headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(headerLayout.createSequentialGroup()
-                .addGap(40, 40, 40)
-                .addComponent(administracionTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(dateText))
-        );
+        timeText.setFont(new java.awt.Font("Roboto", 1, 30)); // NOI18N
+        timeText.setForeground(new java.awt.Color(255, 255, 255));
+        timeText.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        header.add(timeText, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 40, 160, 40));
 
         background1.add(header, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 600, 160));
 
@@ -448,25 +439,28 @@ public class InfoEmpleado extends javax.swing.JFrame {
         exitBtn.setLayout(exitBtnLayout);
         exitBtnLayout.setHorizontalGroup(
             exitBtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, exitBtnLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(exitTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGap(0, 40, Short.MAX_VALUE)
+            .addGroup(exitBtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(exitBtnLayout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(exitTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
         exitBtnLayout.setVerticalGroup(
             exitBtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(exitBtnLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(exitTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGap(0, 40, Short.MAX_VALUE)
+            .addGroup(exitBtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(exitBtnLayout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(exitTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
 
-        exitMenu.add(exitBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, -10, -1, 50));
+        exitMenu.add(exitBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 0, -1, -1));
 
-        ventana1.add(exitMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, -1, 40));
+        ventana1.add(exitMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 600, 40));
 
-        panelVentanas.addTab("tab1", ventana1);
-
-        background1.add(panelVentanas, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -40, 1280, 760));
+        background1.add(ventana1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -914,6 +908,17 @@ public class InfoEmpleado extends javax.swing.JFrame {
 
     }//GEN-LAST:event_nombreTxtMousePressed
 
+    private void exitMenuMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_exitMenuMouseDragged
+        int x = evt.getXOnScreen();
+        int y = evt.getYOnScreen();
+        this.setLocation(x - xMouse, y - yMouse);
+    }//GEN-LAST:event_exitMenuMouseDragged
+
+    private void exitMenuMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_exitMenuMousePressed
+        xMouse = evt.getX();
+        yMouse = evt.getY();
+    }//GEN-LAST:event_exitMenuMousePressed
+
     private void exitTxtMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_exitTxtMouseClicked
         System.exit(0);
     }//GEN-LAST:event_exitTxtMouseClicked
@@ -931,17 +936,6 @@ public class InfoEmpleado extends javax.swing.JFrame {
     private void exitTxtMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_exitTxtMousePressed
         // TODO add your handling code here:
     }//GEN-LAST:event_exitTxtMousePressed
-
-    private void exitMenuMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_exitMenuMouseDragged
-        int x = evt.getXOnScreen();
-        int y = evt.getYOnScreen();
-        this.setLocation(x - xMouse, y - yMouse);
-    }//GEN-LAST:event_exitMenuMouseDragged
-
-    private void exitMenuMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_exitMenuMousePressed
-        xMouse = evt.getX();
-        yMouse = evt.getY();
-    }//GEN-LAST:event_exitMenuMousePressed
 
     public static boolean isValidEmail(String email) {
         // Expresión regular para validar el correo electrónico
@@ -1014,12 +1008,12 @@ public class InfoEmpleado extends javax.swing.JFrame {
     private javax.swing.JLabel nombre;
     private javax.swing.JSeparator nombreSep;
     private javax.swing.JTextField nombreTxt;
-    private javax.swing.JTabbedPane panelVentanas;
     private javax.swing.JPanel registerBtn;
     private javax.swing.JLabel registerTxt;
     private javax.swing.JLabel sexo;
     private javax.swing.JSeparator sexoSep;
     private javax.swing.JTextField sexoTxt;
+    private javax.swing.JLabel timeText;
     private javax.swing.JLabel titulo;
     private javax.swing.JPanel ventana1;
     // End of variables declaration//GEN-END:variables

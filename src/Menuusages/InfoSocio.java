@@ -51,6 +51,8 @@ public class InfoSocio extends JFrame {
 
     public InfoSocio(int legajo) {
         initComponents();
+        TimeUpdater timeUpdater = new TimeUpdater(timeText);
+        timeUpdater.start();
         legajoTxt.setText(String.valueOf(legajo));
         legajoTxt.setEditable(false);
         legajoTxt.setForeground(Color.black);
@@ -103,6 +105,7 @@ public class InfoSocio extends JFrame {
         header = new javax.swing.JPanel();
         administracionTxt = new javax.swing.JLabel();
         dateText = new javax.swing.JLabel();
+        timeText = new javax.swing.JLabel();
         panelVentanas = new javax.swing.JTabbedPane();
         ventana1 = new javax.swing.JPanel();
         titulo = new javax.swing.JLabel();
@@ -215,37 +218,24 @@ public class InfoSocio extends JFrame {
         background.add(exitMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, -1));
 
         header.setBackground(new java.awt.Color(50, 115, 153));
+        header.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         administracionTxt.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
         administracionTxt.setForeground(new java.awt.Color(255, 255, 255));
         administracionTxt.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         administracionTxt.setText("SOCIOS");
+        header.add(administracionTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(38, 40, -1, 32));
 
         dateText.setFont(new java.awt.Font("Roboto", 1, 30)); // NOI18N
         dateText.setForeground(new java.awt.Color(255, 255, 255));
         dateText.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         dateText.setText("{dayname} {day} de {month} de {year} ");
+        header.add(dateText, new org.netbeans.lib.awtextra.AbsoluteConstraints(38, 90, -1, -1));
 
-        javax.swing.GroupLayout headerLayout = new javax.swing.GroupLayout(header);
-        header.setLayout(headerLayout);
-        headerLayout.setHorizontalGroup(
-            headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(headerLayout.createSequentialGroup()
-                .addGap(38, 38, 38)
-                .addGroup(headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(dateText)
-                    .addComponent(administracionTxt))
-                .addContainerGap(738, Short.MAX_VALUE))
-        );
-        headerLayout.setVerticalGroup(
-            headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, headerLayout.createSequentialGroup()
-                .addContainerGap(40, Short.MAX_VALUE)
-                .addComponent(administracionTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(dateText)
-                .addGap(34, 34, 34))
-        );
+        timeText.setFont(new java.awt.Font("Roboto", 1, 30)); // NOI18N
+        timeText.setForeground(new java.awt.Color(255, 255, 255));
+        timeText.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        header.add(timeText, new org.netbeans.lib.awtextra.AbsoluteConstraints(1080, 50, 170, 40));
 
         background.add(header, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 1280, 160));
 
@@ -1437,6 +1427,7 @@ public class InfoSocio extends JFrame {
     private javax.swing.JLabel telefono;
     private javax.swing.JSeparator telefonoSep;
     private javax.swing.JTextField telefonoTxt;
+    private javax.swing.JLabel timeText;
     private javax.swing.JLabel titulo;
     private javax.swing.JPanel ventana1;
     // End of variables declaration//GEN-END:variables

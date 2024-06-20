@@ -48,6 +48,8 @@ public class ModificarEmpleado extends javax.swing.JFrame {
      */
     public ModificarEmpleado(LocalDate fechaV,LocalDate fechaR, int legajo,String nombre, String apellido, int documento,String fechaNac,String email, Cargo cargoSeleccionada) throws UnsupportedLookAndFeelException {
         initComponents();
+        TimeUpdater timeUpdater = new TimeUpdater(timeText);
+        timeUpdater.start();
         fechaVen = fechaV;
         fechaRe = fechaR;
         legajoTxt.setText(String.valueOf(legajo));
@@ -124,6 +126,7 @@ public class ModificarEmpleado extends javax.swing.JFrame {
         header = new javax.swing.JPanel();
         administracionTxt = new javax.swing.JLabel();
         dateText = new javax.swing.JLabel();
+        timeText = new javax.swing.JLabel();
         panelVentanas = new javax.swing.JTabbedPane();
         ventana1 = new javax.swing.JPanel();
         titulo = new javax.swing.JLabel();
@@ -229,37 +232,24 @@ public class ModificarEmpleado extends javax.swing.JFrame {
         background.add(exitMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         header.setBackground(new java.awt.Color(50, 115, 153));
+        header.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         administracionTxt.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
         administracionTxt.setForeground(new java.awt.Color(255, 255, 255));
         administracionTxt.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         administracionTxt.setText("EMPLEADOS");
+        header.add(administracionTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(38, 40, -1, 32));
 
         dateText.setFont(new java.awt.Font("Roboto", 1, 30)); // NOI18N
         dateText.setForeground(new java.awt.Color(255, 255, 255));
         dateText.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         dateText.setText("{dayname} {day} de {month} de {year} ");
+        header.add(dateText, new org.netbeans.lib.awtextra.AbsoluteConstraints(38, 90, -1, -1));
 
-        javax.swing.GroupLayout headerLayout = new javax.swing.GroupLayout(header);
-        header.setLayout(headerLayout);
-        headerLayout.setHorizontalGroup(
-            headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(headerLayout.createSequentialGroup()
-                .addGap(38, 38, 38)
-                .addGroup(headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(dateText)
-                    .addComponent(administracionTxt))
-                .addContainerGap(58, Short.MAX_VALUE))
-        );
-        headerLayout.setVerticalGroup(
-            headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, headerLayout.createSequentialGroup()
-                .addContainerGap(37, Short.MAX_VALUE)
-                .addComponent(administracionTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(dateText)
-                .addGap(34, 34, 34))
-        );
+        timeText.setFont(new java.awt.Font("Roboto", 1, 30)); // NOI18N
+        timeText.setForeground(new java.awt.Color(255, 255, 255));
+        timeText.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        header.add(timeText, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 40, 160, 40));
 
         background.add(header, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 600, 160));
 
@@ -944,6 +934,7 @@ public class ModificarEmpleado extends javax.swing.JFrame {
     private javax.swing.JSeparator nombreSep;
     private javax.swing.JTextField nombreTxt;
     private javax.swing.JTabbedPane panelVentanas;
+    private javax.swing.JLabel timeText;
     private javax.swing.JLabel titulo;
     private javax.swing.JPanel ventana1;
     // End of variables declaration//GEN-END:variables

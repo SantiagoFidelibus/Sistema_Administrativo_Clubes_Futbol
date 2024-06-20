@@ -27,6 +27,8 @@ import Menuusages.InfoSocio;
 import Containers.ContenedoraSocio;
 import Menuusages.InfoEmpleado;
 import Menuusages.ModificarEmpleado;
+import Menuusages.TimeUpdater;
+import java.time.LocalTime;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -35,7 +37,10 @@ public class Menu extends JFrame {
     int xMouse, yMouse;
     public Menu() {
         initComponents();
+        TimeUpdater timeUpdater = new TimeUpdater(timeText);
+        timeUpdater.start();
         setDate();
+        
         textoSocio.setText("<html><span style='color: gray; font-family: Corbel; font-size: 16pt;'>Gestiona el registro, modificación y eliminación de socios.</span></html>");
         textoEmpleado.setText("<html><span style='color: gray; font-family: Corbel; font-size: 16pt;'>Administra el registro, modificación y eliminación de empleados.</span></html>");
         textoPagosSocios.setText("<html><span style='color: gray; font-family: Corbel; font-size: 16pt;'>Procesa los pagos de los socios del club.</span></html>");
@@ -55,6 +60,8 @@ public class Menu extends JFrame {
         String[] meses = {"Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"};
         dateText.setText(dia+" de "+meses[month -1]+" de "+year);
     }  
+    
+   
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -79,6 +86,7 @@ public class Menu extends JFrame {
         header = new javax.swing.JPanel();
         administracionTxt = new javax.swing.JLabel();
         dateText = new javax.swing.JLabel();
+        timeText = new javax.swing.JLabel();
         panelVentanas = new javax.swing.JTabbedPane();
         ventana1 = new javax.swing.JPanel();
         tituloMenu = new javax.swing.JLabel();
@@ -388,37 +396,24 @@ public class Menu extends JFrame {
         background.add(dashboard, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 270, 720));
 
         header.setBackground(new java.awt.Color(50, 115, 153));
+        header.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         administracionTxt.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
         administracionTxt.setForeground(new java.awt.Color(255, 255, 255));
         administracionTxt.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         administracionTxt.setText("ADMINISTRACIÓN");
+        header.add(administracionTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(38, 40, -1, 32));
 
         dateText.setFont(new java.awt.Font("Roboto", 1, 30)); // NOI18N
         dateText.setForeground(new java.awt.Color(255, 255, 255));
         dateText.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         dateText.setText("{dayname} {day} de {month} de {year} ");
+        header.add(dateText, new org.netbeans.lib.awtextra.AbsoluteConstraints(38, 90, -1, -1));
 
-        javax.swing.GroupLayout headerLayout = new javax.swing.GroupLayout(header);
-        header.setLayout(headerLayout);
-        headerLayout.setHorizontalGroup(
-            headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(headerLayout.createSequentialGroup()
-                .addGap(38, 38, 38)
-                .addGroup(headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(dateText)
-                    .addComponent(administracionTxt))
-                .addContainerGap(468, Short.MAX_VALUE))
-        );
-        headerLayout.setVerticalGroup(
-            headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, headerLayout.createSequentialGroup()
-                .addContainerGap(40, Short.MAX_VALUE)
-                .addComponent(administracionTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(dateText)
-                .addGap(34, 34, 34))
-        );
+        timeText.setFont(new java.awt.Font("Roboto", 1, 30)); // NOI18N
+        timeText.setForeground(new java.awt.Color(255, 255, 255));
+        timeText.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        header.add(timeText, new org.netbeans.lib.awtextra.AbsoluteConstraints(807, 50, 170, 40));
 
         background.add(header, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 40, 1010, 160));
 
@@ -446,7 +441,7 @@ public class Menu extends JFrame {
         btnSocios.setBackground(new java.awt.Color(50, 115, 153));
 
         txtSocios.setBackground(new java.awt.Color(255, 255, 255));
-        txtSocios.setForeground(new java.awt.Color(204, 204, 204));
+        txtSocios.setForeground(new java.awt.Color(255, 255, 255));
         txtSocios.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         txtSocios.setText("Más info");
         txtSocios.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -495,7 +490,7 @@ public class Menu extends JFrame {
         btnEmpleados.setBackground(new java.awt.Color(50, 115, 153));
 
         txtEmpleados.setBackground(new java.awt.Color(255, 255, 255));
-        txtEmpleados.setForeground(new java.awt.Color(204, 204, 204));
+        txtEmpleados.setForeground(new java.awt.Color(255, 255, 255));
         txtEmpleados.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         txtEmpleados.setText("Más info");
         txtEmpleados.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -543,7 +538,7 @@ public class Menu extends JFrame {
         btnPagosSocio.setBackground(new java.awt.Color(50, 115, 153));
 
         txtPagosSocio.setBackground(new java.awt.Color(255, 255, 255));
-        txtPagosSocio.setForeground(new java.awt.Color(204, 204, 204));
+        txtPagosSocio.setForeground(new java.awt.Color(255, 255, 255));
         txtPagosSocio.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         txtPagosSocio.setText("Más info");
         txtPagosSocio.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -591,7 +586,7 @@ public class Menu extends JFrame {
         btnSueldosEmpleados.setBackground(new java.awt.Color(50, 115, 153));
 
         txtSueldosEmpleados.setBackground(new java.awt.Color(255, 255, 255));
-        txtSueldosEmpleados.setForeground(new java.awt.Color(204, 204, 204));
+        txtSueldosEmpleados.setForeground(new java.awt.Color(255, 255, 255));
         txtSueldosEmpleados.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         txtSueldosEmpleados.setText("Más info");
         txtSueldosEmpleados.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -901,10 +896,7 @@ public class Menu extends JFrame {
         );
         eliminarBtn1Layout.setVerticalGroup(
             eliminarBtn1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, eliminarBtn1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(eliminarTxt1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+            .addComponent(eliminarTxt1, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
         );
 
         ventana3.add(eliminarBtn1, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 620, 110, 40));
@@ -971,7 +963,7 @@ public class Menu extends JFrame {
             .addComponent(modificarTxt1, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
         );
 
-        ventana3.add(modificarBtn1, new org.netbeans.lib.awtextra.AbsoluteConstraints(576, 624, -1, -1));
+        ventana3.add(modificarBtn1, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 620, -1, -1));
 
         agregarBtn1.setBackground(new java.awt.Color(50, 115, 153));
         agregarBtn1.setForeground(new java.awt.Color(255, 255, 255));
@@ -1004,7 +996,7 @@ public class Menu extends JFrame {
             .addComponent(agregarTxt1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
         );
 
-        ventana3.add(agregarBtn1, new org.netbeans.lib.awtextra.AbsoluteConstraints(856, 624, -1, -1));
+        ventana3.add(agregarBtn1, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 620, -1, -1));
 
         jTable3.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jTable3.setModel(new javax.swing.table.DefaultTableModel(
@@ -1344,7 +1336,7 @@ public class Menu extends JFrame {
 
         tituloPagoEmpleado.setFont(new java.awt.Font("Corbel", 1, 28)); // NOI18N
         tituloPagoEmpleado.setForeground(new java.awt.Color(153, 153, 153));
-        tituloPagoEmpleado.setText("Pago de Cuotas Sueldos");
+        tituloPagoEmpleado.setText("Pago de Sueldos");
         ventana5.add(tituloPagoEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 200, -1, -1));
 
         legajoTitulo1.setFont(new java.awt.Font("Roboto Light", 1, 15)); // NOI18N
@@ -2497,8 +2489,6 @@ public HashMap<Integer, Socio> obtenerListaDeSocios() {
             Correos mail = new Correos();
             new Thread(() -> {
                 try {
-                    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-                    String fechaRegistroPagoComoCadena = empleado.getFechaRegistroPago().format(formatter);
                     mail.CorreoPagoSalario(empleado.getEmail(), empleado.getNombre(), valorTotal);
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -2562,6 +2552,7 @@ public HashMap<Integer, Socio> obtenerListaDeSocios() {
                 // EN EL CASO QUE SE ENCUENTRE Y SEA VALIDO
                 nomTxt1.setText("Nombre y Apellido: " + empleado.getNombre() + " " + empleado.getApellido());
                 docTxt1.setText("Documento: " + empleado.getDni());
+                cargoTxt.setText("Cargo: " + empleado.getCargo());
                 totalPagarTxt1.setText("Total a pagar: $" + empleado.pagarCuota(0));
                 vencTxt1.setText("Fecha de vencimiento: " + empleado.getFechaVencimientoPago().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")));
                 cardLayout.show(panelDatos1, "card3");
@@ -2767,6 +2758,7 @@ public HashMap<Integer, Socio> obtenerListaDeSocios() {
     private javax.swing.JLabel textoPagosSocios;
     private javax.swing.JLabel textoSocio;
     private javax.swing.JLabel textoSueldosEmpleados;
+    private javax.swing.JLabel timeText;
     private javax.swing.JLabel tituloDatosSocio;
     private javax.swing.JLabel tituloDatosSocio1;
     private javax.swing.JLabel tituloDeudores;
