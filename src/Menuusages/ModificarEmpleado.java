@@ -152,6 +152,8 @@ public class ModificarEmpleado extends javax.swing.JFrame {
         cargarImgBtn = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setLocationByPlatform(true);
+        setUndecorated(true);
 
         background.setBackground(new java.awt.Color(255, 255, 255));
         background.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -231,7 +233,7 @@ public class ModificarEmpleado extends javax.swing.JFrame {
         administracionTxt.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
         administracionTxt.setForeground(new java.awt.Color(255, 255, 255));
         administracionTxt.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        administracionTxt.setText("Empleados");
+        administracionTxt.setText("EMPLEADOS");
 
         dateText.setFont(new java.awt.Font("Roboto", 1, 30)); // NOI18N
         dateText.setForeground(new java.awt.Color(255, 255, 255));

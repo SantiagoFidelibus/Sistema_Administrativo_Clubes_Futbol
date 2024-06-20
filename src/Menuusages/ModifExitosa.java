@@ -36,6 +36,7 @@ public class ModifExitosa extends javax.swing.JFrame {
         okBtnTxt = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setLocationByPlatform(true);
         setUndecorated(true);
 
         background.setBackground(new java.awt.Color(255, 255, 255));
@@ -45,10 +46,12 @@ public class ModifExitosa extends javax.swing.JFrame {
         background.add(Tick, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 40, 60, 60));
 
         regExitoso.setFont(new java.awt.Font("Roboto", 1, 24)); // NOI18N
+        regExitoso.setForeground(new java.awt.Color(0, 0, 0));
         regExitoso.setText("Modificacion Exitosa");
         background.add(regExitoso, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 110, 270, 50));
 
         regExitosoTxt.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        regExitosoTxt.setForeground(new java.awt.Color(0, 0, 0));
         regExitosoTxt.setText("Modificación finalizada con exito.");
         background.add(regExitosoTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 160, 220, 30));
 

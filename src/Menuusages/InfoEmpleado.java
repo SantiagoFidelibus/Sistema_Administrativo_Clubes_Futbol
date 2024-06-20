@@ -83,8 +83,6 @@ public class InfoEmpleado extends javax.swing.JFrame {
 
         background1 = new javax.swing.JPanel();
         exitMenu1 = new javax.swing.JPanel();
-        exitBtn1 = new javax.swing.JPanel();
-        exitTxt1 = new javax.swing.JLabel();
         header = new javax.swing.JPanel();
         administracionTxt = new javax.swing.JLabel();
         dateText = new javax.swing.JLabel();
@@ -114,12 +112,16 @@ public class InfoEmpleado extends javax.swing.JFrame {
         sexoSep = new javax.swing.JSeparator();
         cargo = new javax.swing.JLabel();
         cargoBox = new javax.swing.JComboBox<>();
-        cargarImgBtn = new javax.swing.JPanel();
         registerBtn = new javax.swing.JPanel();
         registerTxt = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
+        exitMenu = new javax.swing.JPanel();
+        exitBtn = new javax.swing.JPanel();
+        exitTxt = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setLocationByPlatform(true);
+        setUndecorated(true);
 
         background1.setBackground(new java.awt.Color(255, 255, 255));
         background1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -136,43 +138,6 @@ public class InfoEmpleado extends javax.swing.JFrame {
             }
         });
         exitMenu1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        exitBtn1.setBackground(new java.awt.Color(255, 255, 255));
-
-        javax.swing.GroupLayout exitBtn1Layout = new javax.swing.GroupLayout(exitBtn1);
-        exitBtn1.setLayout(exitBtn1Layout);
-        exitBtn1Layout.setHorizontalGroup(
-            exitBtn1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 40, Short.MAX_VALUE)
-        );
-        exitBtn1Layout.setVerticalGroup(
-            exitBtn1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 40, Short.MAX_VALUE)
-        );
-
-        exitMenu1.add(exitBtn1, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 0, -1, -1));
-
-        exitTxt1.setBackground(new java.awt.Color(0, 0, 0));
-        exitTxt1.setFont(new java.awt.Font("Roboto Light", 0, 24)); // NOI18N
-        exitTxt1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        exitTxt1.setText("X");
-        exitTxt1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        exitTxt1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                exitTxt1MouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                exitTxt1MouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                exitTxt1MouseExited(evt);
-            }
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                exitTxt1MousePressed(evt);
-            }
-        });
-        exitMenu1.add(exitTxt1, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 0, 40, 40));
-
         background1.add(exitMenu1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 580, -1));
 
         header.setBackground(new java.awt.Color(50, 115, 153));
@@ -194,29 +159,28 @@ public class InfoEmpleado extends javax.swing.JFrame {
             .addGroup(headerLayout.createSequentialGroup()
                 .addGap(38, 38, 38)
                 .addGroup(headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(dateText)
-                    .addComponent(administracionTxt))
-                .addContainerGap(38, Short.MAX_VALUE))
+                    .addComponent(administracionTxt)
+                    .addComponent(dateText)))
         );
         headerLayout.setVerticalGroup(
             headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, headerLayout.createSequentialGroup()
-                .addContainerGap(37, Short.MAX_VALUE)
+            .addGroup(headerLayout.createSequentialGroup()
+                .addGap(40, 40, 40)
                 .addComponent(administracionTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(dateText)
-                .addGap(34, 34, 34))
+                .addComponent(dateText))
         );
 
-        background1.add(header, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 580, 160));
+        background1.add(header, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 600, 160));
 
         ventana1.setBackground(new java.awt.Color(255, 255, 255));
+        ventana1.setPreferredSize(new java.awt.Dimension(599, 720));
         ventana1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         titulo.setFont(new java.awt.Font("Roboto Black", 0, 24)); // NOI18N
         titulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         titulo.setText("AGREGAR NUEVO EMPLEADO");
-        ventana1.add(titulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 230, 350, 50));
+        ventana1.add(titulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 230, 340, 50));
 
         nombre.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         nombre.setText("NOMBRE");
@@ -403,21 +367,6 @@ public class InfoEmpleado extends javax.swing.JFrame {
         });
         ventana1.add(cargoBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 580, 180, 30));
 
-        cargarImgBtn.setBackground(new java.awt.Color(255, 255, 255));
-
-        javax.swing.GroupLayout cargarImgBtnLayout = new javax.swing.GroupLayout(cargarImgBtn);
-        cargarImgBtn.setLayout(cargarImgBtnLayout);
-        cargarImgBtnLayout.setHorizontalGroup(
-            cargarImgBtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
-        );
-        cargarImgBtnLayout.setVerticalGroup(
-            cargarImgBtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 20, Short.MAX_VALUE)
-        );
-
-        ventana1.add(cargarImgBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(1030, 490, -1, 20));
-
         registerBtn.setBackground(new java.awt.Color(50, 115, 153));
 
         registerTxt.setFont(new java.awt.Font("Roboto Light", 1, 18)); // NOI18N
@@ -460,6 +409,61 @@ public class InfoEmpleado extends javax.swing.JFrame {
         });
         ventana1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 670, -1, -1));
 
+        exitMenu.setBackground(new java.awt.Color(255, 255, 255));
+        exitMenu.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                exitMenuMouseDragged(evt);
+            }
+        });
+        exitMenu.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                exitMenuMousePressed(evt);
+            }
+        });
+        exitMenu.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        exitBtn.setBackground(new java.awt.Color(255, 255, 255));
+
+        exitTxt.setBackground(new java.awt.Color(0, 0, 0));
+        exitTxt.setFont(new java.awt.Font("Roboto Light", 0, 24)); // NOI18N
+        exitTxt.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        exitTxt.setText("X");
+        exitTxt.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        exitTxt.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                exitTxtMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                exitTxtMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                exitTxtMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                exitTxtMousePressed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout exitBtnLayout = new javax.swing.GroupLayout(exitBtn);
+        exitBtn.setLayout(exitBtnLayout);
+        exitBtnLayout.setHorizontalGroup(
+            exitBtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, exitBtnLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(exitTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+        exitBtnLayout.setVerticalGroup(
+            exitBtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(exitBtnLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(exitTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        exitMenu.add(exitBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, -10, -1, 50));
+
+        ventana1.add(exitMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, -1, 40));
+
         panelVentanas.addTab("tab1", ventana1);
 
         background1.add(panelVentanas, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -40, 1280, 760));
@@ -468,7 +472,7 @@ public class InfoEmpleado extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(background1, javax.swing.GroupLayout.PREFERRED_SIZE, 583, Short.MAX_VALUE)
+            .addComponent(background1, javax.swing.GroupLayout.PREFERRED_SIZE, 599, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -477,24 +481,6 @@ public class InfoEmpleado extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void exitTxt1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_exitTxt1MouseClicked
-        System.exit(0);
-    }//GEN-LAST:event_exitTxt1MouseClicked
-
-    private void exitTxt1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_exitTxt1MouseEntered
-        exitBtn1.setBackground(Color.red);
-        exitTxt1.setForeground(Color.white);
-    }//GEN-LAST:event_exitTxt1MouseEntered
-
-    private void exitTxt1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_exitTxt1MouseExited
-        exitBtn1.setBackground(Color.white);
-        exitTxt1.setForeground(Color.black);
-    }//GEN-LAST:event_exitTxt1MouseExited
-
-    private void exitTxt1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_exitTxt1MousePressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_exitTxt1MousePressed
 
     private void exitMenu1MouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_exitMenu1MouseDragged
         int x = evt.getXOnScreen();
@@ -507,342 +493,21 @@ public class InfoEmpleado extends javax.swing.JFrame {
         yMouse = evt.getY();
     }//GEN-LAST:event_exitMenu1MousePressed
 
-    private void nombreTxtMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_nombreTxtMousePressed
-        if (nombreTxt.getText().equals("Ingrese el nombre")) {
-            nombreTxt.setText("");
-            nombreTxt.setForeground(Color.black);
-        }
-        if (apellidoTxt.getText().equals("")) {
-            apellidoTxt.setText("Ingrese el apellido");
-            apellidoTxt.setForeground(Color.gray);
-        }
-        if (dniTxt.getText().equals("")) {
-            dniTxt.setText("Ingrese el documento");
-            dniTxt.setForeground(Color.gray);
-        }
-        if (legajoTxt.getText().equals("")) {
-            legajoTxt.setText("Ingrese el legajo");
-            legajoTxt.setForeground(Color.gray);
-        }
-        if (emailTxt.getText().equals("")) {
-            emailTxt.setText("Ingrese el email");
-            emailTxt.setForeground(Color.gray);
-        }
-       
-        if (fechaNacTxt.getText().equals("")) {
-            fechaNacTxt.setText("dd/mm/aaaa");
-            fechaNacTxt.setForeground(Color.gray);
-        }
-        
-        if (sexoTxt.getText().equals("")) {
-            sexoTxt.setText("Ingrese el genero");
-            sexoTxt.setForeground(Color.gray);
-        }
-       
-    }//GEN-LAST:event_nombreTxtMousePressed
+    private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
+        Menu menu = new Menu();
+        menu.setVisible(true);
+        menu.pack();
+        menu.setLocationRelativeTo(null);
+        this.dispose();
+    }//GEN-LAST:event_jLabel1MouseClicked
 
-    private void nombreTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombreTxtActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_nombreTxtActionPerformed
+    private void registerTxtMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_registerTxtMouseExited
+        registerBtn.setBackground(new Color(59,132,173));
+    }//GEN-LAST:event_registerTxtMouseExited
 
-    private void nombreTxtKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nombreTxtKeyTyped
-        char c = evt.getKeyChar();
-
-        if ((c < 'a' || c > 'z') && (c < 'A' || c > 'Z') && c != ' ')
-        evt.consume();
-    }//GEN-LAST:event_nombreTxtKeyTyped
-
-    private void apellidoTxtMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_apellidoTxtMousePressed
-        if (apellidoTxt.getText().equals("Ingrese el apellido")) {
-            apellidoTxt.setText("");
-            apellidoTxt.setForeground(Color.black);
-        }
-        if (nombreTxt.getText().equals("")) {
-            nombreTxt.setText("Ingrese el nombre");
-            nombreTxt.setForeground(Color.gray);
-        }
-        if (dniTxt.getText().equals("")) {
-            dniTxt.setText("Ingrese el documento");
-            dniTxt.setForeground(Color.gray);
-        }
-        if (legajoTxt.getText().equals("")) {
-            legajoTxt.setText("Ingrese el legajo");
-            legajoTxt.setForeground(Color.gray);
-        }
-        if (emailTxt.getText().equals("")) {
-            emailTxt.setText("Ingrese el email");
-            emailTxt.setForeground(Color.gray);
-        }
-        
-        if (fechaNacTxt.getText().equals("dd/mm/aaaa")) {
-            fechaNacTxt.setText("dd/mm/aaaa");
-            fechaNacTxt.setForeground(Color.gray);
-        }
-        
-        if (sexoTxt.getText().equals("")) {
-            sexoTxt.setText("Ingrese el genero");
-            sexoTxt.setForeground(Color.gray);
-        }
-        
-    }//GEN-LAST:event_apellidoTxtMousePressed
-
-    private void apellidoTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_apellidoTxtActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_apellidoTxtActionPerformed
-
-    private void apellidoTxtKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_apellidoTxtKeyTyped
-        char c = evt.getKeyChar();
-
-        if ((c < 'a' || c > 'z') && (c < 'A' || c > 'Z') && c != ' ')
-        evt.consume();
-    }//GEN-LAST:event_apellidoTxtKeyTyped
-
-    private void dniTxtMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dniTxtMousePressed
-        if (apellidoTxt.getText().equals("")) {
-            apellidoTxt.setText("Ingrese el apellido");
-            apellidoTxt.setForeground(Color.gray);
-        }
-        if (nombreTxt.getText().equals("")) {
-            nombreTxt.setText("Ingrese el nombre");
-            nombreTxt.setForeground(Color.gray);
-        }
-        if (dniTxt.getText().equals("Ingrese el documento")) {
-            dniTxt.setText("");
-            dniTxt.setForeground(Color.black);
-        }
-        if (legajoTxt.getText().equals("")) {
-            legajoTxt.setText("Ingrese el legajo");
-            legajoTxt.setForeground(Color.gray);
-        }
-        if (emailTxt.getText().equals("")) {
-            emailTxt.setText("Ingrese el email");
-            emailTxt.setForeground(Color.gray);
-        }
-       
-        if (fechaNacTxt.getText().equals("")) {
-            fechaNacTxt.setText("dd/mm/aaaa");
-            fechaNacTxt.setForeground(Color.gray);
-        }
-       
-        if (sexoTxt.getText().equals("")) {
-            sexoTxt.setText("Ingrese el genero");
-            sexoTxt.setForeground(Color.gray);
-        }
-       
-    }//GEN-LAST:event_dniTxtMousePressed
-
-    private void dniTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dniTxtActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_dniTxtActionPerformed
-
-    private void dniTxtKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_dniTxtKeyTyped
-        char c = evt.getKeyChar();
-
-        if (c < '0' || c > '9')
-        evt.consume();
-    }//GEN-LAST:event_dniTxtKeyTyped
-
-    private void legajoTxtMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_legajoTxtMousePressed
-        if (apellidoTxt.getText().equals("")) {
-            apellidoTxt.setText("Ingrese el apellido");
-            apellidoTxt.setForeground(Color.gray);
-        }
-        if (nombreTxt.getText().equals("")) {
-            nombreTxt.setText("Ingrese el nombre");
-            nombreTxt.setForeground(Color.gray);
-        }
-        if (dniTxt.getText().equals("")) {
-            dniTxt.setText("Ingrese el documento");
-            dniTxt.setForeground(Color.gray);
-        }
-        if (legajoTxt.getText().equals("Ingrese el legajo")) {
-            legajoTxt.setText("");
-            legajoTxt.setForeground(Color.black);
-        }
-        if (emailTxt.getText().equals("")) {
-            emailTxt.setText("Ingrese el email");
-            emailTxt.setForeground(Color.gray);
-        }
-        
-        if (fechaNacTxt.getText().equals("")) {
-            fechaNacTxt.setText("dd/mm/aaaa");
-            fechaNacTxt.setForeground(Color.gray);
-        }
-        
-        if (sexoTxt.getText().equals("")) {
-            sexoTxt.setText("Ingrese el genero");
-            sexoTxt.setForeground(Color.gray);
-        }
-        
-    }//GEN-LAST:event_legajoTxtMousePressed
-
-    private void legajoTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_legajoTxtActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_legajoTxtActionPerformed
-
-    private void legajoTxtKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_legajoTxtKeyTyped
-        char c = evt.getKeyChar();
-
-        if (c < '0' || c > '9')
-        evt.consume();
-    }//GEN-LAST:event_legajoTxtKeyTyped
-
-    private void emailTxtMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_emailTxtMousePressed
-        if (apellidoTxt.getText().equals("")) {
-            apellidoTxt.setText("Ingrese el apellido");
-            apellidoTxt.setForeground(Color.gray);
-        }
-        if (nombreTxt.getText().equals("")) {
-            nombreTxt.setText("Ingrese el nombre");
-            nombreTxt.setForeground(Color.gray);
-        }
-        if (dniTxt.getText().equals("")) {
-            dniTxt.setText("Ingrese el documento");
-            dniTxt.setForeground(Color.gray);
-        }
-        if (legajoTxt.getText().equals("")) {
-            legajoTxt.setText("Ingrese el legajo");
-            legajoTxt.setForeground(Color.gray);
-        }
-        if (emailTxt.getText().equals("Ingrese el email")) {
-            emailTxt.setText("");
-            emailTxt.setForeground(Color.black);
-        }
-        
-        if (fechaNacTxt.getText().equals("")) {
-            fechaNacTxt.setText("dd/mm/aaaa");
-            fechaNacTxt.setForeground(Color.gray);
-        }
-        
-        if (sexoTxt.getText().equals("")) {
-            sexoTxt.setText("Ingrese el genero");
-            sexoTxt.setForeground(Color.gray);
-        }
-       
-    }//GEN-LAST:event_emailTxtMousePressed
-
-    private void emailTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_emailTxtActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_emailTxtActionPerformed
-
-    private void fechaNacTxtMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_fechaNacTxtMousePressed
-
-        if (apellidoTxt.getText().equals("")) {
-            apellidoTxt.setText("Ingrese el apellido");
-            apellidoTxt.setForeground(Color.gray);
-        }
-        if (nombreTxt.getText().equals("")) {
-            nombreTxt.setText("Ingrese el nombre");
-            nombreTxt.setForeground(Color.gray);
-        }
-        if (dniTxt.getText().equals("")) {
-            dniTxt.setText("Ingrese el documento");
-            dniTxt.setForeground(Color.gray);
-        }
-        if (legajoTxt.getText().equals("")) {
-            legajoTxt.setText("Ingrese el legajo");
-            legajoTxt.setForeground(Color.gray);
-        }
-        if (emailTxt.getText().equals("")) {
-            emailTxt.setText("Ingrese el email");
-            emailTxt.setForeground(Color.gray);
-        }
-       
-        if (fechaNacTxt.getText().equals("dd/mm/aaaa")) {
-            fechaNacTxt.setText("");
-            fechaNacTxt.setForeground(Color.black);
-        }
-
-        
-        if (sexoTxt.getText().equals("")) {
-            sexoTxt.setText("Ingrese el genero");
-            sexoTxt.setForeground(Color.gray);
-        }
-        
-    }//GEN-LAST:event_fechaNacTxtMousePressed
-
-    private void fechaNacTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fechaNacTxtActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_fechaNacTxtActionPerformed
-
-    private void sexoTxtMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_sexoTxtMousePressed
-        if (apellidoTxt.getText().equals("")) {
-            apellidoTxt.setText("Ingrese el apellido");
-            apellidoTxt.setForeground(Color.gray);
-        }
-        if (nombreTxt.getText().equals("")) {
-            nombreTxt.setText("Ingrese el nombre");
-            nombreTxt.setForeground(Color.gray);
-        }
-        if (dniTxt.getText().equals("")) {
-            dniTxt.setText("Ingrese el documento");
-            dniTxt.setForeground(Color.gray);
-        }
-        if (legajoTxt.getText().equals("")) {
-            legajoTxt.setText("Ingrese el legajo");
-            legajoTxt.setForeground(Color.gray);
-        }
-        if (emailTxt.getText().equals("")) {
-            emailTxt.setText("Ingrese el email");
-            emailTxt.setForeground(Color.gray);
-        }
-     
-        if (fechaNacTxt.getText().equals("")) {
-            fechaNacTxt.setText("dd/mm/aaaa");
-            fechaNacTxt.setForeground(Color.gray);
-        }
-      
-        if (sexoTxt.getText().equals("Ingrese el genero")) {
-            sexoTxt.setText("");
-            sexoTxt.setForeground(Color.black);
-        }
-       
-    }//GEN-LAST:event_sexoTxtMousePressed
-
-    private void sexoTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sexoTxtActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_sexoTxtActionPerformed
-
-    private void sexoTxtKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_sexoTxtKeyTyped
-        char c = evt.getKeyChar();
-
-        if ((c < 'a' || c > 'z') && (c < 'A' || c > 'Z') && c != ' ')
-        evt.consume();
-    }//GEN-LAST:event_sexoTxtKeyTyped
-
-    private void cargoBoxMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cargoBoxMousePressed
-        if (apellidoTxt.getText().equals("")) {
-            apellidoTxt.setText("Ingrese el apellido");
-            apellidoTxt.setForeground(Color.gray);
-        }
-        if (nombreTxt.getText().equals("")) {
-            nombreTxt.setText("Ingrese el nombre");
-            nombreTxt.setForeground(Color.gray);
-        }
-        if (dniTxt.getText().equals("")) {
-            dniTxt.setText("Ingrese el documento");
-            dniTxt.setForeground(Color.gray);
-        }
-        if (legajoTxt.getText().equals("")) {
-            legajoTxt.setText("Ingrese el legajo");
-            legajoTxt.setForeground(Color.gray);
-        }
-        if (emailTxt.getText().equals("")) {
-            emailTxt.setText("Ingrese el email");
-            emailTxt.setForeground(Color.gray);
-        }
-       
-        if (fechaNacTxt.getText().equals("")) {
-            fechaNacTxt.setText("dd/mm/aaaa");
-            fechaNacTxt.setForeground(Color.gray);
-        }
-       
-        if (sexoTxt.getText().equals("")) {
-            sexoTxt.setText("Ingrese el genero");
-            sexoTxt.setForeground(Color.gray);
-        }
-        
-    }//GEN-LAST:event_cargoBoxMousePressed
+    private void registerTxtMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_registerTxtMouseEntered
+        registerBtn.setBackground(new Color(80,139,166));
+    }//GEN-LAST:event_registerTxtMouseEntered
 
     private void registerTxtMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_registerTxtMouseClicked
         ContenedoraEmpleado contenedoraEmpleado = new ContenedoraEmpleado();
@@ -913,21 +578,370 @@ public class InfoEmpleado extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_registerTxtMouseClicked
 
-    private void registerTxtMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_registerTxtMouseEntered
-        registerBtn.setBackground(new Color(80,139,166));
-    }//GEN-LAST:event_registerTxtMouseEntered
+    private void cargoBoxMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cargoBoxMousePressed
+        if (apellidoTxt.getText().equals("")) {
+            apellidoTxt.setText("Ingrese el apellido");
+            apellidoTxt.setForeground(Color.gray);
+        }
+        if (nombreTxt.getText().equals("")) {
+            nombreTxt.setText("Ingrese el nombre");
+            nombreTxt.setForeground(Color.gray);
+        }
+        if (dniTxt.getText().equals("")) {
+            dniTxt.setText("Ingrese el documento");
+            dniTxt.setForeground(Color.gray);
+        }
+        if (legajoTxt.getText().equals("")) {
+            legajoTxt.setText("Ingrese el legajo");
+            legajoTxt.setForeground(Color.gray);
+        }
+        if (emailTxt.getText().equals("")) {
+            emailTxt.setText("Ingrese el email");
+            emailTxt.setForeground(Color.gray);
+        }
 
-    private void registerTxtMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_registerTxtMouseExited
-        registerBtn.setBackground(new Color(59,132,173));
-    }//GEN-LAST:event_registerTxtMouseExited
+        if (fechaNacTxt.getText().equals("")) {
+            fechaNacTxt.setText("dd/mm/aaaa");
+            fechaNacTxt.setForeground(Color.gray);
+        }
 
-    private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
-        Menu menu = new Menu();
-        menu.setVisible(true);
-        menu.pack();
-        menu.setLocationRelativeTo(null);
-        this.dispose();
-    }//GEN-LAST:event_jLabel1MouseClicked
+        if (sexoTxt.getText().equals("")) {
+            sexoTxt.setText("Ingrese el genero");
+            sexoTxt.setForeground(Color.gray);
+        }
+
+    }//GEN-LAST:event_cargoBoxMousePressed
+
+    private void sexoTxtKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_sexoTxtKeyTyped
+        char c = evt.getKeyChar();
+
+        if ((c < 'a' || c > 'z') && (c < 'A' || c > 'Z') && c != ' ')
+        evt.consume();
+    }//GEN-LAST:event_sexoTxtKeyTyped
+
+    private void sexoTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sexoTxtActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_sexoTxtActionPerformed
+
+    private void sexoTxtMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_sexoTxtMousePressed
+        if (apellidoTxt.getText().equals("")) {
+            apellidoTxt.setText("Ingrese el apellido");
+            apellidoTxt.setForeground(Color.gray);
+        }
+        if (nombreTxt.getText().equals("")) {
+            nombreTxt.setText("Ingrese el nombre");
+            nombreTxt.setForeground(Color.gray);
+        }
+        if (dniTxt.getText().equals("")) {
+            dniTxt.setText("Ingrese el documento");
+            dniTxt.setForeground(Color.gray);
+        }
+        if (legajoTxt.getText().equals("")) {
+            legajoTxt.setText("Ingrese el legajo");
+            legajoTxt.setForeground(Color.gray);
+        }
+        if (emailTxt.getText().equals("")) {
+            emailTxt.setText("Ingrese el email");
+            emailTxt.setForeground(Color.gray);
+        }
+
+        if (fechaNacTxt.getText().equals("")) {
+            fechaNacTxt.setText("dd/mm/aaaa");
+            fechaNacTxt.setForeground(Color.gray);
+        }
+
+        if (sexoTxt.getText().equals("Ingrese el genero")) {
+            sexoTxt.setText("");
+            sexoTxt.setForeground(Color.black);
+        }
+
+    }//GEN-LAST:event_sexoTxtMousePressed
+
+    private void fechaNacTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fechaNacTxtActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_fechaNacTxtActionPerformed
+
+    private void fechaNacTxtMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_fechaNacTxtMousePressed
+
+        if (apellidoTxt.getText().equals("")) {
+            apellidoTxt.setText("Ingrese el apellido");
+            apellidoTxt.setForeground(Color.gray);
+        }
+        if (nombreTxt.getText().equals("")) {
+            nombreTxt.setText("Ingrese el nombre");
+            nombreTxt.setForeground(Color.gray);
+        }
+        if (dniTxt.getText().equals("")) {
+            dniTxt.setText("Ingrese el documento");
+            dniTxt.setForeground(Color.gray);
+        }
+        if (legajoTxt.getText().equals("")) {
+            legajoTxt.setText("Ingrese el legajo");
+            legajoTxt.setForeground(Color.gray);
+        }
+        if (emailTxt.getText().equals("")) {
+            emailTxt.setText("Ingrese el email");
+            emailTxt.setForeground(Color.gray);
+        }
+
+        if (fechaNacTxt.getText().equals("dd/mm/aaaa")) {
+            fechaNacTxt.setText("");
+            fechaNacTxt.setForeground(Color.black);
+        }
+
+        if (sexoTxt.getText().equals("")) {
+            sexoTxt.setText("Ingrese el genero");
+            sexoTxt.setForeground(Color.gray);
+        }
+
+    }//GEN-LAST:event_fechaNacTxtMousePressed
+
+    private void emailTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_emailTxtActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_emailTxtActionPerformed
+
+    private void emailTxtMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_emailTxtMousePressed
+        if (apellidoTxt.getText().equals("")) {
+            apellidoTxt.setText("Ingrese el apellido");
+            apellidoTxt.setForeground(Color.gray);
+        }
+        if (nombreTxt.getText().equals("")) {
+            nombreTxt.setText("Ingrese el nombre");
+            nombreTxt.setForeground(Color.gray);
+        }
+        if (dniTxt.getText().equals("")) {
+            dniTxt.setText("Ingrese el documento");
+            dniTxt.setForeground(Color.gray);
+        }
+        if (legajoTxt.getText().equals("")) {
+            legajoTxt.setText("Ingrese el legajo");
+            legajoTxt.setForeground(Color.gray);
+        }
+        if (emailTxt.getText().equals("Ingrese el email")) {
+            emailTxt.setText("");
+            emailTxt.setForeground(Color.black);
+        }
+
+        if (fechaNacTxt.getText().equals("")) {
+            fechaNacTxt.setText("dd/mm/aaaa");
+            fechaNacTxt.setForeground(Color.gray);
+        }
+
+        if (sexoTxt.getText().equals("")) {
+            sexoTxt.setText("Ingrese el genero");
+            sexoTxt.setForeground(Color.gray);
+        }
+
+    }//GEN-LAST:event_emailTxtMousePressed
+
+    private void legajoTxtKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_legajoTxtKeyTyped
+        char c = evt.getKeyChar();
+
+        if (c < '0' || c > '9')
+        evt.consume();
+    }//GEN-LAST:event_legajoTxtKeyTyped
+
+    private void legajoTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_legajoTxtActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_legajoTxtActionPerformed
+
+    private void legajoTxtMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_legajoTxtMousePressed
+        if (apellidoTxt.getText().equals("")) {
+            apellidoTxt.setText("Ingrese el apellido");
+            apellidoTxt.setForeground(Color.gray);
+        }
+        if (nombreTxt.getText().equals("")) {
+            nombreTxt.setText("Ingrese el nombre");
+            nombreTxt.setForeground(Color.gray);
+        }
+        if (dniTxt.getText().equals("")) {
+            dniTxt.setText("Ingrese el documento");
+            dniTxt.setForeground(Color.gray);
+        }
+        if (legajoTxt.getText().equals("Ingrese el legajo")) {
+            legajoTxt.setText("");
+            legajoTxt.setForeground(Color.black);
+        }
+        if (emailTxt.getText().equals("")) {
+            emailTxt.setText("Ingrese el email");
+            emailTxt.setForeground(Color.gray);
+        }
+
+        if (fechaNacTxt.getText().equals("")) {
+            fechaNacTxt.setText("dd/mm/aaaa");
+            fechaNacTxt.setForeground(Color.gray);
+        }
+
+        if (sexoTxt.getText().equals("")) {
+            sexoTxt.setText("Ingrese el genero");
+            sexoTxt.setForeground(Color.gray);
+        }
+
+    }//GEN-LAST:event_legajoTxtMousePressed
+
+    private void dniTxtKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_dniTxtKeyTyped
+        char c = evt.getKeyChar();
+
+        if (c < '0' || c > '9')
+        evt.consume();
+    }//GEN-LAST:event_dniTxtKeyTyped
+
+    private void dniTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dniTxtActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_dniTxtActionPerformed
+
+    private void dniTxtMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dniTxtMousePressed
+        if (apellidoTxt.getText().equals("")) {
+            apellidoTxt.setText("Ingrese el apellido");
+            apellidoTxt.setForeground(Color.gray);
+        }
+        if (nombreTxt.getText().equals("")) {
+            nombreTxt.setText("Ingrese el nombre");
+            nombreTxt.setForeground(Color.gray);
+        }
+        if (dniTxt.getText().equals("Ingrese el documento")) {
+            dniTxt.setText("");
+            dniTxt.setForeground(Color.black);
+        }
+        if (legajoTxt.getText().equals("")) {
+            legajoTxt.setText("Ingrese el legajo");
+            legajoTxt.setForeground(Color.gray);
+        }
+        if (emailTxt.getText().equals("")) {
+            emailTxt.setText("Ingrese el email");
+            emailTxt.setForeground(Color.gray);
+        }
+
+        if (fechaNacTxt.getText().equals("")) {
+            fechaNacTxt.setText("dd/mm/aaaa");
+            fechaNacTxt.setForeground(Color.gray);
+        }
+
+        if (sexoTxt.getText().equals("")) {
+            sexoTxt.setText("Ingrese el genero");
+            sexoTxt.setForeground(Color.gray);
+        }
+
+    }//GEN-LAST:event_dniTxtMousePressed
+
+    private void apellidoTxtKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_apellidoTxtKeyTyped
+        char c = evt.getKeyChar();
+
+        if ((c < 'a' || c > 'z') && (c < 'A' || c > 'Z') && c != ' ')
+        evt.consume();
+    }//GEN-LAST:event_apellidoTxtKeyTyped
+
+    private void apellidoTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_apellidoTxtActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_apellidoTxtActionPerformed
+
+    private void apellidoTxtMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_apellidoTxtMousePressed
+        if (apellidoTxt.getText().equals("Ingrese el apellido")) {
+            apellidoTxt.setText("");
+            apellidoTxt.setForeground(Color.black);
+        }
+        if (nombreTxt.getText().equals("")) {
+            nombreTxt.setText("Ingrese el nombre");
+            nombreTxt.setForeground(Color.gray);
+        }
+        if (dniTxt.getText().equals("")) {
+            dniTxt.setText("Ingrese el documento");
+            dniTxt.setForeground(Color.gray);
+        }
+        if (legajoTxt.getText().equals("")) {
+            legajoTxt.setText("Ingrese el legajo");
+            legajoTxt.setForeground(Color.gray);
+        }
+        if (emailTxt.getText().equals("")) {
+            emailTxt.setText("Ingrese el email");
+            emailTxt.setForeground(Color.gray);
+        }
+
+        if (fechaNacTxt.getText().equals("dd/mm/aaaa")) {
+            fechaNacTxt.setText("dd/mm/aaaa");
+            fechaNacTxt.setForeground(Color.gray);
+        }
+
+        if (sexoTxt.getText().equals("")) {
+            sexoTxt.setText("Ingrese el genero");
+            sexoTxt.setForeground(Color.gray);
+        }
+
+    }//GEN-LAST:event_apellidoTxtMousePressed
+
+    private void nombreTxtKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nombreTxtKeyTyped
+        char c = evt.getKeyChar();
+
+        if ((c < 'a' || c > 'z') && (c < 'A' || c > 'Z') && c != ' ')
+        evt.consume();
+    }//GEN-LAST:event_nombreTxtKeyTyped
+
+    private void nombreTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombreTxtActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_nombreTxtActionPerformed
+
+    private void nombreTxtMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_nombreTxtMousePressed
+        if (nombreTxt.getText().equals("Ingrese el nombre")) {
+            nombreTxt.setText("");
+            nombreTxt.setForeground(Color.black);
+        }
+        if (apellidoTxt.getText().equals("")) {
+            apellidoTxt.setText("Ingrese el apellido");
+            apellidoTxt.setForeground(Color.gray);
+        }
+        if (dniTxt.getText().equals("")) {
+            dniTxt.setText("Ingrese el documento");
+            dniTxt.setForeground(Color.gray);
+        }
+        if (legajoTxt.getText().equals("")) {
+            legajoTxt.setText("Ingrese el legajo");
+            legajoTxt.setForeground(Color.gray);
+        }
+        if (emailTxt.getText().equals("")) {
+            emailTxt.setText("Ingrese el email");
+            emailTxt.setForeground(Color.gray);
+        }
+
+        if (fechaNacTxt.getText().equals("")) {
+            fechaNacTxt.setText("dd/mm/aaaa");
+            fechaNacTxt.setForeground(Color.gray);
+        }
+
+        if (sexoTxt.getText().equals("")) {
+            sexoTxt.setText("Ingrese el genero");
+            sexoTxt.setForeground(Color.gray);
+        }
+
+    }//GEN-LAST:event_nombreTxtMousePressed
+
+    private void exitTxtMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_exitTxtMouseClicked
+        System.exit(0);
+    }//GEN-LAST:event_exitTxtMouseClicked
+
+    private void exitTxtMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_exitTxtMouseEntered
+        exitBtn.setBackground(Color.red);
+        exitTxt.setForeground(Color.white);
+    }//GEN-LAST:event_exitTxtMouseEntered
+
+    private void exitTxtMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_exitTxtMouseExited
+        exitBtn.setBackground(Color.white);
+        exitTxt.setForeground(Color.black);
+    }//GEN-LAST:event_exitTxtMouseExited
+
+    private void exitTxtMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_exitTxtMousePressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_exitTxtMousePressed
+
+    private void exitMenuMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_exitMenuMouseDragged
+        int x = evt.getXOnScreen();
+        int y = evt.getYOnScreen();
+        this.setLocation(x - xMouse, y - yMouse);
+    }//GEN-LAST:event_exitMenuMouseDragged
+
+    private void exitMenuMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_exitMenuMousePressed
+        xMouse = evt.getX();
+        yMouse = evt.getY();
+    }//GEN-LAST:event_exitMenuMousePressed
 
     public static boolean isValidEmail(String email) {
         // Expresión regular para validar el correo electrónico
@@ -976,7 +990,6 @@ public class InfoEmpleado extends javax.swing.JFrame {
     private javax.swing.JSeparator apellidoSep;
     private javax.swing.JTextField apellidoTxt;
     private javax.swing.JPanel background1;
-    private javax.swing.JPanel cargarImgBtn;
     private javax.swing.JLabel cargo;
     private javax.swing.JComboBox<String> cargoBox;
     private javax.swing.JLabel dateText;
@@ -986,9 +999,10 @@ public class InfoEmpleado extends javax.swing.JFrame {
     private javax.swing.JLabel email;
     private javax.swing.JSeparator emailSep;
     private javax.swing.JTextField emailTxt;
-    private javax.swing.JPanel exitBtn1;
+    private javax.swing.JPanel exitBtn;
+    private javax.swing.JPanel exitMenu;
     private javax.swing.JPanel exitMenu1;
-    private javax.swing.JLabel exitTxt1;
+    private javax.swing.JLabel exitTxt;
     private javax.swing.JLabel fechaNac;
     private javax.swing.JSeparator fechaNacSep;
     private javax.swing.JTextField fechaNacTxt;
