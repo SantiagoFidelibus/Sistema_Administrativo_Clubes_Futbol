@@ -24,6 +24,10 @@ import javax.swing.table.DefaultTableModel;
 
 import Menuusages.InfoSocio;
 import Containers.ContenedoraSocio;
+import Menuusages.InfoEmpleado;
+import Menuusages.ModificarEmpleado;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class Menu extends JFrame {
 
@@ -121,12 +125,12 @@ public class Menu extends JFrame {
         buscarTxt1 = new javax.swing.JLabel();
         modificarBtn1 = new javax.swing.JPanel();
         modificarTxt1 = new javax.swing.JLabel();
-        eliminarBtn1 = new javax.swing.JPanel();
-        eliminarTxt1 = new javax.swing.JLabel();
         agregarBtn1 = new javax.swing.JPanel();
         agregarTxt1 = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
         jTable3 = new javax.swing.JTable();
+        eliminarBtn1 = new javax.swing.JPanel();
+        eliminarTxt1 = new javax.swing.JLabel();
         ventana4 = new javax.swing.JPanel();
         tituloPagoSocios = new javax.swing.JLabel();
         legajoTitulo = new javax.swing.JLabel();
@@ -937,43 +941,6 @@ public class Menu extends JFrame {
 
         ventana3.add(modificarBtn1, new org.netbeans.lib.awtextra.AbsoluteConstraints(576, 624, -1, -1));
 
-        eliminarBtn1.setBackground(new java.awt.Color(50, 115, 153));
-        eliminarBtn1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                eliminarBtn1MouseClicked(evt);
-            }
-        });
-
-        eliminarTxt1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        eliminarTxt1.setForeground(new java.awt.Color(255, 255, 255));
-        eliminarTxt1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        eliminarTxt1.setText("Eliminar");
-        eliminarTxt1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        eliminarTxt1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                eliminarTxt1MouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                eliminarTxt1MouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                eliminarTxt1MouseExited(evt);
-            }
-        });
-
-        javax.swing.GroupLayout eliminarBtn1Layout = new javax.swing.GroupLayout(eliminarBtn1);
-        eliminarBtn1.setLayout(eliminarBtn1Layout);
-        eliminarBtn1Layout.setHorizontalGroup(
-            eliminarBtn1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(eliminarTxt1, javax.swing.GroupLayout.DEFAULT_SIZE, 110, Short.MAX_VALUE)
-        );
-        eliminarBtn1Layout.setVerticalGroup(
-            eliminarBtn1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(eliminarTxt1, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
-        );
-
-        ventana3.add(eliminarBtn1, new org.netbeans.lib.awtextra.AbsoluteConstraints(716, 624, -1, -1));
-
         agregarBtn1.setBackground(new java.awt.Color(50, 115, 153));
         agregarBtn1.setForeground(new java.awt.Color(255, 255, 255));
 
@@ -1048,6 +1015,32 @@ public class Menu extends JFrame {
 
         ventana3.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(36, 314, 930, 280));
 
+        eliminarBtn1.setBackground(new java.awt.Color(50, 115, 153));
+        eliminarBtn1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                eliminarBtn1MouseClicked(evt);
+            }
+        });
+
+        eliminarTxt1.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
+        eliminarTxt1.setForeground(new java.awt.Color(255, 255, 255));
+        eliminarTxt1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        eliminarTxt1.setText("Eliminar");
+        eliminarTxt1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+
+        javax.swing.GroupLayout eliminarBtn1Layout = new javax.swing.GroupLayout(eliminarBtn1);
+        eliminarBtn1.setLayout(eliminarBtn1Layout);
+        eliminarBtn1Layout.setHorizontalGroup(
+            eliminarBtn1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(eliminarTxt1, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
+        );
+        eliminarBtn1Layout.setVerticalGroup(
+            eliminarBtn1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(eliminarTxt1, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
+        );
+
+        ventana3.add(eliminarBtn1, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 620, -1, 40));
+
         panelVentanas.addTab("tab3", ventana3);
 
         ventana4.setBackground(new java.awt.Color(255, 255, 255));
@@ -1059,7 +1052,6 @@ public class Menu extends JFrame {
         ventana4.add(tituloPagoSocios, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 200, -1, -1));
 
         legajoTitulo.setFont(new java.awt.Font("Roboto Light", 1, 15)); // NOI18N
-        legajoTitulo.setForeground(new java.awt.Color(0, 0, 0));
         legajoTitulo.setText("BUSCAR SOCIO");
         legajoTitulo.setToolTipText("");
         ventana4.add(legajoTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 260, 120, 20));
@@ -1118,7 +1110,6 @@ public class Menu extends JFrame {
         ventana4.add(buscarBtn2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 350, 110, 40));
 
         mostrarListadoTitulo.setFont(new java.awt.Font("Roboto Light", 1, 15)); // NOI18N
-        mostrarListadoTitulo.setForeground(new java.awt.Color(0, 0, 0));
         mostrarListadoTitulo.setText("MOSTRAR LISTADO DE DEUDORES");
         mostrarListadoTitulo.setToolTipText("");
         ventana4.add(mostrarListadoTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 470, 290, 20));
@@ -1186,22 +1177,18 @@ public class Menu extends JFrame {
         panelDatosSocio.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         nomTxt.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        nomTxt.setForeground(new java.awt.Color(0, 0, 0));
         nomTxt.setText("Nombre y Apellido: ");
         panelDatosSocio.add(nomTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 310, 40));
 
         docTxt.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        docTxt.setForeground(new java.awt.Color(0, 0, 0));
         docTxt.setText("Documento:");
         panelDatosSocio.add(docTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 310, 40));
 
         totalPagarTxt.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        totalPagarTxt.setForeground(new java.awt.Color(0, 0, 0));
         totalPagarTxt.setText("Total a pagar: ");
         panelDatosSocio.add(totalPagarTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 310, 40));
 
         vencTxt.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        vencTxt.setForeground(new java.awt.Color(0, 0, 0));
         vencTxt.setText("Fecha de vencimiento: ");
         panelDatosSocio.add(vencTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, 310, 40));
 
@@ -1355,7 +1342,6 @@ public class Menu extends JFrame {
         ventana5.add(tituloPagoEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 200, -1, -1));
 
         legajoTitulo1.setFont(new java.awt.Font("Roboto Light", 1, 15)); // NOI18N
-        legajoTitulo1.setForeground(new java.awt.Color(0, 0, 0));
         legajoTitulo1.setText("BUSCAR EMPLEADO");
         legajoTitulo1.setToolTipText("");
         ventana5.add(legajoTitulo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 260, 150, 20));
@@ -1383,7 +1369,6 @@ public class Menu extends JFrame {
         ventana5.add(buscarLegajoEmpl, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 290, 290, 40));
 
         mostrarListadoTitulo1.setFont(new java.awt.Font("Roboto Light", 1, 15)); // NOI18N
-        mostrarListadoTitulo1.setForeground(new java.awt.Color(0, 0, 0));
         mostrarListadoTitulo1.setText("MOSTRAR LISTADO DE SUELDOS A PAGAR");
         mostrarListadoTitulo1.setToolTipText("");
         ventana5.add(mostrarListadoTitulo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 470, 310, 20));
@@ -1451,27 +1436,22 @@ public class Menu extends JFrame {
         panelDatosSocio1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         nomTxt1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        nomTxt1.setForeground(new java.awt.Color(0, 0, 0));
         nomTxt1.setText("Nombre y Apellido: ");
         panelDatosSocio1.add(nomTxt1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 310, 40));
 
         docTxt1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        docTxt1.setForeground(new java.awt.Color(0, 0, 0));
         docTxt1.setText("Documento:");
         panelDatosSocio1.add(docTxt1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 310, 40));
 
         cargoTxt.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        cargoTxt.setForeground(new java.awt.Color(0, 0, 0));
         cargoTxt.setText("Cargo: ");
         panelDatosSocio1.add(cargoTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 310, 40));
 
         totalPagarTxt1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        totalPagarTxt1.setForeground(new java.awt.Color(0, 0, 0));
         totalPagarTxt1.setText("Sueldo a pagar: ");
         panelDatosSocio1.add(totalPagarTxt1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, 310, 40));
 
         vencTxt1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        vencTxt1.setForeground(new java.awt.Color(0, 0, 0));
         vencTxt1.setText("Fecha de vencimiento: ");
         panelDatosSocio1.add(vencTxt1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, 310, 40));
 
@@ -1856,7 +1836,7 @@ public class Menu extends JFrame {
 
     private void agregarTxtMouseClicked(MouseEvent evt) {//GEN-FIRST:event_agregarTxtMouseClicked
         HashMap<Integer, Socio> listaDeSocios = obtenerListaDeSocios();
-        int proximoLegajo = encontrarProximoLegajoDisponible(listaDeSocios);
+        int proximoLegajo = encontrarProximoLegajoDisponibleSocio(listaDeSocios);
             InfoSocio infoSocio = new InfoSocio(proximoLegajo);
             infoSocio.setVisible(true);
             infoSocio.pack();
@@ -1864,7 +1844,10 @@ public class Menu extends JFrame {
             this.dispose();
     }//GEN-LAST:event_agregarTxtMouseClicked
 
-    public int encontrarProximoLegajoDisponible(HashMap<Integer, Socio> listaDeSocios) {
+    
+    
+    
+    public int encontrarProximoLegajoDisponibleSocio(HashMap<Integer, Socio> listaDeSocios) {
         // Inicializar el próximo legajo a 1
         int proximoLegajo = 1;
 
@@ -1875,6 +1858,20 @@ public class Menu extends JFrame {
 
         return proximoLegajo;
     }
+    
+    
+    public int encontrarProximoLegajoDisponibleEmpleado(HashMap<Integer, Empleado> listaDeEmpleados) {
+        // Inicializar el próximo legajo a 1
+        int proximoLegajo = 1;
+
+        // Recorrer los legajos existentes para encontrar el próximo libre
+        while (listaDeEmpleados.containsKey(proximoLegajo)) {
+            proximoLegajo++;
+        }
+
+        return proximoLegajo;
+    }
+    
 
     private void buscarTxtMouseClicked(MouseEvent evt) {//GEN-FIRST:event_buscarTxtMouseClicked
         try {
@@ -1884,7 +1881,7 @@ public class Menu extends JFrame {
             model.setRowCount(0);
             String legajoStr = buscarLabel.getText().trim();
 
-            if (legajoStr.isEmpty() || legajoStr.equals(" Ingrese el legajo del socio a buscar.")) {
+            if (legajoStr.isEmpty() || legajoStr.equals("Ingrese el legajo del socio a buscar.")) {
                 contenedoraSocio.listar().values().forEach(this::addSocioToTable);
             } else {
                 int legajo = Integer.parseInt(legajoStr);
@@ -1984,7 +1981,7 @@ public class Menu extends JFrame {
     }
 
     public Object[] socioToRow(Socio socio) {
-    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         return new Object[] {
             socio.getLegajo(),
             socio.getNombre(),
@@ -2042,7 +2039,7 @@ public HashMap<Integer, Socio> obtenerListaDeSocios() {
     
     //Metodo para agregar los deudores ordenados a la tabla
     public Object[] deudToRow(Socio socio){
-    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
     return new Object[]{socio.getLegajo(), socio.getNombre(), socio.getApellido(), socio.getFechaVencimientoPago().format(formatter)};
     }
     
@@ -2095,7 +2092,7 @@ public HashMap<Integer, Socio> obtenerListaDeSocios() {
 
     //Metodo para agregar los empleados a los que se deben pagar el sueldo a la tabla
     public Object[] empleadoAPagarToRow(Empleado empleado){
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         return new Object[]{empleado.getLegajo(), empleado.getNombre(), empleado.getApellido(), empleado.getFechaVencimientoPago().format(formatter)};
     }
 
@@ -2140,11 +2137,17 @@ public HashMap<Integer, Socio> obtenerListaDeSocios() {
 
     
     private void buscarLabel1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_buscarLabel1FocusLost
-        // TODO add your handling code here:
+        if (buscarLabel1.getText().isEmpty()) {
+                buscarLabel1.setText(" Ingrese el legajo del empleado a buscar.");
+                buscarLabel1.setForeground(Color.GRAY);
+            }
     }//GEN-LAST:event_buscarLabel1FocusLost
 
     private void buscarLabel1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buscarLabel1MousePressed
-        // TODO add your handling code here:
+        if(buscarLabel1.getText().equals(" Ingrese el legajo del empleado a buscar.")){
+            buscarLabel1.setText("");
+            buscarLabel1.setForeground(Color.black);
+        }
     }//GEN-LAST:event_buscarLabel1MousePressed
 
     private void buscarLabel1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarLabel1ActionPerformed
@@ -2152,47 +2155,88 @@ public HashMap<Integer, Socio> obtenerListaDeSocios() {
     }//GEN-LAST:event_buscarLabel1ActionPerformed
 
     private void buscarTxt1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buscarTxt1MouseClicked
-        // TODO add your handling code here:
+        try {
+            ContenedoraEmpleado contenedoraEmpleado = new ContenedoraEmpleado();
+            contenedoraEmpleado.cargarEmpleadosDeJson("Empleados.json");
+            DefaultTableModel model = (DefaultTableModel) jTable3.getModel();
+            model.setRowCount(0);
+            String legajoStr = buscarLabel1.getText().trim();
+
+            if (legajoStr.isEmpty() || legajoStr.equals("Ingrese el legajo del empleado a buscar.")) {
+                contenedoraEmpleado.listar().values().forEach(this::addEmpleadoToTable);
+            } else {
+                int legajo = Integer.parseInt(legajoStr);
+                Empleado empleado = contenedoraEmpleado.buscar(legajo);
+                addEmpleadoToTable(empleado);
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
     }//GEN-LAST:event_buscarTxt1MouseClicked
 
     private void buscarTxt1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buscarTxt1MouseEntered
-        // TODO add your handling code here:
+        buscarBtn.setBackground(new Color(80,139,166));
     }//GEN-LAST:event_buscarTxt1MouseEntered
 
     private void buscarTxt1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buscarTxt1MouseExited
-        // TODO add your handling code here:
+        buscarBtn.setBackground(new Color(59,132,173));
     }//GEN-LAST:event_buscarTxt1MouseExited
 
     private void modificarTxt1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_modificarTxt1MouseClicked
-        // TODO add your handling code here:
+         int filaSeleccionada = jTable3.getSelectedRowCount();
+
+        if (filaSeleccionada != 1) {
+            JOptionPane.showMessageDialog(this, "Debes seleccionar un solo empleado para modificar a la vez.\n", "AVISO", JOptionPane.ERROR_MESSAGE);
+        } else {
+            int fila = jTable3.getSelectedRow();
+
+            int legajo = (int) jTable3.getValueAt(fila, 0);
+            String nombre = (String) jTable3.getValueAt(fila, 1);
+            String apellido = (String) jTable3.getValueAt(fila, 2);
+            String email = (String) jTable3.getValueAt(fila, 3);
+            int dni = (int) jTable3.getValueAt(fila, 4);
+            String fechaNac = (String) jTable3.getValueAt(fila, 5);
+            Cargo cargoFilaSelec = (Cargo) jTable3.getValueAt(fila, 6);
+
+
+            HashMap<Integer,Empleado> empleados = new HashMap<>();
+            empleados = obtenerListaDeEmpleados();
+
+                Empleado empleado = empleados.get(legajo);
+                // Aquí puedes acceder a los atributos del socio
+                LocalDate fechaVencimiento = empleado.getFechaVencimientoPago();
+                LocalDate fechaRegistro = empleado.getFechaRegistroPago();
+                // Hacer algo con fechaVencimiento, por ejemplo:
+                System.out.println("Fecha de vencimiento del empleado: " + fechaVencimiento);
+
+            ModificarEmpleado modifEmp = null;
+             try {
+                 modifEmp = new ModificarEmpleado(fechaVencimiento,fechaRegistro,legajo, nombre, apellido, dni, fechaNac, email, cargoFilaSelec);
+             } catch (UnsupportedLookAndFeelException ex) {
+                 Logger.getLogger(Menu.class.getName()).log(Level.SEVERE, null, ex);
+             }
+            modifEmp.setVisible(true);
+            modifEmp.pack();
+            modifEmp.setLocationRelativeTo(null);
+            this.dispose();
+        }
     }//GEN-LAST:event_modificarTxt1MouseClicked
 
     private void modificarTxt1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_modificarTxt1MouseEntered
-        // TODO add your handling code here:
+         modificarBtn.setBackground(new Color(80,139,166));
     }//GEN-LAST:event_modificarTxt1MouseEntered
 
     private void modificarTxt1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_modificarTxt1MouseExited
-        // TODO add your handling code here:
-    }//GEN-LAST:event_modificarTxt1MouseExited
-
-    private void eliminarTxt1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_eliminarTxt1MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_eliminarTxt1MouseClicked
-
-    private void eliminarTxt1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_eliminarTxt1MouseEntered
-        // TODO add your handling code here:
-    }//GEN-LAST:event_eliminarTxt1MouseEntered
-
-    private void eliminarTxt1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_eliminarTxt1MouseExited
-        // TODO add your handling code here:
-    }//GEN-LAST:event_eliminarTxt1MouseExited
-
-    private void eliminarBtn1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_eliminarBtn1MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_eliminarBtn1MouseClicked
+        modificarBtn.setBackground(new Color(59,132,173));    }//GEN-LAST:event_modificarTxt1MouseExited
 
     private void agregarTxt1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_agregarTxt1MouseClicked
-        // TODO add your handling code here:
+         HashMap<Integer, Empleado> listaDeEmpleados = obtenerListaDeEmpleados();
+        int proximoLegajo = encontrarProximoLegajoDisponibleEmpleado(listaDeEmpleados);
+            InfoEmpleado infoEmpleado = new InfoEmpleado(proximoLegajo);
+            infoEmpleado.setVisible(true);
+            infoEmpleado.pack();
+            infoEmpleado.setLocationRelativeTo(null);  
+            this.dispose();
     }//GEN-LAST:event_agregarTxt1MouseClicked
 
     private void agregarTxt1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_agregarTxt1MouseEntered
@@ -2268,7 +2312,7 @@ public HashMap<Integer, Socio> obtenerListaDeSocios() {
                 nomTxt.setText("Nombre y Apellido: " + socio.getNombre() + " " + socio.getApellido());
                 docTxt.setText("Documento: " + socio.getDni());
                 totalPagarTxt.setText("Total a pagar: $" + socio.pagarCuota(0));
-                vencTxt.setText("Fecha de vencimiento: " + socio.getFechaVencimientoPago().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")));
+                vencTxt.setText("Fecha de vencimiento: " + socio.getFechaVencimientoPago().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")));
                 cardLayout.show(panelDatos, "card1");
             }
         } catch (Exception e) {
@@ -2329,7 +2373,7 @@ public HashMap<Integer, Socio> obtenerListaDeSocios() {
             Correos mail = new Correos();
             new Thread(() -> {
                 try {
-                    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+                    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
                     String fechaRegistroPagoComoCadena = socio.getFechaRegistroPago().format(formatter);
                     mail.CorreoPagoSocio(socio.getEmail(), socio.getNombre(), fechaRegistroPagoComoCadena, valorTotal);
                 } catch (Exception e) {
@@ -2470,7 +2514,7 @@ public HashMap<Integer, Socio> obtenerListaDeSocios() {
                 docTxt1.setText("Documento: " + empleado.getDni());
                 cargoTxt.setText("Cargo: " + empleado.getCargo());
                 totalPagarTxt1.setText("Total a pagar: $" + empleado.calcularPagoConInteres());
-                vencTxt1.setText("Fecha de vencimiento: " + empleado.getFechaVencimientoPago().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")));
+                vencTxt1.setText("Fecha de vencimiento: " + empleado.getFechaVencimientoPago().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")));
                 cardLayout.show(panelDatos1, "card3");
             }
         } catch (Exception e) {
@@ -2480,10 +2524,56 @@ public HashMap<Integer, Socio> obtenerListaDeSocios() {
         }    
     }//GEN-LAST:event_buscarTxt5MouseClicked
 
+    private void eliminarBtn1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_eliminarBtn1MouseClicked
+        ContenedoraEmpleado contenedora = new ContenedoraEmpleado();
+    try {
+        contenedora.cargarEmpleadosDeJson("Empleados.json");
+    } catch (IOException ex) {
+        ex.printStackTrace();
+    }
+
+    DefaultTableModel model = (DefaultTableModel) jTable3.getModel();
+    int[] selectedRows = jTable3.getSelectedRows();
+
+    if (selectedRows.length < 1) {
+        JOptionPane.showMessageDialog(this, "Debes seleccionar uno o más empleados a eliminar.\n", "AVISO", JOptionPane.ERROR_MESSAGE);
+    } else {
+        // Construir el mensaje de confirmación
+        String message = "¿Estás seguro de eliminar el/los siguiente(s) empleado(s)?\n\n";
+        for (int i = 0; i < selectedRows.length; i++) {
+            int legajo = (int) jTable3.getValueAt(selectedRows[i], 0);
+            String nombre = (String) jTable3.getValueAt(selectedRows[i], 1);
+            message += "Nombre: " + nombre + ", Legajo: " + legajo + "\n";
+        }
+
+        // Mostrar el cuadro de diálogo de confirmación
+        int option = JOptionPane.showConfirmDialog(this, message, "Confirmar eliminación", JOptionPane.YES_NO_OPTION);
+        if (option == JOptionPane.YES_OPTION) {
+            // Eliminar los socios seleccionados
+            for (int i = selectedRows.length - 1; i >= 0; i--) {
+                try {
+                    int legajo = (int) jTable3.getValueAt(selectedRows[i], 0);
+                    contenedora.baja(legajo);
+                    contenedora.guardarEmpleadosEnJson("Empleados.json");
+                    model.removeRow(selectedRows[i]);
+                } catch (Exception e) {
+                    System.out.println(e.getMessage());
+                }
+            }
+        }
+    }//GEN-LAST:event_eliminarBtn1MouseClicked
+    }
+    
+    
+    
+    private void addEmpleadoToTable(Empleado empleado) {
+        DefaultTableModel model = (DefaultTableModel) jTable3.getModel();
+        model.addRow(new Object[]{empleado.getLegajo(), empleado.getNombre(), empleado.getApellido(), empleado.getEmail(), empleado.getDni(), empleado.getFechaDeNacimiento(), empleado.getCargo(), empleado.isCobro(), empleado.getFechaRegistroPago(), empleado.getFechaVencimientoPago()});
+    }
 
 
     public Object[] empleadoToRow(Empleado empleado) {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         return new Object[]{
                 empleado.getLegajo(),
                 empleado.getNombre(),

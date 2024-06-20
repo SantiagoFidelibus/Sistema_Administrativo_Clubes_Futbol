@@ -254,7 +254,7 @@ public class InfoSocio extends JFrame {
         titulo.setFont(new java.awt.Font("Roboto Black", 0, 24)); // NOI18N
         titulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         titulo.setText("AGREGAR NUEVO SOCIO");
-        ventana1.add(titulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 230, 280, 50));
+        ventana1.add(titulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 230, 300, 50));
 
         nombre.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         nombre.setText("NOMBRE");
