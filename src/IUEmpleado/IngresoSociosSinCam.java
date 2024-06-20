@@ -175,7 +175,9 @@ public class IngresoSociosSinCam extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(this, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
             }
         } else {
-            JOptionPane.showMessageDialog(this, "La imagen del socio no se encuentra.", "Error", JOptionPane.ERROR_MESSAGE);
+            filePath = "src/com/images/FotoCarnet.png";
+            ImageIcon icon = new ImageIcon(new ImageIcon(filePath).getImage().getScaledInstance(fotoUsuario.getWidth(), fotoUsuario.getHeight(), Image.SCALE_SMOOTH));
+            fotoUsuario.setIcon(icon);
         }
             }//GEN-LAST:event_scanBtnMouseClicked
 
@@ -210,8 +212,8 @@ public class IngresoSociosSinCam extends javax.swing.JFrame {
                 Correos correo = new Correos();
                 int dato = Integer.parseInt(buscarTxt.getText());
                 try {
-                    ContenedoraSocio socios = new ContenedoraSocio();
                     Socio socioIngresante = socios.buscar(dato);
+                    System.out.println(socioIngresante);
                     if (socioIngresante == null) {
                         SwingUtilities.invokeLater(() -> {
                             JOptionPane.showMessageDialog(IngresoSociosSinCam.this, "No se encontró al socio.", "Error de Ingreso", JOptionPane.ERROR_MESSAGE);
