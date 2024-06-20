@@ -6,8 +6,11 @@ package Medico;
 import Model.Categoria;
 import Containers.ContenedoraSocio;
 import Login.Login;
+import Menuusages.TimeUpdater;
 import Model.Socio;
 import java.awt.Color;
+import java.awt.image.BufferedImage;
+import java.io.File;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -15,6 +18,7 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
+import javax.imageio.ImageIO;
 import javax.swing.table.DefaultTableModel;
 
 
@@ -28,6 +32,16 @@ public class Medico extends javax.swing.JFrame {
     public Medico() {
         
         initComponents();
+        try{
+            File iconFile = new File("src/com/images/LOGO1.png"); // Ruta de tu imagen
+            BufferedImage iconImage = ImageIO.read(iconFile);
+            setIconImage(iconImage);
+        }catch (IOException ex) {
+            ex.printStackTrace();
+        }
+
+        TimeUpdater timeUpdater = new TimeUpdater(timeText);
+        timeUpdater.start();
         setDate();
         actualizarTabla();
         volverMenuBtn.requestFocusInWindow();
@@ -61,6 +75,7 @@ private void setDate(){
         exitBtn = new javax.swing.JPanel();
         exitTxt = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
+        timeText = new javax.swing.JLabel();
         tituloSocios = new javax.swing.JLabel();
         buscarLabel = new javax.swing.JTextField();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -168,6 +183,11 @@ private void setDate(){
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/images/logoMedicina.png"))); // NOI18N
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1130, 40, 130, 120));
+
+        timeText.setFont(new java.awt.Font("Roboto", 1, 30)); // NOI18N
+        timeText.setForeground(new java.awt.Color(255, 255, 255));
+        timeText.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jPanel1.add(timeText, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 80, 170, 40));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, -1));
 
@@ -542,6 +562,7 @@ private void setDate(){
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JLabel timeText;
     private javax.swing.JLabel tituloSocios;
     private javax.swing.JPanel volverMenuBtn;
     private javax.swing.JLabel volverMenuTxt;

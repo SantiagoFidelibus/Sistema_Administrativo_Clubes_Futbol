@@ -10,8 +10,11 @@ import Model.Socio;
 import Webcam.WebCamScan;
 import Webcam.WebcamClass;
 import Login.Login;
+
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
+import java.awt.image.BufferedImage;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
@@ -37,11 +40,20 @@ public class IngresoSocios extends javax.swing.JFrame {
     public IngresoSocios() {
         initComponents();
 
+        try{
+            File iconFile = new File("src/com/images/LOGO1.png"); // Ruta de tu imagen
+            BufferedImage iconImage = ImageIO.read(iconFile);
+            setIconImage(iconImage);
+        }catch (IOException ex) {
+            ex.printStackTrace();
+        }
+
         try {
             socios.cargarSociosDeJson("Socios.json");
         } catch (IOException e) {
             System.out.println("Error al cargar el JSON de Socios");
         }
+
 
         socios.verificarQr();
         validarIngresoBtn.setVisible(false);

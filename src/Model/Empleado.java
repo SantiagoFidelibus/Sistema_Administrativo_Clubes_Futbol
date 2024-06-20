@@ -69,51 +69,35 @@ public class Empleado extends Persona {
     public int calcularPago() {
         switch (this.getCargo()) {
             case RECEPCIONISTA:
-                this.salario=2525;
-                return 2525;
+                this.salario=345000;
+                return 345000;
             case ENTRENADOR:
-                this.salario=652;
-                return 652;
+                this.salario=750000;
+                return 750000;
             case PREPARADOR_FISICO:
-                this.salario=545;
-                return 545;
+                this.salario=480000;
+                return 480000;
             case UTILERO:
-                this.salario=554;
-                return 554;
+                this.salario=320000;
+                return 320000;
             case LIMPIEZA:
-                this.salario=658;
-                return 658;
+                this.salario=270000;
+                return 270000;
             default:
                 return 0;
         }
     }
 
-    public void vencimientoPago() {
-        LocalDate fechaActual = LocalDate.now();
 
-        if (this.fechaVencimientoPago != null && this.fechaVencimientoPago.isEqual(fechaActual)) {
-            this.setCobro(false);
-        }
-    }
-
-
-
-    public void actualizarVencimientoPago(int year, int month, int day, boolean ToF) {
-        LocalDate fechaElegida = LocalDate.of(year, month, day);
-        this.fechaRegistroPago = fechaElegida;
-        if(ToF)
-            this.fechaVencimientoPago.plusMonths(1);
-        this.vencimientoPago();
-    }
 
 
     public int calcularPagoConInteres() {
         LocalDate fechaActual = LocalDate.now();
-        if (fechaActual.isAfter(this.fechaVencimientoPago) || fechaActual.isEqual(this.fechaVencimientoPago)) {
+        if (fechaActual.isAfter(this.fechaVencimientoPago.plusDays(5))) {
             long diasTranscurridos = ChronoUnit.DAYS.between(this.fechaVencimientoPago, fechaActual);
-            int interesDiario = 15;
+            int interesDiario = 1200;
             int dias = (int) diasTranscurridos;
-            return dias * interesDiario;
+            return (dias * interesDiario)-(5 * interesDiario);
         }
         return 0;
     }

@@ -131,11 +131,11 @@ public class Socio extends Persona{
 
     public int calcularPagoConInteres() {
         LocalDate fechaActual = LocalDate.now();
-        if (fechaActual.isAfter(this.fechaVencimientoPago) || fechaActual.isEqual(this.fechaVencimientoPago)) {
+        if (fechaActual.isAfter(this.fechaVencimientoPago.plusDays(5))) {
             long diasTranscurridos = ChronoUnit.DAYS.between(this.fechaVencimientoPago, fechaActual);
-            int interesDiario = 50;
+            int interesDiario = 2500;
             int dias = (int) diasTranscurridos;
-            return dias * interesDiario;
+            return (dias * interesDiario)-(interesDiario*5);
         }
         return 0;
     }
@@ -179,22 +179,22 @@ public class Socio extends Persona{
     public int calcularPago() {
         switch (this.getCategoria()) {
             case CEBOLLITAS:
-                this.cuota= 1000;
+                this.cuota= 17000;
                 break;
             case INFANTIL:
-                this.cuota= 1500;
+                this.cuota= 18000;
                 break;
             case CADETES:
-                this.cuota= 2000;
+                this.cuota= 20000;
                 break;
             case JUVENIL:
-                this.cuota= 2500;
+                this.cuota= 21000;
                 break;
             case MAYORES:
-                this.cuota= 3000;
+                this.cuota= 24000;
                 break;
             case PRIMERA:
-                this.cuota= 3500;
+                this.cuota= 26000;
                 break;
             default:
                 return 0;

@@ -5,7 +5,9 @@ import MenuIU.Menu;
 import Model.Socio;
 
 import java.awt.Color;
+import java.awt.image.BufferedImage;
 import java.io.File;
+import java.io.IOException;
 import java.io.Serializable;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -15,6 +17,7 @@ import java.time.format.DateTimeParseException;
 import java.util.Date;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import javax.imageio.ImageIO;
 import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
@@ -25,6 +28,13 @@ public class Register extends javax.swing.JFrame implements Serializable {
     int xMouse, yMouse;
     public Register() {
         initComponents();
+        try{
+            File iconFile = new File("src/com/images/LOGO1.png"); // Ruta de tu imagen
+            BufferedImage iconImage = ImageIO.read(iconFile);
+            setIconImage(iconImage);
+        }catch (IOException ex) {
+            ex.printStackTrace();
+        }
         ocultPassTxt.setVisible(false);
         ocultPassTxt1.setVisible(false);
         Background.requestFocusInWindow();

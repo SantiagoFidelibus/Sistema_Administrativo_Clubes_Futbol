@@ -1,5 +1,6 @@
 package Webcam;
 
+import IUEmpleado.IngresoSocios;
 import com.github.sarxos.webcam.Webcam;
 import com.github.sarxos.webcam.WebcamPanel;
 import com.github.sarxos.webcam.WebcamResolution;
@@ -247,6 +248,10 @@ public class WebCamScan extends JFrame {
         if (!isScanned) {
             JOptionPane.showMessageDialog(this, "No se encontró ningún código.", "Error de Escaneo", JOptionPane.ERROR_MESSAGE);
             cerrarCamara();
+            IngresoSocios ingreso = new IngresoSocios();
+            ingreso.setVisible(true);
+            ingreso.pack();
+            ingreso.setLocationRelativeTo(null);
             this.dispose();
         }
     }

@@ -13,9 +13,11 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 
 import java.awt.event.MouseEvent;
+import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.border.BevelBorder;
 
@@ -35,6 +37,14 @@ public class DetalleSocio extends JFrame {
     
     public DetalleSocio(Socio socio) {
         initComponents();
+        try{
+            File iconFile = new File("src/com/images/LOGO1.png"); // Ruta de tu imagen
+            BufferedImage iconImage = ImageIO.read(iconFile);
+            setIconImage(iconImage);
+        }catch (IOException ex) {
+            ex.printStackTrace();
+        }
+
         socioS=socio;
         MotivoTxtField.setVisible(false);
         jLabel1.setVisible(false);

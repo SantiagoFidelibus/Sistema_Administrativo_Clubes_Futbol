@@ -5,7 +5,12 @@
 package Menuusages;
 
 import MenuIU.Menu;
+
+import javax.imageio.ImageIO;
 import java.awt.Color;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 
 /**
  *
@@ -18,6 +23,15 @@ public class PagoExitoso extends javax.swing.JFrame {
      */
     public PagoExitoso() {
         initComponents();
+        try{
+            File iconFile = new File("src/com/images/Tick 60x60.png"); // Ruta de tu imagen
+            BufferedImage iconImage = ImageIO.read(iconFile);
+            setIconImage(iconImage);
+        }catch (IOException ex) {
+            ex.printStackTrace();
+        }
+
+
     }
 
     /**
@@ -37,6 +51,8 @@ public class PagoExitoso extends javax.swing.JFrame {
         okBtnTxt = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setLocationByPlatform(true);
+        setUndecorated(true);
 
         background.setBackground(new java.awt.Color(255, 255, 255));
         background.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());

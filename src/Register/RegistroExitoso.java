@@ -6,7 +6,12 @@ package Register;
 
 import Login.Login;
 import MenuIU.Menu;
+
+import javax.imageio.ImageIO;
 import java.awt.Color;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 
 
 public class RegistroExitoso extends javax.swing.JFrame {
@@ -16,6 +21,14 @@ public class RegistroExitoso extends javax.swing.JFrame {
      */
     public RegistroExitoso() {
         initComponents();
+        try{
+            File iconFile = new File("src/com/images/Tick 60x60.png"); // Ruta de tu imagen
+            BufferedImage iconImage = ImageIO.read(iconFile);
+            setIconImage(iconImage);
+        }catch (IOException ex) {
+            ex.printStackTrace();
+        }
+
     }
 
     /**

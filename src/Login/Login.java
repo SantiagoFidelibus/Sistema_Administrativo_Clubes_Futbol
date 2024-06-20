@@ -8,18 +8,29 @@ import Medico.Medico;
 
 import java.awt.*;
 import java.awt.event.*;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 
 import MenuIU.Menu;
 import org.netbeans.lib.awtextra.AbsoluteConstraints;
 import org.netbeans.lib.awtextra.AbsoluteLayout;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 
 public class Login extends JFrame {
 
     int xMouse, yMouse;
-    public Login() {
+    public Login()  {
         initComponents(); // Aquí inicializas los componentes de la ventana
+        try{
+            File iconFile = new File("src/com/images/LOGO1.png"); // Ruta de tu imagen
+            BufferedImage iconImage = ImageIO.read(iconFile);
+            setIconImage(iconImage);
+        }catch (IOException ex) {
+            ex.printStackTrace();
+        }
 
         this.setVisible(true);
         ocultPassTxt.setVisible(false);
@@ -93,8 +104,44 @@ public class Login extends JFrame {
                 }
             }
         });
-    }
 
+            KeyListener enterKeyListener = new KeyAdapter() {
+                @Override
+                public void keyPressed(KeyEvent e) {
+                    if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+                        String password = String.valueOf(passTxt.getPassword());
+
+                        if ((userTxt.getText().equals("Admin")) && (password.equals("Admin"))) {
+                            Menu menu = new Menu();
+                            menu.setVisible(true);
+                            menu.pack();
+                            menu.setLocationRelativeTo(null);
+                            Login.this.dispose();
+
+                        } else if ((userTxt.getText().equals("Medico")) && (password.equals("Medico"))) {
+                            Medico medico = new Medico();
+                            medico.setVisible(true);
+                            medico.pack();
+                            medico.setLocationRelativeTo(null);
+                            Login.this.dispose();
+
+                        } else if ((userTxt.getText().equals("Empleado")) && (password.equals("Recepcionista"))) {
+                            IngresoSocios ingreso = new IngresoSocios();
+                            ingreso.setVisible(true);
+                            ingreso.pack();
+                            ingreso.setLocationRelativeTo(null);
+                            Login.this.dispose();
+
+                        } else {
+                            JOptionPane.showMessageDialog(Login.this, "El usuario o la contraseña es incorrecta, vuelva a intentarlo.", "Error de contraseña", JOptionPane.ERROR_MESSAGE);
+                        }
+                    }
+                }
+
+};
+       userTxt.addKeyListener(enterKeyListener);
+       passTxt.addKeyListener(enterKeyListener);
+    }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
