@@ -5,10 +5,11 @@
 package IUEmpleado;
 
 import Containers.ContenedoraSocio;
+import Mail.Correos;
 import Model.Socio;
 import Webcam.WebCamScan;
 import Webcam.WebcamClass;
-
+import Login.Login;
 import javax.swing.*;
 import java.awt.*;
 import java.io.BufferedReader;
@@ -45,6 +46,8 @@ public class IngresoSocios extends javax.swing.JFrame {
         socios.verificarQr();
         validarIngresoBtn.setVisible(false);
         validarIngresoBtn.setEnabled(false);
+        fondoDatos.setVisible(false);
+        fondoDatos.setEnabled(false);
 
 
     }
@@ -58,12 +61,26 @@ public class IngresoSocios extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        fondoDatos = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
         scanBtn = new javax.swing.JButton();
         cerrarSesionLabel = new javax.swing.JLabel();
+        Marco = new javax.swing.JLabel();
         fotoUsuario = new javax.swing.JLabel();
         validarIngresoBtn = new javax.swing.JButton();
+        pelota4 = new javax.swing.JLabel();
+        pelota2 = new javax.swing.JLabel();
+        fondo_1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        fondoDatos.setBackground(new java.awt.Color(255, 255, 255));
+        fondoDatos.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        fondoDatos.add(jLabel1);
+
+        getContentPane().add(fondoDatos, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 20, 220, 30));
 
         scanBtn.setText("ESCANEAR");
         scanBtn.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -76,8 +93,26 @@ public class IngresoSocios extends javax.swing.JFrame {
                 scanBtnActionPerformed(evt);
             }
         });
+        getContentPane().add(scanBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 60, -1, -1));
 
+        cerrarSesionLabel.setForeground(new java.awt.Color(59, 132, 173));
         cerrarSesionLabel.setText("Cerrar Sesion");
+        cerrarSesionLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        cerrarSesionLabel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                cerrarSesionLabelMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                cerrarSesionLabelMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                cerrarSesionLabelMouseExited(evt);
+            }
+        });
+        getContentPane().add(cerrarSesionLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 180, -1, -1));
+
+        Marco.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/imagesPersonas/marcoPerso.png"))); // NOI18N
+        getContentPane().add(Marco, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 0, 250, 200));
 
         fotoUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/images/FotoCarnet.png"))); // NOI18N
         fotoUsuario.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -85,9 +120,9 @@ public class IngresoSocios extends javax.swing.JFrame {
                 fotoUsuarioMouseClicked(evt);
             }
         });
+        getContentPane().add(fotoUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 24, 150, 150));
 
         validarIngresoBtn.setText("Validar Ingreso");
-        validarIngresoBtn.setActionCommand("Validar Ingreso");
         validarIngresoBtn.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 try {
@@ -102,44 +137,16 @@ public class IngresoSocios extends javax.swing.JFrame {
                 validarIngresoBtnActionPerformed(evt);
             }
         });
+        getContentPane().add(validarIngresoBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 110, -1, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(fotoUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(58, 58, 58)
-                        .addComponent(validarIngresoBtn))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(67, 67, 67)
-                        .addComponent(scanBtn)))
-                .addContainerGap(71, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(cerrarSesionLabel)
-                .addContainerGap())
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(62, 62, 62)
-                        .addComponent(scanBtn)
-                        .addGap(18, 18, 18)
-                        .addComponent(validarIngresoBtn)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addContainerGap(28, Short.MAX_VALUE)
-                        .addComponent(fotoUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)))
-                .addComponent(cerrarSesionLabel)
-                .addContainerGap())
-        );
+        pelota4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/images/medicine.png"))); // NOI18N
+        getContentPane().add(pelota4, new org.netbeans.lib.awtextra.AbsoluteConstraints(-30, -40, -1, -1));
+
+        pelota2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/images/medicine.png"))); // NOI18N
+        getContentPane().add(pelota2, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, -120, 200, 270));
+
+        fondo_1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/images/Rectangle 1.png"))); // NOI18N
+        getContentPane().add(fondo_1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-20, -20, 450, 230));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -149,6 +156,7 @@ public class IngresoSocios extends javax.swing.JFrame {
     }//GEN-LAST:event_scanBtnActionPerformed
 
     private void scanBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_scanBtnMouseClicked
+        this.setVisible(false);
 
         WebCamScan webCamScan = new WebCamScan(new Runnable() {
             @Override
@@ -156,13 +164,26 @@ public class IngresoSocios extends javax.swing.JFrame {
                 // Leer archivo y actualizar datosSocio
                 validarIngresoBtn.setVisible(true);
                 validarIngresoBtn.setEnabled(true);
+                fondoDatos.setVisible(true);
+                fondoDatos.setEnabled(true);
 
                 String filePath = "src/com/imagesPersonas/" + leerArchivo() + ".png";
                 File file = new File(filePath);
                 if (file.exists()) {
                     ImageIcon icon = new ImageIcon(new ImageIcon(filePath).getImage().getScaledInstance(fotoUsuario.getWidth(), fotoUsuario.getHeight(), Image.SCALE_SMOOTH));
                     fotoUsuario.setIcon(icon);
+                    Socio socioIngresante = null;
+                    String legajo=leerArchivo();
+                    try {
+                        socioIngresante = socios.buscar(Integer.valueOf(legajo));
+                    } catch (Exception e) {
+                        throw new RuntimeException(e);
+                    }
+
+                    jLabel1.setText("Nombre Completo: "+socioIngresante.getNombre()+" "+socioIngresante.getApellido());
                 }
+                IngresoSocios.this.setVisible(true);
+
             }
         });
         webCamScan.createAndShowGUI();
@@ -174,19 +195,25 @@ public class IngresoSocios extends javax.swing.JFrame {
     }//GEN-LAST:event_fotoUsuarioMouseClicked
 
     private void validarIngresoBtnMouseClicked(java.awt.event.MouseEvent evt) throws Exception {//GEN-FIRST:event_validarIngresoBtnMouseClicked
+        Correos correo = new Correos();
         String dato = leerArchivo();
         Socio socioIngresante = socios.buscar(Integer.valueOf(dato));
+
         if (socioIngresante == null) {
             javax.swing.JOptionPane.showMessageDialog(this, "No se encontró al socio.", "Error de Ingreso", javax.swing.JOptionPane.ERROR_MESSAGE);
         } else {
             if (!socioIngresante.isAptoMedico() && socioIngresante.isAptoCuota()) {
                 javax.swing.JOptionPane.showMessageDialog(this, "El socio debe realizar su certificado médico.", "Error de Ingreso", javax.swing.JOptionPane.ERROR_MESSAGE);
+                correo.CorreoAptoMedicoRequerido(socioIngresante.getEmail(),socioIngresante.getNombre());
             } else if (!socioIngresante.isAptoCuota() && socioIngresante.isAptoMedico()) {
                 javax.swing.JOptionPane.showMessageDialog(this, "El socio debe pagar su cuota.", "Error de Ingreso", javax.swing.JOptionPane.ERROR_MESSAGE);
+                correo.CorreoDeuda(socioIngresante.getEmail());
             } else if (!socioIngresante.isAptoCuota() && !socioIngresante.isAptoMedico()) {
                 javax.swing.JOptionPane.showMessageDialog(this, "El socio debe pagar su cuota y realizar su certificación médica.", "Error de Ingreso", javax.swing.JOptionPane.ERROR_MESSAGE);
+                correo.CorreoRegularizate(socioIngresante.getEmail(),socioIngresante.getNombre());
             } else if (socioIngresante.isAptoCuota() && socioIngresante.isAptoMedico()) {
                 javax.swing.JOptionPane.showMessageDialog(this, "El socio está al día y puede realizar sus actividades.", "Ingreso exitoso", JOptionPane.INFORMATION_MESSAGE);
+
             }
         }
     }//GEN-LAST:event_validarIngresoBtnMouseClicked
@@ -194,6 +221,22 @@ public class IngresoSocios extends javax.swing.JFrame {
     private void validarIngresoBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_validarIngresoBtnActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_validarIngresoBtnActionPerformed
+
+    private void cerrarSesionLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cerrarSesionLabelMouseClicked
+        Login login = new Login();
+        login.setVisible(true);
+        login.pack();
+        login.setLocationRelativeTo(null);
+        this.dispose();        
+    }//GEN-LAST:event_cerrarSesionLabelMouseClicked
+
+    private void cerrarSesionLabelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cerrarSesionLabelMouseEntered
+   cerrarSesionLabel.setBackground(new Color(80,139,166));
+    }//GEN-LAST:event_cerrarSesionLabelMouseEntered
+
+    private void cerrarSesionLabelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cerrarSesionLabelMouseExited
+        cerrarSesionLabel.setBackground(new Color(59,132,173));
+    }//GEN-LAST:event_cerrarSesionLabelMouseExited
 
 
     public String leerArchivo() {
@@ -214,8 +257,14 @@ public class IngresoSocios extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel Marco;
     private javax.swing.JLabel cerrarSesionLabel;
+    private javax.swing.JPanel fondoDatos;
+    private javax.swing.JLabel fondo_1;
     private javax.swing.JLabel fotoUsuario;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel pelota2;
+    private javax.swing.JLabel pelota4;
     private javax.swing.JButton scanBtn;
     private javax.swing.JButton validarIngresoBtn;
     // End of variables declaration//GEN-END:variables

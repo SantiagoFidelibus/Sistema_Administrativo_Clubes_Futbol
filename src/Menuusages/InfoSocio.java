@@ -138,6 +138,7 @@ public class InfoSocio extends JFrame {
         obraSocialSep = new javax.swing.JSeparator();
         categoria = new javax.swing.JLabel();
         categoriaBox = new javax.swing.JComboBox<>();
+        Marco = new javax.swing.JLabel();
         fotoUsuario = new javax.swing.JLabel();
         cargarImgBtn = new javax.swing.JPanel();
         cargarImgTxt = new javax.swing.JLabel();
@@ -342,6 +343,7 @@ public class InfoSocio extends JFrame {
         legajoTxt.setForeground(new java.awt.Color(153, 153, 153));
         legajoTxt.setText("Ingrese el legajo");
         legajoTxt.setBorder(null);
+        legajoTxt.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         legajoTxt.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 legajoTxtMousePressed(evt);
@@ -508,14 +510,16 @@ public class InfoSocio extends JFrame {
         });
         ventana1.add(categoriaBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 510, 180, 30));
 
+        Marco.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/imagesPersonas/marcoPerso.png"))); // NOI18N
+        ventana1.add(Marco, new org.netbeans.lib.awtextra.AbsoluteConstraints(990, 300, 250, 200));
+
         fotoUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/images/FotoCarnet.png"))); // NOI18N
-        fotoUsuario.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         fotoUsuario.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 fotoUsuarioMouseClicked(evt);
             }
         });
-        ventana1.add(fotoUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(1000, 320, 160, 160));
+        ventana1.add(fotoUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(1000, 320, 150, 150));
 
         cargarImgBtn.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -1385,6 +1389,7 @@ public class InfoSocio extends JFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel Marco;
     private javax.swing.JLabel administracionTxt;
     private javax.swing.JLabel apellido;
     private javax.swing.JSeparator apellidoSep;

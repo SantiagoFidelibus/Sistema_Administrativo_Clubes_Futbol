@@ -62,22 +62,20 @@ public class EnvioCorreo {
 
             MimeMultipart multipart = new MimeMultipart();
 
-            // Parte del contenido HTML
             BodyPart messageBodyPart = new MimeBodyPart();
             messageBodyPart.setContent(content, "text/html");
             multipart.addBodyPart(messageBodyPart);
 
-            // Parte de la imagen
             messageBodyPart = new MimeBodyPart();
             File imageFile = new File(imagePath);
-            String contentType = "image/" + getFileExtension(imageFile); // Get image format
+            String contentType = "image/" + getFileExtension(imageFile);
             DataSource fds = new FileDataSource(imagePath);
             messageBodyPart.setDataHandler(new DataHandler(fds));
-            ((MimeBodyPart) messageBodyPart).setContentID("<image>"); // Set Content-ID
-            messageBodyPart.setHeader("Content-Type", contentType); // Set content type
+            ((MimeBodyPart) messageBodyPart).setContentID("<image>");
+            messageBodyPart.setHeader("Content-Type", contentType);
             multipart.addBodyPart(messageBodyPart);
 
-            // Asignar el contenido al correo
+
             mCorreo.setContent(multipart);
 
         } catch (AddressException ex) {
@@ -89,7 +87,7 @@ public class EnvioCorreo {
         }
     }
 
-    // Helper method to get file extension
+
     private String getFileExtension(File file) {
         String fileName = file.getName();
         int dotPos = fileName.lastIndexOf(".");
@@ -110,6 +108,7 @@ public class EnvioCorreo {
             Logger.getLogger(EnvioCorreo.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+
 
 
 }

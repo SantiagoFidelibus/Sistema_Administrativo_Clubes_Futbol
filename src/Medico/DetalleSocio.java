@@ -62,6 +62,8 @@ public class DetalleSocio extends JFrame {
     private void initComponents() {
 
         Background = new javax.swing.JPanel();
+        Marco = new javax.swing.JLabel();
+        fotoUsuario = new javax.swing.JLabel();
         backMenuBtn = new javax.swing.JButton();
         MotivoTxtField = new javax.swing.JTextField();
         ApellidoLabel = new javax.swing.JLabel();
@@ -70,7 +72,6 @@ public class DetalleSocio extends JFrame {
         LegajoLabel = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jComboBox1 = new javax.swing.JComboBox<>();
-        fotoUsuario = new javax.swing.JLabel();
         miniBack = new javax.swing.JLabel();
         pelota6 = new javax.swing.JLabel();
         pelota5 = new javax.swing.JLabel();
@@ -91,6 +92,16 @@ public class DetalleSocio extends JFrame {
         Background.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 255, 204), 2));
         Background.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        Marco.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/imagesPersonas/marcoPerso.png"))); // NOI18N
+        Background.add(Marco, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, -10, 250, 200));
+
+        fotoUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/images/FotoCarnet.png"))); // NOI18N
+        fotoUsuario.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+            }
+        });
+        Background.add(fotoUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 20, 150, 140));
+
         backMenuBtn.setText("Volver al menu");
         backMenuBtn.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
         backMenuBtn.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -103,7 +114,7 @@ public class DetalleSocio extends JFrame {
                 backMenuBtnActionPerformed(evt);
             }
         });
-        Background.add(backMenuBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 330, 110, 50));
+        Background.add(backMenuBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 330, 110, 50));
 
         MotivoTxtField.setColumns(5);
         MotivoTxtField.setHorizontalAlignment(javax.swing.JTextField.LEFT);
@@ -162,17 +173,10 @@ public class DetalleSocio extends JFrame {
         });
         Background.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 160, 125, -1));
 
-        fotoUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/images/FotoCarnet.png"))); // NOI18N
-        fotoUsuario.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-            }
-        });
-        Background.add(fotoUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 30, 150, 120));
-
         miniBack.setBackground(new java.awt.Color(245, 247, 245));
         miniBack.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(204, 255, 204)));
         miniBack.setOpaque(true);
-        Background.add(miniBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 30, 410, 330));
+        Background.add(miniBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 20, 420, 340));
 
         pelota6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/images/medicine.png"))); // NOI18N
         Background.add(pelota6, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, -140, -1, -1));
@@ -184,7 +188,7 @@ public class DetalleSocio extends JFrame {
         Background.add(pelota4, new org.netbeans.lib.awtextra.AbsoluteConstraints(-100, -10, -1, -1));
 
         pelota3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/images/medicine.png"))); // NOI18N
-        Background.add(pelota3, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 210, -1, -1));
+        Background.add(pelota3, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 210, -1, -1));
 
         pelota2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/images/medicine.png"))); // NOI18N
         Background.add(pelota2, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 130, -1, -1));
@@ -198,7 +202,7 @@ public class DetalleSocio extends JFrame {
         fondo_1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/images/Rectangle 1.png"))); // NOI18N
         Background.add(fondo_1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-20, -20, 750, 510));
 
-        getContentPane().add(Background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 640, 390));
+        getContentPane().add(Background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 650, 390));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -270,21 +274,18 @@ public class DetalleSocio extends JFrame {
                 }).start();
             } else {
                 aptoSocio.setAptoMedico(false);
-                contenedoraSocio.modificacion(aptoSocio); // Modificar el socio en contenedoraSocio
+                contenedoraSocio.modificacion(aptoSocio);
                 try {
-                    contenedoraSocio.guardarSociosEnJson("Socios.json"); // Guardar cambios en el JSON
+                    contenedoraSocio.guardarSociosEnJson("Socios.json");
                 } catch (IOException e) {
                     e.printStackTrace();
-                    // Manejo de errores durante el guardado del JSON
                 }
 
-                // Iniciar hilo para enviar correo de apto médico rechazado
                 new Thread(() -> {
                     try {
                         mail.CorreoAptoMedicoRechazado(emailS, nameS, MotivoTxtField.getText());
                     } catch (Exception e) {
                         e.printStackTrace();
-                        // Manejo de errores durante el envío del correo
                     }
                 }).start();
             }
@@ -308,6 +309,7 @@ public class DetalleSocio extends JFrame {
     private javax.swing.JLabel ApellidoLabel;
     private javax.swing.JPanel Background;
     private javax.swing.JLabel LegajoLabel;
+    private javax.swing.JLabel Marco;
     private javax.swing.JTextField MotivoTxtField;
     private javax.swing.JLabel NombreLabel;
     private javax.swing.JButton backMenuBtn;

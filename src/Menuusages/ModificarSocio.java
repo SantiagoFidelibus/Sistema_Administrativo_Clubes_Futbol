@@ -6,11 +6,14 @@ package Menuusages;
 
 import java.awt.*;
 
+import MenuIU.Menu;
 import Webcam.WebcamClass;
 import Model.Categoria;
 import Mail.Correos;
 import Model.Socio;
 
+import java.awt.event.*;
+import java.awt.*;
 
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
@@ -177,9 +180,11 @@ public class ModificarSocio extends javax.swing.JFrame {
         modifBtn = new javax.swing.JPanel();
         modifTxt = new javax.swing.JLabel();
         recharg = new javax.swing.JLabel();
+        Marco = new javax.swing.JLabel();
         fotoUsuario = new javax.swing.JLabel();
         cargarImgBtn = new javax.swing.JPanel();
         cargarImgTxt = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setForeground(java.awt.Color.white);
@@ -379,6 +384,7 @@ public class ModificarSocio extends javax.swing.JFrame {
         legajoTxt.setForeground(new java.awt.Color(153, 153, 153));
         legajoTxt.setText("Ingrese el legajo");
         legajoTxt.setBorder(null);
+        legajoTxt.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         legajoTxt.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 legajoTxtMousePressed(evt);
@@ -586,14 +592,16 @@ public class ModificarSocio extends javax.swing.JFrame {
         });
         ventana1.add(recharg, new org.netbeans.lib.awtextra.AbsoluteConstraints(1180, 390, 20, 30));
 
+        Marco.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/imagesPersonas/marcoPerso.png"))); // NOI18N
+        ventana1.add(Marco, new org.netbeans.lib.awtextra.AbsoluteConstraints(1000, 300, 250, 200));
+
         fotoUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/images/FotoCarnet.png"))); // NOI18N
-        fotoUsuario.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         fotoUsuario.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 fotoUsuarioMouseClicked(evt);
             }
         });
-        ventana1.add(fotoUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(1000, 320, 160, 160));
+        ventana1.add(fotoUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(1010, 330, 150, 140));
 
         cargarImgBtn.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -629,6 +637,16 @@ public class ModificarSocio extends javax.swing.JFrame {
         );
 
         ventana1.add(cargarImgBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(1030, 490, -1, 20));
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel1.setText("Volver al Menu");
+        jLabel1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel1MouseClicked(evt);
+            }
+        });
+        ventana1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 670, -1, -1));
 
         panelVentanas.addTab("tab1", ventana1);
 
@@ -1336,6 +1354,14 @@ public class ModificarSocio extends javax.swing.JFrame {
         });
     }//GEN-LAST:event_fotoUsuarioMouseClicked
 
+    private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
+        Menu menu = new Menu();
+        menu.setVisible(true);
+        menu.pack();
+        menu.setLocationRelativeTo(null);
+        this.dispose();
+    }//GEN-LAST:event_jLabel1MouseClicked
+
     public static boolean isValidEmail(String email) {
         // Expresión regular para validar el correo electrónico
         String emailRegex = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,6}$";
@@ -1376,6 +1402,7 @@ public class ModificarSocio extends javax.swing.JFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel Marco;
     private javax.swing.JLabel administracionTxt;
     private javax.swing.JLabel apellido;
     private javax.swing.JSeparator apellidoSep;
@@ -1403,6 +1430,7 @@ public class ModificarSocio extends javax.swing.JFrame {
     private javax.swing.JTextField fechaNacTxt;
     private javax.swing.JLabel fotoUsuario;
     private javax.swing.JPanel header;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel legajo;
     private javax.swing.JSeparator legajoSep;
     private javax.swing.JTextField legajoTxt;

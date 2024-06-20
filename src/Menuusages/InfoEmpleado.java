@@ -139,6 +139,19 @@ public class InfoEmpleado extends javax.swing.JFrame {
 
         exitBtn1.setBackground(new java.awt.Color(255, 255, 255));
 
+        javax.swing.GroupLayout exitBtn1Layout = new javax.swing.GroupLayout(exitBtn1);
+        exitBtn1.setLayout(exitBtn1Layout);
+        exitBtn1Layout.setHorizontalGroup(
+            exitBtn1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 40, Short.MAX_VALUE)
+        );
+        exitBtn1Layout.setVerticalGroup(
+            exitBtn1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 40, Short.MAX_VALUE)
+        );
+
+        exitMenu1.add(exitBtn1, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 0, -1, -1));
+
         exitTxt1.setBackground(new java.awt.Color(0, 0, 0));
         exitTxt1.setFont(new java.awt.Font("Roboto Light", 0, 24)); // NOI18N
         exitTxt1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -158,31 +171,9 @@ public class InfoEmpleado extends javax.swing.JFrame {
                 exitTxt1MousePressed(evt);
             }
         });
+        exitMenu1.add(exitTxt1, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 0, 40, 40));
 
-        javax.swing.GroupLayout exitBtn1Layout = new javax.swing.GroupLayout(exitBtn1);
-        exitBtn1.setLayout(exitBtn1Layout);
-        exitBtn1Layout.setHorizontalGroup(
-            exitBtn1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 40, Short.MAX_VALUE)
-            .addGroup(exitBtn1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(exitBtn1Layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(exitTxt1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-        );
-        exitBtn1Layout.setVerticalGroup(
-            exitBtn1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 40, Short.MAX_VALUE)
-            .addGroup(exitBtn1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(exitBtn1Layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(exitTxt1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-        );
-
-        exitMenu1.add(exitBtn1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1240, 0, -1, -1));
-
-        background1.add(exitMenu1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, -1));
+        background1.add(exitMenu1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 580, -1));
 
         header.setBackground(new java.awt.Color(50, 115, 153));
 
@@ -205,7 +196,7 @@ public class InfoEmpleado extends javax.swing.JFrame {
                 .addGroup(headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(dateText)
                     .addComponent(administracionTxt))
-                .addContainerGap(696, Short.MAX_VALUE))
+                .addContainerGap(38, Short.MAX_VALUE))
         );
         headerLayout.setVerticalGroup(
             headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -217,7 +208,7 @@ public class InfoEmpleado extends javax.swing.JFrame {
                 .addGap(34, 34, 34))
         );
 
-        background1.add(header, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 1280, 160));
+        background1.add(header, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 580, 160));
 
         ventana1.setBackground(new java.awt.Color(255, 255, 255));
         ventana1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -313,6 +304,7 @@ public class InfoEmpleado extends javax.swing.JFrame {
         legajoTxt.setForeground(new java.awt.Color(153, 153, 153));
         legajoTxt.setText("Ingrese el legajo");
         legajoTxt.setBorder(null);
+        legajoTxt.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         legajoTxt.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 legajoTxtMousePressed(evt);
@@ -456,7 +448,7 @@ public class InfoEmpleado extends javax.swing.JFrame {
             .addComponent(registerTxt, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
         );
 
-        ventana1.add(registerBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 560, 240, 50));
+        ventana1.add(registerBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 660, 240, 50));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel1.setText("Volver al Menu");
@@ -476,7 +468,7 @@ public class InfoEmpleado extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(background1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(background1, javax.swing.GroupLayout.PREFERRED_SIZE, 583, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -491,13 +483,13 @@ public class InfoEmpleado extends javax.swing.JFrame {
     }//GEN-LAST:event_exitTxt1MouseClicked
 
     private void exitTxt1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_exitTxt1MouseEntered
-        exitBtn.setBackground(Color.red);
-        exitTxt.setForeground(Color.white);
+        exitBtn1.setBackground(Color.red);
+        exitTxt1.setForeground(Color.white);
     }//GEN-LAST:event_exitTxt1MouseEntered
 
     private void exitTxt1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_exitTxt1MouseExited
-        exitBtn.setBackground(Color.white);
-        exitTxt.setForeground(Color.black);
+        exitBtn1.setBackground(Color.white);
+        exitTxt1.setForeground(Color.black);
     }//GEN-LAST:event_exitTxt1MouseExited
 
     private void exitTxt1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_exitTxt1MousePressed
@@ -983,7 +975,6 @@ public class InfoEmpleado extends javax.swing.JFrame {
     private javax.swing.JLabel apellido;
     private javax.swing.JSeparator apellidoSep;
     private javax.swing.JTextField apellidoTxt;
-    private javax.swing.JPanel background;
     private javax.swing.JPanel background1;
     private javax.swing.JPanel cargarImgBtn;
     private javax.swing.JLabel cargo;
@@ -995,11 +986,8 @@ public class InfoEmpleado extends javax.swing.JFrame {
     private javax.swing.JLabel email;
     private javax.swing.JSeparator emailSep;
     private javax.swing.JTextField emailTxt;
-    private javax.swing.JPanel exitBtn;
     private javax.swing.JPanel exitBtn1;
-    private javax.swing.JPanel exitMenu;
     private javax.swing.JPanel exitMenu1;
-    private javax.swing.JLabel exitTxt;
     private javax.swing.JLabel exitTxt1;
     private javax.swing.JLabel fechaNac;
     private javax.swing.JSeparator fechaNacSep;

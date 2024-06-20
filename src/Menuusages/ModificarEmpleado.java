@@ -6,6 +6,7 @@ package Menuusages;
 
 import Containers.ContenedoraEmpleado;
 import Mail.Correos;
+import MenuIU.Menu;
 import Model.Cargo;
 import Model.Empleado;
 import Webcam.WebcamClass;
@@ -116,6 +117,7 @@ public class ModificarEmpleado extends javax.swing.JFrame {
     private void initComponents() {
 
         background = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
         exitMenu = new javax.swing.JPanel();
         exitBtn = new javax.swing.JPanel();
         exitTxt = new javax.swing.JLabel();
@@ -153,6 +155,16 @@ public class ModificarEmpleado extends javax.swing.JFrame {
 
         background.setBackground(new java.awt.Color(255, 255, 255));
         background.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel1.setText("Volver al Menu");
+        jLabel1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel1MouseClicked(evt);
+            }
+        });
+        background.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 670, -1, -1));
 
         exitMenu.setBackground(new java.awt.Color(255, 255, 255));
         exitMenu.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
@@ -210,9 +222,9 @@ public class ModificarEmpleado extends javax.swing.JFrame {
                     .addGap(0, 0, Short.MAX_VALUE)))
         );
 
-        exitMenu.add(exitBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(1240, 0, -1, -1));
+        exitMenu.add(exitBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 0, -1, -1));
 
-        background.add(exitMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, -1));
+        background.add(exitMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         header.setBackground(new java.awt.Color(50, 115, 153));
 
@@ -235,7 +247,7 @@ public class ModificarEmpleado extends javax.swing.JFrame {
                 .addGroup(headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(dateText)
                     .addComponent(administracionTxt))
-                .addContainerGap(696, Short.MAX_VALUE))
+                .addContainerGap(58, Short.MAX_VALUE))
         );
         headerLayout.setVerticalGroup(
             headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -247,7 +259,7 @@ public class ModificarEmpleado extends javax.swing.JFrame {
                 .addGap(34, 34, 34))
         );
 
-        background.add(header, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 1280, 160));
+        background.add(header, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 600, 160));
 
         ventana1.setBackground(new java.awt.Color(255, 255, 255));
         ventana1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -343,6 +355,7 @@ public class ModificarEmpleado extends javax.swing.JFrame {
         legajoTxt.setForeground(new java.awt.Color(153, 153, 153));
         legajoTxt.setText("Ingrese el legajo");
         legajoTxt.setBorder(null);
+        legajoTxt.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         legajoTxt.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 legajoTxtMousePressed(evt);
@@ -450,7 +463,7 @@ public class ModificarEmpleado extends javax.swing.JFrame {
             .addComponent(modifTxt, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
         );
 
-        ventana1.add(modifBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 560, 240, 50));
+        ventana1.add(modifBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 660, 240, 50));
 
         cargarImgBtn.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -475,7 +488,7 @@ public class ModificarEmpleado extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(background, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(background, javax.swing.GroupLayout.PREFERRED_SIZE, 599, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -883,6 +896,14 @@ public class ModificarEmpleado extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_cargoBoxActionPerformed
 
+    private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
+        Menu menu = new Menu();
+        menu.setVisible(true);
+        menu.pack();
+        menu.setLocationRelativeTo(null);
+        this.dispose();
+    }//GEN-LAST:event_jLabel1MouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -911,6 +932,7 @@ public class ModificarEmpleado extends javax.swing.JFrame {
     private javax.swing.JSeparator fechaNacSep;
     private javax.swing.JTextField fechaNacTxt;
     private javax.swing.JPanel header;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel legajo;
     private javax.swing.JSeparator legajoSep;
     private javax.swing.JTextField legajoTxt;

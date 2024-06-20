@@ -14,6 +14,7 @@ import Model.Categoria;
 import Login.Login;
 import java.awt.*;
 import java.awt.event.*;
+import java.io.File;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -121,6 +122,8 @@ public class Menu extends JFrame {
         ventana3 = new javax.swing.JPanel();
         tituloSocios1 = new javax.swing.JLabel();
         buscarLabel1 = new javax.swing.JTextField();
+        eliminarBtn1 = new javax.swing.JPanel();
+        eliminarTxt1 = new javax.swing.JLabel();
         buscarBtn1 = new javax.swing.JPanel();
         buscarTxt1 = new javax.swing.JLabel();
         modificarBtn1 = new javax.swing.JPanel();
@@ -129,8 +132,6 @@ public class Menu extends JFrame {
         agregarTxt1 = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
         jTable3 = new javax.swing.JTable();
-        eliminarBtn1 = new javax.swing.JPanel();
-        eliminarTxt1 = new javax.swing.JLabel();
         ventana4 = new javax.swing.JPanel();
         tituloPagoSocios = new javax.swing.JLabel();
         legajoTitulo = new javax.swing.JLabel();
@@ -877,6 +878,37 @@ public class Menu extends JFrame {
         });
         ventana3.add(buscarLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(36, 244, 780, 40));
 
+        eliminarBtn1.setBackground(new java.awt.Color(50, 115, 153));
+        eliminarBtn1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                eliminarBtn1MouseClicked(evt);
+            }
+        });
+
+        eliminarTxt1.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
+        eliminarTxt1.setForeground(new java.awt.Color(255, 255, 255));
+        eliminarTxt1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        eliminarTxt1.setText("Eliminar");
+        eliminarTxt1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+
+        javax.swing.GroupLayout eliminarBtn1Layout = new javax.swing.GroupLayout(eliminarBtn1);
+        eliminarBtn1.setLayout(eliminarBtn1Layout);
+        eliminarBtn1Layout.setHorizontalGroup(
+            eliminarBtn1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, eliminarBtn1Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(eliminarTxt1, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+        eliminarBtn1Layout.setVerticalGroup(
+            eliminarBtn1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, eliminarBtn1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(eliminarTxt1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+
+        ventana3.add(eliminarBtn1, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 620, 110, 40));
+
         buscarBtn1.setBackground(new java.awt.Color(50, 115, 153));
 
         buscarTxt1.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
@@ -1014,32 +1046,6 @@ public class Menu extends JFrame {
         jScrollPane3.setViewportView(jTable3);
 
         ventana3.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(36, 314, 930, 280));
-
-        eliminarBtn1.setBackground(new java.awt.Color(50, 115, 153));
-        eliminarBtn1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                eliminarBtn1MouseClicked(evt);
-            }
-        });
-
-        eliminarTxt1.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
-        eliminarTxt1.setForeground(new java.awt.Color(255, 255, 255));
-        eliminarTxt1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        eliminarTxt1.setText("Eliminar");
-        eliminarTxt1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-
-        javax.swing.GroupLayout eliminarBtn1Layout = new javax.swing.GroupLayout(eliminarBtn1);
-        eliminarBtn1.setLayout(eliminarBtn1Layout);
-        eliminarBtn1Layout.setHorizontalGroup(
-            eliminarBtn1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(eliminarTxt1, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
-        );
-        eliminarBtn1Layout.setVerticalGroup(
-            eliminarBtn1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(eliminarTxt1, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
-        );
-
-        ventana3.add(eliminarBtn1, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 620, -1, 40));
 
         panelVentanas.addTab("tab3", ventana3);
 
@@ -1338,7 +1344,7 @@ public class Menu extends JFrame {
 
         tituloPagoEmpleado.setFont(new java.awt.Font("Corbel", 1, 28)); // NOI18N
         tituloPagoEmpleado.setForeground(new java.awt.Color(153, 153, 153));
-        tituloPagoEmpleado.setText("Pago de Cuotas Sociales");
+        tituloPagoEmpleado.setText("Pago de Cuotas Sueldos");
         ventana5.add(tituloPagoEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 200, -1, -1));
 
         legajoTitulo1.setFont(new java.awt.Font("Roboto Light", 1, 15)); // NOI18N
@@ -1541,7 +1547,7 @@ public class Menu extends JFrame {
         });
         jScrollPane4.setViewportView(tablaPagos);
 
-        card4.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 370, 330));
+        card4.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 370, 310));
 
         tituloPagos.setFont(new java.awt.Font("Corbel", 1, 28)); // NOI18N
         tituloPagos.setForeground(new java.awt.Color(153, 153, 153));
@@ -1923,6 +1929,10 @@ public class Menu extends JFrame {
                 try {
                     int legajo = (int) jTable2.getValueAt(selectedRows[i], 0);
                     contenedora.baja(legajo);
+                    String imagePath = "src/com/imagesPersonas/"+legajo+".png";
+                    deleteImage(imagePath);
+                    String imagePath2 = "src/com/barcodes/"+legajo+".png";
+                    deleteImage(imagePath2);
                     contenedora.guardarSociosEnJson("Socios.json");
                     model.removeRow(selectedRows[i]);
                 } catch (Exception e) {
@@ -1931,7 +1941,15 @@ public class Menu extends JFrame {
             }
         }
     }
-            }//GEN-LAST:event_eliminarTxtMouseClicked
+     }//GEN-LAST:event_eliminarTxtMouseClicked
+
+    // Método para eliminar el archivo de imagen
+    public static void deleteImage(String imagePath) {
+        File imageFile = new File(imagePath);
+        if (imageFile.exists()) {
+            imageFile.delete();
+        }
+    }
 
     private void eliminarBtnMouseClicked(MouseEvent evt) {//GEN-FIRST:event_eliminarBtnMouseClicked
         // TODO add your handling code here:
@@ -1977,11 +1995,12 @@ public class Menu extends JFrame {
     }
     private void addSocioToTable(Socio socio) {
         DefaultTableModel model = (DefaultTableModel) jTable2.getModel();
-        model.addRow(new Object[]{socio.getLegajo(), socio.getNombre(), socio.getApellido(), socio.getEmail(), socio.getDni(), socio.getFechaDeNacimiento(), socio.getTelefono(), socio.getDomicilio(), socio.getSexo(), socio.getObraSocial(), socio.isAptoMedico(), socio.getCategoria(), socio.getFechaVencimientoPago()});
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        model.addRow(new Object[]{socio.getLegajo(), socio.getNombre(), socio.getApellido(), socio.getEmail(), socio.getDni(), socio.getFechaDeNacimiento(), socio.getTelefono(), socio.getDomicilio(), socio.getSexo(), socio.getObraSocial(), socio.isAptoMedico(), socio.getCategoria(), socio.getFechaVencimientoPago().format(formatter)});
     }
 
     public Object[] socioToRow(Socio socio) {
-    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         return new Object[] {
             socio.getLegajo(),
             socio.getNombre(),
@@ -2039,7 +2058,7 @@ public HashMap<Integer, Socio> obtenerListaDeSocios() {
     
     //Metodo para agregar los deudores ordenados a la tabla
     public Object[] deudToRow(Socio socio){
-    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
     return new Object[]{socio.getLegajo(), socio.getNombre(), socio.getApellido(), socio.getFechaVencimientoPago().format(formatter)};
     }
     
@@ -2092,7 +2111,7 @@ public HashMap<Integer, Socio> obtenerListaDeSocios() {
 
     //Metodo para agregar los empleados a los que se deben pagar el sueldo a la tabla
     public Object[] empleadoAPagarToRow(Empleado empleado){
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         return new Object[]{empleado.getLegajo(), empleado.getNombre(), empleado.getApellido(), empleado.getFechaVencimientoPago().format(formatter)};
     }
 
@@ -2312,7 +2331,7 @@ public HashMap<Integer, Socio> obtenerListaDeSocios() {
                 nomTxt.setText("Nombre y Apellido: " + socio.getNombre() + " " + socio.getApellido());
                 docTxt.setText("Documento: " + socio.getDni());
                 totalPagarTxt.setText("Total a pagar: $" + socio.pagarCuota(0));
-                vencTxt.setText("Fecha de vencimiento: " + socio.getFechaVencimientoPago().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")));
+                vencTxt.setText("Fecha de vencimiento: " + socio.getFechaVencimientoPago().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")));
                 cardLayout.show(panelDatos, "card1");
             }
         } catch (Exception e) {
@@ -2373,7 +2392,7 @@ public HashMap<Integer, Socio> obtenerListaDeSocios() {
             Correos mail = new Correos();
             new Thread(() -> {
                 try {
-                    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+                    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
                     String fechaRegistroPagoComoCadena = socio.getFechaRegistroPago().format(formatter);
                     mail.CorreoPagoSocio(socio.getEmail(), socio.getNombre(), fechaRegistroPagoComoCadena, valorTotal);
                 } catch (Exception e) {
@@ -2466,9 +2485,40 @@ public HashMap<Integer, Socio> obtenerListaDeSocios() {
     }//GEN-LAST:event_mostrarSueldEmplTxtMouseExited
 
     private void pagarTxt1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pagarTxt1MouseClicked
-        // ENVIAR MAIL DE QUE SE PAGO
-        // SUMAR UN MES A LA FECHA DE COBRO
-        // ACTUALIZAR JSON DE EMPLEADOS
+             try {
+            ContenedoraEmpleado contenedoraEmpleado = new ContenedoraEmpleado();
+            contenedoraEmpleado.cargarEmpleadosDeJson("Empleados.json");
+            String legajoStr = buscarLegajoEmpl.getText().trim();
+            int legajo = Integer.parseInt(legajoStr);
+            Empleado empleado = contenedoraEmpleado.buscar(legajo);
+            empleado.calcularPago();
+            int valorTotal = empleado.pagarCuota(0);
+            empleado.registrarPago();
+            Correos mail = new Correos();
+            new Thread(() -> {
+                try {
+                    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+                    String fechaRegistroPagoComoCadena = empleado.getFechaRegistroPago().format(formatter);
+                    mail.CorreoPagoSalario(empleado.getEmail(), empleado.getNombre(), valorTotal);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    // Manejo de errores durante el envío del correo
+                }
+            }).start();
+
+            contenedoraEmpleado.guardarEmpleadosEnJson("Empleados.json");
+
+            PagoExitoso pagoExitoso = new PagoExitoso();
+            pagoExitoso.setVisible(true);
+            pagoExitoso.pack();
+            pagoExitoso.setLocationRelativeTo(null);
+            this.dispose();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
     }//GEN-LAST:event_pagarTxt1MouseClicked
 
     private void pagarTxt1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pagarTxt1MouseEntered
@@ -2495,9 +2545,9 @@ public HashMap<Integer, Socio> obtenerListaDeSocios() {
                 CardLayout cardLayout = (CardLayout) panelDatos1.getLayout();
         try {
 
-            ContenedoraEmpleado contenedoraEmpleado = new ContenedoraEmpleado();
-            contenedoraEmpleado.cargarEmpleadosDeJson("Empleados.json");
-           
+            ContenedoraEmpleado ContenedoraEmpleado = new ContenedoraEmpleado();
+            ContenedoraEmpleado.cargarEmpleadosDeJson("Empleados.json");
+
             String legajoStr = buscarLegajoEmpl.getText().trim();
 
             if (legajoStr.isEmpty() || legajoStr.equals("Ingrese el legajo del empleado a buscar.")) {
@@ -2506,74 +2556,74 @@ public HashMap<Integer, Socio> obtenerListaDeSocios() {
                 cardLayout.show(panelDatos1, "cardPrincipal1");
             } else {
                 int legajo = Integer.parseInt(legajoStr);
-                Empleado empleado = contenedoraEmpleado.buscar(legajo);
+                Empleado empleado = ContenedoraEmpleado.buscar(legajo);
                 empleado.calcularPago();
 
                 // EN EL CASO QUE SE ENCUENTRE Y SEA VALIDO
                 nomTxt1.setText("Nombre y Apellido: " + empleado.getNombre() + " " + empleado.getApellido());
                 docTxt1.setText("Documento: " + empleado.getDni());
-                cargoTxt.setText("Cargo: " + empleado.getCargo());
-                totalPagarTxt1.setText("Total a pagar: $" + empleado.calcularPagoConInteres());
-                vencTxt1.setText("Fecha de vencimiento: " + empleado.getFechaVencimientoPago().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")));
+                totalPagarTxt1.setText("Total a pagar: $" + empleado.pagarCuota(0));
+                vencTxt1.setText("Fecha de vencimiento: " + empleado.getFechaVencimientoPago().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")));
                 cardLayout.show(panelDatos1, "card3");
             }
         } catch (Exception e) {
             System.out.println(e.getMessage());
             JOptionPane.showMessageDialog(this, "No se ha encontrado un empleado con el legajo ingresado.\n", "AVISO", JOptionPane.ERROR_MESSAGE);
             cardLayout.show(panelDatos1, "cardPrincipal1");
-        }    
+        }
     }//GEN-LAST:event_buscarTxt5MouseClicked
 
     private void eliminarBtn1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_eliminarBtn1MouseClicked
         ContenedoraEmpleado contenedora = new ContenedoraEmpleado();
-    try {
-        contenedora.cargarEmpleadosDeJson("Empleados.json");
-    } catch (IOException ex) {
-        ex.printStackTrace();
-    }
-
-    DefaultTableModel model = (DefaultTableModel) jTable3.getModel();
-    int[] selectedRows = jTable3.getSelectedRows();
-
-    if (selectedRows.length < 1) {
-        JOptionPane.showMessageDialog(this, "Debes seleccionar uno o más empleados a eliminar.\n", "AVISO", JOptionPane.ERROR_MESSAGE);
-    } else {
-        // Construir el mensaje de confirmación
-        String message = "¿Estás seguro de eliminar el/los siguiente(s) empleado(s)?\n\n";
-        for (int i = 0; i < selectedRows.length; i++) {
-            int legajo = (int) jTable3.getValueAt(selectedRows[i], 0);
-            String nombre = (String) jTable3.getValueAt(selectedRows[i], 1);
-            message += "Nombre: " + nombre + ", Legajo: " + legajo + "\n";
+        try {
+            contenedora.cargarEmpleadosDeJson("Empleados.json");
+        } catch (IOException ex) {
+            ex.printStackTrace();
         }
 
-        // Mostrar el cuadro de diálogo de confirmación
-        int option = JOptionPane.showConfirmDialog(this, message, "Confirmar eliminación", JOptionPane.YES_NO_OPTION);
-        if (option == JOptionPane.YES_OPTION) {
-            // Eliminar los socios seleccionados
-            for (int i = selectedRows.length - 1; i >= 0; i--) {
-                try {
-                    int legajo = (int) jTable3.getValueAt(selectedRows[i], 0);
-                    contenedora.baja(legajo);
-                    contenedora.guardarEmpleadosEnJson("Empleados.json");
-                    model.removeRow(selectedRows[i]);
-                } catch (Exception e) {
-                    System.out.println(e.getMessage());
+        DefaultTableModel model = (DefaultTableModel) jTable3.getModel();
+        int[] selectedRows = jTable3.getSelectedRows();
+
+        if (selectedRows.length < 1) {
+            JOptionPane.showMessageDialog(this, "Debes seleccionar uno o más empleados a eliminar.\n", "AVISO", JOptionPane.ERROR_MESSAGE);
+        } else {
+            // Construir el mensaje de confirmación
+            String message = "¿Estás seguro de eliminar el/los siguiente(s) empleado(s)?\n\n";
+            for (int i = 0; i < selectedRows.length; i++) {
+                int legajo = (int) jTable3.getValueAt(selectedRows[i], 0);
+                String nombre = (String) jTable3.getValueAt(selectedRows[i], 1);
+                message += "Nombre: " + nombre + ", Legajo: " + legajo + "\n";
+            }
+
+            // Mostrar el cuadro de diálogo de confirmación
+            int option = JOptionPane.showConfirmDialog(this, message, "Confirmar eliminación", JOptionPane.YES_NO_OPTION);
+            if (option == JOptionPane.YES_OPTION) {
+                // Eliminar los socios seleccionados
+                for (int i = selectedRows.length - 1; i >= 0; i--) {
+                    try {
+                        int legajo = (int) jTable3.getValueAt(selectedRows[i], 0);
+                        contenedora.baja(legajo);
+                        contenedora.guardarEmpleadosEnJson("Empleados.json");
+                        model.removeRow(selectedRows[i]);
+                    } catch (Exception e) {
+                        System.out.println(e.getMessage());
+                    }
                 }
             }
-        }
     }//GEN-LAST:event_eliminarBtn1MouseClicked
     }
     
     
     
     private void addEmpleadoToTable(Empleado empleado) {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         DefaultTableModel model = (DefaultTableModel) jTable3.getModel();
-        model.addRow(new Object[]{empleado.getLegajo(), empleado.getNombre(), empleado.getApellido(), empleado.getEmail(), empleado.getDni(), empleado.getFechaDeNacimiento(), empleado.getCargo(), empleado.isCobro(), empleado.getFechaRegistroPago(), empleado.getFechaVencimientoPago()});
+        model.addRow(new Object[]{empleado.getLegajo(), empleado.getNombre(), empleado.getApellido(), empleado.getEmail(), empleado.getDni(), empleado.getFechaDeNacimiento(), empleado.getCargo(), empleado.isCobro(), empleado.getFechaRegistroPago().format(formatter), empleado.getFechaVencimientoPago().format(formatter)});
     }
 
 
     public Object[] empleadoToRow(Empleado empleado) {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         return new Object[]{
                 empleado.getLegajo(),
                 empleado.getNombre(),

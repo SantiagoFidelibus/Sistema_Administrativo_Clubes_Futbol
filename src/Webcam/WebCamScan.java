@@ -159,6 +159,12 @@ public class WebCamScan extends JFrame {
         );
 
         if (selectedCamera != null) {
+            // Verificar si la cámara seleccionada es diferente a la actualmente abierta
+            if (webcam != null && webcam.getName().equals(selectedCamera) && webcam.isOpen()) {
+                // La cámara seleccionada es la misma que ya está abierta, no hacer nada
+                return;
+            }
+
             for (Webcam cam : webcams) {
                 if (cam.getName().equals(selectedCamera)) {
                     abrirCamara(cam);
@@ -169,7 +175,8 @@ public class WebCamScan extends JFrame {
     }
 
     private void abrirCamara(Webcam cam) {
-        cerrarCamara();
+        cerrarCamara(); // Cerrar la cámara actual si está abierta
+
         webcam = cam;
         webcam.setViewSize(WebcamResolution.VGA.getSize());
         webcam.open();
@@ -191,13 +198,14 @@ public class WebCamScan extends JFrame {
     private void cerrarCamara() {
         if (webcam != null && webcam.isOpen()) {
             webcam.close();
+            webcam = null; // Liberar la referencia a la cámara actual
             if (panel != null) {
                 getContentPane().remove(panel.getParent());
+                panel.stop(); // Detener el panel de la cámara
+                panel = null; // Liberar la referencia al panel de la cámara
                 repaint();
             }
             cameraStatusLabel.setText("Estado de la Cámara: No seleccionada");
-            setVisible(false); // Oculta la ventana principal
-            dispose(); // Libera todos los recursos asociados a la ventana
         }
     }
 
@@ -223,6 +231,7 @@ public class WebCamScan extends JFrame {
                         escribirEnArchivo(decodedText);
                     cerrarCamara(); // Cierra la cámara y la ventana principal
                     isScanned = true;
+                    this.dispose();
                     }
 
                     if (onScanComplete != null) {
@@ -238,6 +247,7 @@ public class WebCamScan extends JFrame {
         if (!isScanned) {
             JOptionPane.showMessageDialog(this, "No se encontró ningún código.", "Error de Escaneo", JOptionPane.ERROR_MESSAGE);
             cerrarCamara();
+            this.dispose();
         }
     }
 
