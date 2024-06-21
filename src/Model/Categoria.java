@@ -16,6 +16,24 @@ public enum Categoria {
         this.minEdad = minEdad;
         this.maxEdad = maxEdad;
     }
+    private int cuota;
+
+    static {
+        CEBOLLITAS.cuota = 17000;
+        INFANTIL.cuota = 18000;
+        CADETES.cuota = 20000;
+        JUVENIL.cuota = 21000;
+        MAYORES.cuota = 24000;
+        PRIMERA.cuota = 26000;
+    }
+
+    public int getCuota() {
+        return cuota;
+    }
+
+    public void setCuota(int cuota) {
+        this.cuota = cuota;
+    }
 
     public int getMinEdad() {
         return minEdad;
