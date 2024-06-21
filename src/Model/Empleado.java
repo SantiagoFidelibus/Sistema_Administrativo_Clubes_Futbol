@@ -56,36 +56,18 @@ public class Empleado extends Persona {
         this.cobro = cobro;
     }
 
-    public void VerificarEntrada(Socio socio){
-        //Probablemente usemos Json
-        if(!socio.isAptoMedico()){
-            //Error
-        }else if(socio.isAptoCuota()){
+    public int getSalario() {
+        return salario;
+    }
 
-        }
+    public void setSalario(int salario) {
+        this.salario = salario;
     }
 
     @Override
     public int calcularPago() {
-        switch (this.getCargo()) {
-            case RECEPCIONISTA:
-                this.salario=345000;
-                return 345000;
-            case ENTRENADOR:
-                this.salario=750000;
-                return 750000;
-            case PREPARADOR_FISICO:
-                this.salario=480000;
-                return 480000;
-            case UTILERO:
-                this.salario=320000;
-                return 320000;
-            case LIMPIEZA:
-                this.salario=270000;
-                return 270000;
-            default:
-                return 0;
-        }
+        this.salario = this.getCargo().getSalario();
+        return this.salario;
     }
 
 
@@ -125,12 +107,12 @@ public class Empleado extends Persona {
     public void actualizarVencimientoPago(LocalDate today,boolean cuotaPagada) {
         if (cuotaPagada) {
             this.fechaRegistroPago = today;
-            this.salario = calcularPago(); // Reinicia la cuota para el próximo periodo
-
-            // Actualiza la fecha de vencimiento del pago
-            this.fechaVencimientoPago = this.fechaVencimientoPago.plusMonths(1);
 
             this.cobro = true;
+            // Actualiza la fecha de vencimiento del pago
+            this.fechaVencimientoPago = this.fechaVencimientoPago.plusMonths(1);
+            this.salario = calcularPago(); // Reinicia la cuota para el próximo periodo
+
         } else {
             this.cobro = false;
         }

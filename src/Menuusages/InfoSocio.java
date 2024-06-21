@@ -62,7 +62,7 @@ public class InfoSocio extends JFrame {
         }catch (IOException ex) {
             ex.printStackTrace();
         }
-
+setTitle("Administracion Acantilados FC");
         TimeUpdater timeUpdater = new TimeUpdater(timeText);
         timeUpdater.start();
         legajoTxt.setText(String.valueOf(legajo));
@@ -137,6 +137,7 @@ public class InfoSocio extends JFrame {
         emailTxt = new javax.swing.JTextField();
         emailSep = new javax.swing.JSeparator();
         telefono = new javax.swing.JLabel();
+        generoComboBox = new javax.swing.JComboBox<>();
         telefonoTxt = new javax.swing.JTextField();
         telefonoSep = new javax.swing.JSeparator();
         fechaNac = new javax.swing.JLabel();
@@ -389,6 +390,15 @@ public class InfoSocio extends JFrame {
         telefono.setText("TELEFONO");
         ventana1.add(telefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 400, -1, -1));
 
+        generoComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Femenino", "Masculino", "Otro" }));
+        generoComboBox.setSelectedIndex(-1);
+        generoComboBox.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                generoComboBoxMousePressed(evt);
+            }
+        });
+        ventana1.add(generoComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 342, 180, 30));
+
         telefonoTxt.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         telefonoTxt.setForeground(new java.awt.Color(153, 153, 153));
         telefonoTxt.setText("Ingrese el numero de teléfono");
@@ -521,7 +531,7 @@ public class InfoSocio extends JFrame {
                 fotoUsuarioMouseClicked(evt);
             }
         });
-        ventana1.add(fotoUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(1000, 320, 150, 150));
+        ventana1.add(fotoUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(1000, 330, 150, 140));
 
         cargarImgBtn.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -1183,6 +1193,8 @@ public class InfoSocio extends JFrame {
         String email = emailTxt.getText();
         LocalDate dateOfBirth = parseDate(dateOfBirthStr);
         String selectedCategoriaString = categoriaBox.getSelectedItem().toString();
+
+       
         String dniStr = dniTxt.getText();
         String telefono = telefonoTxt.getText(); // Obtener el texto del campo de teléfono
 
@@ -1207,7 +1219,7 @@ public class InfoSocio extends JFrame {
             JOptionPane.showMessageDialog(this, "El número de teléfono debe tener al menos 7 dígitos.", "Error de registro", JOptionPane.ERROR_MESSAGE);
         } else {
             try {
-                long numeroTelefono;
+                sexoTxt.setText(generoComboBox.getSelectedItem().toString());
                 Socio nuevoSocio = new Socio(
                         nombreTxt.getText(),
                         apellidoTxt.getText(),
@@ -1215,7 +1227,7 @@ public class InfoSocio extends JFrame {
                         Integer.parseInt(legajoTxt.getText()), // Temporal placeholder para legajo, será asignado en `alta`
                         emailTxt.getText(),
                         fechaNacTxt.getText(),
-                        (int) (numeroTelefono= parseLong(telefono)),
+                        parseLong(telefonoTxt.getText()),
                         domicilioTxt.getText(),
                         sexoTxt.getText(),
                         false,
@@ -1292,14 +1304,51 @@ public class InfoSocio extends JFrame {
     }//GEN-LAST:event_telefonoTxtKeyTyped
 
     private void cargarImgTxtMouseClicked(MouseEvent evt) {//GEN-FIRST:event_cargarImgTxtMouseClicked
-        JFileChooser jf = new JFileChooser();
-        jf.setMultiSelectionEnabled(false);
-        if (jf.showOpenDialog(this) == JFileChooser.APPROVE_OPTION) {
-           RSDragDropFiles.setCopiar(jf.getSelectedFile().toString(), "src/com/imagesPerso/"+legajo.getText()+".png");
-           fotoUsuario.setIcon(new ImageIcon(jf.getSelectedFile().toString()));
-           fotoUsuario.setCursor(new java.awt.Cursor(Cursor.DEFAULT_CURSOR));
-            ;
-        }
+       JFileChooser jf = new JFileChooser();
+jf.setMultiSelectionEnabled(false);
+if (jf.showOpenDialog(this) == JFileChooser.APPROVE_OPTION) {
+    File selectedFile = jf.getSelectedFile();
+    try {
+        // Leer la imagen del archivo seleccionado
+        BufferedImage originalImage = ImageIO.read(selectedFile);
+
+        // Obtener dimensiones originales de la imagen
+        int originalWidth = originalImage.getWidth();
+        int originalHeight = originalImage.getHeight();
+
+        // Definir dimensiones del JLabel
+        int labelWidth = 160;
+        int labelHeight = 160;
+
+        // Calcular proporción para escalado
+        double scale = Math.min((double) labelWidth / originalWidth, (double) labelHeight / originalHeight);
+
+        // Calcular nuevas dimensiones
+        int newWidth = (int) (originalWidth * scale);
+        int newHeight = (int) (originalHeight * scale);
+
+        // Escalar la imagen
+        Image scaledImage = originalImage.getScaledInstance(newWidth, newHeight, Image.SCALE_SMOOTH);
+
+        // Convertir la imagen escalada a ImageIcon
+        ImageIcon scaledIcon = new ImageIcon(scaledImage);
+
+        // Establecer el icono escalado en el JLabel
+        fotoUsuario.setIcon(scaledIcon);
+        fotoUsuario.setCursor(new java.awt.Cursor(Cursor.DEFAULT_CURSOR));
+           int nombrePic = Integer.parseInt(legajoTxt.getText());
+        // Guardar la imagen escalada (opcional)
+        File outputfile = new File("src/com/imagesPersonas/" + nombrePic + ".png");
+        BufferedImage bufferedScaledImage = new BufferedImage(newWidth, newHeight, BufferedImage.TYPE_INT_ARGB);
+        Graphics g = bufferedScaledImage.getGraphics();
+        g.drawImage(scaledImage, 0, 0, null);
+        g.dispose();
+        ImageIO.write(bufferedScaledImage, "png", outputfile);
+
+    } catch (IOException e) {
+        e.printStackTrace();
+    }
+}
     }//GEN-LAST:event_cargarImgTxtMouseClicked
 
     private void registerTxtMouseEntered(MouseEvent evt) {//GEN-FIRST:event_registerTxtMouseEntered
@@ -1350,6 +1399,49 @@ public class InfoSocio extends JFrame {
         this.dispose();
     }//GEN-LAST:event_jLabel1MouseClicked
 
+    private void generoComboBoxMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_generoComboBoxMousePressed
+ if (apellidoTxt.getText().equals("")) {
+            apellidoTxt.setText("Ingrese el apellido");
+            apellidoTxt.setForeground(Color.gray);
+        }
+        if (nombreTxt.getText().equals("")) {
+            nombreTxt.setText("Ingrese el nombre");
+            nombreTxt.setForeground(Color.gray);
+        }
+        if (dniTxt.getText().equals("")) {
+            dniTxt.setText("Ingrese el documento");
+            dniTxt.setForeground(Color.gray);
+        }
+        if (legajoTxt.getText().equals("")) {
+            legajoTxt.setText("Ingrese el legajo");
+            legajoTxt.setForeground(Color.gray);
+        }
+        if (emailTxt.getText().equals("")) {
+            emailTxt.setText("Ingrese el email");
+            emailTxt.setForeground(Color.gray);
+        }
+        if (telefonoTxt.getText().equals("")) {
+            telefonoTxt.setText("Ingrese el numero de teléfono");
+            telefonoTxt.setForeground(Color.gray);
+        }
+        if (fechaNacTxt.getText().equals("")) {
+            fechaNacTxt.setText("dd/mm/aaaa");
+            fechaNacTxt.setForeground(Color.gray);
+        }
+        if (domicilioTxt.getText().equals("")) {
+            domicilioTxt.setText("Ingrese el domicilio");
+            domicilioTxt.setForeground(Color.gray);
+        }
+        if (sexoTxt.getText().equals("")) {
+            sexoTxt.setText("Ingrese el genero");
+            sexoTxt.setForeground(Color.gray);
+        }
+        if (obraSocialTxt.getText().equals("")) {
+            obraSocialTxt.setText("Ingrese la obra social");
+            obraSocialTxt.setForeground(Color.gray);
+        }
+    }//GEN-LAST:event_generoComboBoxMousePressed
+
 
     // Método para verificar si el correo electrónico es válido
     public static boolean isValidEmail(String email) {
@@ -1380,11 +1472,15 @@ public class InfoSocio extends JFrame {
                 || telefonoTxt.getText().isEmpty() || telefonoTxt.getText().equals("Ingrese el numero de teléfono")
                 || fechaNacTxt.getText().isEmpty() || fechaNacTxt.getText().equals("dd/mm/aaaa")
                 || domicilioTxt.getText().isEmpty() || domicilioTxt.getText().equals("Ingrese el domicilio")
-                || sexoTxt.getText().isEmpty() || sexoTxt.getText().equals("Ingrese el genero")
                 || obraSocialTxt.getText().isEmpty() || obraSocialTxt.getText().equals("Ingrese la obra social");
 
         Object selectedCategoria = categoriaBox.getSelectedItem();
         if (selectedCategoria == null || selectedCategoria.toString().isEmpty()) {
+            anyFieldEmpty = true;
+        }
+
+        Object selectedGenero = generoComboBox.getSelectedItem();
+        if (selectedGenero == null || selectedGenero.toString().isEmpty()) {
             anyFieldEmpty = true;
         }
         return anyFieldEmpty;
@@ -1419,6 +1515,7 @@ public class InfoSocio extends JFrame {
     private javax.swing.JSeparator fechaNacSep;
     private javax.swing.JTextField fechaNacTxt;
     private javax.swing.JLabel fotoUsuario;
+    private javax.swing.JComboBox<String> generoComboBox;
     private javax.swing.JPanel header;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel legajo;

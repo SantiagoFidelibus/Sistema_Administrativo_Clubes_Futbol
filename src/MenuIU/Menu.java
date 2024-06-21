@@ -40,7 +40,7 @@ public class Menu extends JFrame {
     int xMouse, yMouse;
     public Menu() {
         initComponents();
-
+setTitle("Administracion Acantilados FC");
         try{
             File iconFile = new File("src/com/images/LOGO1.png"); // Ruta de tu imagen
             BufferedImage iconImage = ImageIO.read(iconFile);
@@ -826,7 +826,7 @@ public class Menu extends JFrame {
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.Object.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Boolean.class, java.lang.Object.class, java.lang.Object.class
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.Object.class, java.lang.Long.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Boolean.class, java.lang.Object.class, java.lang.Object.class
             };
             boolean[] canEdit = new boolean [] {
                 false, false, false, false, false, false, false, false, false, false, false, false, false
@@ -1350,12 +1350,12 @@ public class Menu extends JFrame {
         tituloPagoEmpleado.setFont(new java.awt.Font("Corbel", 1, 28)); // NOI18N
         tituloPagoEmpleado.setForeground(new java.awt.Color(153, 153, 153));
         tituloPagoEmpleado.setText("Pago de Sueldos");
-        ventana5.add(tituloPagoEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 200, -1, -1));
+        ventana5.add(tituloPagoEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 200, 290, -1));
 
         legajoTitulo1.setFont(new java.awt.Font("Roboto Light", 1, 15)); // NOI18N
         legajoTitulo1.setText("BUSCAR EMPLEADO");
         legajoTitulo1.setToolTipText("");
-        ventana5.add(legajoTitulo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 260, 150, 20));
+        ventana5.add(legajoTitulo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 260, 290, 20));
 
         buscarLegajoEmpl.setFont(new java.awt.Font("Roboto Light", 0, 14)); // NOI18N
         buscarLegajoEmpl.setForeground(new java.awt.Color(153, 153, 153));
@@ -1382,7 +1382,7 @@ public class Menu extends JFrame {
         mostrarListadoTitulo1.setFont(new java.awt.Font("Roboto Light", 1, 15)); // NOI18N
         mostrarListadoTitulo1.setText("MOSTRAR LISTADO DE SUELDOS A PAGAR");
         mostrarListadoTitulo1.setToolTipText("");
-        ventana5.add(mostrarListadoTitulo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 470, 310, 20));
+        ventana5.add(mostrarListadoTitulo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 470, 380, 20));
 
         mostrarSueldEmplBtn.setBackground(new java.awt.Color(50, 115, 153));
 
@@ -2279,10 +2279,12 @@ public HashMap<Integer, Socio> obtenerListaDeSocios() {
         // Obtener los datos de los socios
         HashMap<Integer, Empleado> array = obtenerListaDeEmpleados();
 
+     
+
         // Llenar la tabla con los datos de los socios
         llenarTablaConEmpleados(array);
 
-        // Actualizar la tabla
+          // Actualizar la tabla
         actualizarTablaEmpleados();
 
         jTable3.getTableHeader().setReorderingAllowed(false);
@@ -2411,6 +2413,7 @@ public HashMap<Integer, Socio> obtenerListaDeSocios() {
                         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
                         String fechaRegistroPagoComoCadena = socio.getFechaRegistroPago().format(formatter);
                         mail.CorreoPagoSocio(socio.getEmail(), socio.getNombre(), fechaRegistroPagoComoCadena, valorTotal);
+                        socio.setAptoCuota(true);
                     } catch (Exception e) {
                         e.printStackTrace();
                         // Manejo de errores durante el envío del correo
@@ -2508,7 +2511,8 @@ public HashMap<Integer, Socio> obtenerListaDeSocios() {
             int legajo = Integer.parseInt(legajoStr);
             Empleado empleado = contenedoraEmpleado.buscar(legajo);
             empleado.calcularPago();
-            int valorTotal = empleado.pagarCuota(0);
+            int importe = empleado.calcularPagoConInteres()+empleado.getSalario();
+            int valorTotal = empleado.pagarCuota(importe);
             empleado.registrarPago();
             Correos mail = new Correos();
             new Thread(() -> {
@@ -2519,7 +2523,6 @@ public HashMap<Integer, Socio> obtenerListaDeSocios() {
                     // Manejo de errores durante el envío del correo
                 }
             }).start();
-
             contenedoraEmpleado.guardarEmpleadosEnJson("Empleados.json");
 
             PagoExitoso pagoExitoso = new PagoExitoso();

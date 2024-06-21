@@ -44,7 +44,7 @@ public class DetalleSocio extends JFrame {
         }catch (IOException ex) {
             ex.printStackTrace();
         }
-
+setTitle("Administracion Acantilados FC");
         socioS=socio;
         MotivoTxtField.setVisible(false);
         jLabel1.setVisible(false);

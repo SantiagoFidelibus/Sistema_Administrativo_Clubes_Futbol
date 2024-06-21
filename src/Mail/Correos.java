@@ -116,7 +116,7 @@ public class Correos {
         String subject = "¡Apto Médico Exitoso!";
         String content = "<html><body>"
                 + "<h1>¡Atención Taurón!</h1>"
-                + "<p>¡Felicitaciones" + name + " </p>"
+                + "<p>¡Felicitaciones " + name + " </p>"
                 + "<p>Nos complace informarte que has pasado satisfactoriamente tu apto médico.<br>"
                 + "Ahora puedes continuar participando en todas las actividades de Acantilados FC sin ningún inconveniente.<br>"
                 + "Gracias por cuidar de tu salud y por ser parte de nuestro equipo."

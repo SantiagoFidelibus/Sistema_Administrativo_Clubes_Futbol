@@ -40,6 +40,7 @@ public class InfoEmpleado extends javax.swing.JFrame {
      */
     public InfoEmpleado(int legajo) {
         initComponents();
+        setTitle("Administracion Acantilados FC");
         try{
             File iconFile = new File("src/com/images/LOGO1.png"); // Ruta de tu imagen
             BufferedImage iconImage = ImageIO.read(iconFile);
@@ -121,6 +122,7 @@ public class InfoEmpleado extends javax.swing.JFrame {
         fechaNacTxt = new javax.swing.JTextField();
         fechaNacSep = new javax.swing.JSeparator();
         sexo = new javax.swing.JLabel();
+        generoComboBox2 = new javax.swing.JComboBox<>();
         sexoTxt = new javax.swing.JTextField();
         sexoSep = new javax.swing.JSeparator();
         cargo = new javax.swing.JLabel();
@@ -182,7 +184,7 @@ public class InfoEmpleado extends javax.swing.JFrame {
         titulo.setFont(new java.awt.Font("Roboto Black", 0, 24)); // NOI18N
         titulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         titulo.setText("AGREGAR NUEVO EMPLEADO");
-        ventana1.add(titulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 230, 340, 50));
+        ventana1.add(titulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 230, 600, 50));
 
         nombre.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         nombre.setText("NOMBRE");
@@ -335,6 +337,20 @@ public class InfoEmpleado extends javax.swing.JFrame {
         sexo.setText("GENERO");
         ventana1.add(sexo, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 400, -1, -1));
 
+        generoComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Femenino", "Masculino", "Otro" }));
+        generoComboBox2.setSelectedIndex(-1);
+        generoComboBox2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                generoComboBox2MousePressed(evt);
+            }
+        });
+        generoComboBox2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                generoComboBox2ActionPerformed(evt);
+            }
+        });
+        ventana1.add(generoComboBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 420, 180, 30));
+
         sexoTxt.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         sexoTxt.setForeground(new java.awt.Color(153, 153, 153));
         sexoTxt.setText("Ingrese el genero");
@@ -392,7 +408,7 @@ public class InfoEmpleado extends javax.swing.JFrame {
         registerBtn.setLayout(registerBtnLayout);
         registerBtnLayout.setHorizontalGroup(
             registerBtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(registerTxt, javax.swing.GroupLayout.DEFAULT_SIZE, 240, Short.MAX_VALUE)
+            .addComponent(registerTxt, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         registerBtnLayout.setVerticalGroup(
             registerBtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -547,6 +563,7 @@ public class InfoEmpleado extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "El DNI debe tener exactamente 8 caracteres.", "Error de registro", JOptionPane.ERROR_MESSAGE);
         } else {
             try {
+                sexoTxt.setText(generoComboBox2.getSelectedItem().toString());
                 Empleado nuevoEmpleado = new Empleado(
                     nombreTxt.getText(),
                     apellidoTxt.getText(),
@@ -948,6 +965,44 @@ public class InfoEmpleado extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_exitTxtMousePressed
 
+    private void generoComboBox2MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_generoComboBox2MousePressed
+       if (apellidoTxt.getText().equals("")) {
+            apellidoTxt.setText("Ingrese el apellido");
+            apellidoTxt.setForeground(Color.gray);
+        }
+        if (nombreTxt.getText().equals("")) {
+            nombreTxt.setText("Ingrese el nombre");
+            nombreTxt.setForeground(Color.gray);
+        }
+        if (dniTxt.getText().equals("")) {
+            dniTxt.setText("Ingrese el documento");
+            dniTxt.setForeground(Color.gray);
+        }
+        if (legajoTxt.getText().equals("")) {
+            legajoTxt.setText("Ingrese el legajo");
+            legajoTxt.setForeground(Color.gray);
+        }
+        if (emailTxt.getText().equals("")) {
+            emailTxt.setText("Ingrese el email");
+            emailTxt.setForeground(Color.gray);
+        }
+
+        if (fechaNacTxt.getText().equals("")) {
+            fechaNacTxt.setText("dd/mm/aaaa");
+            fechaNacTxt.setForeground(Color.gray);
+        }
+
+        if (sexoTxt.getText().equals("")) {
+            sexoTxt.setText("Ingrese el genero");
+            sexoTxt.setForeground(Color.gray);
+        }
+
+    }//GEN-LAST:event_generoComboBox2MousePressed
+
+    private void generoComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_generoComboBox2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_generoComboBox2ActionPerformed
+
     public static boolean isValidEmail(String email) {
         // Expresión regular para validar el correo electrónico
         String emailRegex = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,6}$";
@@ -976,8 +1031,12 @@ public class InfoEmpleado extends javax.swing.JFrame {
                 || fechaNacTxt.getText().isEmpty() || fechaNacTxt.getText().equals("dd/mm/aaaa")
                 || sexoTxt.getText().isEmpty() || sexoTxt.getText().equals("Ingrese el genero");
 
-        Object selectedCategoria = cargoBox.getSelectedItem();
-        if (selectedCategoria == null || selectedCategoria.toString().isEmpty()) {
+        Object selectedCargo = cargoBox.getSelectedItem();
+        if (selectedCargo == null || selectedCargo.toString().isEmpty()) {
+            anyFieldEmpty = true;
+        }
+        Object selectedGenero = generoComboBox2.getSelectedItem();
+        if (selectedGenero == null || selectedGenero.toString().isEmpty()) {
             anyFieldEmpty = true;
         }
         return anyFieldEmpty;
@@ -1011,6 +1070,7 @@ public class InfoEmpleado extends javax.swing.JFrame {
     private javax.swing.JLabel fechaNac;
     private javax.swing.JSeparator fechaNacSep;
     private javax.swing.JTextField fechaNacTxt;
+    private javax.swing.JComboBox<String> generoComboBox2;
     private javax.swing.JPanel header;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel legajo;

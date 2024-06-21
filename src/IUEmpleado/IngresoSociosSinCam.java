@@ -27,7 +27,7 @@ public class IngresoSociosSinCam extends javax.swing.JFrame {
      */
     public IngresoSociosSinCam() {
         initComponents();
-
+setTitle("Administracion Acantilados FC");
         try{
             File iconFile = new File("src/com/images/LOGO1.png"); // Ruta de tu imagen
             BufferedImage iconImage = ImageIO.read(iconFile);

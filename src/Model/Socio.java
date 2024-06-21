@@ -7,7 +7,7 @@ import java.time.format.DateTimeFormatter;
 
 public class Socio extends Persona{
 
-    private int telefono;
+    private long telefono;
     private String domicilio;
     private String sexo;
     private boolean aptoMedico;
@@ -28,7 +28,7 @@ public class Socio extends Persona{
         this.cuota = 0;
     }
 
-    public Socio(int telefono, String domicilio, String sexo, boolean aptoMedico, String obraSocial, boolean aptoCuota, Categoria categoria) {
+    public Socio(long telefono, String domicilio, String sexo, boolean aptoMedico, String obraSocial, boolean aptoCuota, Categoria categoria) {
         this.telefono = telefono;
         this.domicilio = domicilio;
         this.sexo = sexo;
@@ -40,7 +40,7 @@ public class Socio extends Persona{
 
     }
 
-    public Socio(String nombre, String apellido, int dni, int legajo, String email, String fechaDeNacimiento, int telefono, String domicilio, String sexo, boolean aptoMedico, String obraSocial, boolean aptoCuota, Categoria categoria) {
+    public Socio(String nombre, String apellido, int dni, int legajo, String email, String fechaDeNacimiento, long telefono, String domicilio, String sexo, boolean aptoMedico, String obraSocial, boolean aptoCuota, Categoria categoria) {
         super(nombre, apellido, dni, legajo, email, fechaDeNacimiento);
         this.telefono = telefono;
         this.domicilio = domicilio;
@@ -60,11 +60,11 @@ public class Socio extends Persona{
         this.cuota = cuota;
     }
 
-    public int getTelefono() {
+    public long getTelefono() {
         return telefono;
     }
 
-    public void setTelefono(int telefono) {
+    public void setTelefono(long telefono) {
         this.telefono = telefono;
     }
 
@@ -177,28 +177,7 @@ public class Socio extends Persona{
 
     @Override
     public int calcularPago() {
-        switch (this.getCategoria()) {
-            case CEBOLLITAS:
-                this.cuota= 17000;
-                break;
-            case INFANTIL:
-                this.cuota= 18000;
-                break;
-            case CADETES:
-                this.cuota= 20000;
-                break;
-            case JUVENIL:
-                this.cuota= 21000;
-                break;
-            case MAYORES:
-                this.cuota= 24000;
-                break;
-            case PRIMERA:
-                this.cuota= 26000;
-                break;
-            default:
-                return 0;
-        }
+        this.cuota = this.getCategoria().getCuota();
         return this.cuota;
     }
 

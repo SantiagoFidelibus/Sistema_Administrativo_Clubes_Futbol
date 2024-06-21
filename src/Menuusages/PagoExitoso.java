@@ -23,6 +23,7 @@ public class PagoExitoso extends javax.swing.JFrame {
      */
     public PagoExitoso() {
         initComponents();
+        setTitle("Administracion Acantilados FC");
         try{
             File iconFile = new File("src/com/images/Tick 60x60.png"); // Ruta de tu imagen
             BufferedImage iconImage = ImageIO.read(iconFile);
@@ -61,14 +62,12 @@ public class PagoExitoso extends javax.swing.JFrame {
         background.add(Tick, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 40, 60, 60));
 
         pagoExitoso.setFont(new java.awt.Font("Roboto", 1, 24)); // NOI18N
-        pagoExitoso.setForeground(new java.awt.Color(0, 0, 0));
         pagoExitoso.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         pagoExitoso.setText("Pago Exitoso");
         background.add(pagoExitoso, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 110, 180, 50));
 
         mensajeTxt.setBackground(new java.awt.Color(0, 0, 0));
         mensajeTxt.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        mensajeTxt.setForeground(new java.awt.Color(0, 0, 0));
         mensajeTxt.setText(" Se le enviara un correo electronico con el comprobante de pago.");
         background.add(mensajeTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 160, 400, 30));
 
@@ -112,7 +111,7 @@ public class PagoExitoso extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(background, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(background, javax.swing.GroupLayout.DEFAULT_SIZE, 321, Short.MAX_VALUE)
         );
 
         pack();
@@ -134,40 +133,7 @@ public class PagoExitoso extends javax.swing.JFrame {
         okBtn.setBackground(new Color(67,159,70));
     }//GEN-LAST:event_okBtnTxtMouseExited
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(PagoExitoso.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(PagoExitoso.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(PagoExitoso.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(PagoExitoso.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new PagoExitoso().setVisible(true);
-            }
-        });
-    }
+  
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Tick;

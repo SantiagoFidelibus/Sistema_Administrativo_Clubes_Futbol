@@ -34,7 +34,7 @@ public class WebcamClass extends JFrame {
     }
 
     public void createAndShowGUI() {
-
+        setTitle("WebCam for Picture AFC");
         JPanel mainPanel = new JPanel(new BorderLayout());
         mainPanel.setBackground(Color.WHITE); // Fondo blanco
         JPanel controlPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 10, 10));

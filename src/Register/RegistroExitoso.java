@@ -25,6 +25,7 @@ public class RegistroExitoso extends javax.swing.JFrame {
             File iconFile = new File("src/com/images/Tick 60x60.png"); // Ruta de tu imagen
             BufferedImage iconImage = ImageIO.read(iconFile);
             setIconImage(iconImage);
+            setTitle("Administracion Acantilados FC");
         }catch (IOException ex) {
             ex.printStackTrace();
         }

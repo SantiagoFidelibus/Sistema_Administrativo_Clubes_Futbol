@@ -3,6 +3,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package Login;
+import Boss.SueldosyCuotas;
+import Boss.modificarSueldo;
 import IUEmpleado.IngresoSocios;
 import IUEmpleado.IngresoSociosSinCam;
 import Medico.Medico;
@@ -32,7 +34,7 @@ public class Login extends JFrame {
         }catch (IOException ex) {
             ex.printStackTrace();
         }
-
+        setTitle("Administracion Acantilados FC");
         this.setVisible(true);
         ocultPassTxt.setVisible(false);
 
@@ -126,6 +128,12 @@ public class Login extends JFrame {
                             medico.setLocationRelativeTo(null);
                             Login.this.dispose();
 
+                        }else if((userTxt.getText().equals("Jefe")) && (password.equals("Jefe"))){
+
+                            SueldosyCuotas syc = new SueldosyCuotas();
+                            syc.setVisible(true);
+                            syc.pack();
+                            syc.setLocationRelativeTo(null);
                         } else if ((userTxt.getText().equals("Empleado")) && (password.equals("Recepcionista"))) {
 
                             int respuesta = JOptionPane.showConfirmDialog(Login.this, "¿Cuentas con cámara?", "AVISO", JOptionPane.YES_NO_OPTION);
@@ -480,7 +488,13 @@ public class Login extends JFrame {
             medico.setLocationRelativeTo(null);
             this.dispose();
             
-        }else if((userTxt.getText().equals("Empleado")) && (password.contains("Recepcionista"))){
+        }else if((userTxt.getText().equals("Jefe")) && (password.equals("Jefe"))){
+
+            SueldosyCuotas syc = new SueldosyCuotas();
+            syc.setVisible(true);
+            syc.pack();
+            syc.setLocationRelativeTo(null);
+        } else if((userTxt.getText().equals("Empleado")) && (password.contains("Recepcionista"))){
             int respuesta = JOptionPane.showConfirmDialog(Login.this, "¿Cuentas con cámara?", "AVISO", JOptionPane.YES_NO_OPTION);
             System.out.println(respuesta);
             if (respuesta == JOptionPane.YES_OPTION) {

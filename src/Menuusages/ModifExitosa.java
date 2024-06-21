@@ -22,6 +22,7 @@ public class ModifExitosa extends javax.swing.JFrame {
      */
     public ModifExitosa() {
         initComponents();
+        setTitle("Administracion Acantilados FC");
         try{
             File iconFile = new File("src/com/images/Tick 60x60.png"); // Ruta de tu imagen
             BufferedImage iconImage = ImageIO.read(iconFile);

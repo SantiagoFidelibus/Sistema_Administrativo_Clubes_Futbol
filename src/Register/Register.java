@@ -35,6 +35,7 @@ public class Register extends javax.swing.JFrame implements Serializable {
         }catch (IOException ex) {
             ex.printStackTrace();
         }
+        setTitle("Administracion Acantilados FC");
         ocultPassTxt.setVisible(false);
         ocultPassTxt1.setVisible(false);
         Background.requestFocusInWindow();

@@ -46,6 +46,7 @@ public class WebCamScan extends JFrame {
     }
 
     public void createAndShowGUI() {
+        setTitle("WebCam for Scan AFC");
         JPanel mainPanel = new JPanel(new BorderLayout());
         mainPanel.setBackground(Color.WHITE);
 

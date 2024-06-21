@@ -39,6 +39,8 @@ import javax.swing.*;
 import Containers.ContenedoraSocio;
 import rsdragdropfiles.RSDragDropFiles;
 
+import static java.lang.Long.parseLong;
+
 /**
  *
  * @author sanch
@@ -50,8 +52,9 @@ public class ModificarSocio extends javax.swing.JFrame {
      */
     LocalDate fechaVen;
     LocalDate fechaRe;
-    public ModificarSocio(LocalDate fechaV,LocalDate fechaR, int legajo,String nombre, String apellido, int documento,String fechaNac,String email,int telefono,String domicilio, String genero, String ObraSocial, Categoria categoriaSeleccionada) {
+    public ModificarSocio(LocalDate fechaV,LocalDate fechaR, int legajo,String nombre, String apellido, int documento,String fechaNac,String email,long telefono,String domicilio, String genero, String ObraSocial, Categoria categoriaSeleccionada) {
         initComponents();
+        setTitle("Administracion Acantilados FC");
         try{
             File iconFile = new File("src/com/images/LOGO1.png"); // Ruta de tu imagen
             BufferedImage iconImage = ImageIO.read(iconFile);
@@ -181,6 +184,7 @@ public class ModificarSocio extends javax.swing.JFrame {
         domicilio = new javax.swing.JLabel();
         domicilioTxt = new javax.swing.JTextField();
         domicilioSep = new javax.swing.JSeparator();
+        generoComboBox = new javax.swing.JComboBox<>();
         sexo = new javax.swing.JLabel();
         sexoTxt = new javax.swing.JTextField();
         sexoSep = new javax.swing.JSeparator();
@@ -490,6 +494,15 @@ public class ModificarSocio extends javax.swing.JFrame {
         });
         ventana1.add(domicilioTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 580, 180, 30));
         ventana1.add(domicilioSep, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 610, 180, 10));
+
+        generoComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Femenino", "Masculino", "Otro" }));
+        generoComboBox.setSelectedIndex(-1);
+        generoComboBox.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                generoComboBoxMousePressed(evt);
+            }
+        });
+        ventana1.add(generoComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 342, 180, 30));
 
         sexo.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         sexo.setText("GENERO");
@@ -1282,8 +1295,8 @@ public class ModificarSocio extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "El DNI debe tener exactamente 8 caracteres.", "Error de registro", JOptionPane.ERROR_MESSAGE);
         }else {
             try {
-
-                Socio s = new Socio(nombreTxt.getText(), apellidoTxt.getText(), Integer.parseInt(dniStr), Integer.parseInt(legajoTxt.getText()), emailTxt.getText(), fechaNacTxt.getText(), Integer.parseInt(telefonoTxt.getText()), domicilioTxt.getText(), sexoTxt.getText(), false, obraSocialTxt.getText(), true, selectedCategoria);
+                sexoTxt.setText(generoComboBox.getSelectedItem().toString());
+                Socio s = new Socio(nombreTxt.getText(), apellidoTxt.getText(), Integer.parseInt(dniStr), Integer.parseInt(legajoTxt.getText()), emailTxt.getText(), fechaNacTxt.getText(), parseLong(telefonoTxt.getText()), domicilioTxt.getText(), sexoTxt.getText(), false, obraSocialTxt.getText(), true, selectedCategoria);
                 s.setFechaRegistroPago(fechaRe);
                 s.setFechaVencimientoPago(fechaVen);
                 contenedoraSocio.modificacion(s);
@@ -1361,6 +1374,49 @@ public class ModificarSocio extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_jLabel1MouseClicked
 
+    private void generoComboBoxMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_generoComboBoxMousePressed
+        if (apellidoTxt.getText().equals("")) {
+            apellidoTxt.setText("Ingrese el apellido");
+            apellidoTxt.setForeground(Color.gray);
+        }
+        if (nombreTxt.getText().equals("")) {
+            nombreTxt.setText("Ingrese el nombre");
+            nombreTxt.setForeground(Color.gray);
+        }
+        if (dniTxt.getText().equals("")) {
+            dniTxt.setText("Ingrese el documento");
+            dniTxt.setForeground(Color.gray);
+        }
+        if (legajoTxt.getText().equals("")) {
+            legajoTxt.setText("Ingrese el legajo");
+            legajoTxt.setForeground(Color.gray);
+        }
+        if (emailTxt.getText().equals("")) {
+            emailTxt.setText("Ingrese el email");
+            emailTxt.setForeground(Color.gray);
+        }
+        if (telefonoTxt.getText().equals("")) {
+            telefonoTxt.setText("Ingrese el numero de teléfono");
+            telefonoTxt.setForeground(Color.gray);
+        }
+        if (fechaNacTxt.getText().equals("")) {
+            fechaNacTxt.setText("dd/mm/aaaa");
+            fechaNacTxt.setForeground(Color.gray);
+        }
+        if (domicilioTxt.getText().equals("")) {
+            domicilioTxt.setText("Ingrese el domicilio");
+            domicilioTxt.setForeground(Color.gray);
+        }
+        if (sexoTxt.getText().equals("")) {
+            sexoTxt.setText("Ingrese el genero");
+            sexoTxt.setForeground(Color.gray);
+        }
+        if (obraSocialTxt.getText().equals("")) {
+            obraSocialTxt.setText("Ingrese la obra social");
+            obraSocialTxt.setForeground(Color.gray);
+        }
+    }//GEN-LAST:event_generoComboBoxMousePressed
+
     public static boolean isValidEmail(String email) {
         // Expresión regular para validar el correo electrónico
         String emailRegex = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,6}$";
@@ -1389,11 +1445,14 @@ public class ModificarSocio extends javax.swing.JFrame {
                 || telefonoTxt.getText().isEmpty() || telefonoTxt.getText().equals("Ingrese el numero de teléfono")
                 || fechaNacTxt.getText().isEmpty() || fechaNacTxt.getText().equals("dd/mm/aaaa")
                 || domicilioTxt.getText().isEmpty() || domicilioTxt.getText().equals("Ingrese el domicilio")
-                || sexoTxt.getText().isEmpty() || sexoTxt.getText().equals("Ingrese el genero")
                 || obraSocialTxt.getText().isEmpty() || obraSocialTxt.getText().equals("Ingrese la obra social");
 
         Object selectedCategoria = categoriaBox.getSelectedItem();
         if (selectedCategoria == null || selectedCategoria.toString().isEmpty()) {
+            anyFieldEmpty = true;
+        }
+        Object selectedGenero = generoComboBox.getSelectedItem();
+        if (selectedGenero == null || selectedGenero.toString().isEmpty()) {
             anyFieldEmpty = true;
         }
         return anyFieldEmpty;
@@ -1428,6 +1487,7 @@ public class ModificarSocio extends javax.swing.JFrame {
     private javax.swing.JSeparator fechaNacSep;
     private javax.swing.JTextField fechaNacTxt;
     private javax.swing.JLabel fotoUsuario;
+    private javax.swing.JComboBox<String> generoComboBox;
     private javax.swing.JPanel header;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel legajo;

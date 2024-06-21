@@ -39,7 +39,7 @@ public class IngresoSocios extends javax.swing.JFrame {
 
     public IngresoSocios() {
         initComponents();
-
+setTitle("Administracion Acantilados FC");
         try{
             File iconFile = new File("src/com/images/LOGO1.png"); // Ruta de tu imagen
             BufferedImage iconImage = ImageIO.read(iconFile);
@@ -92,7 +92,7 @@ public class IngresoSocios extends javax.swing.JFrame {
         fondoDatos.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         fondoDatos.add(jLabel1);
 
-        getContentPane().add(fondoDatos, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 20, 220, 30));
+        getContentPane().add(fondoDatos, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 50, 220, 30));
 
         scanBtn.setText("ESCANEAR");
         scanBtn.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -105,7 +105,7 @@ public class IngresoSocios extends javax.swing.JFrame {
                 scanBtnActionPerformed(evt);
             }
         });
-        getContentPane().add(scanBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 60, -1, -1));
+        getContentPane().add(scanBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 90, -1, -1));
 
         cerrarSesionLabel.setForeground(new java.awt.Color(59, 132, 173));
         cerrarSesionLabel.setText("Cerrar Sesion");
@@ -121,10 +121,10 @@ public class IngresoSocios extends javax.swing.JFrame {
                 cerrarSesionLabelMouseExited(evt);
             }
         });
-        getContentPane().add(cerrarSesionLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 180, -1, -1));
+        getContentPane().add(cerrarSesionLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 210, -1, -1));
 
         Marco.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/imagesPersonas/marcoPerso.png"))); // NOI18N
-        getContentPane().add(Marco, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 0, 250, 200));
+        getContentPane().add(Marco, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 250, 200));
 
         fotoUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/images/FotoCarnet.png"))); // NOI18N
         fotoUsuario.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -132,7 +132,7 @@ public class IngresoSocios extends javax.swing.JFrame {
                 fotoUsuarioMouseClicked(evt);
             }
         });
-        getContentPane().add(fotoUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 24, 150, 150));
+        getContentPane().add(fotoUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 50, 150, 140));
 
         validarIngresoBtn.setText("Validar Ingreso");
         validarIngresoBtn.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -149,7 +149,7 @@ public class IngresoSocios extends javax.swing.JFrame {
                 validarIngresoBtnActionPerformed(evt);
             }
         });
-        getContentPane().add(validarIngresoBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 110, -1, -1));
+        getContentPane().add(validarIngresoBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 140, -1, -1));
 
         pelota4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/images/medicine.png"))); // NOI18N
         getContentPane().add(pelota4, new org.netbeans.lib.awtextra.AbsoluteConstraints(-30, -40, -1, -1));
@@ -158,7 +158,7 @@ public class IngresoSocios extends javax.swing.JFrame {
         getContentPane().add(pelota2, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, -120, 200, 270));
 
         fondo_1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/images/Rectangle 1.png"))); // NOI18N
-        getContentPane().add(fondo_1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-20, -20, 450, 230));
+        getContentPane().add(fondo_1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-20, -20, 450, 260));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
