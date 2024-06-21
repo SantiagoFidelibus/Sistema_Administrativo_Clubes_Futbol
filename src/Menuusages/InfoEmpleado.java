@@ -11,29 +11,31 @@ import Model.Cargo;
 import Model.Categoria;
 import Model.Empleado;
 import Register.RegistroExitoso;
-import java.awt.Color;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import org.netbeans.lib.awtextra.AbsoluteConstraints;
+import org.netbeans.lib.awtextra.AbsoluteLayout;
+
+import java.awt.*;
+import java.awt.event.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javax.imageio.ImageIO;
-import javax.swing.JOptionPane;
-import javax.swing.UIManager;
-import javax.swing.UnsupportedLookAndFeelException;
+import javax.swing.*;
 
 /**
  *
  * @author nicol
  */
-public class InfoEmpleado extends javax.swing.JFrame {
+public class InfoEmpleado extends JFrame {
     int xMouse, yMouse;
     /**
      * Creates new form InfoEmpleado
@@ -51,6 +53,7 @@ public class InfoEmpleado extends javax.swing.JFrame {
 
         TimeUpdater timeUpdater = new TimeUpdater(timeText);
         timeUpdater.start();
+        legajoTxt.setDisabledTextColor(Color.BLACK);
         legajoTxt.setText(String.valueOf(legajo));
         legajoTxt.setEditable(false);
         legajoTxt.setForeground(Color.black);
@@ -58,7 +61,118 @@ public class InfoEmpleado extends javax.swing.JFrame {
         for (Cargo cargo : Cargo.values()) {
             cargoBox.addItem(String.valueOf(cargo));
         }
+        nombreTxt.addFocusListener(new FocusAdapter() {
+            @Override
+            public void focusGained(FocusEvent e) {
+                if (nombreTxt.getText().equals("Ingrese el nombre")) {
+                    nombreTxt.setText("");
+                    nombreTxt.setForeground(Color.black);
+                }
+            }
 
+            @Override
+            public void focusLost(FocusEvent e) {
+                if (nombreTxt.getText().equals("")) {
+                    nombreTxt.setText("Ingrese el nombre");
+                    nombreTxt.setForeground(Color.gray);
+                }
+            }
+        });
+
+// Agrega FocusListener para apellidoTxt
+        apellidoTxt.addFocusListener(new FocusAdapter() {
+            @Override
+            public void focusGained(FocusEvent e) {
+                if (apellidoTxt.getText().equals("Ingrese el apellido")) {
+                    apellidoTxt.setText("");
+                    apellidoTxt.setForeground(Color.black);
+                }
+            }
+
+            @Override
+            public void focusLost(FocusEvent e) {
+                if (apellidoTxt.getText().equals("")) {
+                    apellidoTxt.setText("Ingrese el apellido");
+                    apellidoTxt.setForeground(Color.gray);
+                }
+            }
+        });
+
+// Agrega FocusListener para dniTxt
+        dniTxt.addFocusListener(new FocusAdapter() {
+            @Override
+            public void focusGained(FocusEvent e) {
+                if (dniTxt.getText().equals("Ingrese el documento")) {
+                    dniTxt.setText("");
+                    dniTxt.setForeground(Color.black);
+                }
+            }
+
+            @Override
+            public void focusLost(FocusEvent e) {
+                if (dniTxt.getText().equals("")) {
+                    dniTxt.setText("Ingrese el documento");
+                    dniTxt.setForeground(Color.gray);
+                }
+            }
+        });
+
+// Agrega FocusListener para emailTxt
+        emailTxt.addFocusListener(new FocusAdapter() {
+            @Override
+            public void focusGained(FocusEvent e) {
+                if (emailTxt.getText().equals("Ingrese el email")) {
+                    emailTxt.setText("");
+                    emailTxt.setForeground(Color.black);
+                }
+            }
+
+            @Override
+            public void focusLost(FocusEvent e) {
+                if (emailTxt.getText().equals("")) {
+                    emailTxt.setText("Ingrese el email");
+                    emailTxt.setForeground(Color.gray);
+                }
+            }
+        });
+
+// Agrega FocusListener para fechaNacTxt
+        fechaNacTxt.addFocusListener(new FocusAdapter() {
+            @Override
+            public void focusGained(FocusEvent e) {
+                if (fechaNacTxt.getText().equals("dd/mm/aaaa")) {
+                    fechaNacTxt.setText("");
+                    fechaNacTxt.setForeground(Color.black);
+                }
+            }
+
+            @Override
+            public void focusLost(FocusEvent e) {
+                if (fechaNacTxt.getText().equals("")) {
+                    fechaNacTxt.setText("dd/mm/aaaa");
+                    fechaNacTxt.setForeground(Color.gray);
+                }
+            }
+        });
+
+
+
+// Agrega ActionListener para categoriaBox
+        cargoBox.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                nombreTxt.requestFocus();
+            }
+        });
+
+// Muestra las opciones del ComboBox al presionar Enter
+        cargoBox.getInputMap(JComponent.WHEN_FOCUSED).put(KeyStroke.getKeyStroke("ENTER"), "showPopup");
+        cargoBox.getActionMap().put("showPopup", new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                cargoBox.showPopup();
+            }
+        });
         try {
             for (UIManager.LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
@@ -95,426 +209,384 @@ public class InfoEmpleado extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        background1 = new javax.swing.JPanel();
-        exitMenu1 = new javax.swing.JPanel();
-        header = new javax.swing.JPanel();
-        administracionTxt = new javax.swing.JLabel();
-        dateText = new javax.swing.JLabel();
-        timeText = new javax.swing.JLabel();
-        ventana1 = new javax.swing.JPanel();
-        titulo = new javax.swing.JLabel();
-        nombre = new javax.swing.JLabel();
-        nombreTxt = new javax.swing.JTextField();
-        nombreSep = new javax.swing.JSeparator();
-        apellido = new javax.swing.JLabel();
-        apellidoTxt = new javax.swing.JTextField();
-        apellidoSep = new javax.swing.JSeparator();
-        dni = new javax.swing.JLabel();
-        dniTxt = new javax.swing.JTextField();
-        dniSep = new javax.swing.JSeparator();
-        legajo = new javax.swing.JLabel();
-        legajoTxt = new javax.swing.JTextField();
-        legajoSep = new javax.swing.JSeparator();
-        email = new javax.swing.JLabel();
-        emailTxt = new javax.swing.JTextField();
-        emailSep = new javax.swing.JSeparator();
-        fechaNac = new javax.swing.JLabel();
-        fechaNacTxt = new javax.swing.JTextField();
-        fechaNacSep = new javax.swing.JSeparator();
-        sexo = new javax.swing.JLabel();
-        generoComboBox2 = new javax.swing.JComboBox<>();
-        sexoTxt = new javax.swing.JTextField();
-        sexoSep = new javax.swing.JSeparator();
-        cargo = new javax.swing.JLabel();
-        cargoBox = new javax.swing.JComboBox<>();
-        registerBtn = new javax.swing.JPanel();
-        registerTxt = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
-        exitMenu = new javax.swing.JPanel();
-        exitBtn = new javax.swing.JPanel();
-        exitTxt = new javax.swing.JLabel();
+        background1 = new JPanel();
+        exitMenu1 = new JPanel();
+        header = new JPanel();
+        administracionTxt = new JLabel();
+        dateText = new JLabel();
+        timeText = new JLabel();
+        ventana1 = new JPanel();
+        titulo = new JLabel();
+        nombre = new JLabel();
+        nombreTxt = new JTextField();
+        nombreSep = new JSeparator();
+        apellido = new JLabel();
+        apellidoTxt = new JTextField();
+        apellidoSep = new JSeparator();
+        dni = new JLabel();
+        dniTxt = new JTextField();
+        dniSep = new JSeparator();
+        legajo = new JLabel();
+        legajoTxt = new JTextField();
+        legajoSep = new JSeparator();
+        email = new JLabel();
+        emailTxt = new JTextField();
+        emailSep = new JSeparator();
+        fechaNac = new JLabel();
+        fechaNacTxt = new JTextField();
+        fechaNacSep = new JSeparator();
+        cargo = new JLabel();
+        cargoBox = new JComboBox<>();
+        registerBtn = new JPanel();
+        registerTxt = new JLabel();
+        jLabel1 = new JLabel();
+        exitMenu = new JPanel();
+        exitBtn = new JPanel();
+        exitTxt = new JLabel();
+        emailSep1 = new JSeparator();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setLocationByPlatform(true);
         setUndecorated(true);
 
-        background1.setBackground(new java.awt.Color(255, 255, 255));
-        background1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        background1.setBackground(new Color(255, 255, 255));
+        background1.setLayout(new AbsoluteLayout());
 
-        exitMenu1.setBackground(new java.awt.Color(255, 255, 255));
-        exitMenu1.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
-            public void mouseDragged(java.awt.event.MouseEvent evt) {
+        exitMenu1.setBackground(new Color(255, 255, 255));
+        exitMenu1.addMouseMotionListener(new MouseMotionAdapter() {
+            public void mouseDragged(MouseEvent evt) {
                 exitMenu1MouseDragged(evt);
             }
         });
-        exitMenu1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
+        exitMenu1.addMouseListener(new MouseAdapter() {
+            public void mousePressed(MouseEvent evt) {
                 exitMenu1MousePressed(evt);
             }
         });
-        exitMenu1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        background1.add(exitMenu1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 580, -1));
+        exitMenu1.setLayout(new AbsoluteLayout());
+        background1.add(exitMenu1, new AbsoluteConstraints(0, 0, 580, -1));
 
-        header.setBackground(new java.awt.Color(50, 115, 153));
-        header.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        header.setBackground(new Color(50, 115, 153));
+        header.setLayout(new AbsoluteLayout());
 
-        administracionTxt.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
-        administracionTxt.setForeground(new java.awt.Color(255, 255, 255));
-        administracionTxt.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        administracionTxt.setFont(new Font("Roboto", 1, 18)); // NOI18N
+        administracionTxt.setForeground(new Color(255, 255, 255));
+        administracionTxt.setHorizontalAlignment(SwingConstants.CENTER);
         administracionTxt.setText("EMPLEADOS");
-        header.add(administracionTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(38, 40, -1, 32));
+        header.add(administracionTxt, new AbsoluteConstraints(38, 40, -1, 32));
 
-        dateText.setFont(new java.awt.Font("Roboto", 1, 30)); // NOI18N
-        dateText.setForeground(new java.awt.Color(255, 255, 255));
-        dateText.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        dateText.setFont(new Font("Roboto", 1, 30)); // NOI18N
+        dateText.setForeground(new Color(255, 255, 255));
+        dateText.setHorizontalAlignment(SwingConstants.CENTER);
         dateText.setText("{dayname} {day} de {month} de {year} ");
-        header.add(dateText, new org.netbeans.lib.awtextra.AbsoluteConstraints(38, 90, -1, -1));
+        header.add(dateText, new AbsoluteConstraints(38, 90, -1, -1));
 
-        timeText.setFont(new java.awt.Font("Roboto", 1, 30)); // NOI18N
-        timeText.setForeground(new java.awt.Color(255, 255, 255));
-        timeText.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        header.add(timeText, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 40, 160, 40));
+        timeText.setFont(new Font("Roboto", 1, 30)); // NOI18N
+        timeText.setForeground(new Color(255, 255, 255));
+        timeText.setHorizontalAlignment(SwingConstants.CENTER);
+        header.add(timeText, new AbsoluteConstraints(410, 40, 160, 40));
 
-        background1.add(header, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 600, 160));
+        background1.add(header, new AbsoluteConstraints(0, 40, 600, 160));
 
-        ventana1.setBackground(new java.awt.Color(255, 255, 255));
-        ventana1.setPreferredSize(new java.awt.Dimension(599, 720));
-        ventana1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        ventana1.setBackground(new Color(255, 255, 255));
+        ventana1.setPreferredSize(new Dimension(599, 720));
+        ventana1.setLayout(new AbsoluteLayout());
 
-        titulo.setFont(new java.awt.Font("Roboto Black", 0, 24)); // NOI18N
-        titulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        titulo.setFont(new Font("Roboto Black", 0, 24)); // NOI18N
+        titulo.setHorizontalAlignment(SwingConstants.CENTER);
         titulo.setText("AGREGAR NUEVO EMPLEADO");
-        ventana1.add(titulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 230, 600, 50));
+        ventana1.add(titulo, new AbsoluteConstraints(0, 230, 600, 50));
 
-        nombre.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
+        nombre.setFont(new Font("Roboto", 1, 14)); // NOI18N
         nombre.setText("NOMBRE");
-        ventana1.add(nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 320, -1, -1));
+        ventana1.add(nombre, new AbsoluteConstraints(60, 320, -1, -1));
 
-        nombreTxt.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
-        nombreTxt.setForeground(new java.awt.Color(153, 153, 153));
+        nombreTxt.setFont(new Font("Roboto", 0, 12)); // NOI18N
+        nombreTxt.setForeground(new Color(153, 153, 153));
         nombreTxt.setText("Ingrese el nombre");
         nombreTxt.setBorder(null);
-        nombreTxt.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
+        nombreTxt.addMouseListener(new MouseAdapter() {
+            public void mousePressed(MouseEvent evt) {
                 nombreTxtMousePressed(evt);
             }
         });
-        nombreTxt.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        nombreTxt.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent evt) {
                 nombreTxtActionPerformed(evt);
             }
         });
-        nombreTxt.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
+        nombreTxt.addKeyListener(new KeyAdapter() {
+            public void keyTyped(KeyEvent evt) {
                 nombreTxtKeyTyped(evt);
             }
         });
-        ventana1.add(nombreTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 340, 180, 30));
-        ventana1.add(nombreSep, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 370, 180, 10));
+        ventana1.add(nombreTxt, new AbsoluteConstraints(60, 340, 180, 30));
+        ventana1.add(nombreSep, new AbsoluteConstraints(60, 370, 180, 10));
 
-        apellido.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
+        apellido.setFont(new Font("Roboto", 1, 14)); // NOI18N
         apellido.setText("APELLIDO");
-        ventana1.add(apellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 400, -1, -1));
+        ventana1.add(apellido, new AbsoluteConstraints(60, 400, -1, -1));
 
-        apellidoTxt.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
-        apellidoTxt.setForeground(new java.awt.Color(153, 153, 153));
+        apellidoTxt.setFont(new Font("Roboto", 0, 12)); // NOI18N
+        apellidoTxt.setForeground(new Color(153, 153, 153));
         apellidoTxt.setText("Ingrese el apellido");
         apellidoTxt.setBorder(null);
-        apellidoTxt.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
+        apellidoTxt.addMouseListener(new MouseAdapter() {
+            public void mousePressed(MouseEvent evt) {
                 apellidoTxtMousePressed(evt);
             }
         });
-        apellidoTxt.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        apellidoTxt.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent evt) {
                 apellidoTxtActionPerformed(evt);
             }
         });
-        apellidoTxt.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
+        apellidoTxt.addKeyListener(new KeyAdapter() {
+            public void keyTyped(KeyEvent evt) {
                 apellidoTxtKeyTyped(evt);
             }
         });
-        ventana1.add(apellidoTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 420, 180, 30));
-        ventana1.add(apellidoSep, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 450, 180, 10));
+        ventana1.add(apellidoTxt, new AbsoluteConstraints(60, 420, 180, 30));
+        ventana1.add(apellidoSep, new AbsoluteConstraints(60, 450, 180, 10));
 
-        dni.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
+        dni.setFont(new Font("Roboto", 1, 14)); // NOI18N
         dni.setText("DOCUMENTO");
-        ventana1.add(dni, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 480, -1, -1));
+        ventana1.add(dni, new AbsoluteConstraints(60, 480, -1, -1));
 
-        dniTxt.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
-        dniTxt.setForeground(new java.awt.Color(153, 153, 153));
+        dniTxt.setFont(new Font("Roboto", 0, 12)); // NOI18N
+        dniTxt.setForeground(new Color(153, 153, 153));
         dniTxt.setText("Ingrese el documento");
         dniTxt.setBorder(null);
-        dniTxt.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
+        dniTxt.addMouseListener(new MouseAdapter() {
+            public void mousePressed(MouseEvent evt) {
                 dniTxtMousePressed(evt);
             }
         });
-        dniTxt.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        dniTxt.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent evt) {
                 dniTxtActionPerformed(evt);
             }
         });
-        dniTxt.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
+        dniTxt.addKeyListener(new KeyAdapter() {
+            public void keyTyped(KeyEvent evt) {
                 dniTxtKeyTyped(evt);
             }
         });
-        ventana1.add(dniTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 500, 180, 30));
-        ventana1.add(dniSep, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 530, 180, 10));
+        ventana1.add(dniTxt, new AbsoluteConstraints(60, 500, 180, 30));
+        ventana1.add(dniSep, new AbsoluteConstraints(60, 530, 180, 10));
 
-        legajo.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
+        legajo.setFont(new Font("Roboto", 1, 14)); // NOI18N
         legajo.setText("LEGAJO");
-        ventana1.add(legajo, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 560, -1, -1));
+        ventana1.add(legajo, new AbsoluteConstraints(60, 560, -1, -1));
 
-        legajoTxt.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
-        legajoTxt.setForeground(new java.awt.Color(153, 153, 153));
+        legajoTxt.setFont(new Font("Roboto", 0, 12)); // NOI18N
+        legajoTxt.setForeground(new Color(153, 153, 153));
         legajoTxt.setText("Ingrese el legajo");
         legajoTxt.setBorder(null);
-        legajoTxt.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        legajoTxt.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
+        legajoTxt.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+        legajoTxt.addMouseListener(new MouseAdapter() {
+            public void mousePressed(MouseEvent evt) {
                 legajoTxtMousePressed(evt);
             }
         });
-        legajoTxt.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        legajoTxt.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent evt) {
                 legajoTxtActionPerformed(evt);
             }
         });
-        legajoTxt.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
+        legajoTxt.addKeyListener(new KeyAdapter() {
+            public void keyTyped(KeyEvent evt) {
                 legajoTxtKeyTyped(evt);
             }
         });
-        ventana1.add(legajoTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 580, 180, 30));
-        ventana1.add(legajoSep, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 610, 180, 10));
+        ventana1.add(legajoTxt, new AbsoluteConstraints(60, 580, 180, 30));
+        ventana1.add(legajoSep, new AbsoluteConstraints(60, 610, 180, 10));
 
-        email.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
+        email.setFont(new Font("Roboto", 1, 14)); // NOI18N
         email.setText("CORREO ELECTRONICO");
-        ventana1.add(email, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 320, -1, -1));
+        ventana1.add(email, new AbsoluteConstraints(360, 320, -1, -1));
 
-        emailTxt.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
-        emailTxt.setForeground(new java.awt.Color(153, 153, 153));
+        emailTxt.setFont(new Font("Roboto", 0, 12)); // NOI18N
+        emailTxt.setForeground(new Color(153, 153, 153));
         emailTxt.setText("Ingrese el email");
         emailTxt.setBorder(null);
-        emailTxt.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
+        emailTxt.addMouseListener(new MouseAdapter() {
+            public void mousePressed(MouseEvent evt) {
                 emailTxtMousePressed(evt);
             }
         });
-        emailTxt.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        emailTxt.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent evt) {
                 emailTxtActionPerformed(evt);
             }
         });
-        ventana1.add(emailTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 340, 180, 30));
-        ventana1.add(emailSep, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 370, 180, 10));
+        ventana1.add(emailTxt, new AbsoluteConstraints(360, 340, 180, 30));
+        ventana1.add(emailSep, new AbsoluteConstraints(360, 450, 180, 10));
 
-        fechaNac.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
+        fechaNac.setFont(new Font("Roboto", 1, 14)); // NOI18N
         fechaNac.setText("FECHA DE NACIMIENTO");
-        ventana1.add(fechaNac, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 480, -1, -1));
+        ventana1.add(fechaNac, new AbsoluteConstraints(360, 400, -1, -1));
 
-        fechaNacTxt.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
-        fechaNacTxt.setForeground(new java.awt.Color(153, 153, 153));
+        fechaNacTxt.setFont(new Font("Roboto", 0, 12)); // NOI18N
+        fechaNacTxt.setForeground(new Color(153, 153, 153));
         fechaNacTxt.setText("dd/mm/aaaa");
         fechaNacTxt.setBorder(null);
-        fechaNacTxt.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
+        fechaNacTxt.addMouseListener(new MouseAdapter() {
+            public void mousePressed(MouseEvent evt) {
                 fechaNacTxtMousePressed(evt);
             }
         });
-        fechaNacTxt.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        fechaNacTxt.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent evt) {
                 fechaNacTxtActionPerformed(evt);
             }
         });
-        ventana1.add(fechaNacTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 500, 180, 30));
-        ventana1.add(fechaNacSep, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 530, 180, 10));
+        ventana1.add(fechaNacTxt, new AbsoluteConstraints(360, 420, 180, 30));
+        ventana1.add(fechaNacSep, new AbsoluteConstraints(360, 530, 180, 10));
 
-        sexo.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
-        sexo.setText("GENERO");
-        ventana1.add(sexo, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 400, -1, -1));
-
-        generoComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Femenino", "Masculino", "Otro" }));
-        generoComboBox2.setSelectedIndex(-1);
-        generoComboBox2.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                generoComboBox2MousePressed(evt);
-            }
-        });
-        generoComboBox2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                generoComboBox2ActionPerformed(evt);
-            }
-        });
-        ventana1.add(generoComboBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 420, 180, 30));
-
-        sexoTxt.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
-        sexoTxt.setForeground(new java.awt.Color(153, 153, 153));
-        sexoTxt.setText("Ingrese el genero");
-        sexoTxt.setBorder(null);
-        sexoTxt.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                sexoTxtMousePressed(evt);
-            }
-        });
-        sexoTxt.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                sexoTxtActionPerformed(evt);
-            }
-        });
-        sexoTxt.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                sexoTxtKeyTyped(evt);
-            }
-        });
-        ventana1.add(sexoTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 420, 180, 30));
-        ventana1.add(sexoSep, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 450, 180, 10));
-
-        cargo.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
+        cargo.setFont(new Font("Roboto", 1, 14)); // NOI18N
         cargo.setText("CARGO");
-        ventana1.add(cargo, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 550, -1, -1));
+        ventana1.add(cargo, new AbsoluteConstraints(360, 470, -1, -1));
 
-        cargoBox.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        cargoBox.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
+        cargoBox.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        cargoBox.addMouseListener(new MouseAdapter() {
+            public void mousePressed(MouseEvent evt) {
                 cargoBoxMousePressed(evt);
             }
         });
-        ventana1.add(cargoBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 580, 180, 30));
+        ventana1.add(cargoBox, new AbsoluteConstraints(360, 500, 180, 30));
 
-        registerBtn.setBackground(new java.awt.Color(50, 115, 153));
+        registerBtn.setBackground(new Color(50, 115, 153));
 
-        registerTxt.setFont(new java.awt.Font("Roboto Light", 1, 18)); // NOI18N
-        registerTxt.setForeground(new java.awt.Color(255, 255, 255));
-        registerTxt.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        registerTxt.setFont(new Font("Roboto Light", 1, 18)); // NOI18N
+        registerTxt.setForeground(new Color(255, 255, 255));
+        registerTxt.setHorizontalAlignment(SwingConstants.CENTER);
         registerTxt.setText("REGISTRAR");
-        registerTxt.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        registerTxt.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
+        registerTxt.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        registerTxt.addMouseListener(new MouseAdapter() {
+            public void mouseClicked(MouseEvent evt) {
                 registerTxtMouseClicked(evt);
             }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
+            public void mouseEntered(MouseEvent evt) {
                 registerTxtMouseEntered(evt);
             }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
+            public void mouseExited(MouseEvent evt) {
                 registerTxtMouseExited(evt);
             }
         });
 
-        javax.swing.GroupLayout registerBtnLayout = new javax.swing.GroupLayout(registerBtn);
+        GroupLayout registerBtnLayout = new GroupLayout(registerBtn);
         registerBtn.setLayout(registerBtnLayout);
         registerBtnLayout.setHorizontalGroup(
-            registerBtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(registerTxt, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            registerBtnLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
+            .addComponent(registerTxt, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         registerBtnLayout.setVerticalGroup(
-            registerBtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(registerTxt, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
+            registerBtnLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
+            .addComponent(registerTxt, GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
         );
 
-        ventana1.add(registerBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 660, 240, 50));
+        ventana1.add(registerBtn, new AbsoluteConstraints(310, 660, 240, 50));
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel1.setFont(new Font("Segoe UI", 1, 14)); // NOI18N
         jLabel1.setText("Volver al Menu");
-        jLabel1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
+        jLabel1.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        jLabel1.addMouseListener(new MouseAdapter() {
+            public void mouseClicked(MouseEvent evt) {
                 jLabel1MouseClicked(evt);
             }
         });
-        ventana1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 670, -1, -1));
+        ventana1.add(jLabel1, new AbsoluteConstraints(60, 670, -1, -1));
 
-        exitMenu.setBackground(new java.awt.Color(255, 255, 255));
-        exitMenu.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
-            public void mouseDragged(java.awt.event.MouseEvent evt) {
+        exitMenu.setBackground(new Color(255, 255, 255));
+        exitMenu.addMouseMotionListener(new MouseMotionAdapter() {
+            public void mouseDragged(MouseEvent evt) {
                 exitMenuMouseDragged(evt);
             }
         });
-        exitMenu.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
+        exitMenu.addMouseListener(new MouseAdapter() {
+            public void mousePressed(MouseEvent evt) {
                 exitMenuMousePressed(evt);
             }
         });
-        exitMenu.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        exitMenu.setLayout(new AbsoluteLayout());
 
-        exitBtn.setBackground(new java.awt.Color(255, 255, 255));
+        exitBtn.setBackground(new Color(255, 255, 255));
 
-        exitTxt.setBackground(new java.awt.Color(0, 0, 0));
-        exitTxt.setFont(new java.awt.Font("Roboto Light", 0, 24)); // NOI18N
-        exitTxt.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        exitTxt.setBackground(new Color(0, 0, 0));
+        exitTxt.setFont(new Font("Roboto Light", 0, 24)); // NOI18N
+        exitTxt.setHorizontalAlignment(SwingConstants.CENTER);
         exitTxt.setText("X");
-        exitTxt.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        exitTxt.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
+        exitTxt.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        exitTxt.addMouseListener(new MouseAdapter() {
+            public void mouseClicked(MouseEvent evt) {
                 exitTxtMouseClicked(evt);
             }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
+            public void mouseEntered(MouseEvent evt) {
                 exitTxtMouseEntered(evt);
             }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
+            public void mouseExited(MouseEvent evt) {
                 exitTxtMouseExited(evt);
             }
-            public void mousePressed(java.awt.event.MouseEvent evt) {
+            public void mousePressed(MouseEvent evt) {
                 exitTxtMousePressed(evt);
             }
         });
 
-        javax.swing.GroupLayout exitBtnLayout = new javax.swing.GroupLayout(exitBtn);
+        GroupLayout exitBtnLayout = new GroupLayout(exitBtn);
         exitBtn.setLayout(exitBtnLayout);
         exitBtnLayout.setHorizontalGroup(
-            exitBtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            exitBtnLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
             .addGap(0, 40, Short.MAX_VALUE)
-            .addGroup(exitBtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(exitBtnLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
                 .addGroup(exitBtnLayout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(exitTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(exitTxt, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE)
                     .addGap(0, 0, Short.MAX_VALUE)))
         );
         exitBtnLayout.setVerticalGroup(
-            exitBtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            exitBtnLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
             .addGap(0, 40, Short.MAX_VALUE)
-            .addGroup(exitBtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(exitBtnLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
                 .addGroup(exitBtnLayout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(exitTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(exitTxt, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE)
                     .addGap(0, 0, Short.MAX_VALUE)))
         );
 
-        exitMenu.add(exitBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 0, -1, -1));
+        exitMenu.add(exitBtn, new AbsoluteConstraints(560, 0, -1, -1));
 
-        ventana1.add(exitMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 600, 40));
+        ventana1.add(exitMenu, new AbsoluteConstraints(0, 0, 600, 40));
+        ventana1.add(emailSep1, new AbsoluteConstraints(360, 370, 180, 10));
 
-        background1.add(ventana1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        background1.add(ventana1, new AbsoluteConstraints(0, 0, -1, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        GroupLayout layout = new GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(background1, javax.swing.GroupLayout.PREFERRED_SIZE, 599, Short.MAX_VALUE)
+            layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+            .addComponent(background1, GroupLayout.PREFERRED_SIZE, 599, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(background1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+            .addComponent(background1, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void exitMenu1MouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_exitMenu1MouseDragged
+    private void exitMenu1MouseDragged(MouseEvent evt) {//GEN-FIRST:event_exitMenu1MouseDragged
         int x = evt.getXOnScreen();
         int y = evt.getYOnScreen();
         this.setLocation(x - xMouse, y - yMouse);
     }//GEN-LAST:event_exitMenu1MouseDragged
 
-    private void exitMenu1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_exitMenu1MousePressed
+    private void exitMenu1MousePressed(MouseEvent evt) {//GEN-FIRST:event_exitMenu1MousePressed
         xMouse = evt.getX();
         yMouse = evt.getY();
     }//GEN-LAST:event_exitMenu1MousePressed
 
-    private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
+    private void jLabel1MouseClicked(MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
         Menu menu = new Menu();
         menu.setVisible(true);
         menu.pack();
@@ -522,16 +594,17 @@ public class InfoEmpleado extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_jLabel1MouseClicked
 
-    private void registerTxtMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_registerTxtMouseExited
+    private void registerTxtMouseExited(MouseEvent evt) {//GEN-FIRST:event_registerTxtMouseExited
         registerBtn.setBackground(new Color(59,132,173));
     }//GEN-LAST:event_registerTxtMouseExited
 
-    private void registerTxtMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_registerTxtMouseEntered
+    private void registerTxtMouseEntered(MouseEvent evt) {//GEN-FIRST:event_registerTxtMouseEntered
         registerBtn.setBackground(new Color(80,139,166));
     }//GEN-LAST:event_registerTxtMouseEntered
 
-    private void registerTxtMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_registerTxtMouseClicked
+    private void registerTxtMouseClicked(MouseEvent evt) {//GEN-FIRST:event_registerTxtMouseClicked
         ContenedoraEmpleado contenedoraEmpleado = new ContenedoraEmpleado();
+
         Correos mail = new Correos();
         try {
             contenedoraEmpleado.cargarEmpleadosDeJson("Empleados.json");
@@ -543,7 +616,7 @@ public class InfoEmpleado extends javax.swing.JFrame {
         LocalDate dateOfBirth = parseDate(dateOfBirthStr);
         String selectedCargoString = cargoBox.getSelectedItem().toString();
         String dniStr = dniTxt.getText();
-
+        String contraseña= legajo.getText()+selectedCargoString;
         // Crear el mapa de cargo
         Map<String, Cargo> cargoMap = new HashMap<>();
         for (Cargo cargo : Cargo.values()) {
@@ -561,9 +634,10 @@ public class InfoEmpleado extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "La fecha de nacimiento no es válida. Use el formato dd/MM/yyyy.", "Error de registro", JOptionPane.ERROR_MESSAGE);
         } else if (dniStr.length() != 8) {
             JOptionPane.showMessageDialog(this, "El DNI debe tener exactamente 8 caracteres.", "Error de registro", JOptionPane.ERROR_MESSAGE);
-        } else {
+        } else if(!isValidDni(Integer.parseInt(dniTxt.getText()))){
+            JOptionPane.showMessageDialog(this, "El DNI ya se encuentra registrado.", "Error de registro", JOptionPane.ERROR_MESSAGE);
+        }else {
             try {
-                sexoTxt.setText(generoComboBox2.getSelectedItem().toString());
                 Empleado nuevoEmpleado = new Empleado(
                     nombreTxt.getText(),
                     apellidoTxt.getText(),
@@ -571,7 +645,7 @@ public class InfoEmpleado extends javax.swing.JFrame {
                     Integer.parseInt(legajoTxt.getText()), // Temporal placeholder para legajo, será asignado en `alta`
                     emailTxt.getText(),
                     fechaNacTxt.getText(),
-                    sexoTxt.getText(),
+                      contraseña,
                     selectedCargo,
                     true
                 );
@@ -600,7 +674,7 @@ public class InfoEmpleado extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_registerTxtMouseClicked
 
-    private void cargoBoxMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cargoBoxMousePressed
+    private void cargoBoxMousePressed(MouseEvent evt) {//GEN-FIRST:event_cargoBoxMousePressed
         if (apellidoTxt.getText().equals("")) {
             apellidoTxt.setText("Ingrese el apellido");
             apellidoTxt.setForeground(Color.gray);
@@ -627,63 +701,14 @@ public class InfoEmpleado extends javax.swing.JFrame {
             fechaNacTxt.setForeground(Color.gray);
         }
 
-        if (sexoTxt.getText().equals("")) {
-            sexoTxt.setText("Ingrese el genero");
-            sexoTxt.setForeground(Color.gray);
-        }
 
     }//GEN-LAST:event_cargoBoxMousePressed
 
-    private void sexoTxtKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_sexoTxtKeyTyped
-        char c = evt.getKeyChar();
-
-        if ((c < 'a' || c > 'z') && (c < 'A' || c > 'Z') && c != ' ')
-        evt.consume();
-    }//GEN-LAST:event_sexoTxtKeyTyped
-
-    private void sexoTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sexoTxtActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_sexoTxtActionPerformed
-
-    private void sexoTxtMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_sexoTxtMousePressed
-        if (apellidoTxt.getText().equals("")) {
-            apellidoTxt.setText("Ingrese el apellido");
-            apellidoTxt.setForeground(Color.gray);
-        }
-        if (nombreTxt.getText().equals("")) {
-            nombreTxt.setText("Ingrese el nombre");
-            nombreTxt.setForeground(Color.gray);
-        }
-        if (dniTxt.getText().equals("")) {
-            dniTxt.setText("Ingrese el documento");
-            dniTxt.setForeground(Color.gray);
-        }
-        if (legajoTxt.getText().equals("")) {
-            legajoTxt.setText("Ingrese el legajo");
-            legajoTxt.setForeground(Color.gray);
-        }
-        if (emailTxt.getText().equals("")) {
-            emailTxt.setText("Ingrese el email");
-            emailTxt.setForeground(Color.gray);
-        }
-
-        if (fechaNacTxt.getText().equals("")) {
-            fechaNacTxt.setText("dd/mm/aaaa");
-            fechaNacTxt.setForeground(Color.gray);
-        }
-
-        if (sexoTxt.getText().equals("Ingrese el genero")) {
-            sexoTxt.setText("");
-            sexoTxt.setForeground(Color.black);
-        }
-
-    }//GEN-LAST:event_sexoTxtMousePressed
-
-    private void fechaNacTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fechaNacTxtActionPerformed
+    private void fechaNacTxtActionPerformed(ActionEvent evt) {//GEN-FIRST:event_fechaNacTxtActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_fechaNacTxtActionPerformed
 
-    private void fechaNacTxtMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_fechaNacTxtMousePressed
+    private void fechaNacTxtMousePressed(MouseEvent evt) {//GEN-FIRST:event_fechaNacTxtMousePressed
 
         if (apellidoTxt.getText().equals("")) {
             apellidoTxt.setText("Ingrese el apellido");
@@ -711,18 +736,13 @@ public class InfoEmpleado extends javax.swing.JFrame {
             fechaNacTxt.setForeground(Color.black);
         }
 
-        if (sexoTxt.getText().equals("")) {
-            sexoTxt.setText("Ingrese el genero");
-            sexoTxt.setForeground(Color.gray);
-        }
-
     }//GEN-LAST:event_fechaNacTxtMousePressed
 
-    private void emailTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_emailTxtActionPerformed
+    private void emailTxtActionPerformed(ActionEvent evt) {//GEN-FIRST:event_emailTxtActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_emailTxtActionPerformed
 
-    private void emailTxtMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_emailTxtMousePressed
+    private void emailTxtMousePressed(MouseEvent evt) {//GEN-FIRST:event_emailTxtMousePressed
         if (apellidoTxt.getText().equals("")) {
             apellidoTxt.setText("Ingrese el apellido");
             apellidoTxt.setForeground(Color.gray);
@@ -749,25 +769,21 @@ public class InfoEmpleado extends javax.swing.JFrame {
             fechaNacTxt.setForeground(Color.gray);
         }
 
-        if (sexoTxt.getText().equals("")) {
-            sexoTxt.setText("Ingrese el genero");
-            sexoTxt.setForeground(Color.gray);
-        }
 
     }//GEN-LAST:event_emailTxtMousePressed
 
-    private void legajoTxtKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_legajoTxtKeyTyped
+    private void legajoTxtKeyTyped(KeyEvent evt) {//GEN-FIRST:event_legajoTxtKeyTyped
         char c = evt.getKeyChar();
 
         if (c < '0' || c > '9')
         evt.consume();
     }//GEN-LAST:event_legajoTxtKeyTyped
 
-    private void legajoTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_legajoTxtActionPerformed
+    private void legajoTxtActionPerformed(ActionEvent evt) {//GEN-FIRST:event_legajoTxtActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_legajoTxtActionPerformed
 
-    private void legajoTxtMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_legajoTxtMousePressed
+    private void legajoTxtMousePressed(MouseEvent evt) {//GEN-FIRST:event_legajoTxtMousePressed
         if (apellidoTxt.getText().equals("")) {
             apellidoTxt.setText("Ingrese el apellido");
             apellidoTxt.setForeground(Color.gray);
@@ -794,25 +810,21 @@ public class InfoEmpleado extends javax.swing.JFrame {
             fechaNacTxt.setForeground(Color.gray);
         }
 
-        if (sexoTxt.getText().equals("")) {
-            sexoTxt.setText("Ingrese el genero");
-            sexoTxt.setForeground(Color.gray);
-        }
 
     }//GEN-LAST:event_legajoTxtMousePressed
 
-    private void dniTxtKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_dniTxtKeyTyped
+    private void dniTxtKeyTyped(KeyEvent evt) {//GEN-FIRST:event_dniTxtKeyTyped
         char c = evt.getKeyChar();
 
         if (c < '0' || c > '9')
         evt.consume();
     }//GEN-LAST:event_dniTxtKeyTyped
 
-    private void dniTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dniTxtActionPerformed
+    private void dniTxtActionPerformed(ActionEvent evt) {//GEN-FIRST:event_dniTxtActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_dniTxtActionPerformed
 
-    private void dniTxtMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dniTxtMousePressed
+    private void dniTxtMousePressed(MouseEvent evt) {//GEN-FIRST:event_dniTxtMousePressed
         if (apellidoTxt.getText().equals("")) {
             apellidoTxt.setText("Ingrese el apellido");
             apellidoTxt.setForeground(Color.gray);
@@ -839,25 +851,22 @@ public class InfoEmpleado extends javax.swing.JFrame {
             fechaNacTxt.setForeground(Color.gray);
         }
 
-        if (sexoTxt.getText().equals("")) {
-            sexoTxt.setText("Ingrese el genero");
-            sexoTxt.setForeground(Color.gray);
-        }
+
 
     }//GEN-LAST:event_dniTxtMousePressed
 
-    private void apellidoTxtKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_apellidoTxtKeyTyped
+    private void apellidoTxtKeyTyped(KeyEvent evt) {//GEN-FIRST:event_apellidoTxtKeyTyped
         char c = evt.getKeyChar();
 
         if ((c < 'a' || c > 'z') && (c < 'A' || c > 'Z') && c != ' ')
         evt.consume();
     }//GEN-LAST:event_apellidoTxtKeyTyped
 
-    private void apellidoTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_apellidoTxtActionPerformed
+    private void apellidoTxtActionPerformed(ActionEvent evt) {//GEN-FIRST:event_apellidoTxtActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_apellidoTxtActionPerformed
 
-    private void apellidoTxtMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_apellidoTxtMousePressed
+    private void apellidoTxtMousePressed(MouseEvent evt) {//GEN-FIRST:event_apellidoTxtMousePressed
         if (apellidoTxt.getText().equals("Ingrese el apellido")) {
             apellidoTxt.setText("");
             apellidoTxt.setForeground(Color.black);
@@ -884,25 +893,22 @@ public class InfoEmpleado extends javax.swing.JFrame {
             fechaNacTxt.setForeground(Color.gray);
         }
 
-        if (sexoTxt.getText().equals("")) {
-            sexoTxt.setText("Ingrese el genero");
-            sexoTxt.setForeground(Color.gray);
-        }
+
 
     }//GEN-LAST:event_apellidoTxtMousePressed
 
-    private void nombreTxtKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nombreTxtKeyTyped
+    private void nombreTxtKeyTyped(KeyEvent evt) {//GEN-FIRST:event_nombreTxtKeyTyped
         char c = evt.getKeyChar();
 
         if ((c < 'a' || c > 'z') && (c < 'A' || c > 'Z') && c != ' ')
         evt.consume();
     }//GEN-LAST:event_nombreTxtKeyTyped
 
-    private void nombreTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombreTxtActionPerformed
+    private void nombreTxtActionPerformed(ActionEvent evt) {//GEN-FIRST:event_nombreTxtActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_nombreTxtActionPerformed
 
-    private void nombreTxtMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_nombreTxtMousePressed
+    private void nombreTxtMousePressed(MouseEvent evt) {//GEN-FIRST:event_nombreTxtMousePressed
         if (nombreTxt.getText().equals("Ingrese el nombre")) {
             nombreTxt.setText("");
             nombreTxt.setForeground(Color.black);
@@ -929,79 +935,38 @@ public class InfoEmpleado extends javax.swing.JFrame {
             fechaNacTxt.setForeground(Color.gray);
         }
 
-        if (sexoTxt.getText().equals("")) {
-            sexoTxt.setText("Ingrese el genero");
-            sexoTxt.setForeground(Color.gray);
-        }
+
 
     }//GEN-LAST:event_nombreTxtMousePressed
 
-    private void exitMenuMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_exitMenuMouseDragged
+    private void exitMenuMouseDragged(MouseEvent evt) {//GEN-FIRST:event_exitMenuMouseDragged
         int x = evt.getXOnScreen();
         int y = evt.getYOnScreen();
         this.setLocation(x - xMouse, y - yMouse);
     }//GEN-LAST:event_exitMenuMouseDragged
 
-    private void exitMenuMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_exitMenuMousePressed
+    private void exitMenuMousePressed(MouseEvent evt) {//GEN-FIRST:event_exitMenuMousePressed
         xMouse = evt.getX();
         yMouse = evt.getY();
     }//GEN-LAST:event_exitMenuMousePressed
 
-    private void exitTxtMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_exitTxtMouseClicked
+    private void exitTxtMouseClicked(MouseEvent evt) {//GEN-FIRST:event_exitTxtMouseClicked
         System.exit(0);
     }//GEN-LAST:event_exitTxtMouseClicked
 
-    private void exitTxtMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_exitTxtMouseEntered
+    private void exitTxtMouseEntered(MouseEvent evt) {//GEN-FIRST:event_exitTxtMouseEntered
         exitBtn.setBackground(Color.red);
         exitTxt.setForeground(Color.white);
     }//GEN-LAST:event_exitTxtMouseEntered
 
-    private void exitTxtMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_exitTxtMouseExited
+    private void exitTxtMouseExited(MouseEvent evt) {//GEN-FIRST:event_exitTxtMouseExited
         exitBtn.setBackground(Color.white);
         exitTxt.setForeground(Color.black);
     }//GEN-LAST:event_exitTxtMouseExited
 
-    private void exitTxtMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_exitTxtMousePressed
+    private void exitTxtMousePressed(MouseEvent evt) {//GEN-FIRST:event_exitTxtMousePressed
         // TODO add your handling code here:
     }//GEN-LAST:event_exitTxtMousePressed
-
-    private void generoComboBox2MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_generoComboBox2MousePressed
-       if (apellidoTxt.getText().equals("")) {
-            apellidoTxt.setText("Ingrese el apellido");
-            apellidoTxt.setForeground(Color.gray);
-        }
-        if (nombreTxt.getText().equals("")) {
-            nombreTxt.setText("Ingrese el nombre");
-            nombreTxt.setForeground(Color.gray);
-        }
-        if (dniTxt.getText().equals("")) {
-            dniTxt.setText("Ingrese el documento");
-            dniTxt.setForeground(Color.gray);
-        }
-        if (legajoTxt.getText().equals("")) {
-            legajoTxt.setText("Ingrese el legajo");
-            legajoTxt.setForeground(Color.gray);
-        }
-        if (emailTxt.getText().equals("")) {
-            emailTxt.setText("Ingrese el email");
-            emailTxt.setForeground(Color.gray);
-        }
-
-        if (fechaNacTxt.getText().equals("")) {
-            fechaNacTxt.setText("dd/mm/aaaa");
-            fechaNacTxt.setForeground(Color.gray);
-        }
-
-        if (sexoTxt.getText().equals("")) {
-            sexoTxt.setText("Ingrese el genero");
-            sexoTxt.setForeground(Color.gray);
-        }
-
-    }//GEN-LAST:event_generoComboBox2MousePressed
-
-    private void generoComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_generoComboBox2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_generoComboBox2ActionPerformed
 
     public static boolean isValidEmail(String email) {
         // Expresión regular para validar el correo electrónico
@@ -1009,6 +974,30 @@ public class InfoEmpleado extends javax.swing.JFrame {
         Pattern pattern = Pattern.compile(emailRegex);
         Matcher matcher = pattern.matcher(email);
         return matcher.matches();
+    }
+
+    public static boolean isValidDni(int dninuevo) {
+        ObjectMapper objectMapper = new ObjectMapper();
+
+        try {
+            // Leer el archivo JSON y convertirlo a un arreglo de enteros (DNIs)
+           ContenedoraEmpleado aux = new ContenedoraEmpleado();
+           aux.cargarEmpleadosDeJson("Empleados.json");
+            Set<Integer> dniSet = new HashSet<>();
+         for(Empleado e1 : aux.listar().values()){
+             dniSet.add(e1.getDni());
+         }
+
+                if (dniSet.contains(dninuevo)) {
+                    return false;
+                }
+                dniSet.add(dninuevo);
+                return true;
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return false;
     }
 
     // Método para parsear y validar la fecha
@@ -1028,17 +1017,13 @@ public class InfoEmpleado extends javax.swing.JFrame {
                 || dniTxt.getText().isEmpty() || dniTxt.getText().equals("Ingrese el documento")
                 || legajoTxt.getText().isEmpty() || legajoTxt.getText().equals("Ingrese el legajo")
                 || emailTxt.getText().isEmpty() || emailTxt.getText().equals("Ingrese el email")
-                || fechaNacTxt.getText().isEmpty() || fechaNacTxt.getText().equals("dd/mm/aaaa")
-                || sexoTxt.getText().isEmpty() || sexoTxt.getText().equals("Ingrese el genero");
+                || fechaNacTxt.getText().isEmpty() || fechaNacTxt.getText().equals("dd/mm/aaaa");
 
         Object selectedCargo = cargoBox.getSelectedItem();
         if (selectedCargo == null || selectedCargo.toString().isEmpty()) {
             anyFieldEmpty = true;
         }
-        Object selectedGenero = generoComboBox2.getSelectedItem();
-        if (selectedGenero == null || selectedGenero.toString().isEmpty()) {
-            anyFieldEmpty = true;
-        }
+
         return anyFieldEmpty;
     }
     
@@ -1049,43 +1034,40 @@ public class InfoEmpleado extends javax.swing.JFrame {
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel administracionTxt;
-    private javax.swing.JLabel apellido;
-    private javax.swing.JSeparator apellidoSep;
-    private javax.swing.JTextField apellidoTxt;
-    private javax.swing.JPanel background1;
-    private javax.swing.JLabel cargo;
-    private javax.swing.JComboBox<String> cargoBox;
-    private javax.swing.JLabel dateText;
-    private javax.swing.JLabel dni;
-    private javax.swing.JSeparator dniSep;
-    private javax.swing.JTextField dniTxt;
-    private javax.swing.JLabel email;
-    private javax.swing.JSeparator emailSep;
-    private javax.swing.JTextField emailTxt;
-    private javax.swing.JPanel exitBtn;
-    private javax.swing.JPanel exitMenu;
-    private javax.swing.JPanel exitMenu1;
-    private javax.swing.JLabel exitTxt;
-    private javax.swing.JLabel fechaNac;
-    private javax.swing.JSeparator fechaNacSep;
-    private javax.swing.JTextField fechaNacTxt;
-    private javax.swing.JComboBox<String> generoComboBox2;
-    private javax.swing.JPanel header;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel legajo;
-    private javax.swing.JSeparator legajoSep;
-    private javax.swing.JTextField legajoTxt;
-    private javax.swing.JLabel nombre;
-    private javax.swing.JSeparator nombreSep;
-    private javax.swing.JTextField nombreTxt;
-    private javax.swing.JPanel registerBtn;
-    private javax.swing.JLabel registerTxt;
-    private javax.swing.JLabel sexo;
-    private javax.swing.JSeparator sexoSep;
-    private javax.swing.JTextField sexoTxt;
-    private javax.swing.JLabel timeText;
-    private javax.swing.JLabel titulo;
-    private javax.swing.JPanel ventana1;
+    private JLabel administracionTxt;
+    private JLabel apellido;
+    private JSeparator apellidoSep;
+    private JTextField apellidoTxt;
+    private JPanel background1;
+    private JLabel cargo;
+    private JComboBox<String> cargoBox;
+    private JLabel dateText;
+    private JLabel dni;
+    private JSeparator dniSep;
+    private JTextField dniTxt;
+    private JLabel email;
+    private JSeparator emailSep;
+    private JSeparator emailSep1;
+    private JTextField emailTxt;
+    private JPanel exitBtn;
+    private JPanel exitMenu;
+    private JPanel exitMenu1;
+    private JLabel exitTxt;
+    private JLabel fechaNac;
+    private JSeparator fechaNacSep;
+    private JTextField fechaNacTxt;
+    private JPanel header;
+    private JLabel jLabel1;
+    private JLabel legajo;
+    private JSeparator legajoSep;
+    private JTextField legajoTxt;
+    private JLabel nombre;
+    private JSeparator nombreSep;
+    private JTextField nombreTxt;
+    private JPanel registerBtn;
+    private JLabel registerTxt;
+    private JLabel timeText;
+    private JLabel titulo;
+    private JPanel ventana1;
     // End of variables declaration//GEN-END:variables
 }

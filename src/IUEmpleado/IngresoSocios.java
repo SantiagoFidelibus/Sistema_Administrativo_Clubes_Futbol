@@ -184,6 +184,13 @@ setTitle("Administracion Acantilados FC");
                 if (file.exists()) {
                     ImageIcon icon = new ImageIcon(new ImageIcon(filePath).getImage().getScaledInstance(fotoUsuario.getWidth(), fotoUsuario.getHeight(), Image.SCALE_SMOOTH));
                     fotoUsuario.setIcon(icon);
+                }else{
+                    System.out.println("esto en el else");
+                    filePath = "src/com/images/FotoCarnet.png";
+                    ImageIcon icon = new ImageIcon(new ImageIcon(filePath).getImage().getScaledInstance(fotoUsuario.getWidth(), fotoUsuario.getHeight(), Image.SCALE_SMOOTH));
+                    fotoUsuario.setIcon(icon);
+                }
+
                     Socio socioIngresante = null;
                     String legajo=leerArchivo();
                     try {
@@ -193,7 +200,7 @@ setTitle("Administracion Acantilados FC");
                     }
 
                     jLabel1.setText("Nombre Completo: "+socioIngresante.getNombre()+" "+socioIngresante.getApellido());
-                }
+
                 IngresoSocios.this.setVisible(true);
 
             }

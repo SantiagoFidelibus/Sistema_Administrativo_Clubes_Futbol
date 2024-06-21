@@ -9,6 +9,7 @@ import Mail.Correos;
 import MenuIU.Menu;
 import Model.Cargo;
 import Model.Empleado;
+import Model.Socio;
 import Webcam.WebcamClass;
 import java.awt.Color;
 import java.awt.event.WindowAdapter;
@@ -16,6 +17,8 @@ import java.awt.event.WindowEvent;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.logging.Logger;
 import java.util.logging.Level;
 
@@ -34,6 +37,8 @@ import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
 import rsdragdropfiles.RSDragDropFiles;
 
 /**
@@ -62,6 +67,7 @@ public class ModificarEmpleado extends javax.swing.JFrame {
         timeUpdater.start();
         fechaVen = fechaV;
         fechaRe = fechaR;
+        legajoTxt.setDisabledTextColor(Color.BLACK);
         legajoTxt.setText(String.valueOf(legajo));
         legajoTxt.setEditable(false);
         legajoTxt.setForeground(Color.black);
@@ -163,9 +169,6 @@ public class ModificarEmpleado extends javax.swing.JFrame {
         modifBtn = new javax.swing.JPanel();
         modifTxt = new javax.swing.JLabel();
         cargarImgBtn = new javax.swing.JPanel();
-        generoComboBox2 = new javax.swing.JComboBox<>();
-        sexo = new javax.swing.JLabel();
-        sexoTxt = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setLocationByPlatform(true);
@@ -402,7 +405,7 @@ public class ModificarEmpleado extends javax.swing.JFrame {
 
         fechaNac.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         fechaNac.setText("FECHA DE NACIMIENTO");
-        ventana1.add(fechaNac, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 470, -1, -1));
+        ventana1.add(fechaNac, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 400, -1, -1));
 
         fechaNacTxt.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         fechaNacTxt.setForeground(new java.awt.Color(153, 153, 153));
@@ -418,12 +421,12 @@ public class ModificarEmpleado extends javax.swing.JFrame {
                 fechaNacTxtActionPerformed(evt);
             }
         });
-        ventana1.add(fechaNacTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 490, 180, 30));
-        ventana1.add(fechaNacSep, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 520, 180, 10));
+        ventana1.add(fechaNacTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 420, 180, 30));
+        ventana1.add(fechaNacSep, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 450, 180, 10));
 
         cargo.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         cargo.setText("CARGO");
-        ventana1.add(cargo, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 560, -1, -1));
+        ventana1.add(cargo, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 490, -1, -1));
 
         cargoBox.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         cargoBox.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -436,7 +439,7 @@ public class ModificarEmpleado extends javax.swing.JFrame {
                 cargoBoxActionPerformed(evt);
             }
         });
-        ventana1.add(cargoBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 590, 180, 30));
+        ventana1.add(cargoBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 520, 180, 30));
 
         modifBtn.setBackground(new java.awt.Color(50, 115, 153));
 
@@ -484,45 +487,6 @@ public class ModificarEmpleado extends javax.swing.JFrame {
         );
 
         ventana1.add(cargarImgBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(1030, 490, -1, 20));
-
-        generoComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Femenino", "Masculino", "Otro" }));
-        generoComboBox2.setSelectedIndex(-1);
-        generoComboBox2.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                generoComboBox2MousePressed(evt);
-            }
-        });
-        generoComboBox2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                generoComboBox2ActionPerformed(evt);
-            }
-        });
-        ventana1.add(generoComboBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 420, 180, 30));
-
-        sexo.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
-        sexo.setText("GENERO");
-        ventana1.add(sexo, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 400, -1, -1));
-
-        sexoTxt.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
-        sexoTxt.setForeground(new java.awt.Color(153, 153, 153));
-        sexoTxt.setText("Ingrese el genero");
-        sexoTxt.setBorder(null);
-        sexoTxt.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                sexoTxtMousePressed(evt);
-            }
-        });
-        sexoTxt.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                sexoTxtActionPerformed(evt);
-            }
-        });
-        sexoTxt.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                sexoTxtKeyTyped(evt);
-            }
-        });
-        ventana1.add(sexoTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 420, 180, 30));
 
         panelVentanas.addTab("tab1", ventana1);
 
@@ -861,10 +825,7 @@ public class ModificarEmpleado extends javax.swing.JFrame {
         if (selectedCargo == null || selectedCargo.toString().isEmpty()) {
             anyFieldEmpty = true;
         }
-        Object selectedGenero = generoComboBox2.getSelectedItem();
-        if (selectedGenero == null || selectedGenero.toString().isEmpty()) {
-            anyFieldEmpty = true;
-        }
+
         return anyFieldEmpty;
     }
     
@@ -907,9 +868,11 @@ public class ModificarEmpleado extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "La fecha de nacimiento no es válida. Use el formato dd/MM/yyyy.", "Error de registro", JOptionPane.ERROR_MESSAGE);
         } else if (dniStr.length() != 8) {
             JOptionPane.showMessageDialog(this, "El DNI debe tener exactamente 8 caracteres.", "Error de registro", JOptionPane.ERROR_MESSAGE);
-        }else {
+        }else if(!isValidDni(Integer.parseInt(dniTxt.getText()),Integer.parseInt(legajoTxt.getText()))){
+            JOptionPane.showMessageDialog(this, "El DNI ya se encuentra registrado.", "Error de registro", JOptionPane.ERROR_MESSAGE);
+        } else {
             try {
-                sexoTxt.setText(generoComboBox2.getSelectedItem().toString());
+
                 Empleado e = new Empleado(nombreTxt.getText(), apellidoTxt.getText(), Integer.parseInt(dniStr), Integer.parseInt(legajoTxt.getText()), emailTxt.getText(), fechaNacTxt.getText(), legajo.getText()+selectedCargo, selectedCargo, true);
                 e.setFechaRegistroPago(fechaRe);
                 e.setFechaVencimientoPago(fechaVen);
@@ -932,6 +895,36 @@ public class ModificarEmpleado extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_modifTxtMouseClicked
 
+    public static boolean isValidDni(int dninuevo, int legajo) {
+        ObjectMapper objectMapper = new ObjectMapper();
+
+        try {
+            // Leer el archivo JSON y convertirlo a un arreglo de enteros (DNIs)
+            ContenedoraEmpleado aux = new ContenedoraEmpleado();
+            aux.cargarEmpleadosDeJson("Empleados.json");
+            Empleado sAux = aux.buscar(legajo);
+            if(sAux.getDni()==dninuevo){
+                return true;
+            }
+            Set<Integer> dniSet = new HashSet<>();
+            for(Empleado e1 : aux.listar().values()){
+                dniSet.add(e1.getDni());
+            }
+
+            if (dniSet.contains(dninuevo)) {
+                return false;
+            }
+            dniSet.add(dninuevo);
+            return true;
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+        return false;
+    }
+
     private void modifTxtMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_modifTxtMouseEntered
         modifBtn.setBackground(new Color(80,139,166));
     }//GEN-LAST:event_modifTxtMouseEntered
@@ -951,87 +944,6 @@ public class ModificarEmpleado extends javax.swing.JFrame {
         menu.setLocationRelativeTo(null);
         this.dispose();
     }//GEN-LAST:event_jLabel1MouseClicked
-
-    private void generoComboBox2MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_generoComboBox2MousePressed
-        if (apellidoTxt.getText().equals("")) {
-            apellidoTxt.setText("Ingrese el apellido");
-            apellidoTxt.setForeground(Color.gray);
-        }
-        if (nombreTxt.getText().equals("")) {
-            nombreTxt.setText("Ingrese el nombre");
-            nombreTxt.setForeground(Color.gray);
-        }
-        if (dniTxt.getText().equals("")) {
-            dniTxt.setText("Ingrese el documento");
-            dniTxt.setForeground(Color.gray);
-        }
-        if (legajoTxt.getText().equals("")) {
-            legajoTxt.setText("Ingrese el legajo");
-            legajoTxt.setForeground(Color.gray);
-        }
-        if (emailTxt.getText().equals("")) {
-            emailTxt.setText("Ingrese el email");
-            emailTxt.setForeground(Color.gray);
-        }
-
-        if (fechaNacTxt.getText().equals("")) {
-            fechaNacTxt.setText("dd/mm/aaaa");
-            fechaNacTxt.setForeground(Color.gray);
-        }
-
-        if (sexoTxt.getText().equals("")) {
-            sexoTxt.setText("Ingrese el genero");
-            sexoTxt.setForeground(Color.gray);
-        }
-    }//GEN-LAST:event_generoComboBox2MousePressed
-
-    private void generoComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_generoComboBox2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_generoComboBox2ActionPerformed
-
-    private void sexoTxtMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_sexoTxtMousePressed
-        if (apellidoTxt.getText().equals("")) {
-            apellidoTxt.setText("Ingrese el apellido");
-            apellidoTxt.setForeground(Color.gray);
-        }
-        if (nombreTxt.getText().equals("")) {
-            nombreTxt.setText("Ingrese el nombre");
-            nombreTxt.setForeground(Color.gray);
-        }
-        if (dniTxt.getText().equals("")) {
-            dniTxt.setText("Ingrese el documento");
-            dniTxt.setForeground(Color.gray);
-        }
-        if (legajoTxt.getText().equals("")) {
-            legajoTxt.setText("Ingrese el legajo");
-            legajoTxt.setForeground(Color.gray);
-        }
-        if (emailTxt.getText().equals("")) {
-            emailTxt.setText("Ingrese el email");
-            emailTxt.setForeground(Color.gray);
-        }
-
-        if (fechaNacTxt.getText().equals("")) {
-            fechaNacTxt.setText("dd/mm/aaaa");
-            fechaNacTxt.setForeground(Color.gray);
-        }
-
-        if (sexoTxt.getText().equals("Ingrese el genero")) {
-            sexoTxt.setText("");
-            sexoTxt.setForeground(Color.black);
-        }
-    }//GEN-LAST:event_sexoTxtMousePressed
-
-    private void sexoTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sexoTxtActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_sexoTxtActionPerformed
-
-    private void sexoTxtKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_sexoTxtKeyTyped
-        char c = evt.getKeyChar();
-
-        if ((c < 'a' || c > 'z') && (c < 'A' || c > 'Z') && c != ' ')
-        evt.consume();
-    }//GEN-LAST:event_sexoTxtKeyTyped
 
     /**
      * @param args the command line arguments
@@ -1060,7 +972,6 @@ public class ModificarEmpleado extends javax.swing.JFrame {
     private javax.swing.JLabel fechaNac;
     private javax.swing.JSeparator fechaNacSep;
     private javax.swing.JTextField fechaNacTxt;
-    private javax.swing.JComboBox<String> generoComboBox2;
     private javax.swing.JPanel header;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel legajo;
@@ -1072,8 +983,6 @@ public class ModificarEmpleado extends javax.swing.JFrame {
     private javax.swing.JSeparator nombreSep;
     private javax.swing.JTextField nombreTxt;
     private javax.swing.JTabbedPane panelVentanas;
-    private javax.swing.JLabel sexo;
-    private javax.swing.JTextField sexoTxt;
     private javax.swing.JLabel timeText;
     private javax.swing.JLabel titulo;
     private javax.swing.JPanel ventana1;

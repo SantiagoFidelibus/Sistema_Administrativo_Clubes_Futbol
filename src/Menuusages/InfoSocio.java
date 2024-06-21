@@ -4,6 +4,8 @@
  */
 package Menuusages;
 
+import Containers.ContenedoraEmpleado;
+import Model.Empleado;
 import Webcam.WebcamClass;
 import Medico.DetalleSocio;
 import Register.RegistroExitoso;
@@ -23,7 +25,9 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.regex.Matcher;
@@ -36,6 +40,7 @@ import javax.swing.event.DocumentListener;
 import javax.swing.text.*;
 
 import Containers.ContenedoraSocio;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.netbeans.lib.awtextra.AbsoluteConstraints;
 import org.netbeans.lib.awtextra.AbsoluteLayout;
 import rsdragdropfiles.RSDragDropFiles;
@@ -253,6 +258,7 @@ public class InfoSocio extends JFrame {
         setTitle("Administracion Acantilados FC");
         TimeUpdater timeUpdater = new TimeUpdater(timeText);
         timeUpdater.start();
+        legajoTxt.setDisabledTextColor(Color.BLACK);
         legajoTxt.setText(String.valueOf(legajo));
         legajoTxt.setEditable(false);
         legajoTxt.setForeground(Color.black);
@@ -1405,7 +1411,9 @@ public class InfoSocio extends JFrame {
             JOptionPane.showMessageDialog(this, "El DNI debe tener exactamente 8 caracteres.", "Error de registro", JOptionPane.ERROR_MESSAGE);
         } else if (telefono.length() < 7) { // Validar que el teléfono tenga al menos 7 dígitos
             JOptionPane.showMessageDialog(this, "El número de teléfono debe tener al menos 7 dígitos.", "Error de registro", JOptionPane.ERROR_MESSAGE);
-        } else {
+        } else if(!isValidDni(Integer.parseInt(dniTxt.getText()))){
+            JOptionPane.showMessageDialog(this, "El DNI ya se encuentra registrado.", "Error de registro", JOptionPane.ERROR_MESSAGE);
+        }else {
             try {
                 sexoTxt.setText(generoComboBox.getSelectedItem().toString());
                 Socio nuevoSocio = new Socio(
@@ -1548,13 +1556,13 @@ if (jf.showOpenDialog(this) == JFileChooser.APPROVE_OPTION) {
     }//GEN-LAST:event_registerTxtMouseExited
 
     private void fotoUsuarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_fotoUsuarioMouseClicked
-        WebcamClass webcamInstance = new WebcamClass(legajoTxt.getText());
+        WebcamClass webcamInstance = new WebcamClass(legajoTxt.getText(),this);
         // Ocultar la ventana actual (Infosocio)
         setVisible(false);
 
         // Crear una instancia de WebcamClass si aún no existe
         if (webcamInstance == null) {
-            webcamInstance = new WebcamClass(legajoTxt.getText());
+            webcamInstance = new WebcamClass(legajoTxt.getText(),this);
         }
 
         // Mostrar la GUI de la webcam
@@ -1639,7 +1647,29 @@ if (jf.showOpenDialog(this) == JFileChooser.APPROVE_OPTION) {
         Matcher matcher = pattern.matcher(email);
         return matcher.matches();
     }
+    public static boolean isValidDni(int dninuevo) {
+        ObjectMapper objectMapper = new ObjectMapper();
 
+        try {
+            // Leer el archivo JSON y convertirlo a un arreglo de enteros (DNIs)
+            ContenedoraSocio aux = new ContenedoraSocio();
+            aux.cargarSociosDeJson("Socios.json");
+            Set<Integer> dniSet = new HashSet<>();
+            for(Socio s1 : aux.listar().values()){
+                dniSet.add(s1.getDni());
+            }
+
+            if (dniSet.contains(dninuevo)) {
+                return false;
+            }
+            dniSet.add(dninuevo);
+            return true;
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
     // Método para parsear y validar la fecha
     private LocalDate parseDate(String dateStr) {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");

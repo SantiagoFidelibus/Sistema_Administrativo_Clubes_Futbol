@@ -26,7 +26,9 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.regex.Matcher;
@@ -37,6 +39,7 @@ import javax.swing.*;
 
 
 import Containers.ContenedoraSocio;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import rsdragdropfiles.RSDragDropFiles;
 
 import static java.lang.Long.parseLong;
@@ -66,6 +69,7 @@ public class ModificarSocio extends javax.swing.JFrame {
         timeUpdater.start();
         fechaVen = fechaV;
         fechaRe = fechaR;
+        legajoTxt.setDisabledTextColor(Color.BLACK);
         legajoTxt.setText(String.valueOf(legajo));
         legajoTxt.setEditable(false);
         legajoTxt.setForeground(Color.black);
@@ -92,7 +96,6 @@ public class ModificarSocio extends javax.swing.JFrame {
         domicilioTxt.setForeground(Color.black);
 
         sexoTxt.setText(genero);
-        sexoTxt.setForeground(Color.black);
 
         obraSocialTxt.setText(ObraSocial);
         obraSocialTxt.setForeground(Color.black);
@@ -100,6 +103,8 @@ public class ModificarSocio extends javax.swing.JFrame {
         categoriaBox.setSelectedItem(categoriaSeleccionada);
         categoriaBox.setForeground(Color.black);
 
+        generoComboBox.setSelectedItem(genero);
+        generoComboBox.setForeground(Color.black);
         String filePath = "src/com/imagesPersonas/" + legajo + ".png";
         File file = new File(filePath);
         if (file.exists()) {
@@ -112,6 +117,191 @@ public class ModificarSocio extends javax.swing.JFrame {
         for (Categoria categoria : Categoria.values()) {
             categoriaBox.addItem(String.valueOf(categoria));
         }
+
+        nombreTxt.addFocusListener(new FocusAdapter() {
+            @Override
+            public void focusGained(FocusEvent e) {
+                if (nombreTxt.getText().equals("Ingrese el nombre")) {
+                    nombreTxt.setText("");
+                    nombreTxt.setForeground(Color.black);
+                }
+            }
+
+            @Override
+            public void focusLost(FocusEvent e) {
+                if (nombreTxt.getText().equals("")) {
+                    nombreTxt.setText("Ingrese el nombre");
+                    nombreTxt.setForeground(Color.gray);
+                }
+            }
+        });
+
+// Agrega FocusListener para apellidoTxt
+        apellidoTxt.addFocusListener(new FocusAdapter() {
+            @Override
+            public void focusGained(FocusEvent e) {
+                if (apellidoTxt.getText().equals("Ingrese el apellido")) {
+                    apellidoTxt.setText("");
+                    apellidoTxt.setForeground(Color.black);
+                }
+            }
+
+            @Override
+            public void focusLost(FocusEvent e) {
+                if (apellidoTxt.getText().equals("")) {
+                    apellidoTxt.setText("Ingrese el apellido");
+                    apellidoTxt.setForeground(Color.gray);
+                }
+            }
+        });
+
+// Agrega FocusListener para dniTxt
+        dniTxt.addFocusListener(new FocusAdapter() {
+            @Override
+            public void focusGained(FocusEvent e) {
+                if (dniTxt.getText().equals("Ingrese el documento")) {
+                    dniTxt.setText("");
+                    dniTxt.setForeground(Color.black);
+                }
+            }
+
+            @Override
+            public void focusLost(FocusEvent e) {
+                if (dniTxt.getText().equals("")) {
+                    dniTxt.setText("Ingrese el documento");
+                    dniTxt.setForeground(Color.gray);
+                }
+            }
+        });
+
+// Agrega FocusListener para emailTxt
+        emailTxt.addFocusListener(new FocusAdapter() {
+            @Override
+            public void focusGained(FocusEvent e) {
+                if (emailTxt.getText().equals("Ingrese el email")) {
+                    emailTxt.setText("");
+                    emailTxt.setForeground(Color.black);
+                }
+            }
+
+            @Override
+            public void focusLost(FocusEvent e) {
+                if (emailTxt.getText().equals("")) {
+                    emailTxt.setText("Ingrese el email");
+                    emailTxt.setForeground(Color.gray);
+                }
+            }
+        });
+
+// Agrega FocusListener para telefonoTxt
+        telefonoTxt.addFocusListener(new FocusAdapter() {
+            @Override
+            public void focusGained(FocusEvent e) {
+                if (telefonoTxt.getText().equals("Ingrese el numero de teléfono")) {
+                    telefonoTxt.setText("");
+                    telefonoTxt.setForeground(Color.black);
+                }
+            }
+
+            @Override
+            public void focusLost(FocusEvent e) {
+                if (telefonoTxt.getText().equals("")) {
+                    telefonoTxt.setText("Ingrese el numero de teléfono");
+                    telefonoTxt.setForeground(Color.gray);
+                }
+            }
+        });
+
+// Agrega FocusListener para fechaNacTxt
+        fechaNacTxt.addFocusListener(new FocusAdapter() {
+            @Override
+            public void focusGained(FocusEvent e) {
+                if (fechaNacTxt.getText().equals("dd/mm/aaaa")) {
+                    fechaNacTxt.setText("");
+                    fechaNacTxt.setForeground(Color.black);
+                }
+            }
+
+            @Override
+            public void focusLost(FocusEvent e) {
+                if (fechaNacTxt.getText().equals("")) {
+                    fechaNacTxt.setText("dd/mm/aaaa");
+                    fechaNacTxt.setForeground(Color.gray);
+                }
+            }
+        });
+
+// Agrega FocusListener para domicilioTxt
+        domicilioTxt.addFocusListener(new FocusAdapter() {
+            @Override
+            public void focusGained(FocusEvent e) {
+                if (domicilioTxt.getText().equals("Ingrese el domicilio")) {
+                    domicilioTxt.setText("");
+                    domicilioTxt.setForeground(Color.black);
+                }
+            }
+
+            @Override
+            public void focusLost(FocusEvent e) {
+                if (domicilioTxt.getText().equals("")) {
+                    domicilioTxt.setText("Ingrese el domicilio");
+                    domicilioTxt.setForeground(Color.gray);
+                }
+            }
+        });
+
+// Agrega FocusListener para obraSocialTxt
+        obraSocialTxt.addFocusListener(new FocusAdapter() {
+            @Override
+            public void focusGained(FocusEvent e) {
+                if (obraSocialTxt.getText().equals("Ingrese la obra social")) {
+                    obraSocialTxt.setText("");
+                    obraSocialTxt.setForeground(Color.black);
+                }
+            }
+
+            @Override
+            public void focusLost(FocusEvent e) {
+                if (obraSocialTxt.getText().equals("")) {
+                    obraSocialTxt.setText("Ingrese la obra social");
+                    obraSocialTxt.setForeground(Color.gray);
+                }
+            }
+        });
+
+// Agrega ActionListener para generoComboBox
+        generoComboBox.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                obraSocialTxt.requestFocus();
+            }
+        });
+
+// Muestra las opciones del ComboBox al presionar Enter
+        generoComboBox.getInputMap(JComponent.WHEN_FOCUSED).put(KeyStroke.getKeyStroke("ENTER"), "showPopup");
+        generoComboBox.getActionMap().put("showPopup", new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                generoComboBox.showPopup();
+            }
+        });
+
+// Agrega ActionListener para categoriaBox
+        categoriaBox.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                nombreTxt.requestFocus();
+            }
+        });
+
+// Muestra las opciones del ComboBox al presionar Enter
+        categoriaBox.getInputMap(JComponent.WHEN_FOCUSED).put(KeyStroke.getKeyStroke("ENTER"), "showPopup");
+        categoriaBox.getActionMap().put("showPopup", new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                categoriaBox.showPopup();
+            }
+        });
 
         try {
             for (UIManager.LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
@@ -1293,7 +1483,9 @@ public class ModificarSocio extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "La fecha de nacimiento no es válida. Use el formato dd/MM/yyyy.", "Error de registro", JOptionPane.ERROR_MESSAGE);
         } else if (dniStr.length() != 8) {
             JOptionPane.showMessageDialog(this, "El DNI debe tener exactamente 8 caracteres.", "Error de registro", JOptionPane.ERROR_MESSAGE);
-        }else {
+        } else if(!isValidDni(Integer.parseInt(dniTxt.getText()), Integer.parseInt(legajoTxt.getText()))){
+            JOptionPane.showMessageDialog(this, "El DNI ya se encuentra registrado.", "Error de registro", JOptionPane.ERROR_MESSAGE);
+        } else {
             try {
                 sexoTxt.setText(generoComboBox.getSelectedItem().toString());
                 Socio s = new Socio(nombreTxt.getText(), apellidoTxt.getText(), Integer.parseInt(dniStr), Integer.parseInt(legajoTxt.getText()), emailTxt.getText(), fechaNacTxt.getText(), parseLong(telefonoTxt.getText()), domicilioTxt.getText(), sexoTxt.getText(), false, obraSocialTxt.getText(), true, selectedCategoria);
@@ -1344,13 +1536,13 @@ public class ModificarSocio extends javax.swing.JFrame {
     }//GEN-LAST:event_cargarImgTxtMouseClicked
 
     private void fotoUsuarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_fotoUsuarioMouseClicked
-        WebcamClass webcamInstance = new WebcamClass(legajoTxt.getText());
+        WebcamClass webcamInstance = new WebcamClass(legajoTxt.getText(),this);
         // Ocultar la ventana actual (Infosocio)
         setVisible(false);
 
         // Crear una instancia de WebcamClass si aún no existe
         if (webcamInstance == null) {
-            webcamInstance = new WebcamClass(legajoTxt.getText());
+            webcamInstance = new WebcamClass(legajoTxt.getText(),this);
         }
 
         // Mostrar la GUI de la webcam
@@ -1458,7 +1650,34 @@ public class ModificarSocio extends javax.swing.JFrame {
         return anyFieldEmpty;
     }
 
+    public static boolean isValidDni(int dninuevo, int legajo) {
+        ObjectMapper objectMapper = new ObjectMapper();
+        try {
+            // Leer el archivo JSON y convertirlo a un arreglo de enteros (DNIs)
+            ContenedoraSocio aux = new ContenedoraSocio();
+            aux.cargarSociosDeJson("Socios.json");
+            Socio sAux = aux.buscar(legajo);
+            if(sAux.getDni()==dninuevo){
+            return true;
+            }
+            Set<Integer> dniSet = new HashSet<>();
+            for(Socio s1 : aux.listar().values()){
+                dniSet.add(s1.getDni());
+            }
 
+            if (dniSet.contains(dninuevo)) {
+                return false;
+            }
+            dniSet.add(dninuevo);
+            return true;
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+        return false;
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Marco;
     private javax.swing.JLabel administracionTxt;

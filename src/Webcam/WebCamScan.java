@@ -132,6 +132,10 @@ public class WebCamScan extends JFrame {
             @Override
             public void windowClosing(WindowEvent e) {
                 cerrarCamara();
+                IngresoSocios ingreso = new IngresoSocios();
+                ingreso.setVisible(true);
+                ingreso.pack();
+                ingreso.setLocationRelativeTo(null);
             }
         });
     }

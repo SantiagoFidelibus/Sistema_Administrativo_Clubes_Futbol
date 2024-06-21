@@ -60,6 +60,8 @@ setTitle("Administracion Acantilados FC");
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        fondoDatos = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
         buscarTxt = new javax.swing.JTextField();
         scanBtn = new javax.swing.JButton();
         cerrarSesionLabel = new javax.swing.JLabel();
@@ -69,11 +71,15 @@ setTitle("Administracion Acantilados FC");
         pelota4 = new javax.swing.JLabel();
         pelota2 = new javax.swing.JLabel();
         fondo_1 = new javax.swing.JLabel();
-        fondoDatos = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        fondoDatos.setBackground(new java.awt.Color(255, 255, 255));
+        fondoDatos.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        fondoDatos.add(jLabel1);
+
+        getContentPane().add(fondoDatos, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 20, 220, 30));
 
         buscarTxt.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         buscarTxt.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
@@ -82,7 +88,7 @@ setTitle("Administracion Acantilados FC");
                 buscarTxtActionPerformed(evt);
             }
         });
-        getContentPane().add(buscarTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(201, 20, 220, 30));
+        getContentPane().add(buscarTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 100, 220, 30));
 
         scanBtn.setText("BUSCAR");
         scanBtn.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -95,7 +101,7 @@ setTitle("Administracion Acantilados FC");
                 scanBtnActionPerformed(evt);
             }
         });
-        getContentPane().add(scanBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 60, -1, -1));
+        getContentPane().add(scanBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 140, -1, -1));
 
         cerrarSesionLabel.setForeground(new java.awt.Color(59, 132, 173));
         cerrarSesionLabel.setText("Cerrar Sesion");
@@ -135,7 +141,7 @@ setTitle("Administracion Acantilados FC");
                 validarIngresoBtnActionPerformed(evt);
             }
         });
-        getContentPane().add(validarIngresoBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 110, -1, -1));
+        getContentPane().add(validarIngresoBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 140, -1, -1));
 
         pelota4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/images/medicine.png"))); // NOI18N
         getContentPane().add(pelota4, new org.netbeans.lib.awtextra.AbsoluteConstraints(-30, -40, -1, -1));
@@ -146,38 +152,42 @@ setTitle("Administracion Acantilados FC");
         fondo_1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/images/Rectangle 1.png"))); // NOI18N
         getContentPane().add(fondo_1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-20, -20, 450, 230));
 
-        fondoDatos.setBackground(new java.awt.Color(255, 255, 255));
-        fondoDatos.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        fondoDatos.add(jLabel1);
-
-        getContentPane().add(fondoDatos, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 20, 220, 30));
-
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void scanBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_scanBtnMouseClicked
 
-        validarIngresoBtn.setVisible(true);
-        validarIngresoBtn.setEnabled(true);
-        fondoDatos.setVisible(true);
-        fondoDatos.setEnabled(true);
+        String text = buscarTxt.getText().trim();
+
+        if (text.isEmpty()) {
+
+            JOptionPane.showMessageDialog(this, "El campo de búsqueda está vacío.", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
 
         int dato = Integer.parseInt(buscarTxt.getText());
+
         String filePath = "src/com/imagesPersonas/" + dato + ".png";
         File file = new File(filePath);
         if (file.exists()) {
             ImageIcon icon = new ImageIcon(new ImageIcon(filePath).getImage().getScaledInstance(fotoUsuario.getWidth(), fotoUsuario.getHeight(), Image.SCALE_SMOOTH));
             fotoUsuario.setIcon(icon);
-            try {
-                Socio socioIngresante = socios.buscar(dato);
-                jLabel1.setText("Nombre Completo: " + socioIngresante.getNombre() + " " + socioIngresante.getApellido());
-            } catch (Exception e) {
-                JOptionPane.showMessageDialog(this, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
-            }
+
         } else {
             filePath = "src/com/images/FotoCarnet.png";
             ImageIcon icon = new ImageIcon(new ImageIcon(filePath).getImage().getScaledInstance(fotoUsuario.getWidth(), fotoUsuario.getHeight(), Image.SCALE_SMOOTH));
             fotoUsuario.setIcon(icon);
+        }
+        try {
+            Socio socioIngresante = socios.buscar(dato);
+            jLabel1.setText("Nombre Completo: " + socioIngresante.getNombre() + " " + socioIngresante.getApellido());
+            validarIngresoBtn.setVisible(true);
+            validarIngresoBtn.setEnabled(true);
+            fondoDatos.setVisible(true);
+            buscarTxt.setEditable(false);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+            actualizarEstado();
         }
             }//GEN-LAST:event_scanBtnMouseClicked
 
@@ -215,53 +225,37 @@ setTitle("Administracion Acantilados FC");
                     Socio socioIngresante = socios.buscar(dato);
                     System.out.println(socioIngresante);
                     if (socioIngresante == null) {
-                        SwingUtilities.invokeLater(() -> {
-                            JOptionPane.showMessageDialog(IngresoSociosSinCam.this, "No se encontró al socio.", "Error de Ingreso", JOptionPane.ERROR_MESSAGE);
-                            actualizarEstado();
-                        });
+                        JOptionPane.showMessageDialog(IngresoSociosSinCam.this, "No se encontró al socio.", "Error de Ingreso", JOptionPane.ERROR_MESSAGE);
                     } else {
                         if (!socioIngresante.isAptoMedico() && socioIngresante.isAptoCuota()) {
-                            SwingUtilities.invokeLater(() -> {
-                                JOptionPane.showMessageDialog(IngresoSociosSinCam.this, "El socio debe realizar su certificado médico.", "Error de Ingreso", JOptionPane.ERROR_MESSAGE);
-                                correo.CorreoAptoMedicoRequerido(socioIngresante.getEmail(), socioIngresante.getNombre());
-                                actualizarEstado();
-                            });
+                            JOptionPane.showMessageDialog(IngresoSociosSinCam.this, "El socio debe realizar su certificado médico.", "Error de Ingreso", JOptionPane.ERROR_MESSAGE);
+                            actualizarEstado();
+                            correo.CorreoAptoMedicoRequerido(socioIngresante.getEmail(), socioIngresante.getNombre());
                         } else if (!socioIngresante.isAptoCuota() && socioIngresante.isAptoMedico()) {
-                            SwingUtilities.invokeLater(() -> {
-                                JOptionPane.showMessageDialog(IngresoSociosSinCam.this, "El socio debe pagar su cuota.", "Error de Ingreso", JOptionPane.ERROR_MESSAGE);
-                                correo.CorreoDeuda(socioIngresante.getEmail());
-                                actualizarEstado();
-                            });
+                            JOptionPane.showMessageDialog(IngresoSociosSinCam.this, "El socio debe pagar su cuota.", "Error de Ingreso", JOptionPane.ERROR_MESSAGE);
+                            actualizarEstado();
+                            correo.CorreoDeuda(socioIngresante.getEmail());
                         } else if (!socioIngresante.isAptoCuota() && !socioIngresante.isAptoMedico()) {
-                            SwingUtilities.invokeLater(() -> {
-                                JOptionPane.showMessageDialog(IngresoSociosSinCam.this, "El socio debe pagar su cuota y realizar su certificación médica.", "Error de Ingreso", JOptionPane.ERROR_MESSAGE);
-                                correo.CorreoRegularizate(socioIngresante.getEmail(), socioIngresante.getNombre());
-                                actualizarEstado();
-                            });
+                            JOptionPane.showMessageDialog(IngresoSociosSinCam.this, "El socio debe pagar su cuota y realizar su certificación médica.", "Error de Ingreso", JOptionPane.ERROR_MESSAGE);
+                            actualizarEstado();
+                            correo.CorreoRegularizate(socioIngresante.getEmail(), socioIngresante.getNombre());
                         } else if (socioIngresante.isAptoCuota() && socioIngresante.isAptoMedico()) {
-                            SwingUtilities.invokeLater(() -> {
-                                JOptionPane.showMessageDialog(IngresoSociosSinCam.this, "El socio está al día y puede realizar sus actividades.", "Ingreso exitoso", JOptionPane.INFORMATION_MESSAGE);
-                                actualizarEstado();
-                            });
+                            actualizarEstado();
+                            JOptionPane.showMessageDialog(IngresoSociosSinCam.this, "El socio está al día y puede realizar sus actividades.", "Ingreso exitoso", JOptionPane.INFORMATION_MESSAGE);
                         }
                     }
                 } catch (IOException e) {
-                    SwingUtilities.invokeLater(() -> {
-                        JOptionPane.showMessageDialog(IngresoSociosSinCam.this, "Error de E/S: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
-                        actualizarEstado();
-                    });
+                    JOptionPane.showMessageDialog(IngresoSociosSinCam.this, "Error de E/S: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
                 } catch (Exception e) {
-                    SwingUtilities.invokeLater(() -> {
-                        JOptionPane.showMessageDialog(IngresoSociosSinCam.this, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
-                        actualizarEstado();
-                    });
+                    JOptionPane.showMessageDialog(IngresoSociosSinCam.this, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
                 }
                 return null;
             }
 
             @Override
             protected void done() {
-                // No necesitamos hacer nada aquí porque las actualizaciones se manejarán en actualizarEstado().
+                // Actualizar el estado después de completar todas las operaciones
+
             }
         }.execute();
     }//GEN-LAST:event_validarIngresoBtnMouseClicked
@@ -271,7 +265,9 @@ setTitle("Administracion Acantilados FC");
         validarIngresoBtn.setEnabled(false);
         fondoDatos.setVisible(false);
         fondoDatos.setEnabled(false);
+        jLabel1.setText("");
         buscarTxt.setText("");
+        buscarTxt.setEditable(true);
         String filePath = "src/com/images/FotoCarnet.png";
         ImageIcon icon = new ImageIcon(new ImageIcon(filePath).getImage().getScaledInstance(fotoUsuario.getWidth(), fotoUsuario.getHeight(), Image.SCALE_SMOOTH));
         fotoUsuario.setIcon(icon);

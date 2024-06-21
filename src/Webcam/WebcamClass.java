@@ -11,6 +11,8 @@ import java.util.*;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
 import javax.imageio.ImageIO;
+
+import Menuusages.ModificarSocio;
 import com.github.sarxos.webcam.*;
 import com.google.zxing.*;
 import com.google.zxing.client.j2se.*;
@@ -19,6 +21,7 @@ import com.google.zxing.DecodeHintType;
 import com.google.zxing.MultiFormatReader;
 import com.google.zxing.NotFoundException;
 import com.google.zxing.Result;
+import Menuusages.InfoSocio;
 
 
 public class WebcamClass extends JFrame {
@@ -27,10 +30,19 @@ public class WebcamClass extends JFrame {
     private WebcamPanel panel;
     private JLabel cameraStatusLabel;
     private String legajo;
+    private boolean isVerticalFlipped = false;
+    private InfoSocio infosocio;
+    private ModificarSocio modsocio;
 
-    public WebcamClass(String legajo) {
+    public WebcamClass(String legajo,  InfoSocio infosocio) {
         this.legajo = legajo;
         seleccionarPrimeraCamaraDisponible();
+        this.infosocio=infosocio;
+    }
+    public WebcamClass(String legajo,  ModificarSocio modsocio) {
+        this.legajo = legajo;
+        seleccionarPrimeraCamaraDisponible();
+        this.modsocio=modsocio;
     }
 
     public void createAndShowGUI() {
@@ -64,6 +76,22 @@ public class WebcamClass extends JFrame {
         });
         controlPanel.add(captureButton);
 
+        ImageIcon iconVertical = new ImageIcon("src/com/images/voltVert.png");
+        JButton voltVerticalButton = new JButton(iconVertical);
+        voltVerticalButton.setPreferredSize(new Dimension(64, 64));
+        voltVerticalButton.setBackground(new Color(50, 115, 153));
+        voltVerticalButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        voltVerticalButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                isVerticalFlipped = !isVerticalFlipped;
+                if (panel != null) {
+
+                    panel.repaint();
+                }
+            }
+        });
+        controlPanel.add(voltVerticalButton);
         // Botón para cambiar la visualización de la cámara
         ImageIcon icon = new ImageIcon("src/com/images/voltHoriz.png");
         JButton voltButton = new JButton(icon);
@@ -110,11 +138,26 @@ public class WebcamClass extends JFrame {
         this.addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosing(WindowEvent e) {
+
                 cerrarCamara();
+                if(infosocio!=null) {
+                    infosocio.setVisible(true);
+                }
+                if(modsocio!=null) {
+                    modsocio.setVisible(true);
+                }
             }
         });
     }
-
+    private BufferedImage flipVertical(BufferedImage image) {
+        int width = image.getWidth();
+        int height = image.getHeight();
+        BufferedImage flippedImage = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB); // Usar un tipo estándar
+        Graphics2D g = flippedImage.createGraphics();
+        g.drawImage(image, 0, 0, width, height, 0, height, width, 0, null);
+        g.dispose();
+        return flippedImage;
+    }
     private void configurarBoton(JButton button) {
 
 
@@ -176,7 +219,20 @@ public class WebcamClass extends JFrame {
         webcam.setViewSize(WebcamResolution.VGA.getSize());
         webcam.open();
 
-        panel = new WebcamPanel(webcam);
+        panel = new WebcamPanel(webcam) {
+            @Override
+            public void paintComponent(Graphics g) {
+                super.paintComponent(g);
+                if (isVerticalFlipped) {
+                    try {
+                        BufferedImage flippedImage = flipVertical(webcam.getImage());
+                        g.drawImage(flippedImage, 0, 0, getWidth(), getHeight(), this);
+                    } catch (Exception ex) {
+                        ex.printStackTrace();
+                    }
+                }
+            }
+        };
         panel.setFPSDisplayed(true);
         panel.setDisplayDebugInfo(true);
         panel.setImageSizeDisplayed(true);
@@ -205,6 +261,9 @@ public class WebcamClass extends JFrame {
         if (webcam != null && webcam.isOpen()) {
             BufferedImage image = webcam.getImage();
             if (image != null) {
+                if (isVerticalFlipped) {
+                    image = flipVertical(image);
+                }
                 try {
                     // Guardar la imagen con el nombre de legajo
                     String fileName = legajo + ".png";
