@@ -55,6 +55,194 @@ public class InfoSocio extends JFrame {
 
     public InfoSocio(int legajo) {
         initComponents();
+        sexoTxt.setVisible(false);
+        legajoTxt.setEnabled(false);
+        nombreTxt.addFocusListener(new FocusAdapter() {
+            @Override
+            public void focusGained(FocusEvent e) {
+                if (nombreTxt.getText().equals("Ingrese el nombre")) {
+                    nombreTxt.setText("");
+                    nombreTxt.setForeground(Color.black);
+                }
+            }
+
+            @Override
+            public void focusLost(FocusEvent e) {
+                if (nombreTxt.getText().equals("")) {
+                    nombreTxt.setText("Ingrese el nombre");
+                    nombreTxt.setForeground(Color.gray);
+                }
+            }
+        });
+
+// Agrega FocusListener para apellidoTxt
+        apellidoTxt.addFocusListener(new FocusAdapter() {
+            @Override
+            public void focusGained(FocusEvent e) {
+                if (apellidoTxt.getText().equals("Ingrese el apellido")) {
+                    apellidoTxt.setText("");
+                    apellidoTxt.setForeground(Color.black);
+                }
+            }
+
+            @Override
+            public void focusLost(FocusEvent e) {
+                if (apellidoTxt.getText().equals("")) {
+                    apellidoTxt.setText("Ingrese el apellido");
+                    apellidoTxt.setForeground(Color.gray);
+                }
+            }
+        });
+
+// Agrega FocusListener para dniTxt
+        dniTxt.addFocusListener(new FocusAdapter() {
+            @Override
+            public void focusGained(FocusEvent e) {
+                if (dniTxt.getText().equals("Ingrese el documento")) {
+                    dniTxt.setText("");
+                    dniTxt.setForeground(Color.black);
+                }
+            }
+
+            @Override
+            public void focusLost(FocusEvent e) {
+                if (dniTxt.getText().equals("")) {
+                    dniTxt.setText("Ingrese el documento");
+                    dniTxt.setForeground(Color.gray);
+                }
+            }
+        });
+
+// Agrega FocusListener para emailTxt
+        emailTxt.addFocusListener(new FocusAdapter() {
+            @Override
+            public void focusGained(FocusEvent e) {
+                if (emailTxt.getText().equals("Ingrese el email")) {
+                    emailTxt.setText("");
+                    emailTxt.setForeground(Color.black);
+                }
+            }
+
+            @Override
+            public void focusLost(FocusEvent e) {
+                if (emailTxt.getText().equals("")) {
+                    emailTxt.setText("Ingrese el email");
+                    emailTxt.setForeground(Color.gray);
+                }
+            }
+        });
+
+// Agrega FocusListener para telefonoTxt
+        telefonoTxt.addFocusListener(new FocusAdapter() {
+            @Override
+            public void focusGained(FocusEvent e) {
+                if (telefonoTxt.getText().equals("Ingrese el numero de teléfono")) {
+                    telefonoTxt.setText("");
+                    telefonoTxt.setForeground(Color.black);
+                }
+            }
+
+            @Override
+            public void focusLost(FocusEvent e) {
+                if (telefonoTxt.getText().equals("")) {
+                    telefonoTxt.setText("Ingrese el numero de teléfono");
+                    telefonoTxt.setForeground(Color.gray);
+                }
+            }
+        });
+
+// Agrega FocusListener para fechaNacTxt
+        fechaNacTxt.addFocusListener(new FocusAdapter() {
+            @Override
+            public void focusGained(FocusEvent e) {
+                if (fechaNacTxt.getText().equals("dd/mm/aaaa")) {
+                    fechaNacTxt.setText("");
+                    fechaNacTxt.setForeground(Color.black);
+                }
+            }
+
+            @Override
+            public void focusLost(FocusEvent e) {
+                if (fechaNacTxt.getText().equals("")) {
+                    fechaNacTxt.setText("dd/mm/aaaa");
+                    fechaNacTxt.setForeground(Color.gray);
+                }
+            }
+        });
+
+// Agrega FocusListener para domicilioTxt
+        domicilioTxt.addFocusListener(new FocusAdapter() {
+            @Override
+            public void focusGained(FocusEvent e) {
+                if (domicilioTxt.getText().equals("Ingrese el domicilio")) {
+                    domicilioTxt.setText("");
+                    domicilioTxt.setForeground(Color.black);
+                }
+            }
+
+            @Override
+            public void focusLost(FocusEvent e) {
+                if (domicilioTxt.getText().equals("")) {
+                    domicilioTxt.setText("Ingrese el domicilio");
+                    domicilioTxt.setForeground(Color.gray);
+                }
+            }
+        });
+
+// Agrega FocusListener para obraSocialTxt
+        obraSocialTxt.addFocusListener(new FocusAdapter() {
+            @Override
+            public void focusGained(FocusEvent e) {
+                if (obraSocialTxt.getText().equals("Ingrese la obra social")) {
+                    obraSocialTxt.setText("");
+                    obraSocialTxt.setForeground(Color.black);
+                }
+            }
+
+            @Override
+            public void focusLost(FocusEvent e) {
+                if (obraSocialTxt.getText().equals("")) {
+                    obraSocialTxt.setText("Ingrese la obra social");
+                    obraSocialTxt.setForeground(Color.gray);
+                }
+            }
+        });
+
+// Agrega ActionListener para generoComboBox
+        generoComboBox.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                obraSocialTxt.requestFocus();
+            }
+        });
+
+// Muestra las opciones del ComboBox al presionar Enter
+        generoComboBox.getInputMap(JComponent.WHEN_FOCUSED).put(KeyStroke.getKeyStroke("ENTER"), "showPopup");
+        generoComboBox.getActionMap().put("showPopup", new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                generoComboBox.showPopup();
+            }
+        });
+
+// Agrega ActionListener para categoriaBox
+        categoriaBox.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                nombreTxt.requestFocus();
+            }
+        });
+
+// Muestra las opciones del ComboBox al presionar Enter
+        categoriaBox.getInputMap(JComponent.WHEN_FOCUSED).put(KeyStroke.getKeyStroke("ENTER"), "showPopup");
+        categoriaBox.getActionMap().put("showPopup", new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                categoriaBox.showPopup();
+            }
+        });
+
+
         try{
             File iconFile = new File("src/com/images/LOGO1.png"); // Ruta de tu imagen
             BufferedImage iconImage = ImageIO.read(iconFile);
@@ -62,7 +250,7 @@ public class InfoSocio extends JFrame {
         }catch (IOException ex) {
             ex.printStackTrace();
         }
-setTitle("Administracion Acantilados FC");
+        setTitle("Administracion Acantilados FC");
         TimeUpdater timeUpdater = new TimeUpdater(timeText);
         timeUpdater.start();
         legajoTxt.setText(String.valueOf(legajo));

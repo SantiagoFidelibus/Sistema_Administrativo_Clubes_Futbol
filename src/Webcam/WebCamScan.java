@@ -25,7 +25,6 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.concurrent.CompletableFuture;
 
 public class WebCamScan extends JFrame {
 
@@ -33,6 +32,7 @@ public class WebCamScan extends JFrame {
     private WebcamPanel panel;
     private JLabel cameraStatusLabel;
     private Runnable onScanComplete;
+    private boolean isVerticalFlipped = false;
 
     public WebCamScan(Runnable onScanComplete) {
         super();
@@ -77,6 +77,25 @@ public class WebCamScan extends JFrame {
             }
         });
         controlPanel.add(voltButton);
+
+
+        ImageIcon iconVertical = new ImageIcon("src/com/images/voltVert.png");
+        JButton voltVerticalButton = new JButton(iconVertical);
+        voltVerticalButton.setPreferredSize(new Dimension(64, 64));
+        voltVerticalButton.setBackground(new Color(50, 115, 153));
+        voltVerticalButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        voltVerticalButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                isVerticalFlipped = !isVerticalFlipped;
+                if (panel != null) {
+
+                    panel.repaint();
+                }
+            }
+        });
+        controlPanel.add(voltVerticalButton);
+
         JButton iniciarEscaneoButton = new JButton("Iniciar Escaneo");
         configurarBoton(iniciarEscaneoButton);
         iniciarEscaneoButton.addActionListener(new ActionListener() {
@@ -124,7 +143,15 @@ public class WebCamScan extends JFrame {
         button.setFont(new Font("Roboto", Font.PLAIN, 12));
         button.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
     }
-
+    private BufferedImage flipVertical(BufferedImage image) {
+        int width = image.getWidth();
+        int height = image.getHeight();
+        BufferedImage flippedImage = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB); // Usar un tipo estándar
+        Graphics2D g = flippedImage.createGraphics();
+        g.drawImage(image, 0, 0, width, height, 0, height, width, 0, null);
+        g.dispose();
+        return flippedImage;
+    }
     private void seleccionarPrimeraCamaraDisponible() {
         new Thread(new Runnable() {
             public void run() {
@@ -183,10 +210,26 @@ public class WebCamScan extends JFrame {
         webcam.setViewSize(WebcamResolution.VGA.getSize());
         webcam.open();
 
-        panel = new WebcamPanel(webcam);
+
+        panel = new WebcamPanel(webcam) {
+            @Override
+            public void paintComponent(Graphics g) {
+                super.paintComponent(g);
+                if (isVerticalFlipped) {
+                    try {
+                        BufferedImage flippedImage = flipVertical(webcam.getImage());
+                        g.drawImage(flippedImage, 0, 0, getWidth(), getHeight(), this);
+                    } catch (Exception ex) {
+                        ex.printStackTrace();
+                    }
+                }
+            }
+        };
+
         panel.setFPSDisplayed(true);
         panel.setDisplayDebugInfo(true);
         panel.setImageSizeDisplayed(true);
+
 
         JPanel cameraPanel = new JPanel(new BorderLayout());
         cameraPanel.add(panel, BorderLayout.CENTER);
@@ -221,7 +264,11 @@ public class WebCamScan extends JFrame {
 
         while (!isScanned && attempts < maxAttempts) {
             BufferedImage image = webcam.getImage();
+
             if (image != null) {
+                if (isVerticalFlipped) {
+                    image = flipVertical(image);
+                }
                 LuminanceSource source = new BufferedImageLuminanceSource(image);
                 BinaryBitmap bitmap = new BinaryBitmap(new HybridBinarizer(source));
 

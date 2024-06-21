@@ -1974,7 +1974,7 @@ setTitle("Administracion Acantilados FC");
             String email = (String) jTable2.getValueAt(fila, 3);
             int dni = (int) jTable2.getValueAt(fila, 4);
             String fechaNac = (String) jTable2.getValueAt(fila, 5);
-            int telefono = (int) jTable2.getValueAt(fila, 6);
+            long telefono = (long) jTable2.getValueAt(fila, 6);
             String domicilio = (String) jTable2.getValueAt(fila, 7);
             String sexo = (String) jTable2.getValueAt(fila, 8);
             String obraSocial = (String) jTable2.getValueAt(fila, 9);
