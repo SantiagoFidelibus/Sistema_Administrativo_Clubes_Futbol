@@ -14,6 +14,7 @@ import Login.Login;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
 import java.io.BufferedReader;
 import java.io.File;
@@ -26,7 +27,7 @@ import java.util.concurrent.CompletableFuture;
  * @author sanch
  */
 public class IngresoSocios extends javax.swing.JFrame {
-
+    int xMouse, yMouse;
     /**
      * Creates new form IngresoSocios
      */
@@ -75,6 +76,9 @@ setTitle("Administracion Acantilados FC");
 
         fondoDatos = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
+        exitMenu = new javax.swing.JPanel();
+        exitBtn = new javax.swing.JPanel();
+        exitTxt = new javax.swing.JLabel();
         scanBtn = new javax.swing.JButton();
         cerrarSesionLabel = new javax.swing.JLabel();
         Marco = new javax.swing.JLabel();
@@ -85,6 +89,8 @@ setTitle("Administracion Acantilados FC");
         fondo_1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setLocationByPlatform(true);
+        setUndecorated(true);
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -93,6 +99,66 @@ setTitle("Administracion Acantilados FC");
         fondoDatos.add(jLabel1);
 
         getContentPane().add(fondoDatos, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 50, 220, 30));
+
+        exitMenu.setBackground(new java.awt.Color(255, 255, 255));
+        exitMenu.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                exitMenuMouseDragged(evt);
+            }
+        });
+        exitMenu.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                exitMenuMousePressed(evt);
+            }
+        });
+        exitMenu.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        exitBtn.setBackground(new java.awt.Color(255, 255, 255));
+
+        exitTxt.setBackground(new java.awt.Color(0, 0, 0));
+        exitTxt.setFont(new java.awt.Font("Roboto Light", 0, 24)); // NOI18N
+        exitTxt.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        exitTxt.setText("X");
+        exitTxt.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        exitTxt.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                exitTxtMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                exitTxtMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                exitTxtMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                exitTxtMousePressed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout exitBtnLayout = new javax.swing.GroupLayout(exitBtn);
+        exitBtn.setLayout(exitBtnLayout);
+        exitBtnLayout.setHorizontalGroup(
+            exitBtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 40, Short.MAX_VALUE)
+            .addGroup(exitBtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(exitBtnLayout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(exitTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
+        );
+        exitBtnLayout.setVerticalGroup(
+            exitBtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 40, Short.MAX_VALUE)
+            .addGroup(exitBtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(exitBtnLayout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(exitTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
+        );
+
+        exitMenu.add(exitBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 0, -1, -1));
+
+        getContentPane().add(exitMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 430, 40));
 
         scanBtn.setText("ESCANEAR");
         scanBtn.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -162,7 +228,16 @@ setTitle("Administracion Acantilados FC");
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+    private void headerMouseDragged(MouseEvent evt) {//GEN-FIRST:event_headerMouseDragged
+        int x = evt.getXOnScreen();
+        int y = evt.getYOnScreen();
+        this.setLocation(x - xMouse, y - yMouse);
+    }//GEN-LAST:event_headerMouseDragged
 
+    private void headerMousePressed(MouseEvent evt) {//GEN-FIRST:event_headerMousePressed
+        xMouse = evt.getX();
+        yMouse = evt.getY();
+    }//GEN-LAST:event_headerMousePressed
     private void scanBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_scanBtnActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_scanBtnActionPerformed
@@ -257,6 +332,35 @@ setTitle("Administracion Acantilados FC");
         cerrarSesionLabel.setBackground(new Color(59,132,173));
     }//GEN-LAST:event_cerrarSesionLabelMouseExited
 
+    private void exitTxtMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_exitTxtMouseClicked
+        System.exit(0);
+    }//GEN-LAST:event_exitTxtMouseClicked
+
+    private void exitTxtMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_exitTxtMouseEntered
+        exitBtn.setBackground(Color.red);
+        exitTxt.setForeground(Color.white);
+    }//GEN-LAST:event_exitTxtMouseEntered
+
+    private void exitTxtMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_exitTxtMouseExited
+        exitBtn.setBackground(Color.white);
+        exitTxt.setForeground(Color.black);
+    }//GEN-LAST:event_exitTxtMouseExited
+
+    private void exitTxtMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_exitTxtMousePressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_exitTxtMousePressed
+
+    private void exitMenuMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_exitMenuMouseDragged
+        int x = evt.getXOnScreen();
+        int y = evt.getYOnScreen();
+        this.setLocation(x - xMouse, y - yMouse);
+    }//GEN-LAST:event_exitMenuMouseDragged
+
+    private void exitMenuMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_exitMenuMousePressed
+        xMouse = evt.getX();
+        yMouse = evt.getY();
+    }//GEN-LAST:event_exitMenuMousePressed
+
 
     public String leerArchivo() {
         String rutaArchivo = "src/com/temp/datoingreso.txt";
@@ -278,6 +382,9 @@ setTitle("Administracion Acantilados FC");
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Marco;
     private javax.swing.JLabel cerrarSesionLabel;
+    private javax.swing.JPanel exitBtn;
+    private javax.swing.JPanel exitMenu;
+    private javax.swing.JLabel exitTxt;
     private javax.swing.JPanel fondoDatos;
     private javax.swing.JLabel fondo_1;
     private javax.swing.JLabel fotoUsuario;
