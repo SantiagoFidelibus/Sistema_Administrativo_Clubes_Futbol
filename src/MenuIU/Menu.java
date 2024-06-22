@@ -63,6 +63,42 @@ public class Menu extends JFrame {
         jTable3.getTableHeader().setReorderingAllowed(false);
         tablaDeudas.getTableHeader().setReorderingAllowed(false);
         tablaPagos.getTableHeader().setReorderingAllowed(false);
+        
+        buscarLabel.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+                    buscarTxtMouseClicked(null);
+                }
+            }
+        });
+        
+        buscarLabel1.addKeyListener(new KeyAdapter(){
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+                    buscarTxt1MouseClicked(null);
+                }
+            }
+        });
+        
+        buscarLegajo.addKeyListener(new KeyAdapter(){
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+                    buscarTxt2MouseClicked(null);
+                }
+            }
+        });
+        
+        buscarLegajoEmpl.addKeyListener(new KeyAdapter(){
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+                    buscarTxt5MouseClicked(null);
+                }
+            }
+        });
 
     }
 
@@ -372,9 +408,9 @@ public class Menu extends JFrame {
                 pagosSociosTxtMouseExited(evt);
             }
         });
-        pagosSociosBtn.add(pagosSociosTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 240, 40));
+        pagosSociosBtn.add(pagosSociosTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 220, 40));
 
-        dashboard.add(pagosSociosBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 460, 250, 40));
+        dashboard.add(pagosSociosBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 460, 230, 40));
 
         sueldosEmpleadosBtn.setBackground(new java.awt.Color(80, 139, 166));
         sueldosEmpleadosBtn.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -395,9 +431,9 @@ public class Menu extends JFrame {
                 sueldosEmpleadosTxtMouseExited(evt);
             }
         });
-        sueldosEmpleadosBtn.add(sueldosEmpleadosTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(11, 0, 240, 40));
+        sueldosEmpleadosBtn.add(sueldosEmpleadosTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(11, 0, 220, 40));
 
-        dashboard.add(sueldosEmpleadosBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 520, 250, 40));
+        dashboard.add(sueldosEmpleadosBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 520, -1, 40));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
@@ -1736,6 +1772,7 @@ public class Menu extends JFrame {
     }//GEN-LAST:event_sueldosEmpleadosTxtMouseExited
 
     private void menuTxtMouseClicked(MouseEvent evt) {//GEN-FIRST:event_menuTxtMouseClicked
+        menuBtn.setBackground(new Color(60, 65, 70));
         panelVentanas.setSelectedIndex(0);
     }//GEN-LAST:event_menuTxtMouseClicked
 

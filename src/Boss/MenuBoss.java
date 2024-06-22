@@ -99,8 +99,27 @@ public class MenuBoss extends javax.swing.JFrame {
 
             }
         });
+        
+        cuoteNewTxt1.addKeyListener(new KeyAdapter(){
+        @Override
+        public void keyPressed(KeyEvent e) {
+            if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+                modificarTxt1MouseClicked(null);
+            }
+        }
+        });
+        
+        salaryNewTxt.addKeyListener(new KeyAdapter(){
+        @Override
+        public void keyPressed(KeyEvent e) {
+            if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+                modificarTxtMouseClicked(null);
+            }
+        }
+        });
 
-
+        
+        
     }
 
     private void CuoteNewTxt1KeyTyped(KeyEvent evt) {
