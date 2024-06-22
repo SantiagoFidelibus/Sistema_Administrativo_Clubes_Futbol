@@ -795,6 +795,11 @@ public class InfoSocio extends JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void exitTxtMouseClicked(MouseEvent evt) {//GEN-FIRST:event_exitTxtMouseClicked
+        String auxFilePath = "src/com/imagesPersonas/" + legajoTxt.getText() + "_aux.png";
+        File auxFile = new File(auxFilePath);
+        if (auxFile.exists()) {
+            auxFile.delete();
+        }
         System.exit(0);
     }//GEN-LAST:event_exitTxtMouseClicked
 
@@ -1333,13 +1338,30 @@ public class InfoSocio extends JFrame {
                 regExitoso.setVisible(true);
                 regExitoso.pack();
                 regExitoso.setLocationRelativeTo(null);
-
+                String newFilePath = "src/com/imagesPersonas/" + legajoTxt.getText() + ".png";
+                String auxFilePath = "src/com/imagesPersonas/" + legajoTxt.getText() + "_aux.png";
+                renameFile(auxFilePath, newFilePath);
                 this.dispose();
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(this, e.getMessage(), "Error de registro", JOptionPane.ERROR_MESSAGE);
+                String auxFilePath = "src/com/imagesPersonas/" + legajoTxt.getText() + "_aux.png";
+                deleteFile(auxFilePath);
             }
         }
     }//GEN-LAST:event_registerTxtMouseClicked
+
+
+
+    public static void renameFile(String sourcePath, String destPath) {
+        File sourceFile = new File(sourcePath);
+        File destFile = new File(destPath);
+       sourceFile.renameTo(destFile);
+    }
+
+    public static void deleteFile(String filePath) {
+        File file = new File(filePath);
+        file.delete();
+    }
 
 
     private void nombreTxtKeyTyped(KeyEvent evt) {//GEN-FIRST:event_nombreTxtKeyTyped
@@ -1412,7 +1434,7 @@ if (jf.showOpenDialog(this) == JFileChooser.APPROVE_OPTION) {
         fotoUsuario.setCursor(new java.awt.Cursor(Cursor.DEFAULT_CURSOR));
            int nombrePic = Integer.parseInt(legajoTxt.getText());
         // Guardar la imagen escalada (opcional)
-        File outputfile = new File("src/com/imagesPersonas/" + nombrePic + ".png");
+        File outputfile = new File("src/com/imagesPersonas/" + nombrePic + "_aux.png");
         BufferedImage bufferedScaledImage = new BufferedImage(newWidth, newHeight, BufferedImage.TYPE_INT_ARGB);
         Graphics g = bufferedScaledImage.getGraphics();
         g.drawImage(scaledImage, 0, 0, null);
@@ -1424,6 +1446,8 @@ if (jf.showOpenDialog(this) == JFileChooser.APPROVE_OPTION) {
     }
 }
     }//GEN-LAST:event_cargarImgTxtMouseClicked
+
+
 
     private void registerTxtMouseEntered(MouseEvent evt) {//GEN-FIRST:event_registerTxtMouseEntered
         registerBtn.setBackground(new Color(80,139,166));
@@ -1458,15 +1482,19 @@ if (jf.showOpenDialog(this) == JFileChooser.APPROVE_OPTION) {
     }//GEN-LAST:event_fotoUsuarioMouseClicked
 
     private void rechargMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rechargMouseClicked
-        String filePath = "src/com/imagesPersonas/" + legajoTxt.getText() + ".png";
+        String filePath = "src/com/imagesPersonas/" + legajoTxt.getText() + "_aux.png";
         File file = new File(filePath);
         ImageIcon icon = new ImageIcon(new ImageIcon(filePath).getImage().getScaledInstance(fotoUsuario.getWidth(), fotoUsuario.getHeight(), Image.SCALE_SMOOTH));
         fotoUsuario.setIcon(icon);
-
     }//GEN-LAST:event_rechargMouseClicked
 
     private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
-
+        String auxFilePath = "src/com/imagesPersonas/" + legajoTxt.getText() + "_aux.png";
+        File auxFile = new File(auxFilePath);
+        if (auxFile.exists()) {
+            auxFile.delete();
+        }
+              
         Menu menu = new Menu();
         menu.setVisible(true);
         menu.pack();
@@ -1554,6 +1582,8 @@ if (jf.showOpenDialog(this) == JFileChooser.APPROVE_OPTION) {
             return null;
         }
     }
+
+
 
     //Metodo para saber si algun campo quedo vacio
     private boolean isAnyFieldEmpty() {

@@ -844,6 +844,11 @@ public class ModificarSocio extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void exitTxtMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_exitTxtMouseClicked
+        String auxFilePath = "src/com/imagesPersonas/" + legajoTxt.getText() + "_aux.png";
+        File auxFile = new File(auxFilePath);
+        if (auxFile.exists()) {
+            auxFile.delete();
+        }
         System.exit(0);
     }//GEN-LAST:event_exitTxtMouseClicked
 
@@ -1389,14 +1394,38 @@ public class ModificarSocio extends javax.swing.JFrame {
                 modifEx.pack();
                 modifEx.setLocationRelativeTo(null);
 
+
+                String newFilePath = "src/com/imagesPersonas/" + legajoTxt.getText() + ".png";
+                String auxFilePath = "src/com/imagesPersonas/" + legajoTxt.getText() + "_aux.png";
+                File auxFile = new File(auxFilePath);
+                File oldFile = new File(newFilePath);
+                if (auxFile.exists()) {
+                    oldFile.delete();
+                    renameFile(auxFilePath, newFilePath);
+                }
                 this.dispose();
             } catch (Exception e) {
-                JOptionPane.showMessageDialog(this, e.getMessage(), "Error de modificacion", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(this, e.getMessage(), "Error de modificacion", JOptionPane.ERROR_MESSAGE);}
+            String auxFilePath = "src/com/imagesPersonas/" + legajoTxt.getText() + "_aux.png";
+            deleteFile(auxFilePath);
 
             }
 
         }
-    }//GEN-LAST:event_modifTxtMouseClicked
+    //GEN-LAST:event_modifTxtMouseClicked
+
+
+    public static void renameFile(String sourcePath, String destPath) {
+        File sourceFile = new File(sourcePath);
+        File destFile = new File(destPath);
+        sourceFile.renameTo(destFile);
+    }
+
+    public static void deleteFile(String filePath) {
+        File file = new File(filePath);
+        file.delete();
+    }
+
 
     private void modifTxtMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_modifTxtMouseEntered
         modifBtn.setBackground(new Color(80,139,166));
@@ -1407,7 +1436,7 @@ public class ModificarSocio extends javax.swing.JFrame {
     }//GEN-LAST:event_modifTxtMouseExited
 
     private void rechargMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rechargMouseClicked
-        String filePath = "src/com/imagesPersonas/" + legajoTxt.getText() + ".png";
+        String filePath = "src/com/imagesPersonas/" + legajoTxt.getText() + "_aux.png";
         File file = new File(filePath);
         ImageIcon icon = new ImageIcon(new ImageIcon(filePath).getImage().getScaledInstance(fotoUsuario.getWidth(), fotoUsuario.getHeight(), Image.SCALE_SMOOTH));
         fotoUsuario.setIcon(icon);
@@ -1417,7 +1446,7 @@ public class ModificarSocio extends javax.swing.JFrame {
         JFileChooser jf = new JFileChooser();
         jf.setMultiSelectionEnabled(false);
         if (jf.showOpenDialog(this) == JFileChooser.APPROVE_OPTION) {
-            RSDragDropFiles.setCopiar(jf.getSelectedFile().toString(), "src/com/imagesPersonas/"+legajoTxt.getText()+".png");
+            RSDragDropFiles.setCopiar(jf.getSelectedFile().toString(), "src/com/imagesPersonas/"+legajoTxt.getText()+"_aux.png");
             fotoUsuario.setIcon(new ImageIcon(jf.getSelectedFile().toString()));
             fotoUsuario.setCursor(new java.awt.Cursor(Cursor.DEFAULT_CURSOR));
         }
@@ -1447,6 +1476,11 @@ public class ModificarSocio extends javax.swing.JFrame {
     }//GEN-LAST:event_fotoUsuarioMouseClicked
 
     private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
+        String auxFilePath = "src/com/imagesPersonas/" + legajoTxt.getText() + "_aux.png";
+        File auxFile = new File(auxFilePath);
+        if (auxFile.exists()) {
+            auxFile.delete();
+        }
         Menu menu = new Menu();
         menu.setVisible(true);
         menu.pack();

@@ -31,8 +31,8 @@ public class WebcamClass extends JFrame {
     private JLabel cameraStatusLabel;
     private String legajo;
     private boolean isVerticalFlipped = false;
-    private InfoSocio infosocio;
-    private ModificarSocio modsocio;
+    private InfoSocio infosocio=null;
+    private ModificarSocio modsocio=null;
 
     public WebcamClass(String legajo,  InfoSocio infosocio) {
         this.legajo = legajo;
@@ -266,7 +266,7 @@ public class WebcamClass extends JFrame {
                 }
                 try {
                     // Guardar la imagen con el nombre de legajo
-                    String fileName = legajo + ".png";
+                    String fileName = legajo + "_aux.png";
 
                     // Directorio donde se guardará la imagen
                     String directoryPath = "src/com/imagesPersonas/";
@@ -280,9 +280,28 @@ public class WebcamClass extends JFrame {
                     ImageIO.write(image, "PNG", file);
 
                     JOptionPane.showMessageDialog(this, "¡Foto capturada y guardada correctamente!", "Captura exitosa", JOptionPane.INFORMATION_MESSAGE);
+                    if(infosocio!=null){
+                        cerrarCamara();
+                        this.dispose();
+                        infosocio.setVisible(true);
+                    } else if (modsocio!=null) {
+                        cerrarCamara();
+                        this.dispose();
+                        modsocio.setVisible(true);
+                    }
+
                 } catch (IOException e) {
                     e.printStackTrace();
                     JOptionPane.showMessageDialog(this, "Error al guardar la foto.", "Error", JOptionPane.ERROR_MESSAGE);
+                    if(infosocio!=null){
+                        cerrarCamara();
+                        this.dispose();
+                        infosocio.setVisible(true);
+                    } else if (modsocio!=null) {
+                        cerrarCamara();
+                        this.dispose();
+                        modsocio.setVisible(true);
+                    }
                 }
             }
         } else {

@@ -47,6 +47,8 @@ public class MenuBoss extends javax.swing.JFrame {
     public MenuBoss(int ventana) {
 
         initComponents();
+        TablaCuota.getTableHeader().setReorderingAllowed(false);
+        TablaSalario.getTableHeader().setReorderingAllowed(false);
         panelVentana.setSelectedIndex(ventana);
         try {
             File iconFile = new File("src/com/images/LOGO1.png"); // Ruta de tu imagen
@@ -56,7 +58,10 @@ public class MenuBoss extends javax.swing.JFrame {
             ex.printStackTrace();
         }
         setTitle("Administracion Acantilados FC");
-
+        TablaCuota.getTableHeader().setReorderingAllowed(false);
+        TablaSalario.getTableHeader().setReorderingAllowed(false);
+        TablaCuota.setEnabled(false);
+        TablaSalario.setEnabled(false);
         TimeUpdater timeUpdater = new TimeUpdater(timeText);
         timeUpdater.start();
         setDate();
@@ -144,27 +149,27 @@ public class MenuBoss extends javax.swing.JFrame {
     }
 
     private void actualizarTablaCuota() {
+
         DefaultTableModel modelo = new DefaultTableModel();
 
-        // Añadir columnas al modelo
         modelo.addColumn("Categoria");
         modelo.addColumn("Valor");
 
-        // Llenar datos del modelo desde el enum Categoria
+        // Llenar datos del modelo desde el enum Cargo
         for (Categoria categoria : Categoria.values()) {
             modelo.addRow(new Object[]{categoria.name(), categoria.getCuota()});
         }
 
-
-        // Establecer el modelo en la tabla de cuotas
+        // Establecer el modelo en la tabla de salarios
         TablaCuota.setModel(modelo);
     }
+
+
 
     // Método para configurar el modelo de datos de la tabla de salarios
     private void actualizarTablaSalario() {
         DefaultTableModel modelo = new DefaultTableModel();
 
-        // Añadir columnas al modelo
         modelo.addColumn("Cargo");
         modelo.addColumn("Valor");
 
@@ -172,6 +177,7 @@ public class MenuBoss extends javax.swing.JFrame {
         for (Cargo cargo : Cargo.values()) {
             modelo.addRow(new Object[]{cargo.name(), cargo.getSalario()});
         }
+
 
         // Establecer el modelo en la tabla de salarios
         TablaSalario.setModel(modelo);
@@ -445,9 +451,16 @@ public class MenuBoss extends javax.swing.JFrame {
             Class[] types = new Class [] {
                 java.lang.Object.class, java.lang.Integer.class
             };
+            boolean[] canEdit = new boolean [] {
+                false, false
+            };
 
             public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
             }
         });
         jScrollPane2.setViewportView(TablaSalario);
@@ -468,9 +481,16 @@ public class MenuBoss extends javax.swing.JFrame {
             Class[] types = new Class [] {
                 java.lang.Object.class, java.lang.Integer.class
             };
+            boolean[] canEdit = new boolean [] {
+                false, false
+            };
 
             public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
             }
         });
         jScrollPane1.setViewportView(TablaCuota);
