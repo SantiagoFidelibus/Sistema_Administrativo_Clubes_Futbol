@@ -95,7 +95,6 @@ public class ModificarSocio extends javax.swing.JFrame {
         domicilioTxt.setText(domicilio);
         domicilioTxt.setForeground(Color.black);
 
-        sexoTxt.setText(genero);
 
         obraSocialTxt.setText(ObraSocial);
         obraSocialTxt.setForeground(Color.black);
@@ -376,8 +375,6 @@ public class ModificarSocio extends javax.swing.JFrame {
         domicilioSep = new javax.swing.JSeparator();
         generoComboBox = new javax.swing.JComboBox<>();
         sexo = new javax.swing.JLabel();
-        sexoTxt = new javax.swing.JTextField();
-        sexoSep = new javax.swing.JSeparator();
         obraSocial = new javax.swing.JLabel();
         obraSocialTxt = new javax.swing.JTextField();
         obraSocialSep = new javax.swing.JSeparator();
@@ -698,28 +695,6 @@ public class ModificarSocio extends javax.swing.JFrame {
         sexo.setText("GENERO");
         ventana1.add(sexo, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 320, -1, -1));
 
-        sexoTxt.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
-        sexoTxt.setForeground(new java.awt.Color(153, 153, 153));
-        sexoTxt.setText("Ingrese el genero");
-        sexoTxt.setBorder(null);
-        sexoTxt.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                sexoTxtMousePressed(evt);
-            }
-        });
-        sexoTxt.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                sexoTxtActionPerformed(evt);
-            }
-        });
-        sexoTxt.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                sexoTxtKeyTyped(evt);
-            }
-        });
-        ventana1.add(sexoTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 340, 180, 30));
-        ventana1.add(sexoSep, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 370, 180, 10));
-
         obraSocial.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         obraSocial.setText("OBRA SOCIAL");
         ventana1.add(obraSocial, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 400, -1, -1));
@@ -930,10 +905,6 @@ public class ModificarSocio extends javax.swing.JFrame {
             domicilioTxt.setText("Ingrese el domicilio");
             domicilioTxt.setForeground(Color.gray);
         }
-        if (sexoTxt.getText().equals("")) {
-            sexoTxt.setText("Ingrese el genero");
-            sexoTxt.setForeground(Color.gray);
-        }
         if (obraSocialTxt.getText().equals("")) {
             obraSocialTxt.setText("Ingrese la obra social");
             obraSocialTxt.setForeground(Color.gray);
@@ -983,10 +954,6 @@ public class ModificarSocio extends javax.swing.JFrame {
         if (domicilioTxt.getText().equals("")) {
             domicilioTxt.setText("Ingrese el domicilio");
             domicilioTxt.setForeground(Color.gray);
-        }
-        if (sexoTxt.getText().equals("")) {
-            sexoTxt.setText("Ingrese el genero");
-            sexoTxt.setForeground(Color.gray);
         }
         if (obraSocialTxt.getText().equals("")) {
             obraSocialTxt.setText("Ingrese la obra social");
@@ -1038,10 +1005,7 @@ public class ModificarSocio extends javax.swing.JFrame {
             domicilioTxt.setText("Ingrese el domicilio");
             domicilioTxt.setForeground(Color.gray);
         }
-        if (sexoTxt.getText().equals("")) {
-            sexoTxt.setText("Ingrese el genero");
-            sexoTxt.setForeground(Color.gray);
-        }
+
         if (obraSocialTxt.getText().equals("")) {
             obraSocialTxt.setText("Ingrese la obra social");
             obraSocialTxt.setForeground(Color.gray);
@@ -1092,10 +1056,7 @@ public class ModificarSocio extends javax.swing.JFrame {
             domicilioTxt.setText("Ingrese el domicilio");
             domicilioTxt.setForeground(Color.gray);
         }
-        if (sexoTxt.getText().equals("")) {
-            sexoTxt.setText("Ingrese el genero");
-            sexoTxt.setForeground(Color.gray);
-        }
+
         if (obraSocialTxt.getText().equals("")) {
             obraSocialTxt.setText("Ingrese la obra social");
             obraSocialTxt.setForeground(Color.gray);
@@ -1146,10 +1107,7 @@ public class ModificarSocio extends javax.swing.JFrame {
             domicilioTxt.setText("Ingrese el domicilio");
             domicilioTxt.setForeground(Color.gray);
         }
-        if (sexoTxt.getText().equals("")) {
-            sexoTxt.setText("Ingrese el genero");
-            sexoTxt.setForeground(Color.gray);
-        }
+
         if (obraSocialTxt.getText().equals("")) {
             obraSocialTxt.setText("Ingrese la obra social");
             obraSocialTxt.setForeground(Color.gray);
@@ -1193,10 +1151,7 @@ public class ModificarSocio extends javax.swing.JFrame {
             domicilioTxt.setText("Ingrese el domicilio");
             domicilioTxt.setForeground(Color.gray);
         }
-        if (sexoTxt.getText().equals("")) {
-            sexoTxt.setText("Ingrese el genero");
-            sexoTxt.setForeground(Color.gray);
-        }
+
         if (obraSocialTxt.getText().equals("")) {
             obraSocialTxt.setText("Ingrese la obra social");
             obraSocialTxt.setForeground(Color.gray);
@@ -1249,10 +1204,7 @@ public class ModificarSocio extends javax.swing.JFrame {
             domicilioTxt.setText("Ingrese el domicilio");
             domicilioTxt.setForeground(Color.gray);
         }
-        if (sexoTxt.getText().equals("")) {
-            sexoTxt.setText("Ingrese el genero");
-            sexoTxt.setForeground(Color.gray);
-        }
+
         if (obraSocialTxt.getText().equals("")) {
             obraSocialTxt.setText("Ingrese la obra social");
             obraSocialTxt.setForeground(Color.gray);
@@ -1296,10 +1248,7 @@ public class ModificarSocio extends javax.swing.JFrame {
             domicilioTxt.setText("");
             domicilioTxt.setForeground(Color.black);
         }
-        if (sexoTxt.getText().equals("")) {
-            sexoTxt.setText("Ingrese el genero");
-            sexoTxt.setForeground(Color.gray);
-        }
+
         if (obraSocialTxt.getText().equals("")) {
             obraSocialTxt.setText("Ingrese la obra social");
             obraSocialTxt.setForeground(Color.gray);
@@ -1309,60 +1258,6 @@ public class ModificarSocio extends javax.swing.JFrame {
     private void domicilioTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_domicilioTxtActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_domicilioTxtActionPerformed
-
-    private void sexoTxtMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_sexoTxtMousePressed
-        if (apellidoTxt.getText().equals("")) {
-            apellidoTxt.setText("Ingrese el apellido");
-            apellidoTxt.setForeground(Color.gray);
-        }
-        if (nombreTxt.getText().equals("")) {
-            nombreTxt.setText("Ingrese el nombre");
-            nombreTxt.setForeground(Color.gray);
-        }
-        if (dniTxt.getText().equals("")) {
-            dniTxt.setText("Ingrese el documento");
-            dniTxt.setForeground(Color.gray);
-        }
-        if (legajoTxt.getText().equals("")) {
-            legajoTxt.setText("Ingrese el legajo");
-            legajoTxt.setForeground(Color.gray);
-        }
-        if (emailTxt.getText().equals("")) {
-            emailTxt.setText("Ingrese el email");
-            emailTxt.setForeground(Color.gray);
-        }
-        if (telefonoTxt.getText().equals("")) {
-            telefonoTxt.setText("Ingrese el numero de teléfono");
-            telefonoTxt.setForeground(Color.gray);
-        }
-        if (fechaNacTxt.getText().equals("")) {
-            fechaNacTxt.setText("dd/mm/aaaa");
-            fechaNacTxt.setForeground(Color.gray);
-        }
-        if (domicilioTxt.getText().equals("")) {
-            domicilioTxt.setText("Ingrese el domicilio");
-            domicilioTxt.setForeground(Color.gray);
-        }
-        if (sexoTxt.getText().equals("Ingrese el genero")) {
-            sexoTxt.setText("");
-            sexoTxt.setForeground(Color.black);
-        }
-        if (obraSocialTxt.getText().equals("")) {
-            obraSocialTxt.setText("Ingrese la obra social");
-            obraSocialTxt.setForeground(Color.gray);
-        }
-    }//GEN-LAST:event_sexoTxtMousePressed
-
-    private void sexoTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sexoTxtActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_sexoTxtActionPerformed
-
-    private void sexoTxtKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_sexoTxtKeyTyped
-        char c = evt.getKeyChar();
-
-        if ((c < 'a' || c > 'z') && (c < 'A' || c > 'Z') && c != ' ')
-        evt.consume();
-    }//GEN-LAST:event_sexoTxtKeyTyped
 
     private void obraSocialTxtMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_obraSocialTxtMousePressed
         if (apellidoTxt.getText().equals("")) {
@@ -1397,10 +1292,7 @@ public class ModificarSocio extends javax.swing.JFrame {
             domicilioTxt.setText("Ingrese el domicilio");
             domicilioTxt.setForeground(Color.gray);
         }
-        if (sexoTxt.getText().equals("")) {
-            sexoTxt.setText("Ingrese el genero");
-            sexoTxt.setForeground(Color.gray);
-        }
+
         if (obraSocialTxt.getText().equals("Ingrese la obra social")) {
             obraSocialTxt.setText("");
             obraSocialTxt.setForeground(Color.black);
@@ -1444,10 +1336,7 @@ public class ModificarSocio extends javax.swing.JFrame {
             domicilioTxt.setText("Ingrese el domicilio");
             domicilioTxt.setForeground(Color.gray);
         }
-        if (sexoTxt.getText().equals("")) {
-            sexoTxt.setText("Ingrese el genero");
-            sexoTxt.setForeground(Color.gray);
-        }
+
         if (obraSocialTxt.getText().equals("")) {
             obraSocialTxt.setText("Ingrese la obra social");
             obraSocialTxt.setForeground(Color.gray);
@@ -1487,8 +1376,7 @@ public class ModificarSocio extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "El DNI ya se encuentra registrado.", "Error de registro", JOptionPane.ERROR_MESSAGE);
         } else {
             try {
-                sexoTxt.setText(generoComboBox.getSelectedItem().toString());
-                Socio s = new Socio(nombreTxt.getText(), apellidoTxt.getText(), Integer.parseInt(dniStr), Integer.parseInt(legajoTxt.getText()), emailTxt.getText(), fechaNacTxt.getText(), parseLong(telefonoTxt.getText()), domicilioTxt.getText(), sexoTxt.getText(), false, obraSocialTxt.getText(), true, selectedCategoria);
+                Socio s = new Socio(nombreTxt.getText(), apellidoTxt.getText(), Integer.parseInt(dniStr), Integer.parseInt(legajoTxt.getText()), emailTxt.getText(), fechaNacTxt.getText(), parseLong(telefonoTxt.getText()), domicilioTxt.getText(), generoComboBox.getSelectedItem().toString(), false, obraSocialTxt.getText(), true, selectedCategoria);
                 s.setFechaRegistroPago(fechaRe);
                 s.setFechaVencimientoPago(fechaVen);
                 contenedoraSocio.modificacion(s);
@@ -1496,7 +1384,7 @@ public class ModificarSocio extends javax.swing.JFrame {
                 contenedoraSocio.guardarSociosEnJson("Socios.json");
 
                 //Barra de carga antes de mandar a registro exitoso (Opcional)
-                ModifExitosa modifEx = new ModifExitosa();
+                ModifExitosa modifEx = new ModifExitosa(1);
                 modifEx.setVisible(true);
                 modifEx.pack();
                 modifEx.setLocationRelativeTo(null);
@@ -1599,10 +1487,7 @@ public class ModificarSocio extends javax.swing.JFrame {
             domicilioTxt.setText("Ingrese el domicilio");
             domicilioTxt.setForeground(Color.gray);
         }
-        if (sexoTxt.getText().equals("")) {
-            sexoTxt.setText("Ingrese el genero");
-            sexoTxt.setForeground(Color.gray);
-        }
+       
         if (obraSocialTxt.getText().equals("")) {
             obraSocialTxt.setText("Ingrese la obra social");
             obraSocialTxt.setForeground(Color.gray);
@@ -1723,8 +1608,6 @@ public class ModificarSocio extends javax.swing.JFrame {
     private javax.swing.JTabbedPane panelVentanas;
     private javax.swing.JLabel recharg;
     private javax.swing.JLabel sexo;
-    private javax.swing.JSeparator sexoSep;
-    private javax.swing.JTextField sexoTxt;
     private javax.swing.JLabel telefono;
     private javax.swing.JSeparator telefonoSep;
     private javax.swing.JTextField telefonoTxt;

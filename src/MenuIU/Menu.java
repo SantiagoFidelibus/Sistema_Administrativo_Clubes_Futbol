@@ -38,14 +38,15 @@ import java.util.logging.Logger;
 public class Menu extends JFrame {
 
     int xMouse, yMouse;
+
     public Menu() {
         initComponents();
-setTitle("Administracion Acantilados FC");
-        try{
+        setTitle("Administracion Acantilados FC");
+        try {
             File iconFile = new File("src/com/images/LOGO1.png"); // Ruta de tu imagen
             BufferedImage iconImage = ImageIO.read(iconFile);
             setIconImage(iconImage);
-        }catch (IOException ex) {
+        } catch (IOException ex) {
             ex.printStackTrace();
         }
 
@@ -53,7 +54,7 @@ setTitle("Administracion Acantilados FC");
         TimeUpdater timeUpdater = new TimeUpdater(timeText);
         timeUpdater.start();
         setDate();
-        
+
         textoSocio.setText("<html><span style='color: gray; font-family: Corbel; font-size: 16pt;'>Gestiona el registro, modificación y eliminación de socios.</span></html>");
         textoEmpleado.setText("<html><span style='color: gray; font-family: Corbel; font-size: 16pt;'>Administra el registro, modificación y eliminación de empleados.</span></html>");
         textoPagosSocios.setText("<html><span style='color: gray; font-family: Corbel; font-size: 16pt;'>Procesa los pagos de los socios del club.</span></html>");
@@ -62,19 +63,19 @@ setTitle("Administracion Acantilados FC");
         jTable3.getTableHeader().setReorderingAllowed(false);
         tablaDeudas.getTableHeader().setReorderingAllowed(false);
         tablaPagos.getTableHeader().setReorderingAllowed(false);
-        
+
     }
 
-    private void setDate(){
+    private void setDate() {
         LocalDate now = LocalDate.now();
         int year = now.getYear();
         int dia = now.getDayOfMonth();
         int month = now.getMonthValue();
         String[] meses = {"Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"};
-        dateText.setText(dia+" de "+meses[month -1]+" de "+year);
-    }  
-    
-   
+        dateText.setText(dia + " de " + meses[month - 1] + " de " + year);
+    }
+
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -200,9 +201,12 @@ setTitle("Administracion Acantilados FC");
         pagarBtn1 = new javax.swing.JPanel();
         pagarTxt1 = new javax.swing.JLabel();
         card4 = new javax.swing.JPanel();
+        tituloPagos = new javax.swing.JLabel();
         jScrollPane4 = new javax.swing.JScrollPane();
         tablaPagos = new javax.swing.JTable();
-        tituloPagos = new javax.swing.JLabel();
+        enviarDeudaBtn1 = new javax.swing.JPanel();
+        enviarDeudaSep1 = new javax.swing.JSeparator();
+        enviarDeudaTxt1 = new javax.swing.JLabel();
         buscarBtn5 = new javax.swing.JPanel();
         buscarTxt5 = new javax.swing.JLabel();
 
@@ -1516,6 +1520,11 @@ setTitle("Administracion Acantilados FC");
         card4.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         card4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        tituloPagos.setFont(new java.awt.Font("Corbel", 1, 28)); // NOI18N
+        tituloPagos.setForeground(new java.awt.Color(153, 153, 153));
+        tituloPagos.setText("Listado de Empleados");
+        card4.add(tituloPagos, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, -1));
+
         tablaPagos.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         tablaPagos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -1554,10 +1563,41 @@ setTitle("Administracion Acantilados FC");
 
         card4.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 370, 310));
 
-        tituloPagos.setFont(new java.awt.Font("Corbel", 1, 28)); // NOI18N
-        tituloPagos.setForeground(new java.awt.Color(153, 153, 153));
-        tituloPagos.setText("Listado de Empleados");
-        card4.add(tituloPagos, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, -1));
+        enviarDeudaBtn1.setBackground(new java.awt.Color(255, 255, 255));
+        enviarDeudaBtn1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        enviarDeudaBtn1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                enviarDeudaBtn1MouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout enviarDeudaBtn1Layout = new javax.swing.GroupLayout(enviarDeudaBtn1);
+        enviarDeudaBtn1.setLayout(enviarDeudaBtn1Layout);
+        enviarDeudaBtn1Layout.setHorizontalGroup(
+            enviarDeudaBtn1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+        enviarDeudaBtn1Layout.setVerticalGroup(
+            enviarDeudaBtn1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+
+        card4.add(enviarDeudaBtn1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 390, 390));
+
+        enviarDeudaSep1.setBackground(new java.awt.Color(255, 0, 0));
+        enviarDeudaSep1.setForeground(new java.awt.Color(255, 51, 51));
+        card4.add(enviarDeudaSep1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
+        enviarDeudaTxt1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        enviarDeudaTxt1.setForeground(new java.awt.Color(255, 51, 51));
+        enviarDeudaTxt1.setText("Enviar Informe de situacion por Email");
+        enviarDeudaTxt1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        enviarDeudaTxt1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                enviarDeudaTxt1MouseClicked(evt);
+            }
+        });
+        card4.add(enviarDeudaTxt1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 390, 370, -1));
 
         panelDatos1.add(card4, "card4");
 
@@ -1644,43 +1684,43 @@ setTitle("Administracion Acantilados FC");
     }//GEN-LAST:event_exitTxtMousePressed
 
     private void menuTxtMouseEntered(MouseEvent evt) {//GEN-FIRST:event_menuTxtMouseEntered
-        menuBtn.setBackground(new Color(50,115,153));
+        menuBtn.setBackground(new Color(50, 115, 153));
     }//GEN-LAST:event_menuTxtMouseEntered
 
     private void menuTxtMouseExited(MouseEvent evt) {//GEN-FIRST:event_menuTxtMouseExited
-        menuBtn.setBackground(new Color(80,139,166));
+        menuBtn.setBackground(new Color(80, 139, 166));
     }//GEN-LAST:event_menuTxtMouseExited
 
     private void sociosTxtMouseEntered(MouseEvent evt) {//GEN-FIRST:event_sociosTxtMouseEntered
-        sociosBtn.setBackground(new Color(50,115,153));
+        sociosBtn.setBackground(new Color(50, 115, 153));
     }//GEN-LAST:event_sociosTxtMouseEntered
 
     private void sociosTxtMouseExited(MouseEvent evt) {//GEN-FIRST:event_sociosTxtMouseExited
-        sociosBtn.setBackground(new Color(80,139,166));
+        sociosBtn.setBackground(new Color(80, 139, 166));
     }//GEN-LAST:event_sociosTxtMouseExited
 
     private void empleadosTxtMouseEntered(MouseEvent evt) {//GEN-FIRST:event_empleadosTxtMouseEntered
-        empleadosBtn.setBackground(new Color(50,115,153));
+        empleadosBtn.setBackground(new Color(50, 115, 153));
     }//GEN-LAST:event_empleadosTxtMouseEntered
 
     private void empleadosTxtMouseExited(MouseEvent evt) {//GEN-FIRST:event_empleadosTxtMouseExited
-        empleadosBtn.setBackground(new Color(80,139,166));
+        empleadosBtn.setBackground(new Color(80, 139, 166));
     }//GEN-LAST:event_empleadosTxtMouseExited
 
     private void pagosSociosTxtMouseEntered(MouseEvent evt) {//GEN-FIRST:event_pagosSociosTxtMouseEntered
-        pagosSociosBtn.setBackground(new Color(50,115,153));
+        pagosSociosBtn.setBackground(new Color(50, 115, 153));
     }//GEN-LAST:event_pagosSociosTxtMouseEntered
 
     private void pagosSociosTxtMouseExited(MouseEvent evt) {//GEN-FIRST:event_pagosSociosTxtMouseExited
-        pagosSociosBtn.setBackground(new Color(80,139,166));
+        pagosSociosBtn.setBackground(new Color(80, 139, 166));
     }//GEN-LAST:event_pagosSociosTxtMouseExited
 
     private void sueldosEmpleadosTxtMouseEntered(MouseEvent evt) {//GEN-FIRST:event_sueldosEmpleadosTxtMouseEntered
-        sueldosEmpleadosBtn.setBackground(new Color(50,115,153));
+        sueldosEmpleadosBtn.setBackground(new Color(50, 115, 153));
     }//GEN-LAST:event_sueldosEmpleadosTxtMouseEntered
 
     private void sueldosEmpleadosTxtMouseExited(MouseEvent evt) {//GEN-FIRST:event_sueldosEmpleadosTxtMouseExited
-        sueldosEmpleadosBtn.setBackground(new Color(80,139,166));
+        sueldosEmpleadosBtn.setBackground(new Color(80, 139, 166));
     }//GEN-LAST:event_sueldosEmpleadosTxtMouseExited
 
     private void menuTxtMouseClicked(MouseEvent evt) {//GEN-FIRST:event_menuTxtMouseClicked
@@ -1750,42 +1790,42 @@ setTitle("Administracion Acantilados FC");
     }//GEN-LAST:event_txtSueldosEmpleadosMouseClicked
 
     private void txtSociosMouseEntered(MouseEvent evt) {//GEN-FIRST:event_txtSociosMouseEntered
-        btnSocios.setBackground(new Color(80,139,166));
+        btnSocios.setBackground(new Color(80, 139, 166));
     }//GEN-LAST:event_txtSociosMouseEntered
 
     private void txtSociosMouseExited(MouseEvent evt) {//GEN-FIRST:event_txtSociosMouseExited
-        btnSocios.setBackground(new Color(50,115,153));
+        btnSocios.setBackground(new Color(50, 115, 153));
     }//GEN-LAST:event_txtSociosMouseExited
 
     private void txtEmpleadosMouseEntered(MouseEvent evt) {//GEN-FIRST:event_txtEmpleadosMouseEntered
-        btnEmpleados.setBackground(new Color(80,139,166));
+        btnEmpleados.setBackground(new Color(80, 139, 166));
     }//GEN-LAST:event_txtEmpleadosMouseEntered
 
     private void txtEmpleadosMouseExited(MouseEvent evt) {//GEN-FIRST:event_txtEmpleadosMouseExited
-        btnEmpleados.setBackground(new Color(50,115,153));
+        btnEmpleados.setBackground(new Color(50, 115, 153));
     }//GEN-LAST:event_txtEmpleadosMouseExited
 
     private void txtPagosSocioMouseEntered(MouseEvent evt) {//GEN-FIRST:event_txtPagosSocioMouseEntered
-        btnPagosSocio.setBackground(new Color(80,139,166));
+        btnPagosSocio.setBackground(new Color(80, 139, 166));
     }//GEN-LAST:event_txtPagosSocioMouseEntered
 
     private void txtPagosSocioMouseExited(MouseEvent evt) {//GEN-FIRST:event_txtPagosSocioMouseExited
-        btnPagosSocio.setBackground(new Color(50,115,153));
+        btnPagosSocio.setBackground(new Color(50, 115, 153));
     }//GEN-LAST:event_txtPagosSocioMouseExited
 
     private void txtSueldosEmpleadosMouseEntered(MouseEvent evt) {//GEN-FIRST:event_txtSueldosEmpleadosMouseEntered
-        btnSueldosEmpleados.setBackground(new Color(80,139,166));
+        btnSueldosEmpleados.setBackground(new Color(80, 139, 166));
     }//GEN-LAST:event_txtSueldosEmpleadosMouseEntered
 
     private void txtSueldosEmpleadosMouseExited(MouseEvent evt) {//GEN-FIRST:event_txtSueldosEmpleadosMouseExited
-        btnSueldosEmpleados.setBackground(new Color(50,115,153));
+        btnSueldosEmpleados.setBackground(new Color(50, 115, 153));
     }//GEN-LAST:event_txtSueldosEmpleadosMouseExited
 
     private void buscarLabelActionPerformed(ActionEvent evt) {//GEN-FIRST:event_buscarLabelActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_buscarLabelActionPerformed
 
-    private void ventana2FocusGained(FocusEvent evt) {                                     
+    private void ventana2FocusGained(FocusEvent evt) {
         // Obtener los datos de los socios
         HashMap<Integer, Socio> array = obtenerListaDeSocios();
 
@@ -1796,43 +1836,42 @@ setTitle("Administracion Acantilados FC");
         actualizarTabla();
 
 
-
-    }                                    
+    }
 
     private void modificarTxtMouseEntered(MouseEvent evt) {//GEN-FIRST:event_modificarTxtMouseEntered
-        modificarBtn.setBackground(new Color(80,139,166));
+        modificarBtn.setBackground(new Color(80, 139, 166));
     }//GEN-LAST:event_modificarTxtMouseEntered
 
     private void modificarTxtMouseExited(MouseEvent evt) {//GEN-FIRST:event_modificarTxtMouseExited
-        modificarBtn.setBackground(new Color(59,132,173));
+        modificarBtn.setBackground(new Color(59, 132, 173));
     }//GEN-LAST:event_modificarTxtMouseExited
 
     private void eliminarTxtMouseEntered(MouseEvent evt) {//GEN-FIRST:event_eliminarTxtMouseEntered
-        eliminarBtn.setBackground(new Color(80,139,166));
+        eliminarBtn.setBackground(new Color(80, 139, 166));
     }//GEN-LAST:event_eliminarTxtMouseEntered
 
     private void eliminarTxtMouseExited(MouseEvent evt) {//GEN-FIRST:event_eliminarTxtMouseExited
-        eliminarBtn.setBackground(new Color(59,132,173));
+        eliminarBtn.setBackground(new Color(59, 132, 173));
     }//GEN-LAST:event_eliminarTxtMouseExited
 
     private void agregarTxtMouseEntered(MouseEvent evt) {//GEN-FIRST:event_agregarTxtMouseEntered
-        agregarBtn.setBackground(new Color(80,139,166));
+        agregarBtn.setBackground(new Color(80, 139, 166));
     }//GEN-LAST:event_agregarTxtMouseEntered
 
     private void agregarTxtMouseExited(MouseEvent evt) {//GEN-FIRST:event_agregarTxtMouseExited
-        agregarBtn.setBackground(new Color(59,132,173));
+        agregarBtn.setBackground(new Color(59, 132, 173));
     }//GEN-LAST:event_agregarTxtMouseExited
 
     private void buscarTxtMouseEntered(MouseEvent evt) {//GEN-FIRST:event_buscarTxtMouseEntered
-        buscarBtn.setBackground(new Color(80,139,166));
+        buscarBtn.setBackground(new Color(80, 139, 166));
     }//GEN-LAST:event_buscarTxtMouseEntered
 
     private void buscarTxtMouseExited(MouseEvent evt) {//GEN-FIRST:event_buscarTxtMouseExited
-        buscarBtn.setBackground(new Color(59,132,173));
+        buscarBtn.setBackground(new Color(59, 132, 173));
     }//GEN-LAST:event_buscarTxtMouseExited
 
     private void buscarLabelMousePressed(MouseEvent evt) {//GEN-FIRST:event_buscarLabelMousePressed
-        if(buscarLabel.getText().equals(" Ingrese el legajo del socio a buscar.")){
+        if (buscarLabel.getText().equals(" Ingrese el legajo del socio a buscar.")) {
             buscarLabel.setText("");
             buscarLabel.setForeground(Color.black);
         }
@@ -1840,24 +1879,22 @@ setTitle("Administracion Acantilados FC");
 
     private void buscarLabelFocusLost(FocusEvent evt) {//GEN-FIRST:event_buscarLabelFocusLost
         if (buscarLabel.getText().isEmpty()) {
-                buscarLabel.setText(" Ingrese el legajo del socio a buscar.");
-                buscarLabel.setForeground(Color.GRAY);
-            }
+            buscarLabel.setText(" Ingrese el legajo del socio a buscar.");
+            buscarLabel.setForeground(Color.GRAY);
+        }
     }//GEN-LAST:event_buscarLabelFocusLost
 
     private void agregarTxtMouseClicked(MouseEvent evt) {//GEN-FIRST:event_agregarTxtMouseClicked
         HashMap<Integer, Socio> listaDeSocios = obtenerListaDeSocios();
         int proximoLegajo = encontrarProximoLegajoDisponibleSocio(listaDeSocios);
-            InfoSocio infoSocio = new InfoSocio(proximoLegajo);
-            infoSocio.setVisible(true);
-            infoSocio.pack();
-            infoSocio.setLocationRelativeTo(null);  
-            this.dispose();
+        InfoSocio infoSocio = new InfoSocio(proximoLegajo);
+        infoSocio.setVisible(true);
+        infoSocio.pack();
+        infoSocio.setLocationRelativeTo(null);
+        this.dispose();
     }//GEN-LAST:event_agregarTxtMouseClicked
 
-    
-    
-    
+
     public int encontrarProximoLegajoDisponibleSocio(HashMap<Integer, Socio> listaDeSocios) {
         // Inicializar el próximo legajo a 1
         int proximoLegajo = 1;
@@ -1869,8 +1906,8 @@ setTitle("Administracion Acantilados FC");
 
         return proximoLegajo;
     }
-    
-    
+
+
     public int encontrarProximoLegajoDisponibleEmpleado(HashMap<Integer, Empleado> listaDeEmpleados) {
         // Inicializar el próximo legajo a 1
         int proximoLegajo = 1;
@@ -1882,7 +1919,7 @@ setTitle("Administracion Acantilados FC");
 
         return proximoLegajo;
     }
-    
+
 
     private void buscarTxtMouseClicked(MouseEvent evt) {//GEN-FIRST:event_buscarTxtMouseClicked
         try {
@@ -1905,48 +1942,48 @@ setTitle("Administracion Acantilados FC");
     }//GEN-LAST:event_buscarTxtMouseClicked
 
     private void eliminarTxtMouseClicked(MouseEvent evt) {//GEN-FIRST:event_eliminarTxtMouseClicked
- ContenedoraSocio contenedora = new ContenedoraSocio();
-    try {
-        contenedora.cargarSociosDeJson("Socios.json");
-    } catch (IOException ex) {
-        ex.printStackTrace();
-    }
-
-    DefaultTableModel model = (DefaultTableModel) jTable2.getModel();
-    int[] selectedRows = jTable2.getSelectedRows();
-    
-    if (selectedRows.length < 1) {
-        JOptionPane.showMessageDialog(this, "Debes seleccionar uno o más socios a eliminar.\n", "AVISO", JOptionPane.ERROR_MESSAGE);
-    } else {
-        // Construir el mensaje de confirmación
-        String message = "¿Estás seguro de eliminar el/los siguiente(s) socio(s)?\n\n";
-        for (int i = 0; i < selectedRows.length; i++) {
-            int legajo = (int) jTable2.getValueAt(selectedRows[i], 0);
-            String nombre = (String) jTable2.getValueAt(selectedRows[i], 1);
-            message += "Nombre: " + nombre + ", Legajo: " + legajo + "\n";
+        ContenedoraSocio contenedora = new ContenedoraSocio();
+        try {
+            contenedora.cargarSociosDeJson("Socios.json");
+        } catch (IOException ex) {
+            ex.printStackTrace();
         }
 
-        // Mostrar el cuadro de diálogo de confirmación
-        int option = JOptionPane.showConfirmDialog(this, message, "Confirmar eliminación", JOptionPane.YES_NO_OPTION);
-        if (option == JOptionPane.YES_OPTION) {
-            // Eliminar los socios seleccionados
-            for (int i = selectedRows.length - 1; i >= 0; i--) {
-                try {
-                    int legajo = (int) jTable2.getValueAt(selectedRows[i], 0);
-                    contenedora.baja(legajo);
-                    String imagePath = "src/com/imagesPersonas/"+legajo+".png";
-                    deleteImage(imagePath);
-                    String imagePath2 = "src/com/barcodes/"+legajo+".png";
-                    deleteImage(imagePath2);
-                    contenedora.guardarSociosEnJson("Socios.json");
-                    model.removeRow(selectedRows[i]);
-                } catch (Exception e) {
-                    System.out.println(e.getMessage());
+        DefaultTableModel model = (DefaultTableModel) jTable2.getModel();
+        int[] selectedRows = jTable2.getSelectedRows();
+
+        if (selectedRows.length < 1) {
+            JOptionPane.showMessageDialog(this, "Debes seleccionar uno o más socios a eliminar.\n", "AVISO", JOptionPane.ERROR_MESSAGE);
+        } else {
+            // Construir el mensaje de confirmación
+            String message = "¿Estás seguro de eliminar el/los siguiente(s) socio(s)?\n\n";
+            for (int i = 0; i < selectedRows.length; i++) {
+                int legajo = (int) jTable2.getValueAt(selectedRows[i], 0);
+                String nombre = (String) jTable2.getValueAt(selectedRows[i], 1);
+                message += "Nombre: " + nombre + ", Legajo: " + legajo + "\n";
+            }
+
+            // Mostrar el cuadro de diálogo de confirmación
+            int option = JOptionPane.showConfirmDialog(this, message, "Confirmar eliminación", JOptionPane.YES_NO_OPTION);
+            if (option == JOptionPane.YES_OPTION) {
+                // Eliminar los socios seleccionados
+                for (int i = selectedRows.length - 1; i >= 0; i--) {
+                    try {
+                        int legajo = (int) jTable2.getValueAt(selectedRows[i], 0);
+                        contenedora.baja(legajo);
+                        String imagePath = "src/com/imagesPersonas/" + legajo + ".png";
+                        deleteImage(imagePath);
+                        String imagePath2 = "src/com/barcodes/" + legajo + ".png";
+                        deleteImage(imagePath2);
+                        contenedora.guardarSociosEnJson("Socios.json");
+                        model.removeRow(selectedRows[i]);
+                    } catch (Exception e) {
+                        System.out.println(e.getMessage());
+                    }
                 }
             }
         }
-    }
-     }//GEN-LAST:event_eliminarTxtMouseClicked
+    }//GEN-LAST:event_eliminarTxtMouseClicked
 
     // Método para eliminar el archivo de imagen
     public static void deleteImage(String imagePath) {
@@ -1960,7 +1997,7 @@ setTitle("Administracion Acantilados FC");
         // TODO add your handling code here:
     }//GEN-LAST:event_eliminarBtnMouseClicked
 
-    private void modificarTxtMouseClicked(java.awt.event.MouseEvent evt) {                                          
+    private void modificarTxtMouseClicked(java.awt.event.MouseEvent evt) {
         int filaSeleccionada = jTable2.getSelectedRowCount();
 
         if (filaSeleccionada != 1) {
@@ -1981,23 +2018,24 @@ setTitle("Administracion Acantilados FC");
             Categoria categoriaFilaSelec = (Categoria) jTable2.getValueAt(fila, 11);
 
 
-            HashMap<Integer,Socio> socios = new HashMap<>();
+            HashMap<Integer, Socio> socios = new HashMap<>();
             socios = obtenerListaDeSocios();
 
-                Socio socio = socios.get(legajo);
-                // Aquí puedes acceder a los atributos del socio
-                LocalDate fechaVencimiento = socio.getFechaVencimientoPago();
-                LocalDate fechaRegistro = socio.getFechaRegistroPago();
-                // Hacer algo con fechaVencimiento, por ejemplo:
-                System.out.println("Fecha de vencimiento del socio: " + fechaVencimiento);
+            Socio socio = socios.get(legajo);
+            // Aquí puedes acceder a los atributos del socio
+            LocalDate fechaVencimiento = socio.getFechaVencimientoPago();
+            LocalDate fechaRegistro = socio.getFechaRegistroPago();
+            // Hacer algo con fechaVencimiento, por ejemplo:
+            System.out.println("Fecha de vencimiento del socio: " + fechaVencimiento);
 
-            ModificarSocio modifSoc = new ModificarSocio(fechaVencimiento,fechaRegistro,legajo, nombre, apellido, dni, fechaNac, email, telefono, domicilio, sexo, obraSocial, categoriaFilaSelec);
+            ModificarSocio modifSoc = new ModificarSocio(fechaVencimiento, fechaRegistro, legajo, nombre, apellido, dni, fechaNac, email, telefono, domicilio, sexo, obraSocial, categoriaFilaSelec);
             modifSoc.setVisible(true);
             modifSoc.pack();
             modifSoc.setLocationRelativeTo(null);
             this.dispose();
         }
     }
+
     private void addSocioToTable(Socio socio) {
         DefaultTableModel model = (DefaultTableModel) jTable2.getModel();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
@@ -2005,34 +2043,33 @@ setTitle("Administracion Acantilados FC");
     }
 
     public Object[] socioToRow(Socio socio) {
-    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-        return new Object[] {
-            socio.getLegajo(),
-            socio.getNombre(),
-            socio.getApellido(),
-            socio.getEmail(),
-            socio.getDni(),
-            socio.getFechaDeNacimiento(),
-            socio.getTelefono(),
-            socio.getDomicilio(),
-            socio.getSexo(),
-            socio.getObraSocial(),
-            socio.isAptoMedico(),
-            socio.getCategoria(),
-            socio.getFechaVencimientoPago().format(formatter)
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        return new Object[]{
+                socio.getLegajo(),
+                socio.getNombre(),
+                socio.getApellido(),
+                socio.getEmail(),
+                socio.getDni(),
+                socio.getFechaDeNacimiento(),
+                socio.getTelefono(),
+                socio.getDomicilio(),
+                socio.getSexo(),
+                socio.getObraSocial(),
+                socio.isAptoMedico(),
+                socio.getCategoria(),
+                socio.getFechaVencimientoPago().format(formatter)
         };
     }
 
-public HashMap<Integer, Socio> obtenerListaDeSocios() {
-    ContenedoraSocio contenedoraSocio = new ContenedoraSocio();
-    try {
-        contenedoraSocio.cargarSociosDeJson("Socios.json");
-    } catch (IOException e) {
-        e.printStackTrace();
+    public HashMap<Integer, Socio> obtenerListaDeSocios() {
+        ContenedoraSocio contenedoraSocio = new ContenedoraSocio();
+        try {
+            contenedoraSocio.cargarSociosDeJson("Socios.json");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return contenedoraSocio.listar();
     }
-    return contenedoraSocio.listar();
-}
-
 
 
     public void llenarTablaConSocios(HashMap<Integer, Socio> listaDeSocios) {
@@ -2048,27 +2085,27 @@ public HashMap<Integer, Socio> obtenerListaDeSocios() {
             model.addRow(socioToRow(socio));
         }
     }
-    
+
     // Llamada al método para llenar la tabla
     public void actualizarTabla() {
-    HashMap<Integer, Socio> socios = obtenerListaDeSocios(); // Método que devuelve la lista de socios
-    llenarTablaConSocios(socios);
-}
+        HashMap<Integer, Socio> socios = obtenerListaDeSocios(); // Método que devuelve la lista de socios
+        llenarTablaConSocios(socios);
+    }
 
     //Añadir deudores a la tabla
-    public void addDeudoresToTable(Socio socio){
-    DefaultTableModel model = (DefaultTableModel) tablaDeudas.getModel();
-    model.addRow(new Object[]{socio.getLegajo(), socio.getNombre(), socio.getApellido(), socio.getFechaVencimientoPago()});
+    public void addDeudoresToTable(Socio socio) {
+        DefaultTableModel model = (DefaultTableModel) tablaDeudas.getModel();
+        model.addRow(new Object[]{socio.getLegajo(), socio.getNombre(), socio.getApellido(), socio.getFechaVencimientoPago()});
     }
-    
+
     //Metodo para agregar los deudores ordenados a la tabla
-    public Object[] deudToRow(Socio socio){
-    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-    return new Object[]{socio.getLegajo(), socio.getNombre(), socio.getApellido(), socio.getFechaVencimientoPago().format(formatter)};
+    public Object[] deudToRow(Socio socio) {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        return new Object[]{socio.getLegajo(), socio.getNombre(), socio.getApellido(), socio.getFechaVencimientoPago().format(formatter)};
     }
-    
+
     //Obtener Lista de Socios que todavia no pagaron la cuota
-    public HashMap<Integer, Socio> obtenerListaDeudores(){
+    public HashMap<Integer, Socio> obtenerListaDeudores() {
         ContenedoraSocio contenedoraSocio = new ContenedoraSocio();
         HashMap<Integer, Socio> deudores = new HashMap<>();
         try {
@@ -2090,85 +2127,85 @@ public HashMap<Integer, Socio> obtenerListaDeSocios() {
     }
 
     //Llenar la table de Socios Deudores
-    public void llenarTablaDeudores(HashMap<Integer, Socio> listaDeDeudores){
+    public void llenarTablaDeudores(HashMap<Integer, Socio> listaDeDeudores) {
         DefaultTableModel model = (DefaultTableModel) tablaDeudas.getModel();
         model.setRowCount(0);
 
         List<Socio> deudoresOrdenados = new ArrayList<>(listaDeDeudores.values());
         deudoresOrdenados.sort(Comparator.comparingInt(Socio::getLegajo));
 
-        for(Socio socio : deudoresOrdenados){
+        for (Socio socio : deudoresOrdenados) {
             model.addRow(deudToRow(socio));
         }
     }
-    
+
     //Actualizar la tabla
-    public void actualizarTablaDeudores(){
+    public void actualizarTablaDeudores() {
         HashMap<Integer, Socio> deudores = obtenerListaDeudores();
         llenarTablaDeudores(deudores);
     }
 
-     //Añadir empleados a los que no se les pago el sueldo a la tabla
-    public void addEmpleadosSinPagarToTable(Empleado empleado){
+    //Añadir empleados a los que no se les pago el sueldo a la tabla
+    public void addEmpleadosSinPagarToTable(Empleado empleado) {
         DefaultTableModel model = (DefaultTableModel) tablaPagos.getModel();
         model.addRow(new Object[]{empleado.getLegajo(), empleado.getNombre(), empleado.getApellido(), empleado.getFechaVencimientoPago()});
     }
 
     //Metodo para agregar los empleados a los que se deben pagar el sueldo a la tabla
-    public Object[] empleadoAPagarToRow(Empleado empleado){
+    public Object[] empleadoAPagarToRow(Empleado empleado) {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         return new Object[]{empleado.getLegajo(), empleado.getNombre(), empleado.getApellido(), empleado.getFechaVencimientoPago().format(formatter)};
     }
 
     //Obtener lista de empleados a los que todavia no se les pago el sueldo
-    public HashMap<Integer, Empleado> obtenerListaDeEmpleadosAPagar(){
+    public HashMap<Integer, Empleado> obtenerListaDeEmpleadosAPagar() {
         ContenedoraEmpleado contenedoraEmpleado = new ContenedoraEmpleado();
         HashMap<Integer, Empleado> empleadosAPagar = new HashMap<>();
-        try{
+        try {
             contenedoraEmpleado.cargarEmpleadosDeJson("Empleados.json");
             HashMap<Integer, Empleado> empleados = contenedoraEmpleado.listar();
             LocalDate hoy = LocalDate.now();
-            for(Map.Entry<Integer, Empleado> entry : empleados.entrySet()){
+            for (Map.Entry<Integer, Empleado> entry : empleados.entrySet()) {
                 Empleado empleado = entry.getValue();
-                if(empleado.getFechaVencimientoPago().isBefore(hoy)){
+                if (empleado.getFechaVencimientoPago().isBefore(hoy)) {
                     empleadosAPagar.put(entry.getKey(), empleado);
                 }
             }
-        }catch(IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
         }
         return empleadosAPagar;
     }
 
     //Llenar la tabla de empleados a los que todavia no se les pago
-    public void llenarTablaEmpleadosAPagar(HashMap<Integer, Empleado> listaDeEmpleadosAPagar){
+    public void llenarTablaEmpleadosAPagar(HashMap<Integer, Empleado> listaDeEmpleadosAPagar) {
         DefaultTableModel model = (DefaultTableModel) tablaPagos.getModel();
         model.setRowCount(0);
 
         List<Empleado> empleadosAPagarOrdenados = new ArrayList<>(listaDeEmpleadosAPagar.values());
         empleadosAPagarOrdenados.sort(Comparator.comparingInt(Empleado::getLegajo));
 
-        for(Empleado empleado : empleadosAPagarOrdenados){
+        for (Empleado empleado : empleadosAPagarOrdenados) {
             model.addRow(empleadoAPagarToRow(empleado));
         }
     }
 
     //Actualizar la tabla
-    public void actualizarTablaEmpleadosAPagar(){
+    public void actualizarTablaEmpleadosAPagar() {
         HashMap<Integer, Empleado> empleadosAPagar = obtenerListaDeEmpleadosAPagar();
         llenarTablaEmpleadosAPagar(empleadosAPagar);
     }
 
-    
+
     private void buscarLabel1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_buscarLabel1FocusLost
         if (buscarLabel1.getText().isEmpty()) {
-                buscarLabel1.setText(" Ingrese el legajo del empleado a buscar.");
-                buscarLabel1.setForeground(Color.GRAY);
-            }
+            buscarLabel1.setText(" Ingrese el legajo del empleado a buscar.");
+            buscarLabel1.setForeground(Color.GRAY);
+        }
     }//GEN-LAST:event_buscarLabel1FocusLost
 
     private void buscarLabel1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buscarLabel1MousePressed
-        if(buscarLabel1.getText().equals(" Ingrese el legajo del empleado a buscar.")){
+        if (buscarLabel1.getText().equals(" Ingrese el legajo del empleado a buscar.")) {
             buscarLabel1.setText("");
             buscarLabel1.setForeground(Color.black);
         }
@@ -2199,15 +2236,15 @@ public HashMap<Integer, Socio> obtenerListaDeSocios() {
     }//GEN-LAST:event_buscarTxt1MouseClicked
 
     private void buscarTxt1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buscarTxt1MouseEntered
-        buscarBtn.setBackground(new Color(80,139,166));
+        buscarBtn.setBackground(new Color(80, 139, 166));
     }//GEN-LAST:event_buscarTxt1MouseEntered
 
     private void buscarTxt1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buscarTxt1MouseExited
-        buscarBtn.setBackground(new Color(59,132,173));
+        buscarBtn.setBackground(new Color(59, 132, 173));
     }//GEN-LAST:event_buscarTxt1MouseExited
 
     private void modificarTxt1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_modificarTxt1MouseClicked
-         int filaSeleccionada = jTable3.getSelectedRowCount();
+        int filaSeleccionada = jTable3.getSelectedRowCount();
 
         if (filaSeleccionada != 1) {
             JOptionPane.showMessageDialog(this, "Debes seleccionar un solo empleado para modificar a la vez.\n", "AVISO", JOptionPane.ERROR_MESSAGE);
@@ -2223,22 +2260,22 @@ public HashMap<Integer, Socio> obtenerListaDeSocios() {
             Cargo cargoFilaSelec = (Cargo) jTable3.getValueAt(fila, 6);
 
 
-            HashMap<Integer,Empleado> empleados = new HashMap<>();
+            HashMap<Integer, Empleado> empleados = new HashMap<>();
             empleados = obtenerListaDeEmpleados();
 
-                Empleado empleado = empleados.get(legajo);
-                // Aquí puedes acceder a los atributos del socio
-                LocalDate fechaVencimiento = empleado.getFechaVencimientoPago();
-                LocalDate fechaRegistro = empleado.getFechaRegistroPago();
-                // Hacer algo con fechaVencimiento, por ejemplo:
-                System.out.println("Fecha de vencimiento del empleado: " + fechaVencimiento);
+            Empleado empleado = empleados.get(legajo);
+            // Aquí puedes acceder a los atributos del socio
+            LocalDate fechaVencimiento = empleado.getFechaVencimientoPago();
+            LocalDate fechaRegistro = empleado.getFechaRegistroPago();
+            // Hacer algo con fechaVencimiento, por ejemplo:
+            System.out.println("Fecha de vencimiento del empleado: " + fechaVencimiento);
 
             ModificarEmpleado modifEmp = null;
-             try {
-                 modifEmp = new ModificarEmpleado(fechaVencimiento,fechaRegistro,legajo, nombre, apellido, dni, fechaNac, email, cargoFilaSelec);
-             } catch (UnsupportedLookAndFeelException ex) {
-                 Logger.getLogger(Menu.class.getName()).log(Level.SEVERE, null, ex);
-             }
+            try {
+                modifEmp = new ModificarEmpleado(fechaVencimiento, fechaRegistro, legajo, nombre, apellido, dni, fechaNac, email, cargoFilaSelec);
+            } catch (UnsupportedLookAndFeelException ex) {
+                Logger.getLogger(Menu.class.getName()).log(Level.SEVERE, null, ex);
+            }
             modifEmp.setVisible(true);
             modifEmp.pack();
             modifEmp.setLocationRelativeTo(null);
@@ -2247,20 +2284,21 @@ public HashMap<Integer, Socio> obtenerListaDeSocios() {
     }//GEN-LAST:event_modificarTxt1MouseClicked
 
     private void modificarTxt1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_modificarTxt1MouseEntered
-         modificarBtn.setBackground(new Color(80,139,166));
+        modificarBtn.setBackground(new Color(80, 139, 166));
     }//GEN-LAST:event_modificarTxt1MouseEntered
 
     private void modificarTxt1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_modificarTxt1MouseExited
-        modificarBtn.setBackground(new Color(59,132,173));    }//GEN-LAST:event_modificarTxt1MouseExited
+        modificarBtn.setBackground(new Color(59, 132, 173));
+    }//GEN-LAST:event_modificarTxt1MouseExited
 
     private void agregarTxt1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_agregarTxt1MouseClicked
-         HashMap<Integer, Empleado> listaDeEmpleados = obtenerListaDeEmpleados();
+        HashMap<Integer, Empleado> listaDeEmpleados = obtenerListaDeEmpleados();
         int proximoLegajo = encontrarProximoLegajoDisponibleEmpleado(listaDeEmpleados);
-            InfoEmpleado infoEmpleado = new InfoEmpleado(proximoLegajo);
-            infoEmpleado.setVisible(true);
-            infoEmpleado.pack();
-            infoEmpleado.setLocationRelativeTo(null);  
-            this.dispose();
+        InfoEmpleado infoEmpleado = new InfoEmpleado(proximoLegajo);
+        infoEmpleado.setVisible(true);
+        infoEmpleado.pack();
+        infoEmpleado.setLocationRelativeTo(null);
+        this.dispose();
     }//GEN-LAST:event_agregarTxt1MouseClicked
 
     private void agregarTxt1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_agregarTxt1MouseEntered
@@ -2279,12 +2317,11 @@ public HashMap<Integer, Socio> obtenerListaDeSocios() {
         // Obtener los datos de los socios
         HashMap<Integer, Empleado> array = obtenerListaDeEmpleados();
 
-     
 
         // Llenar la tabla con los datos de los socios
         llenarTablaConEmpleados(array);
 
-          // Actualizar la tabla
+        // Actualizar la tabla
         actualizarTablaEmpleados();
 
         jTable3.getTableHeader().setReorderingAllowed(false);
@@ -2299,14 +2336,14 @@ public HashMap<Integer, Socio> obtenerListaDeSocios() {
     }//GEN-LAST:event_jLabel1MouseClicked
 
     private void buscarLegajoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_buscarLegajoFocusLost
-         if (buscarLegajo.getText().isEmpty()) {
-                buscarLegajo.setText(" Ingrese el legajo del socio a buscar.");
-                buscarLegajo.setForeground(Color.GRAY);
-            }
+        if (buscarLegajo.getText().isEmpty()) {
+            buscarLegajo.setText(" Ingrese el legajo del socio a buscar.");
+            buscarLegajo.setForeground(Color.GRAY);
+        }
     }//GEN-LAST:event_buscarLegajoFocusLost
 
     private void buscarLegajoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buscarLegajoMousePressed
-        if(buscarLegajo.getText().equals(" Ingrese el legajo del socio a buscar.")){
+        if (buscarLegajo.getText().equals(" Ingrese el legajo del socio a buscar.")) {
             buscarLegajo.setText("");
             buscarLegajo.setForeground(Color.black);
         }
@@ -2322,23 +2359,22 @@ public HashMap<Integer, Socio> obtenerListaDeSocios() {
             LocalDate today = LocalDate.now();
             ContenedoraSocio contenedoraSocio = new ContenedoraSocio();
             contenedoraSocio.cargarSociosDeJson("Socios.json");
-           
+
             String legajoStr = buscarLegajo.getText().trim();
             int legajo = Integer.parseInt(legajoStr);
             Socio socio = contenedoraSocio.buscar(legajo);
-            System.out.println(socio.getFechaRegistroPago()+" "+socio.getFechaVencimientoPago());
+            System.out.println(socio.getFechaRegistroPago() + " " + socio.getFechaVencimientoPago());
             if (legajoStr.isEmpty() || legajoStr.equals("Ingrese el legajo del socio a buscar.")) {
                 /// EN EL CASO QUE NO SE ENCUENTRE
                 JOptionPane.showMessageDialog(this, "Debe ingresar un legajo valido para buscar.\n", "AVISO", JOptionPane.ERROR_MESSAGE);
                 cardLayout.show(panelDatos, "cardPrincipal");
                 buscarLegajo.setText("");
             }
-            if (today.isBefore(socio.getFechaVencimientoPago())||today.isEqual(socio.getFechaVencimientoPago())) {
+            if (today.isBefore(socio.getFechaVencimientoPago()) || today.isEqual(socio.getFechaVencimientoPago())) {
                 JOptionPane.showMessageDialog(this, "La cuota del socio " + socio.getNombre() + " aun no ha vencido", "AVISO", JOptionPane.ERROR_MESSAGE);
                 cardLayout.show(panelDatos, "cardPrincipal");
                 buscarLegajo.setText("");
-            }
-             else {
+            } else {
 
                 socio.calcularPago();
 
@@ -2358,29 +2394,29 @@ public HashMap<Integer, Socio> obtenerListaDeSocios() {
     }//GEN-LAST:event_buscarTxt2MouseClicked
 
     private void buscarTxt2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buscarTxt2MouseEntered
-        buscarBtn.setBackground(new Color(80,139,166));
+        buscarBtn.setBackground(new Color(80, 139, 166));
     }//GEN-LAST:event_buscarTxt2MouseEntered
 
     private void buscarTxt2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buscarTxt2MouseExited
-        buscarBtn.setBackground(new Color(59,132,173));
+        buscarBtn.setBackground(new Color(59, 132, 173));
     }//GEN-LAST:event_buscarTxt2MouseExited
 
     private void mostrarDeudoresTxtMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mostrarDeudoresTxtMouseEntered
-         mostrarDeudoresBtn.setBackground(new Color(80,139,166));
+        mostrarDeudoresBtn.setBackground(new Color(80, 139, 166));
     }//GEN-LAST:event_mostrarDeudoresTxtMouseEntered
 
     private void mostrarDeudoresTxtMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mostrarDeudoresTxtMouseExited
-        mostrarDeudoresBtn.setBackground(new Color(59,132,173));
+        mostrarDeudoresBtn.setBackground(new Color(59, 132, 173));
     }//GEN-LAST:event_mostrarDeudoresTxtMouseExited
 
     private void mostrarDeudoresTxtMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mostrarDeudoresTxtMouseClicked
         HashMap<Integer, Socio> mapa = obtenerListaDeudores();
 
-                // Llenar la tabla con los datos de los socios
-                llenarTablaDeudores(mapa);
+        // Llenar la tabla con los datos de los socios
+        llenarTablaDeudores(mapa);
 
-                // Actualizar la tabla
-                actualizarTablaDeudores();        
+        // Actualizar la tabla
+        actualizarTablaDeudores();
         //Llenar la tabla que esta en el card2 con los datos de los socios que todavia no hayan pagado la cuota (deudores)
         //Enviar mail a TODOS los socios que esten en esta tabla
         CardLayout cardLayout = (CardLayout) panelDatos.getLayout();
@@ -2388,11 +2424,11 @@ public HashMap<Integer, Socio> obtenerListaDeSocios() {
     }//GEN-LAST:event_mostrarDeudoresTxtMouseClicked
 
     private void pagarTxtMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pagarTxtMouseEntered
-        pagarBtn.setBackground(new Color(80,139,166));
+        pagarBtn.setBackground(new Color(80, 139, 166));
     }//GEN-LAST:event_pagarTxtMouseEntered
 
     private void pagarTxtMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pagarTxtMouseExited
-        pagarBtn.setBackground(new Color(59,132,173));
+        pagarBtn.setBackground(new Color(59, 132, 173));
     }//GEN-LAST:event_pagarTxtMouseExited
 
     private void pagarTxtMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pagarTxtMouseClicked
@@ -2404,29 +2440,29 @@ public HashMap<Integer, Socio> obtenerListaDeSocios() {
             int legajo = Integer.parseInt(legajoStr);
             Socio socio = contenedoraSocio.buscar(legajo);
 
-                socio.calcularPago();
-                int valorTotal = socio.pagarCuota(0);
-                socio.registrarPago();
-                Correos mail = new Correos();
-                new Thread(() -> {
-                    try {
-                        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-                        String fechaRegistroPagoComoCadena = socio.getFechaRegistroPago().format(formatter);
-                        mail.CorreoPagoSocio(socio.getEmail(), socio.getNombre(), fechaRegistroPagoComoCadena, valorTotal);
-                        socio.setAptoCuota(true);
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                        // Manejo de errores durante el envío del correo
-                    }
-                }).start();
+            socio.calcularPago();
+            int importe = socio.calcularPagoConInteres() + socio.getCuota();
+            int valorTotal = socio.pagarCuota(importe);
+            socio.registrarPago();
+            Correos mail = new Correos();
+            new Thread(() -> {
+                try {
+                    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+                    String fechaRegistroPagoComoCadena = socio.getFechaRegistroPago().format(formatter);
+                    mail.CorreoPagoSocio(socio.getEmail(), socio.getNombre(), fechaRegistroPagoComoCadena, valorTotal);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    // Manejo de errores durante el envío del correo
+                }
+            }).start();
 
-                contenedoraSocio.guardarSociosEnJson("Socios.json");
+            contenedoraSocio.guardarSociosEnJson("Socios.json");
 
-                PagoExitoso pagoExitoso = new PagoExitoso();
-                pagoExitoso.setVisible(true);
-                pagoExitoso.pack();
-                pagoExitoso.setLocationRelativeTo(null);
-                this.dispose();
+            PagoExitoso pagoExitoso = new PagoExitoso();
+            pagoExitoso.setVisible(true);
+            pagoExitoso.pack();
+            pagoExitoso.setLocationRelativeTo(null);
+            this.dispose();
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -2436,7 +2472,7 @@ public HashMap<Integer, Socio> obtenerListaDeSocios() {
     }//GEN-LAST:event_pagarTxtMouseClicked
 
     private void tablaDeudasFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tablaDeudasFocusGained
-        
+
     }//GEN-LAST:event_tablaDeudasFocusGained
 
     private void enviarDeudaBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_enviarDeudaBtnMouseClicked
@@ -2444,8 +2480,8 @@ public HashMap<Integer, Socio> obtenerListaDeSocios() {
         try {
             contenedoraSocio.cargarSociosDeJson("Socios.json");
             HashMap<Integer, Socio> socios = contenedoraSocio.listar();
-            for(Socio socio : socios.values()){
-                if(socio.getFechaVencimientoPago().isBefore(LocalDate.now())){
+            for (Socio socio : socios.values()) {
+                if (socio.getFechaVencimientoPago().isBefore(LocalDate.now())) {
                     Correos mail = new Correos();
                     new Thread(() -> {
                         try {
@@ -2471,7 +2507,7 @@ public HashMap<Integer, Socio> obtenerListaDeSocios() {
     }//GEN-LAST:event_buscarLegajoEmplFocusLost
 
     private void buscarLegajoEmplMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buscarLegajoEmplMousePressed
-        if(buscarLegajoEmpl.getText().equals(" Ingrese el legajo del empleado a buscar.")){
+        if (buscarLegajoEmpl.getText().equals(" Ingrese el legajo del empleado a buscar.")) {
             buscarLegajoEmpl.setText("");
             buscarLegajoEmpl.setForeground(Color.black);
         }
@@ -2504,14 +2540,14 @@ public HashMap<Integer, Socio> obtenerListaDeSocios() {
     }//GEN-LAST:event_mostrarSueldEmplTxtMouseExited
 
     private void pagarTxt1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pagarTxt1MouseClicked
-             try {
+        try {
             ContenedoraEmpleado contenedoraEmpleado = new ContenedoraEmpleado();
             contenedoraEmpleado.cargarEmpleadosDeJson("Empleados.json");
             String legajoStr = buscarLegajoEmpl.getText().trim();
             int legajo = Integer.parseInt(legajoStr);
             Empleado empleado = contenedoraEmpleado.buscar(legajo);
             empleado.calcularPago();
-            int importe = empleado.calcularPagoConInteres()+empleado.getSalario();
+            int importe = empleado.calcularPagoConInteres() + empleado.getSalario();
             int valorTotal = empleado.pagarCuota(importe);
             empleado.registrarPago();
             Correos mail = new Correos();
@@ -2539,11 +2575,11 @@ public HashMap<Integer, Socio> obtenerListaDeSocios() {
     }//GEN-LAST:event_pagarTxt1MouseClicked
 
     private void pagarTxt1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pagarTxt1MouseEntered
-        pagarBtn1.setBackground(new Color(80,139,166));
+        pagarBtn1.setBackground(new Color(80, 139, 166));
     }//GEN-LAST:event_pagarTxt1MouseEntered
 
     private void pagarTxt1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pagarTxt1MouseExited
-        pagarBtn1.setBackground(new Color(59,132,173));
+        pagarBtn1.setBackground(new Color(59, 132, 173));
     }//GEN-LAST:event_pagarTxt1MouseExited
 
     private void tablaPagosFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tablaPagosFocusGained
@@ -2551,15 +2587,15 @@ public HashMap<Integer, Socio> obtenerListaDeSocios() {
     }//GEN-LAST:event_tablaPagosFocusGained
 
     private void buscarTxt5MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buscarTxt5MouseEntered
-        buscarBtn5.setBackground(new Color(80,139,166));
+        buscarBtn5.setBackground(new Color(80, 139, 166));
     }//GEN-LAST:event_buscarTxt5MouseEntered
 
     private void buscarTxt5MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buscarTxt5MouseExited
-        buscarBtn5.setBackground(new Color(59,132,173));
+        buscarBtn5.setBackground(new Color(59, 132, 173));
     }//GEN-LAST:event_buscarTxt5MouseExited
 
     private void buscarTxt5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buscarTxt5MouseClicked
-                CardLayout cardLayout = (CardLayout) panelDatos1.getLayout();
+        CardLayout cardLayout = (CardLayout) panelDatos1.getLayout();
         try {
             LocalDate today = LocalDate.now();
 
@@ -2575,7 +2611,7 @@ public HashMap<Integer, Socio> obtenerListaDeSocios() {
                 cardLayout.show(panelDatos1, "cardPrincipal1");
                 buscarLegajoEmpl.setText("");
             }
-            if (today.isBefore(empleado.getFechaVencimientoPago())||today.isEqual(empleado.getFechaVencimientoPago())) {
+            if (today.isBefore(empleado.getFechaVencimientoPago()) || today.isEqual(empleado.getFechaVencimientoPago())) {
                 JOptionPane.showMessageDialog(this, "El salario del empleado " + empleado.getNombre() + " aun no ha vencido", "AVISO", JOptionPane.ERROR_MESSAGE);
                 cardLayout.show(panelDatos1, "cardPrincipal1");
                 buscarLegajoEmpl.setText("");
@@ -2637,8 +2673,38 @@ public HashMap<Integer, Socio> obtenerListaDeSocios() {
                     }
                 }
             }
-    }//GEN-LAST:event_eliminarBtn1MouseClicked
+        }//GEN-LAST:event_eliminarBtn1MouseClicked
     }
+
+        private void enviarDeudaBtn1MouseClicked (java.awt.event.MouseEvent evt){//GEN-FIRST:event_enviarDeudaBtn1MouseClicked
+          
+        }//GEN-LAST:event_enviarDeudaBtn1MouseClicked
+
+    private void enviarDeudaTxt1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_enviarDeudaTxt1MouseClicked
+        ContenedoraEmpleado contenedoraEmpleado = new ContenedoraEmpleado();
+            try {
+                contenedoraEmpleado.cargarEmpleadosDeJson("Empleados.json");
+                HashMap<Integer, Empleado> empleado = contenedoraEmpleado.listar();
+                for (Empleado e : empleado.values()) {
+                    if (e.getFechaVencimientoPago().isBefore(LocalDate.now())) {
+                        Correos mail = new Correos();
+                        new Thread(() -> {
+                            try {
+                                mail.CorreoAtraso(e.getEmail());
+                            } catch (Exception ex) {
+                                ex.printStackTrace();
+                            }
+                        }).start();
+                    }
+                }
+                JOptionPane.showMessageDialog(this, "Se han enviado correctamente los mails de deuda.\n", "CONFIRMACION", JOptionPane.INFORMATION_MESSAGE);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+    }//GEN-LAST:event_enviarDeudaTxt1MouseClicked
+
+
+
     
     
     
@@ -2735,8 +2801,11 @@ public HashMap<Integer, Socio> obtenerListaDeSocios() {
     private javax.swing.JPanel empleadosBtn;
     private javax.swing.JLabel empleadosTxt;
     private javax.swing.JPanel enviarDeudaBtn;
+    private javax.swing.JPanel enviarDeudaBtn1;
     private javax.swing.JSeparator enviarDeudaSep;
+    private javax.swing.JSeparator enviarDeudaSep1;
     private javax.swing.JLabel enviarDeudaTxt;
+    private javax.swing.JLabel enviarDeudaTxt1;
     private javax.swing.JPanel exitBtn;
     private javax.swing.JPanel exitMenu;
     private javax.swing.JLabel exitTxt;

@@ -164,11 +164,11 @@ public class Socio extends Persona{
         if (cuotaPagada) {
             this.fechaRegistroPago = today;
             this.cuota = calcularPago(); // Reinicia la cuota para el próximo periodo
-
+            this.aptoCuota = true;
             // Actualiza la fecha de vencimiento del pago
             this.fechaVencimientoPago = this.fechaVencimientoPago.plusMonths(1);
 
-            this.aptoCuota = true;
+
         } else {
             this.aptoCuota = false;
         }

@@ -8,9 +8,7 @@ import Containers.ContenedoraEmpleado;
 import Mail.Correos;
 import MenuIU.Menu;
 import Model.Cargo;
-import Model.Categoria;
 import Model.Empleado;
-import Register.RegistroExitoso;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.netbeans.lib.awtextra.AbsoluteConstraints;
 import org.netbeans.lib.awtextra.AbsoluteLayout;
@@ -586,7 +584,10 @@ public class InfoEmpleado extends JFrame {
         yMouse = evt.getY();
     }//GEN-LAST:event_exitMenu1MousePressed
 
+
     private void jLabel1MouseClicked(MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
+
+
         Menu menu = new Menu();
         menu.setVisible(true);
         menu.pack();
@@ -611,12 +612,13 @@ public class InfoEmpleado extends JFrame {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        int legajo1= Integer.parseInt(legajoTxt.getText());
         String dateOfBirthStr = fechaNacTxt.getText();
         String email = emailTxt.getText();
         LocalDate dateOfBirth = parseDate(dateOfBirthStr);
         String selectedCargoString = cargoBox.getSelectedItem().toString();
         String dniStr = dniTxt.getText();
-        String contraseña= legajo.getText()+selectedCargoString;
+        String contraseña= legajo1+selectedCargoString;
         // Crear el mapa de cargo
         Map<String, Cargo> cargoMap = new HashMap<>();
         for (Cargo cargo : Cargo.values()) {

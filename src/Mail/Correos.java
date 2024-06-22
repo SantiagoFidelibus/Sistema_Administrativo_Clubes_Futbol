@@ -183,4 +183,54 @@ public class Correos {
         envio.createEmail();
         envio.sendEmail();
     }
+
+    public void CorreoModifSueldo(String email,int valor) {
+        String subject = "NOTIFICACION MODIFICACION SUELDO";
+        String content = "<html><body>"
+                + "<h1>¡Atención Tauron!</h1>"
+                + "<p>Tu sueldo sera modificado para el proximo vencimiento.<br>"
+                + "Queremos informarte que el nuevo salario sera:<br>"
+                + "$"+valor+"<br>"
+                + "Ante cualquier duda, estamos en Administracion para usted!</p>"
+                + "<img src=\"cid:image\">"
+                + "</body></html>";
+        String imagePath = "src/com/emailPics/MODIFSUELDO.png";
+        EnvioCorreo envio = new EnvioCorreo(email, subject, content, imagePath);
+        envio.createEmail();
+        envio.sendEmail();
+    }
+
+
+    public void CorreoModifCuota(String email,int valor) {
+        String subject = "NOTIFICACION MODIFICACION CUOTA";
+        String content = "<html><body>"
+                + "<h1>¡Atención Tauron!</h1>"
+                + "<p>Tu cuota sera modificada para el proximo vencimiento.<br>"
+                + "Queremos informarte que el nuevo monto sera:<br>"
+                + "$"+valor+"<br>"
+                + "Ante cualquier duda, estamos en Administracion para usted!</p>"
+                + "<img src=\"cid:image\">"
+                + "</body></html>";
+        String imagePath = "src/com/emailPics/MODIFCUOTA.png";
+        EnvioCorreo envio = new EnvioCorreo(email, subject, content, imagePath);
+        envio.createEmail();
+        envio.sendEmail();
+    }
+
+
+    public void CorreoAtraso(String email) {
+        String subject = "SITUACION SALARIO:";
+        String content = "<html><body>"
+                + "<h1>¡Atención Tauron!</h1>"
+                + "<p>De parte de los directivos te pedimos disculpas.<br>"
+                + "Nos hemos atrasado con tu pago, pero pronto lo veras depositado, y recuerda que si nos atrasamos mas de 5 dias: <br>"
+                + "Recibiras tu sueldo con intereses<br>"
+                + "Disculpanos y sé parte de la victoria.</p>"
+                + "<img src=\"cid:image\">"
+                + "</body></html>";
+        String imagePath = "src/com/emailPics/ATRASOSUELDO.png";
+        EnvioCorreo envio = new EnvioCorreo(email, subject, content, imagePath);
+        envio.createEmail();
+        envio.sendEmail();
+    }
 }

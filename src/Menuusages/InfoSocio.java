@@ -4,11 +4,7 @@
  */
 package Menuusages;
 
-import Containers.ContenedoraEmpleado;
-import Model.Empleado;
 import Webcam.WebcamClass;
-import Medico.DetalleSocio;
-import Register.RegistroExitoso;
 
 import java.awt.*;
 
@@ -20,7 +16,6 @@ import java.awt.event.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-import java.text.ParseException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
@@ -34,16 +29,9 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javax.imageio.ImageIO;
 import javax.swing.*;
-import javax.swing.border.BevelBorder;
-import javax.swing.event.DocumentEvent;
-import javax.swing.event.DocumentListener;
-import javax.swing.text.*;
 
 import Containers.ContenedoraSocio;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.netbeans.lib.awtextra.AbsoluteConstraints;
-import org.netbeans.lib.awtextra.AbsoluteLayout;
-import rsdragdropfiles.RSDragDropFiles;
 
 import static java.lang.Long.parseLong;
 
@@ -60,7 +48,6 @@ public class InfoSocio extends JFrame {
 
     public InfoSocio(int legajo) {
         initComponents();
-        sexoTxt.setVisible(false);
         legajoTxt.setEnabled(false);
         nombreTxt.addFocusListener(new FocusAdapter() {
             @Override
@@ -341,8 +328,6 @@ public class InfoSocio extends JFrame {
         domicilioTxt = new javax.swing.JTextField();
         domicilioSep = new javax.swing.JSeparator();
         sexo = new javax.swing.JLabel();
-        sexoTxt = new javax.swing.JTextField();
-        sexoSep = new javax.swing.JSeparator();
         obraSocial = new javax.swing.JLabel();
         obraSocialTxt = new javax.swing.JTextField();
         obraSocialSep = new javax.swing.JSeparator();
@@ -661,28 +646,6 @@ public class InfoSocio extends JFrame {
         sexo.setText("GENERO");
         ventana1.add(sexo, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 320, -1, -1));
 
-        sexoTxt.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
-        sexoTxt.setForeground(new java.awt.Color(153, 153, 153));
-        sexoTxt.setText("Ingrese el genero");
-        sexoTxt.setBorder(null);
-        sexoTxt.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                sexoTxtMousePressed(evt);
-            }
-        });
-        sexoTxt.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                sexoTxtActionPerformed(evt);
-            }
-        });
-        sexoTxt.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                sexoTxtKeyTyped(evt);
-            }
-        });
-        ventana1.add(sexoTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 340, 180, 30));
-        ventana1.add(sexoSep, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 370, 180, 10));
-
         obraSocial.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         obraSocial.setText("OBRA SOCIAL");
         ventana1.add(obraSocial, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 400, -1, -1));
@@ -892,10 +855,6 @@ public class InfoSocio extends JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_domicilioTxtActionPerformed
 
-    private void sexoTxtActionPerformed(ActionEvent evt) {//GEN-FIRST:event_sexoTxtActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_sexoTxtActionPerformed
-
     private void obraSocialTxtActionPerformed(ActionEvent evt) {//GEN-FIRST:event_obraSocialTxtActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_obraSocialTxtActionPerformed
@@ -933,10 +892,7 @@ public class InfoSocio extends JFrame {
             domicilioTxt.setText("Ingrese el domicilio");
             domicilioTxt.setForeground(Color.gray);
         }
-        if (sexoTxt.getText().equals("")) {
-            sexoTxt.setText("Ingrese el genero");
-            sexoTxt.setForeground(Color.gray);
-        }
+
         if (obraSocialTxt.getText().equals("")) {
             obraSocialTxt.setText("Ingrese la obra social");
             obraSocialTxt.setForeground(Color.gray);
@@ -976,10 +932,7 @@ public class InfoSocio extends JFrame {
             domicilioTxt.setText("Ingrese el domicilio");
             domicilioTxt.setForeground(Color.gray);
         }
-        if (sexoTxt.getText().equals("")) {
-            sexoTxt.setText("Ingrese el genero");
-            sexoTxt.setForeground(Color.gray);
-        }
+
         if (obraSocialTxt.getText().equals("")) {
             obraSocialTxt.setText("Ingrese la obra social");
             obraSocialTxt.setForeground(Color.gray);
@@ -1019,10 +972,7 @@ public class InfoSocio extends JFrame {
             domicilioTxt.setText("Ingrese el domicilio");
             domicilioTxt.setForeground(Color.gray);
         }
-        if (sexoTxt.getText().equals("")) {
-            sexoTxt.setText("Ingrese el genero");
-            sexoTxt.setForeground(Color.gray);
-        }
+
         if (obraSocialTxt.getText().equals("")) {
             obraSocialTxt.setText("Ingrese la obra social");
             obraSocialTxt.setForeground(Color.gray);
@@ -1062,10 +1012,7 @@ public class InfoSocio extends JFrame {
             domicilioTxt.setText("Ingrese el domicilio");
             domicilioTxt.setForeground(Color.gray);
         }
-        if (sexoTxt.getText().equals("")) {
-            sexoTxt.setText("Ingrese el genero");
-            sexoTxt.setForeground(Color.gray);
-        }
+
         if (obraSocialTxt.getText().equals("")) {
             obraSocialTxt.setText("Ingrese la obra social");
             obraSocialTxt.setForeground(Color.gray);
@@ -1105,10 +1052,7 @@ public class InfoSocio extends JFrame {
             domicilioTxt.setText("Ingrese el domicilio");
             domicilioTxt.setForeground(Color.gray);
         }
-        if (sexoTxt.getText().equals("")) {
-            sexoTxt.setText("Ingrese el genero");
-            sexoTxt.setForeground(Color.gray);
-        }
+
         if (obraSocialTxt.getText().equals("")) {
             obraSocialTxt.setText("Ingrese la obra social");
             obraSocialTxt.setForeground(Color.gray);
@@ -1148,10 +1092,7 @@ public class InfoSocio extends JFrame {
             domicilioTxt.setText("Ingrese el domicilio");
             domicilioTxt.setForeground(Color.gray);
         }
-        if (sexoTxt.getText().equals("")) {
-            sexoTxt.setText("Ingrese el genero");
-            sexoTxt.setForeground(Color.gray);
-        }
+
         if (obraSocialTxt.getText().equals("")) {
             obraSocialTxt.setText("Ingrese la obra social");
             obraSocialTxt.setForeground(Color.gray);
@@ -1193,10 +1134,7 @@ public class InfoSocio extends JFrame {
             domicilioTxt.setText("Ingrese el domicilio");
             domicilioTxt.setForeground(Color.gray);
         }
-        if (sexoTxt.getText().equals("")) {
-            sexoTxt.setText("Ingrese el genero");
-            sexoTxt.setForeground(Color.gray);
-        }
+
         if (obraSocialTxt.getText().equals("")) {
             obraSocialTxt.setText("Ingrese la obra social");
             obraSocialTxt.setForeground(Color.gray);
@@ -1236,58 +1174,12 @@ public class InfoSocio extends JFrame {
             domicilioTxt.setText("");
             domicilioTxt.setForeground(Color.black);
         }
-        if (sexoTxt.getText().equals("")) {
-            sexoTxt.setText("Ingrese el genero");
-            sexoTxt.setForeground(Color.gray);
-        }
+
         if (obraSocialTxt.getText().equals("")) {
             obraSocialTxt.setText("Ingrese la obra social");
             obraSocialTxt.setForeground(Color.gray);
         }
     }//GEN-LAST:event_domicilioTxtMousePressed
-
-    private void sexoTxtMousePressed(MouseEvent evt) {//GEN-FIRST:event_sexoTxtMousePressed
-        if (apellidoTxt.getText().equals("")) {
-            apellidoTxt.setText("Ingrese el apellido");
-            apellidoTxt.setForeground(Color.gray);
-        }
-        if (nombreTxt.getText().equals("")) {
-            nombreTxt.setText("Ingrese el nombre");
-            nombreTxt.setForeground(Color.gray);
-        }
-        if (dniTxt.getText().equals("")) {
-            dniTxt.setText("Ingrese el documento");
-            dniTxt.setForeground(Color.gray);
-        }
-        if (legajoTxt.getText().equals("")) {
-            legajoTxt.setText("Ingrese el legajo");
-            legajoTxt.setForeground(Color.gray);
-        }
-        if (emailTxt.getText().equals("")) {
-            emailTxt.setText("Ingrese el email");
-            emailTxt.setForeground(Color.gray);
-        }
-        if (telefonoTxt.getText().equals("")) {
-            telefonoTxt.setText("Ingrese el numero de teléfono");
-            telefonoTxt.setForeground(Color.gray);
-        }
-        if (fechaNacTxt.getText().equals("")) {
-            fechaNacTxt.setText("dd/mm/aaaa");
-            fechaNacTxt.setForeground(Color.gray);
-        }
-        if (domicilioTxt.getText().equals("")) {
-            domicilioTxt.setText("Ingrese el domicilio");
-            domicilioTxt.setForeground(Color.gray);
-        }
-        if (sexoTxt.getText().equals("Ingrese el genero")) {
-            sexoTxt.setText("");
-            sexoTxt.setForeground(Color.black);
-        }
-        if (obraSocialTxt.getText().equals("")) {
-            obraSocialTxt.setText("Ingrese la obra social");
-            obraSocialTxt.setForeground(Color.gray);
-        }
-    }//GEN-LAST:event_sexoTxtMousePressed
 
     private void obraSocialTxtMousePressed(MouseEvent evt) {//GEN-FIRST:event_obraSocialTxtMousePressed
         if (apellidoTxt.getText().equals("")) {
@@ -1322,10 +1214,7 @@ public class InfoSocio extends JFrame {
             domicilioTxt.setText("Ingrese el domicilio");
             domicilioTxt.setForeground(Color.gray);
         }
-        if (sexoTxt.getText().equals("")) {
-            sexoTxt.setText("Ingrese el genero");
-            sexoTxt.setForeground(Color.gray);
-        }
+
         if (obraSocialTxt.getText().equals("Ingrese la obra social")) {
             obraSocialTxt.setText("");
             obraSocialTxt.setForeground(Color.black);
@@ -1365,10 +1254,7 @@ public class InfoSocio extends JFrame {
             domicilioTxt.setText("Ingrese el domicilio");
             domicilioTxt.setForeground(Color.gray);
         }
-        if (sexoTxt.getText().equals("")) {
-            sexoTxt.setText("Ingrese el genero");
-            sexoTxt.setForeground(Color.gray);
-        }
+
         if (obraSocialTxt.getText().equals("")) {
             obraSocialTxt.setText("Ingrese la obra social");
             obraSocialTxt.setForeground(Color.gray);
@@ -1415,7 +1301,6 @@ public class InfoSocio extends JFrame {
             JOptionPane.showMessageDialog(this, "El DNI ya se encuentra registrado.", "Error de registro", JOptionPane.ERROR_MESSAGE);
         }else {
             try {
-                sexoTxt.setText(generoComboBox.getSelectedItem().toString());
                 Socio nuevoSocio = new Socio(
                         nombreTxt.getText(),
                         apellidoTxt.getText(),
@@ -1425,7 +1310,7 @@ public class InfoSocio extends JFrame {
                         fechaNacTxt.getText(),
                         parseLong(telefonoTxt.getText()),
                         domicilioTxt.getText(),
-                        sexoTxt.getText(),
+                        generoComboBox.getSelectedItem().toString(),
                         false,
                         obraSocialTxt.getText(),
                         true,
@@ -1470,13 +1355,6 @@ public class InfoSocio extends JFrame {
         if ((c < 'a' || c > 'z') && (c < 'A' || c > 'Z') && c != ' ')
             evt.consume();
     }//GEN-LAST:event_apellidoTxtKeyTyped
-
-    private void sexoTxtKeyTyped(KeyEvent evt) {//GEN-FIRST:event_sexoTxtKeyTyped
-        char c = evt.getKeyChar();
-
-        if ((c < 'a' || c > 'z') && (c < 'A' || c > 'Z') && c != ' ')
-            evt.consume();
-    }//GEN-LAST:event_sexoTxtKeyTyped
 
     private void dniTxtKeyTyped(KeyEvent evt) {//GEN-FIRST:event_dniTxtKeyTyped
         char c = evt.getKeyChar();
@@ -1588,6 +1466,7 @@ if (jf.showOpenDialog(this) == JFileChooser.APPROVE_OPTION) {
     }//GEN-LAST:event_rechargMouseClicked
 
     private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
+
         Menu menu = new Menu();
         menu.setVisible(true);
         menu.pack();
@@ -1627,10 +1506,6 @@ if (jf.showOpenDialog(this) == JFileChooser.APPROVE_OPTION) {
         if (domicilioTxt.getText().equals("")) {
             domicilioTxt.setText("Ingrese el domicilio");
             domicilioTxt.setForeground(Color.gray);
-        }
-        if (sexoTxt.getText().equals("")) {
-            sexoTxt.setText("Ingrese el genero");
-            sexoTxt.setForeground(Color.gray);
         }
         if (obraSocialTxt.getText().equals("")) {
             obraSocialTxt.setText("Ingrese la obra social");
@@ -1750,8 +1625,6 @@ if (jf.showOpenDialog(this) == JFileChooser.APPROVE_OPTION) {
     private javax.swing.JPanel registerBtn;
     private javax.swing.JLabel registerTxt;
     private javax.swing.JLabel sexo;
-    private javax.swing.JSeparator sexoSep;
-    private javax.swing.JTextField sexoTxt;
     private javax.swing.JLabel telefono;
     private javax.swing.JSeparator telefonoSep;
     private javax.swing.JTextField telefonoTxt;

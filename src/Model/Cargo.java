@@ -6,28 +6,40 @@ public enum Cargo {
     PREPARADOR_FISICO,
     UTILERO,
     LIMPIEZA;
+
     private int salario;
 
-
-    static {
-        RECEPCIONISTA.salario = 345000;
-        ENTRENADOR.salario = 750000;
-        PREPARADOR_FISICO.salario = 480000;
-        UTILERO.salario = 320000;
-        LIMPIEZA.salario = 270000;
+    // Constructor privado para inicializar el salario
+    private Cargo() {
+        // Aquí puedes establecer un valor por defecto o dejarlo en cero
+        this.salario = 0;
     }
 
+    // Getter y Setter para el salario
+    public int getSalario() {
+        return salario;
+    }
 
     public void setSalario(int salario) {
         this.salario = salario;
     }
 
 
-    public int getSalario() {
-        return salario;
-    }
     @Override
     public String toString() {
-        return name().charAt(0) + name().substring(1).toLowerCase().replace('_', ' ');
+        switch (this) {
+            case RECEPCIONISTA:
+                return "Recepcionista";
+            case ENTRENADOR:
+                return "Entrenador";
+            case PREPARADOR_FISICO:
+                return "Preparador Físico";
+            case UTILERO:
+                return "Utilero";
+            case LIMPIEZA:
+                return "Limpieza";
+            default:
+                return super.toString();
+        }
     }
 }

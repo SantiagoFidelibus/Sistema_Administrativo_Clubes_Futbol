@@ -2,7 +2,7 @@
 <project name="datos.Login" default="default" basedir=".">
     <description>Builds, tests, and runs the project datos.Login.</description>
     <import file="nbproject/build-impl.xml"/>
-
+    <property name="DSTAMP" value="${DSTAMP}"/>
     <property name="src" location="src"/>
     <property name="build" location="build"/>
     <property name="dist"  location="dist"/>

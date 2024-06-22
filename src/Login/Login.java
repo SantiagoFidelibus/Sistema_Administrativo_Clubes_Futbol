@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package Login;
+import Boss.MenuBoss;
 import IUEmpleado.IngresoSocios;
 import IUEmpleado.IngresoSociosSinCam;
 import Medico.Medico;
@@ -69,7 +70,7 @@ public class Login extends JFrame {
             }
         });
 
-        // FocusListener para limpiar el texto cuando el campo obtiene el foco
+
         userTxt.addFocusListener(new FocusAdapter() {
             @Override
             public void focusGained(FocusEvent e) {
@@ -124,6 +125,13 @@ public class Login extends JFrame {
                             medico.setVisible(true);
                             medico.pack();
                             medico.setLocationRelativeTo(null);
+                            Login.this.dispose();
+
+                        } else if ((userTxt.getText().equals("Jefe")) && (password.equals("Jefe"))) {
+                            MenuBoss mbs = new MenuBoss(0);
+                            mbs.setVisible(true);
+                            mbs.pack();
+                            mbs.setLocationRelativeTo(null);
                             Login.this.dispose();
 
                         } else if ((userTxt.getText().equals("Empleado")) && (password.equals("Recepcionista"))) {
@@ -480,6 +488,13 @@ public class Login extends JFrame {
             medico.setLocationRelativeTo(null);
             this.dispose();
             
+        }else if ((userTxt.getText().equals("Jefe")) && (password.equals("Jefe"))) {
+            MenuBoss mbs = new MenuBoss(0);
+            mbs.setVisible(true);
+            mbs.pack();
+            mbs.setLocationRelativeTo(null);
+            Login.this.dispose();
+
         } else if((userTxt.getText().equals("Empleado")) && (password.contains("Recepcionista"))){
             int respuesta = JOptionPane.showConfirmDialog(Login.this, "¿Cuentas con cámara?", "AVISO", JOptionPane.YES_NO_OPTION);
             System.out.println(respuesta);

@@ -4,6 +4,7 @@
  */
 package Menuusages;
 
+import Boss.MenuBoss;
 import Login.*;
 import Login.Login;
 import MenuIU.Menu;
@@ -16,12 +17,13 @@ import java.io.IOException;
 
 
 public class ModifExitosa extends javax.swing.JFrame {
-
+private int opc;
     /**
      * Creates new form RegistroExitoso
      */
-    public ModifExitosa() {
+    public ModifExitosa(int number) {
         initComponents();
+        opc = number;
         setTitle("Administracion Acantilados FC");
         try{
             File iconFile = new File("src/com/images/Tick 60x60.png"); // Ruta de tu imagen
@@ -116,10 +118,32 @@ public class ModifExitosa extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void okBtnTxtMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_okBtnTxtMouseClicked
-        Menu menu = new Menu();
-        menu.setVisible(true);
-        menu.pack();
-        menu.setLocationRelativeTo(null);
+        if(opc == 1){
+            Menu menu = new Menu();
+            menu.setVisible(true);
+            menu.pack();
+            menu.setLocationRelativeTo(null);
+        }else if(opc == 2){
+            MenuBoss menu = new MenuBoss(1);
+            menu.setVisible(true);
+            menu.pack();
+            menu.setLocationRelativeTo(null);
+        }else if(opc == 3){
+            MenuBoss menu = new MenuBoss(2);
+            menu.setVisible(true);
+            menu.pack();
+            menu.setLocationRelativeTo(null);
+        }else if(opc == 4){
+            Menu menu = new Menu();
+            menu.setVisible(true);
+            menu.pack();
+            menu.setLocationRelativeTo(null);
+        }
+
+
+
+
+
         this.dispose();
     }//GEN-LAST:event_okBtnTxtMouseClicked
 

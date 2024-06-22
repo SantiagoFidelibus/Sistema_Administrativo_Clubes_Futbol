@@ -881,7 +881,7 @@ public class ModificarEmpleado extends javax.swing.JFrame {
                 contenedoraEmpleado.guardarEmpleadosEnJson("Empleados.json");
 
                 //Barra de carga antes de mandar a registro exitoso (Opcional)
-                ModifExitosa modifEx = new ModifExitosa();
+                ModifExitosa modifEx = new ModifExitosa(4);
                 modifEx.setVisible(true);
                 modifEx.pack();
                 modifEx.setLocationRelativeTo(null);
