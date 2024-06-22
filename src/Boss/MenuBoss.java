@@ -186,65 +186,63 @@ public class MenuBoss extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
+        background = new javax.swing.JPanel();
         exitMenu = new javax.swing.JPanel();
         exitBtn = new javax.swing.JPanel();
         exitTxt = new javax.swing.JLabel();
-        TotalBtn1 = new javax.swing.JLabel();
-        verTxt = new javax.swing.JLabel();
         Dashboard = new javax.swing.JPanel();
         logo = new javax.swing.JLabel();
-        SalaryBtn = new javax.swing.JLabel();
-        salaryTxt = new javax.swing.JLabel();
-        cuoteBtn = new javax.swing.JLabel();
-        CuoteTxt = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
+        verTotalBtn = new javax.swing.JPanel();
+        verTotalTxt = new javax.swing.JLabel();
+        modificarSueldoBtn = new javax.swing.JPanel();
+        modificarSueldoTxt = new javax.swing.JLabel();
+        modificarCuotaBtn = new javax.swing.JPanel();
+        modificarCuotaTxt = new javax.swing.JLabel();
+        cerrarSesionBtn = new javax.swing.JLabel();
         header = new javax.swing.JPanel();
         timeText = new javax.swing.JLabel();
         dateText = new javax.swing.JLabel();
         administracionTxt = new javax.swing.JLabel();
         panelVentana = new javax.swing.JTabbedPane();
         ViewWindow = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        TablaCuota = new javax.swing.JTable();
+        tituloCargo = new javax.swing.JLabel();
+        tituloCategoria = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         TablaSalario = new javax.swing.JTable();
-        tituloSocios = new javax.swing.JLabel();
-        tituloSocios1 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        TablaCuota = new javax.swing.JTable();
         SalaryWindow = new javax.swing.JPanel();
-        SelecTitle = new javax.swing.JLabel();
         Title = new javax.swing.JLabel();
+        SelecTitle = new javax.swing.JLabel();
+        cargoBox = new javax.swing.JComboBox<>();
         panelDatos = new javax.swing.JPanel();
         cardPrincipal = new javax.swing.JPanel();
         card1 = new javax.swing.JPanel();
-        cargoModTxt = new javax.swing.JLabel();
         panelDatosSocio = new javax.swing.JPanel();
-        pagarBtn = new javax.swing.JPanel();
-        pagarTxt = new javax.swing.JLabel();
+        cargoModTxt = new javax.swing.JLabel();
         salaryNewTxt = new javax.swing.JTextField();
-        jPanel3 = new javax.swing.JPanel();
-        cargoBox = new javax.swing.JComboBox<>();
+        modificarBtn = new javax.swing.JPanel();
+        modificarTxt = new javax.swing.JLabel();
         CuoteWindow = new javax.swing.JPanel();
-        SelecTitle1 = new javax.swing.JLabel();
         Title1 = new javax.swing.JLabel();
+        SelecTitle1 = new javax.swing.JLabel();
         categoriaBox = new javax.swing.JComboBox<>();
         panelDatosModif = new javax.swing.JPanel();
         cardPrincipal1 = new javax.swing.JPanel();
         cardModif = new javax.swing.JPanel();
-        cargoModTxt1 = new javax.swing.JLabel();
         panelDatosSocio1 = new javax.swing.JPanel();
-        pagarTxt1 = new javax.swing.JLabel();
-        pagarBtn1 = new javax.swing.JPanel();
+        cargoModTxt1 = new javax.swing.JLabel();
         cuoteNewTxt1 = new javax.swing.JTextField();
-        jPanel2 = new javax.swing.JPanel();
+        modificarBtn1 = new javax.swing.JPanel();
+        modificarTxt1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setLocationByPlatform(true);
         setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        background.setBackground(new java.awt.Color(255, 255, 255));
+        background.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         exitMenu.setBackground(new java.awt.Color(255, 255, 255));
         exitMenu.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
@@ -270,15 +268,12 @@ public class MenuBoss extends javax.swing.JFrame {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 exitTxtMouseClicked(evt);
             }
-
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 exitTxtMouseEntered(evt);
             }
-
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 exitTxtMouseExited(evt);
             }
-
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 exitTxtMousePressed(evt);
             }
@@ -287,48 +282,27 @@ public class MenuBoss extends javax.swing.JFrame {
         javax.swing.GroupLayout exitBtnLayout = new javax.swing.GroupLayout(exitBtn);
         exitBtn.setLayout(exitBtnLayout);
         exitBtnLayout.setHorizontalGroup(
-                exitBtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGap(0, 40, Short.MAX_VALUE)
-                        .addGroup(exitBtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(exitBtnLayout.createSequentialGroup()
-                                        .addGap(0, 0, Short.MAX_VALUE)
-                                        .addComponent(exitTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(0, 0, Short.MAX_VALUE)))
+            exitBtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 40, Short.MAX_VALUE)
+            .addGroup(exitBtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(exitBtnLayout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(exitTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
         exitBtnLayout.setVerticalGroup(
-                exitBtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGap(0, 40, Short.MAX_VALUE)
-                        .addGroup(exitBtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(exitBtnLayout.createSequentialGroup()
-                                        .addGap(0, 0, Short.MAX_VALUE)
-                                        .addComponent(exitTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(0, 0, Short.MAX_VALUE)))
+            exitBtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 40, Short.MAX_VALUE)
+            .addGroup(exitBtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(exitBtnLayout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(exitTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
 
         exitMenu.add(exitBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 0, -1, 40));
 
-        jPanel1.add(exitMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 830, 40));
-        jPanel1.add(TotalBtn1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 210, 170, 40));
-
-        verTxt.setFont(new java.awt.Font("Roboto", 1, 16)); // NOI18N
-        verTxt.setForeground(new java.awt.Color(255, 255, 255));
-        verTxt.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/images/viewMoney.png"))); // NOI18N
-        verTxt.setText("Ver Total");
-        verTxt.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        verTxt.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                verTxtMouseClicked(evt);
-            }
-
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                verTxtMouseEntered(evt);
-            }
-
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                verTxtMouseExited(evt);
-            }
-        });
-        jPanel1.add(verTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 210, 150, 40));
+        background.add(exitMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 830, 40));
 
         Dashboard.setBackground(new java.awt.Color(80, 139, 166));
         Dashboard.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -337,186 +311,195 @@ public class MenuBoss extends javax.swing.JFrame {
         logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/images/LOGO1.png"))); // NOI18N
         Dashboard.add(logo, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 50, -1, -1));
 
-        SalaryBtn.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                SalaryBtnMouseClicked(evt);
-            }
-        });
-        Dashboard.add(SalaryBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 280, 180, 40));
+        verTotalBtn.setBackground(new java.awt.Color(80, 139, 166));
+        verTotalBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        verTotalBtn.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        salaryTxt.setFont(new java.awt.Font("Roboto", 1, 16)); // NOI18N
-        salaryTxt.setForeground(new java.awt.Color(255, 255, 255));
-        salaryTxt.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/images/salario.png"))); // NOI18N
-        salaryTxt.setText("Modificar Sueldo");
-        salaryTxt.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        salaryTxt.addMouseListener(new java.awt.event.MouseAdapter() {
+        verTotalTxt.setFont(new java.awt.Font("Roboto", 1, 16)); // NOI18N
+        verTotalTxt.setForeground(new java.awt.Color(255, 255, 255));
+        verTotalTxt.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/images/viewMoney.png"))); // NOI18N
+        verTotalTxt.setText("Ver Total");
+        verTotalTxt.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        verTotalTxt.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                salaryTxtMouseClicked(evt);
+                verTotalTxtMouseClicked(evt);
             }
-
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                salaryTxtMouseEntered(evt);
+                verTotalTxtMouseEntered(evt);
             }
-
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                salaryTxtMouseExited(evt);
+                verTotalTxtMouseExited(evt);
             }
         });
-        Dashboard.add(salaryTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 280, 170, 40));
-        Dashboard.add(cuoteBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 350, 170, 40));
+        verTotalBtn.add(verTotalTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 170, 40));
 
-        CuoteTxt.setFont(new java.awt.Font("Roboto", 1, 16)); // NOI18N
-        CuoteTxt.setForeground(new java.awt.Color(255, 255, 255));
-        CuoteTxt.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/images/cuota.png"))); // NOI18N
-        CuoteTxt.setText("Modificar Cuota");
-        CuoteTxt.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        CuoteTxt.addMouseListener(new java.awt.event.MouseAdapter() {
+        Dashboard.add(verTotalBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 220, 180, 40));
+
+        modificarSueldoBtn.setBackground(new java.awt.Color(80, 139, 166));
+        modificarSueldoBtn.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        modificarSueldoTxt.setFont(new java.awt.Font("Roboto", 1, 16)); // NOI18N
+        modificarSueldoTxt.setForeground(new java.awt.Color(255, 255, 255));
+        modificarSueldoTxt.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/images/salario.png"))); // NOI18N
+        modificarSueldoTxt.setText("Modificar Sueldo");
+        modificarSueldoTxt.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        modificarSueldoTxt.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                CuoteTxtMouseClicked(evt);
+                modificarSueldoTxtMouseClicked(evt);
             }
-
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                CuoteTxtMouseEntered(evt);
+                modificarSueldoTxtMouseEntered(evt);
             }
-
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                CuoteTxtMouseExited(evt);
+                modificarSueldoTxtMouseExited(evt);
             }
         });
-        Dashboard.add(CuoteTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 350, 160, 40));
+        modificarSueldoBtn.add(modificarSueldoTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 0, 174, 40));
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Cerrar Sesion");
-        jLabel1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
+        Dashboard.add(modificarSueldoBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 280, 180, 40));
+
+        modificarCuotaBtn.setBackground(new java.awt.Color(80, 139, 166));
+        modificarCuotaBtn.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        modificarCuotaTxt.setFont(new java.awt.Font("Roboto", 1, 16)); // NOI18N
+        modificarCuotaTxt.setForeground(new java.awt.Color(255, 255, 255));
+        modificarCuotaTxt.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/images/cuota.png"))); // NOI18N
+        modificarCuotaTxt.setText("Modificar Cuota");
+        modificarCuotaTxt.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        modificarCuotaTxt.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel1MouseClicked(evt);
+                modificarCuotaTxtMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                modificarCuotaTxtMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                modificarCuotaTxtMouseExited(evt);
             }
         });
-        Dashboard.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 420, -1, 30));
+        modificarCuotaBtn.add(modificarCuotaTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 0, 174, 40));
 
-        jPanel1.add(Dashboard, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 200, 470));
+        Dashboard.add(modificarCuotaBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 340, 180, 40));
+
+        cerrarSesionBtn.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
+        cerrarSesionBtn.setForeground(new java.awt.Color(255, 255, 255));
+        cerrarSesionBtn.setText("Cerrar Sesion");
+        cerrarSesionBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        cerrarSesionBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                cerrarSesionBtnMouseClicked(evt);
+            }
+        });
+        Dashboard.add(cerrarSesionBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 420, -1, 30));
+
+        background.add(Dashboard, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 200, 470));
 
         header.setBackground(new java.awt.Color(50, 115, 153));
+        header.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         timeText.setFont(new java.awt.Font("Roboto", 1, 30)); // NOI18N
         timeText.setForeground(new java.awt.Color(255, 255, 255));
         timeText.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        header.add(timeText, new org.netbeans.lib.awtextra.AbsoluteConstraints(524, 14, 170, 40));
 
         dateText.setFont(new java.awt.Font("Roboto", 1, 30)); // NOI18N
         dateText.setForeground(new java.awt.Color(255, 255, 255));
         dateText.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         dateText.setText("{dayname} {day} de {month} de {year} ");
+        header.add(dateText, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 70, -1, -1));
 
         administracionTxt.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
         administracionTxt.setForeground(new java.awt.Color(255, 255, 255));
         administracionTxt.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        administracionTxt.setText("Jefe");
+        administracionTxt.setText("JEFE");
+        header.add(administracionTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 20, -1, 32));
 
-        javax.swing.GroupLayout headerLayout = new javax.swing.GroupLayout(header);
-        header.setLayout(headerLayout);
-        headerLayout.setHorizontalGroup(
-                headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(headerLayout.createSequentialGroup()
-                                .addGap(79, 79, 79)
-                                .addGroup(headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(headerLayout.createSequentialGroup()
-                                                .addComponent(administracionTxt)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                .addComponent(timeText, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGroup(headerLayout.createSequentialGroup()
-                                                .addComponent(dateText)
-                                                .addGap(0, 111, Short.MAX_VALUE)))
-                                .addContainerGap())
-        );
-        headerLayout.setVerticalGroup(
-                headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(headerLayout.createSequentialGroup()
-                                .addGap(14, 14, 14)
-                                .addGroup(headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(administracionTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(timeText, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(18, 18, 18)
-                                .addComponent(dateText)
-                                .addContainerGap(22, Short.MAX_VALUE))
-        );
-
-        jPanel1.add(header, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 40, 700, 130));
+        background.add(header, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 40, 700, 130));
 
         ViewWindow.setBackground(new java.awt.Color(255, 255, 255));
         ViewWindow.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        TablaCuota.setModel(new javax.swing.table.DefaultTableModel(
-                new Object[][]{
-                        {null, null},
-                        {null, null},
-                        {null, null},
-                        {null, null}
-                },
-                new String[]{
-                        "Categoria", "Valor"
-                }
-        ) {
-            Class[] types = new Class[]{
-                    java.lang.Object.class, java.lang.Integer.class
-            };
+        tituloCargo.setFont(new java.awt.Font("Corbel", 1, 28)); // NOI18N
+        tituloCargo.setForeground(new java.awt.Color(153, 153, 153));
+        tituloCargo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        tituloCargo.setText("Salario por cargo");
+        ViewWindow.add(tituloCargo, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 210, 250, -1));
 
-            public Class getColumnClass(int columnIndex) {
-                return types[columnIndex];
-            }
-        });
-        jScrollPane1.setViewportView(TablaCuota);
-
-        ViewWindow.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 270, 195, 149));
+        tituloCategoria.setFont(new java.awt.Font("Corbel", 1, 28)); // NOI18N
+        tituloCategoria.setForeground(new java.awt.Color(153, 153, 153));
+        tituloCategoria.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        tituloCategoria.setText("Cuota por categoria");
+        ViewWindow.add(tituloCategoria, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 210, 250, -1));
 
         TablaSalario.setModel(new javax.swing.table.DefaultTableModel(
-                new Object[][]{
-                        {null, null},
-                        {null, null},
-                        {null, null},
-                        {null, null}
-                },
-                new String[]{
-                        "Cargo", "Valor"
-                }
+            new Object [][] {
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null}
+            },
+            new String [] {
+                "Cargo", "Valor"
+            }
         ) {
-            Class[] types = new Class[]{
-                    java.lang.Object.class, java.lang.Integer.class
+            Class[] types = new Class [] {
+                java.lang.Object.class, java.lang.Integer.class
             };
 
             public Class getColumnClass(int columnIndex) {
-                return types[columnIndex];
+                return types [columnIndex];
             }
         });
         jScrollPane2.setViewportView(TablaSalario);
 
-        ViewWindow.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 272, 204, 149));
+        ViewWindow.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 250, 250, 180));
 
-        tituloSocios.setFont(new java.awt.Font("Corbel", 1, 28)); // NOI18N
-        tituloSocios.setForeground(new java.awt.Color(153, 153, 153));
-        tituloSocios.setText("Cuota por categoria");
-        ViewWindow.add(tituloSocios, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 230, 360, -1));
+        TablaCuota.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null}
+            },
+            new String [] {
+                "Categoria", "Valor"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Object.class, java.lang.Integer.class
+            };
 
-        tituloSocios1.setFont(new java.awt.Font("Corbel", 1, 28)); // NOI18N
-        tituloSocios1.setForeground(new java.awt.Color(153, 153, 153));
-        tituloSocios1.setText("Salario por cargo");
-        ViewWindow.add(tituloSocios1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 230, 360, -1));
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(TablaCuota);
+
+        ViewWindow.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 250, 250, 180));
 
         panelVentana.addTab("tab1", ViewWindow);
 
         SalaryWindow.setBackground(new java.awt.Color(255, 255, 255));
         SalaryWindow.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        SelecTitle.setFont(new java.awt.Font("Roboto Light", 1, 15)); // NOI18N
-        SelecTitle.setText("Seleccione el cargo");
-        SelecTitle.setToolTipText("");
-        SalaryWindow.add(SelecTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 230, 340, 20));
-
         Title.setFont(new java.awt.Font("Corbel", 1, 25)); // NOI18N
         Title.setForeground(new java.awt.Color(153, 153, 153));
         Title.setText("Modificar Salario por Cargo");
-        SalaryWindow.add(Title, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, 590, -1));
+        SalaryWindow.add(Title, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 200, 320, -1));
+
+        SelecTitle.setFont(new java.awt.Font("Roboto Light", 1, 15)); // NOI18N
+        SelecTitle.setForeground(new java.awt.Color(153, 153, 153));
+        SelecTitle.setText("SELECCIONE EL CARGO");
+        SelecTitle.setToolTipText("");
+        SalaryWindow.add(SelecTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 260, 190, 20));
+
+        cargoBox.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        cargoBox.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                cargoBoxMousePressed(evt);
+            }
+        });
+        SalaryWindow.add(cargoBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 290, 220, 40));
 
         panelDatos.setBackground(new java.awt.Color(255, 255, 255));
         panelDatos.setLayout(new java.awt.CardLayout());
@@ -526,12 +509,12 @@ public class MenuBoss extends javax.swing.JFrame {
         javax.swing.GroupLayout cardPrincipalLayout = new javax.swing.GroupLayout(cardPrincipal);
         cardPrincipal.setLayout(cardPrincipalLayout);
         cardPrincipalLayout.setHorizontalGroup(
-                cardPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGap(0, 250, Short.MAX_VALUE)
+            cardPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 250, Short.MAX_VALUE)
         );
         cardPrincipalLayout.setVerticalGroup(
-                cardPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGap(0, 270, Short.MAX_VALUE)
+            cardPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 270, Short.MAX_VALUE)
         );
 
         panelDatos.add(cardPrincipal, "cardPrincipal");
@@ -540,76 +523,64 @@ public class MenuBoss extends javax.swing.JFrame {
         card1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         card1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        cargoModTxt.setFont(new java.awt.Font("Corbel", 1, 28)); // NOI18N
-        cargoModTxt.setForeground(new java.awt.Color(153, 153, 153));
-        card1.add(cargoModTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 40, 170, 40));
-
         panelDatosSocio.setBackground(new java.awt.Color(255, 255, 255));
+        panelDatosSocio.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         panelDatosSocio.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        pagarBtn.setBackground(new java.awt.Color(50, 115, 153));
+        cargoModTxt.setFont(new java.awt.Font("Corbel", 1, 25)); // NOI18N
+        cargoModTxt.setForeground(new java.awt.Color(153, 153, 153));
+        panelDatosSocio.add(cargoModTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 40, 190, 40));
 
-        pagarTxt.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
-        pagarTxt.setForeground(new java.awt.Color(255, 255, 255));
-        pagarTxt.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        pagarTxt.setText("MODIFICAR");
-        pagarTxt.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        pagarTxt.addMouseListener(new java.awt.event.MouseAdapter() {
+        salaryNewTxt.setFont(new java.awt.Font("Roboto Light", 0, 14)); // NOI18N
+        salaryNewTxt.setText(" Ingrese el nuevo valor.");
+        salaryNewTxt.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        salaryNewTxt.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                salaryNewTxtFocusLost(evt);
+            }
+        });
+        salaryNewTxt.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                salaryNewTxtMousePressed(evt);
+            }
+        });
+        panelDatosSocio.add(salaryNewTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, 190, 40));
+
+        modificarBtn.setBackground(new java.awt.Color(50, 115, 153));
+
+        modificarTxt.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
+        modificarTxt.setForeground(new java.awt.Color(255, 255, 255));
+        modificarTxt.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        modificarTxt.setText("MODIFICAR");
+        modificarTxt.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        modificarTxt.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                pagarTxtMouseClicked(evt);
+                modificarTxtMouseClicked(evt);
             }
-
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                pagarTxtMouseEntered(evt);
+                modificarTxtMouseEntered(evt);
             }
-
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                pagarTxtMouseExited(evt);
+                modificarTxtMouseExited(evt);
             }
         });
 
-        javax.swing.GroupLayout pagarBtnLayout = new javax.swing.GroupLayout(pagarBtn);
-        pagarBtn.setLayout(pagarBtnLayout);
-        pagarBtnLayout.setHorizontalGroup(
-                pagarBtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addGroup(pagarBtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(pagarBtnLayout.createSequentialGroup()
-                                        .addGap(0, 0, Short.MAX_VALUE)
-                                        .addComponent(pagarTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(0, 0, Short.MAX_VALUE)))
+        javax.swing.GroupLayout modificarBtnLayout = new javax.swing.GroupLayout(modificarBtn);
+        modificarBtn.setLayout(modificarBtnLayout);
+        modificarBtnLayout.setHorizontalGroup(
+            modificarBtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(modificarBtnLayout.createSequentialGroup()
+                .addComponent(modificarTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
-        pagarBtnLayout.setVerticalGroup(
-                pagarBtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addGroup(pagarBtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(pagarBtnLayout.createSequentialGroup()
-                                        .addGap(0, 0, Short.MAX_VALUE)
-                                        .addComponent(pagarTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(0, 0, Short.MAX_VALUE)))
+        modificarBtnLayout.setVerticalGroup(
+            modificarBtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(modificarBtnLayout.createSequentialGroup()
+                .addComponent(modificarTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
-        panelDatosSocio.add(pagarBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 200, 230, 50));
-
-        salaryNewTxt.setText("Ingrese el nuevo valor");
-        salaryNewTxt.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        panelDatosSocio.add(salaryNewTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 110, 200, -1));
-
-        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-                jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGap(0, 248, Short.MAX_VALUE)
-        );
-        jPanel3Layout.setVerticalGroup(
-                jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGap(0, 268, Short.MAX_VALUE)
-        );
-
-        panelDatosSocio.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 250, 270));
+        panelDatosSocio.add(modificarBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 180, 190, 50));
 
         card1.add(panelDatosSocio, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 250, 270));
 
@@ -617,28 +588,21 @@ public class MenuBoss extends javax.swing.JFrame {
 
         SalaryWindow.add(panelDatos, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 190, 250, 270));
 
-        cargoBox.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        cargoBox.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                cargoBoxMousePressed(evt);
-            }
-        });
-        SalaryWindow.add(cargoBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 260, 220, 40));
-
         panelVentana.addTab("tab2", SalaryWindow);
 
         CuoteWindow.setBackground(new java.awt.Color(255, 255, 255));
         CuoteWindow.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        SelecTitle1.setFont(new java.awt.Font("Roboto Light", 1, 15)); // NOI18N
-        SelecTitle1.setText("Seleccione la categoria");
-        SelecTitle1.setToolTipText("");
-        CuoteWindow.add(SelecTitle1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 230, 340, 20));
-
         Title1.setFont(new java.awt.Font("Corbel", 1, 25)); // NOI18N
         Title1.setForeground(new java.awt.Color(153, 153, 153));
         Title1.setText("Modificar Cuota por Categoria");
-        CuoteWindow.add(Title1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, 590, -1));
+        CuoteWindow.add(Title1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 200, 350, -1));
+
+        SelecTitle1.setFont(new java.awt.Font("Roboto Light", 1, 15)); // NOI18N
+        SelecTitle1.setForeground(new java.awt.Color(153, 153, 153));
+        SelecTitle1.setText("SELECCIONE LA CATEGORIA");
+        SelecTitle1.setToolTipText("");
+        CuoteWindow.add(SelecTitle1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 260, 220, 20));
 
         categoriaBox.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         categoriaBox.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -646,7 +610,7 @@ public class MenuBoss extends javax.swing.JFrame {
                 categoriaBoxMousePressed(evt);
             }
         });
-        CuoteWindow.add(categoriaBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 260, 220, 40));
+        CuoteWindow.add(categoriaBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 290, 220, 40));
 
         panelDatosModif.setBackground(new java.awt.Color(255, 255, 255));
         panelDatosModif.setLayout(new java.awt.CardLayout());
@@ -656,12 +620,12 @@ public class MenuBoss extends javax.swing.JFrame {
         javax.swing.GroupLayout cardPrincipal1Layout = new javax.swing.GroupLayout(cardPrincipal1);
         cardPrincipal1.setLayout(cardPrincipal1Layout);
         cardPrincipal1Layout.setHorizontalGroup(
-                cardPrincipal1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGap(0, 250, Short.MAX_VALUE)
+            cardPrincipal1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 250, Short.MAX_VALUE)
         );
         cardPrincipal1Layout.setVerticalGroup(
-                cardPrincipal1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGap(0, 270, Short.MAX_VALUE)
+            cardPrincipal1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 270, Short.MAX_VALUE)
         );
 
         panelDatosModif.add(cardPrincipal1, "cardPrincipal1");
@@ -670,53 +634,28 @@ public class MenuBoss extends javax.swing.JFrame {
         cardModif.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 5));
         cardModif.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        cargoModTxt1.setFont(new java.awt.Font("Corbel", 1, 25)); // NOI18N
-        cargoModTxt1.setForeground(new java.awt.Color(153, 153, 153));
-        cardModif.add(cargoModTxt1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 40, 180, 40));
-
         panelDatosSocio1.setBackground(new java.awt.Color(255, 255, 255));
+        panelDatosSocio1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         panelDatosSocio1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        pagarTxt1.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
-        pagarTxt1.setForeground(new java.awt.Color(255, 255, 255));
-        pagarTxt1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        pagarTxt1.setText("MODIFICAR");
-        pagarTxt1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        pagarTxt1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                pagarTxt1MouseClicked(evt);
-            }
+        cargoModTxt1.setFont(new java.awt.Font("Corbel", 1, 25)); // NOI18N
+        cargoModTxt1.setForeground(new java.awt.Color(153, 153, 153));
+        panelDatosSocio1.add(cargoModTxt1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, 190, 40));
 
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                pagarTxt1MouseEntered(evt);
-            }
-
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                pagarTxt1MouseExited(evt);
+        cuoteNewTxt1.setFont(new java.awt.Font("Roboto Light", 0, 14)); // NOI18N
+        cuoteNewTxt1.setText(" Ingrese el nuevo valor.");
+        cuoteNewTxt1.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        cuoteNewTxt1.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                cuoteNewTxt1FocusLost(evt);
             }
         });
-        panelDatosSocio1.add(pagarTxt1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 200, 230, 50));
-
-        pagarBtn1.setBackground(new java.awt.Color(50, 115, 153));
-
-        javax.swing.GroupLayout pagarBtn1Layout = new javax.swing.GroupLayout(pagarBtn1);
-        pagarBtn1.setLayout(pagarBtn1Layout);
-        pagarBtn1Layout.setHorizontalGroup(
-                pagarBtn1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGap(0, 0, Short.MAX_VALUE)
-        );
-        pagarBtn1Layout.setVerticalGroup(
-                pagarBtn1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGap(0, 0, Short.MAX_VALUE)
-        );
-
-        panelDatosSocio1.add(pagarBtn1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 200, 230, 50));
-
-        cuoteNewTxt1.setText("Ingrese el nuevo valor");
-        cuoteNewTxt1.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         cuoteNewTxt1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 cuoteNewTxt1MouseClicked(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                cuoteNewTxt1MousePressed(evt);
             }
         });
         cuoteNewTxt1.addActionListener(new java.awt.event.ActionListener() {
@@ -724,23 +663,43 @@ public class MenuBoss extends javax.swing.JFrame {
                 cuoteNewTxt1ActionPerformed(evt);
             }
         });
-        panelDatosSocio1.add(cuoteNewTxt1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 110, 200, -1));
+        panelDatosSocio1.add(cuoteNewTxt1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, 190, 40));
 
-        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        modificarBtn1.setBackground(new java.awt.Color(50, 115, 153));
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-                jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGap(0, 248, Short.MAX_VALUE)
+        modificarTxt1.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
+        modificarTxt1.setForeground(new java.awt.Color(255, 255, 255));
+        modificarTxt1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        modificarTxt1.setText("MODIFICAR");
+        modificarTxt1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        modificarTxt1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                modificarTxt1MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                modificarTxt1MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                modificarTxt1MouseExited(evt);
+            }
+        });
+
+        javax.swing.GroupLayout modificarBtn1Layout = new javax.swing.GroupLayout(modificarBtn1);
+        modificarBtn1.setLayout(modificarBtn1Layout);
+        modificarBtn1Layout.setHorizontalGroup(
+            modificarBtn1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 190, Short.MAX_VALUE)
+            .addGroup(modificarBtn1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(modificarTxt1, javax.swing.GroupLayout.DEFAULT_SIZE, 190, Short.MAX_VALUE))
         );
-        jPanel2Layout.setVerticalGroup(
-                jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGap(0, 268, Short.MAX_VALUE)
+        modificarBtn1Layout.setVerticalGroup(
+            modificarBtn1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 50, Short.MAX_VALUE)
+            .addGroup(modificarBtn1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(modificarTxt1, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE))
         );
 
-        panelDatosSocio1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 250, 270));
+        panelDatosSocio1.add(modificarBtn1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 180, 190, 50));
 
         cardModif.add(panelDatosSocio1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 250, 270));
 
@@ -750,9 +709,9 @@ public class MenuBoss extends javax.swing.JFrame {
 
         panelVentana.addTab("tab3", CuoteWindow);
 
-        jPanel1.add(panelVentana, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, -40, 630, 500));
+        background.add(panelVentana, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, -40, 630, 500));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 460));
+        getContentPane().add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 460));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -786,58 +745,15 @@ public class MenuBoss extends javax.swing.JFrame {
         yMouse = evt.getY();
     }//GEN-LAST:event_exitMenuMousePressed
 
-    private void verTxtMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_verTxtMouseClicked
-        panelVentana.setSelectedIndex(0);
-        actualizarTablaCuota();
-        actualizarTablaSalario();
-    }//GEN-LAST:event_verTxtMouseClicked
-
-    private void verTxtMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_verTxtMouseEntered
-        TotalBtn1.setBackground(new Color(50, 115, 153));
-    }//GEN-LAST:event_verTxtMouseEntered
-
-    private void verTxtMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_verTxtMouseExited
-        TotalBtn1.setBackground(new Color(80, 139, 166));
-    }//GEN-LAST:event_verTxtMouseExited
-
-    private void salaryTxtMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_salaryTxtMouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_salaryTxtMouseClicked
-
-    private void salaryTxtMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_salaryTxtMouseEntered
-        // TODO add your handling code here:
-    }//GEN-LAST:event_salaryTxtMouseEntered
-
-    private void salaryTxtMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_salaryTxtMouseExited
-        // TODO add your handling code here:
-    }//GEN-LAST:event_salaryTxtMouseExited
-
-    private void CuoteTxtMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CuoteTxtMouseClicked
-        panelVentana.setSelectedIndex(2);
-
-        categoriaBox.setSelectedIndex(-1);
-        CardLayout cardLayout = (CardLayout) panelDatosModif.getLayout();
-        cardLayout.show(panelDatosModif, "cardPrincipal1");
-
-    }//GEN-LAST:event_CuoteTxtMouseClicked
-
-    private void CuoteTxtMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CuoteTxtMouseEntered
-        // TODO add your handling code here:
-    }//GEN-LAST:event_CuoteTxtMouseEntered
-
-    private void CuoteTxtMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CuoteTxtMouseExited
-        // TODO add your handling code here:
-    }//GEN-LAST:event_CuoteTxtMouseExited
-
-    private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
+    private void cerrarSesionBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cerrarSesionBtnMouseClicked
         Login login = new Login();
         login.setVisible(true);
         login.pack();
         login.setLocationRelativeTo(null);
         this.dispose();
-    }//GEN-LAST:event_jLabel1MouseClicked
+    }//GEN-LAST:event_cerrarSesionBtnMouseClicked
 
-    private void pagarTxtMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pagarTxtMouseClicked
+    private void modificarTxtMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_modificarTxtMouseClicked
         Cargo c = (Cargo) cargoBox.getSelectedItem();
 
 // Obtener el texto del salario ingresado por el usuario
@@ -897,15 +813,15 @@ public class MenuBoss extends javax.swing.JFrame {
     }
 
 
-    }//GEN-LAST:event_pagarTxtMouseClicked
+    }//GEN-LAST:event_modificarTxtMouseClicked
 
-    private void pagarTxtMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pagarTxtMouseEntered
-        pagarBtn.setBackground(new Color(80,139,166));
-    }//GEN-LAST:event_pagarTxtMouseEntered
+    private void modificarTxtMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_modificarTxtMouseEntered
+        modificarBtn.setBackground(new Color(80,139,166));
+    }//GEN-LAST:event_modificarTxtMouseEntered
 
-    private void pagarTxtMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pagarTxtMouseExited
-        pagarBtn.setBackground(new Color(59,132,173));
-    }//GEN-LAST:event_pagarTxtMouseExited
+    private void modificarTxtMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_modificarTxtMouseExited
+        modificarBtn.setBackground(new Color(59,132,173));
+    }//GEN-LAST:event_modificarTxtMouseExited
 
     private void cargoBoxMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cargoBoxMousePressed
         CardLayout cardLayout = (CardLayout) panelDatos.getLayout();
@@ -915,15 +831,7 @@ public class MenuBoss extends javax.swing.JFrame {
 
     }//GEN-LAST:event_cargoBoxMousePressed
 
-    private void SalaryBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SalaryBtnMouseClicked
-        panelVentana.setSelectedIndex(1);
-        cargoBox.setSelectedIndex(-1);
-          categoriaBox.setSelectedIndex(0);
-        CardLayout cardLayout = (CardLayout) panelDatos.getLayout();
-        cardLayout.show(panelDatos, "cardPrincipal");
-    }//GEN-LAST:event_SalaryBtnMouseClicked
-
-    private void pagarTxt1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pagarTxt1MouseClicked
+    private void modificarTxt1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_modificarTxt1MouseClicked
         Categoria c = (Categoria) categoriaBox.getSelectedItem();
 
 // Obtener el texto del salario ingresado por el usuario
@@ -982,15 +890,15 @@ public class MenuBoss extends javax.swing.JFrame {
             }
 
         }
-    }//GEN-LAST:event_pagarTxt1MouseClicked
+    }//GEN-LAST:event_modificarTxt1MouseClicked
 
-    private void pagarTxt1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pagarTxt1MouseEntered
-        // TODO add your handling code here:
-    }//GEN-LAST:event_pagarTxt1MouseEntered
+    private void modificarTxt1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_modificarTxt1MouseEntered
+        modificarBtn1.setBackground(new Color(50, 115, 153));
+    }//GEN-LAST:event_modificarTxt1MouseEntered
 
-    private void pagarTxt1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pagarTxt1MouseExited
-        // TODO add your handling code here:
-    }//GEN-LAST:event_pagarTxt1MouseExited
+    private void modificarTxt1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_modificarTxt1MouseExited
+        modificarBtn1.setBackground(new Color(80, 139, 166));
+    }//GEN-LAST:event_modificarTxt1MouseExited
 
     private void categoriaBoxMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_categoriaBoxMousePressed
 
@@ -1005,22 +913,90 @@ public class MenuBoss extends javax.swing.JFrame {
     }//GEN-LAST:event_cuoteNewTxt1ActionPerformed
 
     private void cuoteNewTxt1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cuoteNewTxt1MouseClicked
-      if(cuoteNewTxt1.getText().equals("Ingrese el nuevo valor")){
-          cuoteNewTxt1.setText("");
-      }else if(cuoteNewTxt1.getText().equals("")){
-          cuoteNewTxt1.setText("Ingrese el nuevo valor");
-      }
+
     }//GEN-LAST:event_cuoteNewTxt1MouseClicked
+
+    private void verTotalTxtMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_verTotalTxtMouseClicked
+        panelVentana.setSelectedIndex(0);
+        actualizarTablaCuota();
+        actualizarTablaSalario();
+    }//GEN-LAST:event_verTotalTxtMouseClicked
+
+    private void verTotalTxtMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_verTotalTxtMouseEntered
+        verTotalBtn.setBackground(new Color(50, 115, 153));
+    }//GEN-LAST:event_verTotalTxtMouseEntered
+
+    private void verTotalTxtMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_verTotalTxtMouseExited
+         verTotalBtn.setBackground(new Color(80, 139, 166));
+    }//GEN-LAST:event_verTotalTxtMouseExited
+
+    private void modificarSueldoTxtMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_modificarSueldoTxtMouseClicked
+         panelVentana.setSelectedIndex(1);
+        cargoBox.setSelectedIndex(-1);
+          categoriaBox.setSelectedIndex(0);
+        CardLayout cardLayout = (CardLayout) panelDatos.getLayout();
+        cardLayout.show(panelDatos, "cardPrincipal");
+    }//GEN-LAST:event_modificarSueldoTxtMouseClicked
+
+    private void modificarSueldoTxtMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_modificarSueldoTxtMouseEntered
+       modificarSueldoBtn.setBackground(new Color(50, 115, 153));
+    }//GEN-LAST:event_modificarSueldoTxtMouseEntered
+
+    private void modificarSueldoTxtMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_modificarSueldoTxtMouseExited
+        modificarSueldoBtn.setBackground(new Color(80, 139, 166));
+    }//GEN-LAST:event_modificarSueldoTxtMouseExited
+
+    private void modificarCuotaTxtMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_modificarCuotaTxtMouseClicked
+         panelVentana.setSelectedIndex(2);
+
+        categoriaBox.setSelectedIndex(-1);
+        CardLayout cardLayout = (CardLayout) panelDatosModif.getLayout();
+        cardLayout.show(panelDatosModif, "cardPrincipal1");
+    }//GEN-LAST:event_modificarCuotaTxtMouseClicked
+
+    private void modificarCuotaTxtMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_modificarCuotaTxtMouseEntered
+        modificarCuotaBtn.setBackground(new Color(50, 115, 153));
+    }//GEN-LAST:event_modificarCuotaTxtMouseEntered
+
+    private void modificarCuotaTxtMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_modificarCuotaTxtMouseExited
+        modificarCuotaBtn.setBackground(new Color(80, 139, 166));
+    }//GEN-LAST:event_modificarCuotaTxtMouseExited
+
+    private void salaryNewTxtMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_salaryNewTxtMousePressed
+        if (salaryNewTxt.getText().equals(" Ingrese el nuevo valor.")) {
+            salaryNewTxt.setText("");
+            salaryNewTxt.setForeground(Color.black);
+        }
+    }//GEN-LAST:event_salaryNewTxtMousePressed
+
+    private void salaryNewTxtFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_salaryNewTxtFocusLost
+        if (salaryNewTxt.getText().isEmpty()) {
+        salaryNewTxt.setText(" Ingrese el nuevo valor.");
+        salaryNewTxt.setForeground(Color.GRAY);
+        }
+    }//GEN-LAST:event_salaryNewTxtFocusLost
+
+    private void cuoteNewTxt1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cuoteNewTxt1MousePressed
+        if (cuoteNewTxt1.getText().equals(" Ingrese el nuevo valor.")) {
+            cuoteNewTxt1.setText("");
+            cuoteNewTxt1.setForeground(Color.black);
+        }
+    }//GEN-LAST:event_cuoteNewTxt1MousePressed
+
+    private void cuoteNewTxt1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_cuoteNewTxt1FocusLost
+        if (cuoteNewTxt1.getText().isEmpty()) {
+        cuoteNewTxt1.setText(" Ingrese el nuevo valor.");
+        cuoteNewTxt1.setForeground(Color.GRAY);
+        }
+    }//GEN-LAST:event_cuoteNewTxt1FocusLost
 
     /**
      * @param args the command line arguments
      */
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel CuoteTxt;
     private javax.swing.JPanel CuoteWindow;
     private javax.swing.JPanel Dashboard;
-    private javax.swing.JLabel SalaryBtn;
     private javax.swing.JPanel SalaryWindow;
     private javax.swing.JLabel SelecTitle;
     private javax.swing.JLabel SelecTitle1;
@@ -1028,9 +1004,9 @@ public class MenuBoss extends javax.swing.JFrame {
     private javax.swing.JTable TablaSalario;
     private javax.swing.JLabel Title;
     private javax.swing.JLabel Title1;
-    private javax.swing.JLabel TotalBtn1;
     private javax.swing.JPanel ViewWindow;
     private javax.swing.JLabel administracionTxt;
+    private javax.swing.JPanel background;
     private javax.swing.JPanel card1;
     private javax.swing.JPanel cardModif;
     private javax.swing.JPanel cardPrincipal;
@@ -1039,34 +1015,34 @@ public class MenuBoss extends javax.swing.JFrame {
     private javax.swing.JLabel cargoModTxt;
     private javax.swing.JLabel cargoModTxt1;
     private javax.swing.JComboBox<Categoria> categoriaBox;
-    private javax.swing.JLabel cuoteBtn;
+    private javax.swing.JLabel cerrarSesionBtn;
     private javax.swing.JTextField cuoteNewTxt1;
     private javax.swing.JLabel dateText;
     private javax.swing.JPanel exitBtn;
     private javax.swing.JPanel exitMenu;
     private javax.swing.JLabel exitTxt;
     private javax.swing.JPanel header;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel logo;
-    private javax.swing.JPanel pagarBtn;
-    private javax.swing.JPanel pagarBtn1;
-    private javax.swing.JLabel pagarTxt;
-    private javax.swing.JLabel pagarTxt1;
+    private javax.swing.JPanel modificarBtn;
+    private javax.swing.JPanel modificarBtn1;
+    private javax.swing.JPanel modificarCuotaBtn;
+    private javax.swing.JLabel modificarCuotaTxt;
+    private javax.swing.JPanel modificarSueldoBtn;
+    private javax.swing.JLabel modificarSueldoTxt;
+    private javax.swing.JLabel modificarTxt;
+    private javax.swing.JLabel modificarTxt1;
     private javax.swing.JPanel panelDatos;
     private javax.swing.JPanel panelDatosModif;
     private javax.swing.JPanel panelDatosSocio;
     private javax.swing.JPanel panelDatosSocio1;
     private javax.swing.JTabbedPane panelVentana;
     private javax.swing.JTextField salaryNewTxt;
-    private javax.swing.JLabel salaryTxt;
     private javax.swing.JLabel timeText;
-    private javax.swing.JLabel tituloSocios;
-    private javax.swing.JLabel tituloSocios1;
-    private javax.swing.JLabel verTxt;
+    private javax.swing.JLabel tituloCargo;
+    private javax.swing.JLabel tituloCategoria;
+    private javax.swing.JPanel verTotalBtn;
+    private javax.swing.JLabel verTotalTxt;
     // End of variables declaration//GEN-END:variables
 }

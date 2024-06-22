@@ -205,8 +205,8 @@ public class Menu extends JFrame {
         jScrollPane4 = new javax.swing.JScrollPane();
         tablaPagos = new javax.swing.JTable();
         enviarDeudaBtn1 = new javax.swing.JPanel();
-        enviarDeudaSep1 = new javax.swing.JSeparator();
         enviarDeudaTxt1 = new javax.swing.JLabel();
+        enviarDeudaSep1 = new javax.swing.JSeparator();
         buscarBtn5 = new javax.swing.JPanel();
         buscarTxt5 = new javax.swing.JLabel();
 
@@ -1561,7 +1561,7 @@ public class Menu extends JFrame {
         });
         jScrollPane4.setViewportView(tablaPagos);
 
-        card4.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 370, 310));
+        card4.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 370, 230));
 
         enviarDeudaBtn1.setBackground(new java.awt.Color(255, 255, 255));
         enviarDeudaBtn1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -1571,25 +1571,9 @@ public class Menu extends JFrame {
             }
         });
 
-        javax.swing.GroupLayout enviarDeudaBtn1Layout = new javax.swing.GroupLayout(enviarDeudaBtn1);
-        enviarDeudaBtn1.setLayout(enviarDeudaBtn1Layout);
-        enviarDeudaBtn1Layout.setHorizontalGroup(
-            enviarDeudaBtn1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-        enviarDeudaBtn1Layout.setVerticalGroup(
-            enviarDeudaBtn1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-
-        card4.add(enviarDeudaBtn1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 390, 390));
-
-        enviarDeudaSep1.setBackground(new java.awt.Color(255, 0, 0));
-        enviarDeudaSep1.setForeground(new java.awt.Color(255, 51, 51));
-        card4.add(enviarDeudaSep1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
-
         enviarDeudaTxt1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         enviarDeudaTxt1.setForeground(new java.awt.Color(255, 51, 51));
+        enviarDeudaTxt1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         enviarDeudaTxt1.setText("Enviar Informe de situacion por Email");
         enviarDeudaTxt1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         enviarDeudaTxt1.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -1597,7 +1581,35 @@ public class Menu extends JFrame {
                 enviarDeudaTxt1MouseClicked(evt);
             }
         });
-        card4.add(enviarDeudaTxt1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 390, 370, -1));
+
+        enviarDeudaSep1.setBackground(new java.awt.Color(255, 0, 0));
+        enviarDeudaSep1.setForeground(new java.awt.Color(255, 0, 0));
+
+        javax.swing.GroupLayout enviarDeudaBtn1Layout = new javax.swing.GroupLayout(enviarDeudaBtn1);
+        enviarDeudaBtn1.setLayout(enviarDeudaBtn1Layout);
+        enviarDeudaBtn1Layout.setHorizontalGroup(
+            enviarDeudaBtn1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(enviarDeudaBtn1Layout.createSequentialGroup()
+                .addGap(15, 15, 15)
+                .addComponent(enviarDeudaSep1, javax.swing.GroupLayout.PREFERRED_SIZE, 321, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(16, Short.MAX_VALUE))
+            .addGroup(enviarDeudaBtn1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(enviarDeudaBtn1Layout.createSequentialGroup()
+                    .addComponent(enviarDeudaTxt1, javax.swing.GroupLayout.PREFERRED_SIZE, 352, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
+        );
+        enviarDeudaBtn1Layout.setVerticalGroup(
+            enviarDeudaBtn1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, enviarDeudaBtn1Layout.createSequentialGroup()
+                .addGap(0, 40, Short.MAX_VALUE)
+                .addComponent(enviarDeudaSep1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(enviarDeudaBtn1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(enviarDeudaBtn1Layout.createSequentialGroup()
+                    .addComponent(enviarDeudaTxt1, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 14, Short.MAX_VALUE)))
+        );
+
+        card4.add(enviarDeudaBtn1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 320, 350, 50));
 
         panelDatos1.add(card4, "card4");
 
