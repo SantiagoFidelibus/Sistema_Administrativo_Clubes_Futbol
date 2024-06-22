@@ -21,7 +21,7 @@ Sigue estos pasos para instalar y ejecutar la aplicación en tu entorno local:
 
 1. Clona este repositorio:
     ```
-    git clone https://github.com/SantiagoFidelibus/App_Club_Futbol_Gestion.git
+    git clone https://github.com/SantiagoFidelibus/Sistema_Administrativo_Clubes_Futbol.git
     ```
 
 ## Tecnologías Utilizadas
