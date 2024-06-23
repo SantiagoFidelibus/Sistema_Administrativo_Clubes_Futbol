@@ -57,14 +57,12 @@ public class RegistroExitoso extends javax.swing.JFrame {
         background.add(Tick, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 40, 60, 60));
 
         regExitoso.setFont(new java.awt.Font("Roboto", 1, 24)); // NOI18N
-        regExitoso.setForeground(new java.awt.Color(0, 0, 0));
         regExitoso.setText("Registro Exitoso");
-        background.add(regExitoso, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 110, 180, 50));
+        background.add(regExitoso, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 110, 200, 50));
 
         regExitosoTxt.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        regExitosoTxt.setForeground(new java.awt.Color(0, 0, 0));
         regExitosoTxt.setText("Registro finalizado con exito.");
-        background.add(regExitosoTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 160, 180, 30));
+        background.add(regExitosoTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 160, 200, 30));
 
         okBtn.setBackground(new java.awt.Color(67, 159, 70));
 

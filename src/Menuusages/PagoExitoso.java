@@ -69,7 +69,7 @@ public class PagoExitoso extends javax.swing.JFrame {
         mensajeTxt.setBackground(new java.awt.Color(0, 0, 0));
         mensajeTxt.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         mensajeTxt.setText(" Se le enviara un correo electronico con el comprobante de pago.");
-        background.add(mensajeTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 160, 400, 30));
+        background.add(mensajeTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 160, -1, 30));
 
         okBtn.setBackground(new java.awt.Color(67, 159, 70));
 
