@@ -50,7 +50,8 @@ setTitle("Administracion Acantilados FC");
         validarIngresoBtn.setEnabled(false);
         fondoDatos.setVisible(false);
         fondoDatos.setEnabled(false);
-
+        
+        scanBtn.requestFocusInWindow();
 
     }
 
@@ -150,7 +151,24 @@ setTitle("Administracion Acantilados FC");
         getContentPane().add(fondoDatos, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 90, 220, 30));
 
         buscarTxt.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        buscarTxt.setText("Ingrese el legajo del socio.");
         buscarTxt.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        buscarTxt.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                buscarTxtFocusLost(evt);
+            }
+        });
+        buscarTxt.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                buscarTxtMouseClicked(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                buscarTxtMousePressed(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                buscarTxtMouseReleased(evt);
+            }
+        });
         buscarTxt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buscarTxtActionPerformed(evt);
@@ -386,6 +404,28 @@ setTitle("Administracion Acantilados FC");
         xMouse = evt.getX();
         yMouse = evt.getY();
     }//GEN-LAST:event_exitMenuMousePressed
+
+    private void buscarTxtMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buscarTxtMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_buscarTxtMouseClicked
+
+    private void buscarTxtMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buscarTxtMouseReleased
+        // TODO add your handling code here:
+    }//GEN-LAST:event_buscarTxtMouseReleased
+
+    private void buscarTxtMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buscarTxtMousePressed
+        if (buscarTxt.getText().equals("Ingrese el legajo del socio.")) {
+            buscarTxt.setText("");
+            buscarTxt.setForeground(Color.black);
+        }
+    }//GEN-LAST:event_buscarTxtMousePressed
+
+    private void buscarTxtFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_buscarTxtFocusLost
+        if (buscarTxt.getText().isEmpty()) {
+            buscarTxt.setText("Ingrese el legajo del socio.");
+            buscarTxt.setForeground(Color.GRAY);
+        }
+    }//GEN-LAST:event_buscarTxtFocusLost
 
 
 

@@ -9,6 +9,8 @@ import Login.Login;
 import Menuusages.TimeUpdater;
 import Model.Socio;
 import java.awt.Color;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -48,7 +50,16 @@ public class Medico extends javax.swing.JFrame {
         volverMenuBtn.requestFocusInWindow();
         TablaSoc.getTableHeader().setReorderingAllowed(false);
 
-
+        buscarLabel.addKeyListener(new KeyAdapter(){
+        @Override
+        public void keyPressed(KeyEvent e) {
+            if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+                buscarTxtMouseClicked(null);
+            }
+        }
+        });
+        
+        
     }
 private void setDate(){
         LocalDate now = LocalDate.now();
