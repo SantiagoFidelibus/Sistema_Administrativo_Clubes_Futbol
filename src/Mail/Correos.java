@@ -46,7 +46,7 @@ public class Correos {
                 + "<p>Es hora de demostrar tu pasión por Acantilados FC.<br>"
                 + "El equipo que nos llena de orgullo y emoción necesita tu apoyo para seguir brillando en la cancha.<br>"
                 + "¡No te quedes atrás!<br>"
-                + "Regulariza tu situación de pago y sé parte de la victoria.</p>"
+                + "Regularizá tu situación de pago y sé parte de la victoria.</p>"
                 + "<img src=\"cid:image\">"
                 + "</body></html>";
         String imagePath = "src/com/emailPics/DEUDA.png";
@@ -58,7 +58,7 @@ public class Correos {
     public void CorreoPagoSalario(String email, String name, int valortotal) {
         String subject = "¡Gracias por tu trabajo!";
         String content = "<html><body>"
-                + "<h1>Estimado/a " + name + "</h1>"
+                + "<h1>Estimado/a " + name + ",</h1>"
                 + "<p>Te informamos que tu sueldo ($"+valortotal+") ha sido abonado correctamente.<br>"
                 + "Si tienes alguna duda o consulta sobre tu salario, no dudes en comunicarte con el departamento de recursos humanos o con la administración.<br>"
                 + "¡Gracias por tu compromiso y dedicación a Acantilados FC!<br>"
@@ -81,8 +81,8 @@ public class Correos {
                 + "¡Muchas gracias por regularizar tu situación de pago!<br>"
                 + "Tu apoyo es fundamental para el éxito de Acantilados FC.<br>"
                 + "A continuación, te detallamos los datos de tu pago:<br>"
-                + "Fecha de pago: " + date + "<br>"
-                + "Monto del pago: $" + payment + "<br>"
+                + "Fecha de pago: " + date + ".<br>"
+                + "Monto del pago: $" + payment + ".<br>"
                 + "Te invitamos a seguir apoyando a nuestro equipo con pasión.<br>"
                 + "¡Juntos, somos más fuertes!<br>"
                 + "¡Acantilados FC, pasión que nos une!<br>"
@@ -116,7 +116,7 @@ public class Correos {
         String subject = "¡Apto Médico Exitoso!";
         String content = "<html><body>"
                 + "<h1>¡Atención Taurón!</h1>"
-                + "<p>¡Felicitaciones " + name + " </p>"
+                + "<p>¡Felicitaciones " + name + "!</p>"
                 + "<p>Nos complace informarte que has pasado satisfactoriamente tu apto médico.<br>"
                 + "Ahora puedes continuar participando en todas las actividades de Acantilados FC sin ningún inconveniente.<br>"
                 + "Gracias por cuidar de tu salud y por ser parte de nuestro equipo."
@@ -139,9 +139,9 @@ public class Correos {
         String subject = "Situacion apto medico";
         String content = "<html><body>"
                 + "<h1>¡Atención Taurón!</h1>"
-                + "<p>Estimado " + name + " </p>"
-                + "<p>Lamentamos informarte que el certificado médico que presentaste ha sido rechazado con el siguiente motivo: " + mensaje + "</p>" +
-                "<p> Para resolver esta situación, te recomendamos que te comuniques con el Dr. Salvetti del Club Deportivo para poder realizar nuevamente la certificacion cuando hayas realizado tu tratamiento!</p>" +
+                + "<p>Estimado " + name + ", </p>"
+                + "<p>Lamentamos informarte que el certificado médico que presentaste ha sido rechazado por el siguiente motivo: " + mensaje + ".</p>" +
+                "<p> Para resolver esta situación, te recomendamos que te comuniques con el Dr. Salvetti del Club Deportivo para poder realizar nuevamente la certificacion cuando hayas realizado tu tratamiento.</p>" +
                 "<p>Gracias por tu atención y colaboración.</p>" +
                 "<p>Atentamente,<br>Acantilados FC</p>"
                 + "</ul>"
@@ -157,7 +157,6 @@ public class Correos {
     }
 
     ///Para hacer despues bro
-
 
     public void CorreoRegularizate(String email, String name) {
         String subject = "¡Importante! Regulariza tu situación con Acantilados FC";
@@ -191,7 +190,7 @@ public class Correos {
                 + "<p>Tu sueldo sera modificado para el proximo vencimiento.<br>"
                 + "Queremos informarte que el nuevo salario sera:<br>"
                 + "$"+valor+"<br>"
-                + "Ante cualquier duda, estamos en Administracion para usted!</p>"
+                + "Ante cualquier duda, estamos en Administracion para usted.</p>"
                 + "<img src=\"cid:image\">"
                 + "</body></html>";
         String imagePath = "src/com/emailPics/MODIFSUELDO.png";
@@ -200,15 +199,14 @@ public class Correos {
         envio.sendEmail();
     }
 
-
     public void CorreoModifCuota(String email,int valor) {
-        String subject = "NOTIFICACION MODIFICACION CUOTA";
+        String subject = "NOTIFICACIÓN MODIFICACIÓN CUOTA";
         String content = "<html><body>"
                 + "<h1>¡Atención Tauron!</h1>"
-                + "<p>Tu cuota sera modificada para el proximo vencimiento.<br>"
+                + "<p>Tu cuota será modificada para el próximo vencimiento.<br>"
                 + "Queremos informarte que el nuevo monto sera:<br>"
                 + "$"+valor+"<br>"
-                + "Ante cualquier duda, estamos en Administracion para usted!</p>"
+                + "Ante cualquier duda, estamos en Administracion para usted.</p>"
                 + "<img src=\"cid:image\">"
                 + "</body></html>";
         String imagePath = "src/com/emailPics/MODIFCUOTA.png";
@@ -217,14 +215,12 @@ public class Correos {
         envio.sendEmail();
     }
 
-
     public void CorreoAtraso(String email) {
         String subject = "SITUACION SALARIO:";
         String content = "<html><body>"
                 + "<h1>¡Atención Tauron!</h1>"
                 + "<p>De parte de los directivos te pedimos disculpas.<br>"
-                + "Nos hemos atrasado con tu pago, pero pronto lo veras depositado, y recuerda que si nos atrasamos mas de 5 dias: <br>"
-                + "Recibiras tu sueldo con intereses<br>"
+                + "Nos hemos atrasado con tu pago pero pronto lo verás depositado, recuerda que si nos atrasamos mas de 5 dias recibiras tu sueldo con intereses.<br>"
                 + "Disculpanos y sé parte de la victoria.</p>"
                 + "<img src=\"cid:image\">"
                 + "</body></html>";
