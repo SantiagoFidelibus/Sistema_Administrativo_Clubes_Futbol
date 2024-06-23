@@ -1772,8 +1772,7 @@ public class Menu extends JFrame {
     }//GEN-LAST:event_sueldosEmpleadosTxtMouseExited
 
     private void menuTxtMouseClicked(MouseEvent evt) {//GEN-FIRST:event_menuTxtMouseClicked
-        menuBtn.setBackground(new Color(60, 65, 70));
-        panelVentanas.setSelectedIndex(0);
+panelVentanas.setSelectedIndex(0);
     }//GEN-LAST:event_menuTxtMouseClicked
 
     private void sociosTxtMouseClicked(MouseEvent evt) {//GEN-FIRST:event_sociosTxtMouseClicked
