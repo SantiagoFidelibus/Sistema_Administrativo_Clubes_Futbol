@@ -6,6 +6,7 @@ package IUEmpleado;
 
 import Containers.ContenedoraSocio;
 import Mail.Correos;
+import Model.Empleado;
 import Model.Socio;
 import Webcam.WebCamScan;
 import Webcam.WebcamClass;
@@ -260,7 +261,6 @@ setTitle("Administracion Acantilados FC");
                     ImageIcon icon = new ImageIcon(new ImageIcon(filePath).getImage().getScaledInstance(fotoUsuario.getWidth(), fotoUsuario.getHeight(), Image.SCALE_SMOOTH));
                     fotoUsuario.setIcon(icon);
                 }else{
-                    System.out.println("esto en el else");
                     filePath = "src/com/images/FotoCarnet.png";
                     ImageIcon icon = new ImageIcon(new ImageIcon(filePath).getImage().getScaledInstance(fotoUsuario.getWidth(), fotoUsuario.getHeight(), Image.SCALE_SMOOTH));
                     fotoUsuario.setIcon(icon);
@@ -298,13 +298,32 @@ setTitle("Administracion Acantilados FC");
         } else {
             if (!socioIngresante.isAptoMedico() && socioIngresante.isAptoCuota()) {
                 javax.swing.JOptionPane.showMessageDialog(this, "El socio debe realizar su certificado médico.", "Error de Ingreso", javax.swing.JOptionPane.ERROR_MESSAGE);
-                correo.CorreoAptoMedicoRequerido(socioIngresante.getEmail(),socioIngresante.getNombre());
+                new Thread(() -> {
+                    try {
+                        correo.CorreoAptoMedicoRequerido(socioIngresante.getEmail(),socioIngresante.getNombre());
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }).start();
+
             } else if (!socioIngresante.isAptoCuota() && socioIngresante.isAptoMedico()) {
                 javax.swing.JOptionPane.showMessageDialog(this, "El socio debe pagar su cuota.", "Error de Ingreso", javax.swing.JOptionPane.ERROR_MESSAGE);
-                correo.CorreoDeuda(socioIngresante.getEmail());
+                new Thread(() -> {
+                    try {
+                        correo.CorreoDeuda(socioIngresante.getEmail());
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }).start();
             } else if (!socioIngresante.isAptoCuota() && !socioIngresante.isAptoMedico()) {
                 javax.swing.JOptionPane.showMessageDialog(this, "El socio debe pagar su cuota y realizar su certificación médica.", "Error de Ingreso", javax.swing.JOptionPane.ERROR_MESSAGE);
-                correo.CorreoRegularizate(socioIngresante.getEmail(),socioIngresante.getNombre());
+                new Thread(() -> {
+                    try {
+                        correo.CorreoRegularizate(socioIngresante.getEmail(),socioIngresante.getNombre());
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }).start();
             } else if (socioIngresante.isAptoCuota() && socioIngresante.isAptoMedico()) {
                 javax.swing.JOptionPane.showMessageDialog(this, "El socio está al día y puede realizar sus actividades.", "Ingreso exitoso", JOptionPane.INFORMATION_MESSAGE);
 

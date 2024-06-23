@@ -318,22 +318,39 @@ setTitle("Administracion Acantilados FC");
                 int dato = Integer.parseInt(buscarTxt.getText());
                 try {
                     Socio socioIngresante = socios.buscar(dato);
-                    System.out.println(socioIngresante);
                     if (socioIngresante == null) {
                         JOptionPane.showMessageDialog(IngresoSociosSinCam.this, "No se encontró al socio.", "Error de Ingreso", JOptionPane.ERROR_MESSAGE);
                     } else {
                         if (!socioIngresante.isAptoMedico() && socioIngresante.isAptoCuota()) {
                             JOptionPane.showMessageDialog(IngresoSociosSinCam.this, "El socio debe realizar su certificado médico.", "Error de Ingreso", JOptionPane.ERROR_MESSAGE);
                             actualizarEstado();
-                            correo.CorreoAptoMedicoRequerido(socioIngresante.getEmail(), socioIngresante.getNombre());
+                            new Thread(() -> {
+                                try {
+                                    correo.CorreoAptoMedicoRequerido(socioIngresante.getEmail(),socioIngresante.getNombre());
+                                } catch (Exception e) {
+                                    e.printStackTrace();
+                                }
+                            }).start();
                         } else if (!socioIngresante.isAptoCuota() && socioIngresante.isAptoMedico()) {
                             JOptionPane.showMessageDialog(IngresoSociosSinCam.this, "El socio debe pagar su cuota.", "Error de Ingreso", JOptionPane.ERROR_MESSAGE);
                             actualizarEstado();
-                            correo.CorreoDeuda(socioIngresante.getEmail());
+                            new Thread(() -> {
+                                try {
+                                    correo.CorreoDeuda(socioIngresante.getEmail());
+                                } catch (Exception e) {
+                                    e.printStackTrace();
+                                }
+                            }).start();
                         } else if (!socioIngresante.isAptoCuota() && !socioIngresante.isAptoMedico()) {
                             JOptionPane.showMessageDialog(IngresoSociosSinCam.this, "El socio debe pagar su cuota y realizar su certificación médica.", "Error de Ingreso", JOptionPane.ERROR_MESSAGE);
                             actualizarEstado();
-                            correo.CorreoRegularizate(socioIngresante.getEmail(), socioIngresante.getNombre());
+                            new Thread(() -> {
+                                try {
+                                    correo.CorreoRegularizate(socioIngresante.getEmail(),socioIngresante.getNombre());
+                                } catch (Exception e) {
+                                    e.printStackTrace();
+                                }
+                            }).start();
                         } else if (socioIngresante.isAptoCuota() && socioIngresante.isAptoMedico()) {
                             actualizarEstado();
                             JOptionPane.showMessageDialog(IngresoSociosSinCam.this, "El socio está al día y puede realizar sus actividades.", "Ingreso exitoso", JOptionPane.INFORMATION_MESSAGE);
