@@ -21,8 +21,8 @@ import javax.mail.internet.MimeMultipart;
 
 public class EnvioCorreo {
 
-    private static String emailFrom = "acantiladosfc@gmail.com";
-    private static String passwordFrom = "vuhewlqdrfnltesx";
+    private static String emailFrom = "tu-gmail@gmail.com";
+    private static String passwordFrom = "tu-clave";
     private String emailTo;
     private String subject;
     private String content;
