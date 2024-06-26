@@ -13,7 +13,23 @@ Sistema Administrativo para Clubes de Fútbol (SACF)
 - **Analisis de situaciones financieras**: Generación de emails para alertar de irregularidades economicas y regularizaciones, dependiendo lo que sea necesario.
 - **Escaneo**: Sistema de gestion de ingresos de socios por escaneo de QR o legajo unico.
 
+### Para facilitar el acceso al sistema, se han configurado las siguientes cuentas de usuario predeterminadas:
 
+### Administrador
+- Usuario: Admin
+- Contraseña: Admin
+
+### Jefe
+- Usuario: Jefe
+- Contraseña: Jefe
+
+### Recepcionista
+- Usuario: Empleado
+- Contraseña: Recepcionista
+
+### Médico
+- Usuario: Medico
+- Contraseña: Medico
 
 ## Instalación
 
